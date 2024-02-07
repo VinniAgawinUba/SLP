@@ -1,0 +1,21 @@
+
+
+/* Search Bar */
+.custom-search {
+    border-radius: 40px; /* Adjust the value as needed */
+    size: 20px;
+    padding: 10px 20px;
+    color: #001573;
+    font-family: 'Roboto', sans-serif;
+}
+
+.customfont{
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-link {
+    margin-right: 20px; /* Adjust the value as needed for spacing */
+}
+.btn_custombtns {
+    font-size: 30px;
+}
