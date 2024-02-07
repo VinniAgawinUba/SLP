@@ -11,6 +11,9 @@ include('includes/navbar.php');
         <div class="row">
             <div class="col-md-12">
                 <?php include('message.php'); ?>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title text-center">Home</h4>
             </div>
             
     </div>
