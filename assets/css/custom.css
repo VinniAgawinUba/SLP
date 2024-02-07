@@ -2,15 +2,26 @@
 
 /* Search Bar */
 .custom-search {
-    border-radius: 40px; /* Adjust the value as needed */
-    size: 20px;
-    padding: 10px 20px;
+    border-radius: 20px; /* Adjust the value as needed */
     color: #001573;
     font-family: 'Roboto', sans-serif;
+    width: 100%;
+    
+}
+
+.XULOGO{
+    width: 10px;
+    height: 10px;
+
 }
 
 .customfont{
     font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+
+.customSidebar{
+    width: 60%;
 }
 
 .nav-link {

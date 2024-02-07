@@ -18,7 +18,7 @@ include('includes/navbar.php');
 </div>
 
 <!-- Sidebar -->
-</div class="conatiner-fluid" id="layoutSidenav">
+</div class="container d-flex flex-column align-items-center">
     <div class="row">
         <div class="col-md-3">
             <?php
