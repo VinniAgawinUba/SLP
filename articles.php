@@ -13,7 +13,7 @@ include('includes/navbar.php');
                 <?php include('message.php'); ?>
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title text-center">Home</h4>
+                        <h4 class="card-title text-center">Articles</h4>
             </div>
             
     </div>

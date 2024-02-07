@@ -1,17 +1,26 @@
-<div class="container">
-  <!-- Navbar Top Right -->
+<div class="container-fluid px-2">
+
+ <!-- Navbar Top Right -->
 <nav class="navbar navbar-expand-lg">
-  <div class="container">
+  
     <a class="navbar-brand d=block d-sm-none d-md-none" href="#"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- XU Logo -->
+
+  <a href="index.php" style="width:400px;"> 
+    <img src="assets/images/XU_LOGO.png" alt="Logo" style="width: 80%;">
+  </a>
+   <!-- Search Bar -->
+   <form class="d-flex justify-content-center">
+    <input class="form-control me-2 custom-search" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+  </form>
       <!-- Navbar Links -->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active customfont" aria-current="page" href="index.php" style="color:blue">Home</a>
-        </li>
+
         <li class="nav-item text-center customfont">
           <a class="nav-link" href="#" style="color:blue; white-space:nowrap">About Us</a>
         </li>
@@ -46,19 +55,13 @@
     </div>
   </div>
 </nav>
-<!-- XU Logo -->
-    <img src="assets/images/XU_LOGO.png" alt="Logo" style="width: 20%;">
-  
-</div>
+
+   
 
 <div class="container">
   
   
-  <!-- Search Bar -->
-  <form class="d-flex justify-content-center">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-primary" type="submit">Search</button>
-  </form>
+ 
   
 </div>
 
@@ -70,15 +73,15 @@
     <a class="nav-link active" href="index.php">HOME</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">PROJECTS</a>
+    <a class="nav-link" href="projects.php">PROJECTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">ARTICLES</a>
+    <a class="nav-link" href="articles.php">ARTICLES</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">REGISTRAR</a>
+    <a class="nav-link" href="registrar.php">REGISTRAR</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">GALLERY</a>
+    <a class="nav-link" href="gallery.php">GALLERY</a>
   </li>
 </ul>
