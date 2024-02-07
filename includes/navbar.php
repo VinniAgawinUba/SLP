@@ -47,9 +47,7 @@
   </div>
 </nav>
 <!-- XU Logo -->
-  <a class="navbar-brand" href="index.php">
     <img src="assets/images/XU_LOGO.png" alt="Logo" style="width: 20%;">
-  </a>
   
 </div>
 
