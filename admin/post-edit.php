@@ -50,7 +50,7 @@ include('includes/header.php');
                                             <?php
                                             foreach($category_query_run as $category_item) {
                                             ?>
-                                                <option value="<?=$category_item['id']; ?>" <?= $category_item['id'] == $post_row['category_id'] ? 'selected' : '' ?>>
+                                                <option value="<?=$category_item['id'];?>" <?= $category_item['id'] == $post_row['category_id']?>>
                                                 <?= $category_item['name'];?>
 
                                                 </option>

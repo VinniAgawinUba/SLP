@@ -4,6 +4,71 @@ ini_set('display_errors', 1);
 
 include ('authentication.php');
 
+// Add Project
+if(isset($_POST['project_add_btn'])) {
+    $name = $_POST['name'];
+    $type = $_POST['type'];
+    $description = $_POST['description'];
+    $subject_hosted = $_POST['subject_hosted'];
+    $college = $_POST['college_name'];
+    $department = $_POST['department_name'];
+    $sd_coordinator = $_POST['sd_coordinator'];
+    $partner = $_POST['partner'];
+    $school_year = $_POST['school_year'];
+    $semester = $_POST['semester'];
+    
+    $status = $_POST['status']; // Assuming all projects start as "In Progress"
+
+    // Insert the Project into the database
+    $query = "INSERT INTO projects (name, type, description, subject_hosted, college, department, sd_coordinator, partner, school_year, semester, status) 
+              VALUES ('$name', '$type', '$description', '$subject_hosted', '$college', '$department', '$sd_coordinator', '$partner', '$school_year', '$semester', '$status')";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run) {
+        $_SESSION['message'] = "New Project has been added";
+        header('Location: project-add.php');
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: project-add.php');
+        exit(0);
+    }
+}
+
+//Update Project
+if(isset($_POST['project_edit_btn']))
+{
+    $project_id = $_POST['id'];
+    $name = $_POST['name'];
+    $type = $_POST['type'];
+    $description = $_POST['description'];
+    $subject_hosted = $_POST['subject_hosted'];
+    $college = $_POST['college_name'];
+    $department = $_POST['department_name'];
+    $sd_coordinator = $_POST['sd_coordinator'];
+    $partner = $_POST['partner'];
+    $school_year = $_POST['school_year'];
+    $semester = $_POST['semester'];
+    $status = $_POST['status'];
+
+    //UPDATE the Project with the new values
+    $query = "UPDATE projects SET name = '$name', type = '$type', description = '$description', subject_hosted = '$subject_hosted', college = '$college', department = '$department', sd_coordinator = '$sd_coordinator', partner = '$partner', school_year = '$school_year', semester = '$semester', status = '$status' WHERE id = '$project_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run) {
+        $_SESSION['message'] = "Project has been updated";
+        header('Location: project-edit.php?id='.$project_id);
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: project-edit.php?id='.$project_id);
+        exit(0);
+    }
+
+
+}
+
+
 //Delete Post
 if(isset($_POST['post_delete_btn'])) 
 {

@@ -14,6 +14,7 @@
 
 
                             <div class="sb-sidenav-menu-heading">Interface</div>
+                            <!--- Category Interface -->
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -27,6 +28,7 @@
                                 </nav>
                             </div>
 
+                             <!--- Post Interface -->
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePosts" aria-expanded="false" aria-controls="collapsePosts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Posts
@@ -39,6 +41,18 @@
                                 </nav>
                             </div>
 
+                             <!--- Project Interface -->
+                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProjects" aria-expanded="false" aria-controls="collapseProjects">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Projects
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseProjects" aria-labelledby="Projects" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="project-add.php">Add Project</a>
+                                    <a class="nav-link" href="project-view.php">View Project</a>
+                                </nav>
+                            </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>

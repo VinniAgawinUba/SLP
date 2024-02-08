@@ -12,7 +12,9 @@
 
   <a href="index.php" style="width:400px;"> 
     <img src="assets/images/XU_LOGO.png" alt="Logo" style="width: 80%;">
+    
   </a>
+  
    <!-- Search Bar -->
    <form class="d-flex justify-content-center">
     <input class="form-control me-2 custom-search" type="search" placeholder="Search" aria-label="Search">
@@ -85,3 +87,4 @@
     <a class="nav-link" href="gallery.php">GALLERY</a>
   </li>
 </ul>
+
