@@ -35,6 +35,7 @@ include('includes/header.php');
                     
                        <form action="code.php" method="POST">
                         <div class="row">
+                            <input type="hidden" name="project_id" value="<?= $project_row['id']?>">
                             <div class="col-md-6 mb-3">
                                 <label for="">Name</label>
                                 <input type="text" name="name" required class="form-control" value="<?= $project_row['name']?>">
@@ -192,7 +193,7 @@ include('includes/header.php');
                             <div class="col-md-6 mb-3">
                                     <label for="">Semester</label>
                                     <?php
-                                    $semester_query = "SELECT * FROM projects";
+                                    $semester_query = "SELECT * FROM projects WHERE id = '$project_id' LIMIT 1";
                                     $semester_query_run = mysqli_query($con, $semester_query);
                                     if(mysqli_num_rows($semester_query_run) > 0){}
                                     ?>
@@ -248,7 +249,7 @@ include('includes/header.php');
                             <!-- Add other project fields as needed -->
 
                             <div class="col-md-12 mb-3">
-                                <button type="submit" name="project_add_btn" class="btn btn-primary">Edit Project</button>
+                                <button type="submit" name="project_edit_btn" class="btn btn-primary">Edit Project</button>
                             </div>
 
                         </div>

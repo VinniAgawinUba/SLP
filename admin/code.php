@@ -38,7 +38,7 @@ if(isset($_POST['project_add_btn'])) {
 //Update Project
 if(isset($_POST['project_edit_btn']))
 {
-    $project_id = $_POST['id'];
+    $project_id = $_POST['project_id'];
     $name = $_POST['name'];
     $type = $_POST['type'];
     $description = $_POST['description'];
