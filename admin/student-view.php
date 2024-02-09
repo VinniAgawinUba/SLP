@@ -80,7 +80,7 @@ include('includes/header.php');
                                         <td>
                                             <form action="code.php" method="POST">
                                                 <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                                                <button type="submit" name="project_delete_btn" value="<?=$post['id']?>" class="btn btn-danger">Delete</button>
+                                                <button type="submit" name="student_delete_btn" value="<?=$post['id']?>" class="btn btn-danger">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

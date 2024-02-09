@@ -3,6 +3,85 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include ('authentication.php');
+
+//Add Faculty
+if(isset($_POST['add_faculty'])) {
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $full_name = $fname.''.$lname;
+    $email = $_POST['email'];
+    $college = $_POST['college_name'];
+    $department = $_POST['department_name'];
+    $role = $_POST['role'];
+
+    // Image Upload
+    $image = $_FILES['image']['name'];
+    // Rename this image
+    $image_extension = pathinfo($image, PATHINFO_EXTENSION);
+    $filename = time() . '.' .$image_extension;
+
+
+    // Insert the Post with the category_id
+    $query = "INSERT INTO faculty (fname, lname, full_name, email, college, department, role, image) 
+              VALUES ('$fname', '$lname', '$full_name', '$email', '$college', '$department', '$role', '$filename')";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run) {
+        // Upload the image to uploads folder
+        move_uploaded_file($_FILES['image']['tmp_name'],'../uploads/faculty/'.$filename);
+        $_SESSION['message'] = "New Faculty has been added";
+        header('Location: faculty-add.php');
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: faculty-add.php');
+        exit(0);
+    }
+}
+
+//Update Faculty
+if(isset($_POST['update_faculty'])) {
+    $faculty_id = $_POST['faculty_id'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $full_name = $fname.''.$lname;
+    $email = $_POST['email'];
+    $college = $_POST['college_name'];
+    $department = $_POST['department_name'];
+    $role = $_POST['role'];
+
+    // Image Upload
+    $image = $_FILES['image']['name'];
+    // Rename this image
+    $image_extension = pathinfo($image, PATHINFO_EXTENSION);
+    $filename = time() . '.' .$image_extension;
+
+    $old_filename = $_POST['old_image'];
+
+    // Update the Faculty with the new values
+    $query = "UPDATE faculty SET fname = '$fname', lname = '$lname', full_name = '$full_name', email = '$email', college = '$college', department = '$department', role = '$role', image = '$filename' WHERE id = '$faculty_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run) {
+        if($image != NULL) {
+            if(file_exists('../uploads/faculty/' . $_POST['old_image'])) 
+            {
+                unlink('../uploads/faculty/' . $_POST['old_image']);
+            }
+            // Upload the image to uploads folder
+            move_uploaded_file($_FILES['image']['tmp_name'], '../uploads/faculty/' . $filename);
+        }
+        $_SESSION['message'] = "Faculty has been updated";
+        header('Location: faculty-edit.php?id='.$faculty_id);
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: faculty-edit.php?id='.$faculty_id);
+        exit(0);
+    }
+}
+
+
 //Add Student
 if(isset($_POST['add_student']))
 {
@@ -241,7 +320,7 @@ if(isset($_POST['post_add_btn'])) {
 
     if($query_run) {
         // Upload the image to uploads folder
-        move_uploaded_file($_FILES['image']['tmp_name'],'../uploads/posts/'. $filename);
+        move_uploaded_file($_FILES['image']['tmp_name'],'../uploads/posts/'.$filename);
         $_SESSION['message'] = "New Post has been added";
         header('Location: post-add.php');
         exit(0);

@@ -255,17 +255,17 @@ include('includes/header.php');
                         </div>
                     </form>
 
-                        <?php
+                    <?php
 
-                        }
-                        else
-                        {
-                            ?>
-                            <h4>No Record Found</h4>
-                            <?php
-                        }
-                            
+                    }
+                    else
+                    {
                         ?>
+                        <h4>No Record Found</h4>
+                        <?php
+                    }
+                        
+                    ?>
                     </div>
                 </div>
             </div>
