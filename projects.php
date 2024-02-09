@@ -34,7 +34,7 @@ include('config/dbcon.php');
                                     {
                                     ?>
                                     <ul class="nav-item">
-                                        <a class="nav-item" href="category.php?title=<?=$navItems['slug'];?>"><?=$navItems['name'];?></a>
+                                        <a class="nav-item" href="projects.php?title=<?=$navItems['name'];?>"><?=$navItems['name'];?></a>
                                     </ul>
                                     <?php
                                     }

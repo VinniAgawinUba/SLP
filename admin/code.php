@@ -3,6 +3,66 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include ('authentication.php');
+//Add Student
+if(isset($_POST['add_student']))
+{
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $college = $_POST['college_name'];
+    $department = $_POST['department_name'];
+    $year_level = $_POST['year_level'];
+    $student_number = $_POST['student_number'];
+    $project_id = $_POST['project_id'];
+
+    //Insert the Student
+    $query = "INSERT INTO students (fname, lname, college, department, year_level, student_number, project_id) VALUES ('$fname', '$lname', '$college', '$department', '$year_level', '$student_number', '$project_id')";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "New Student has been added";
+        header('Location: student-add.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: student-add.php');
+        exit(0);
+    }
+}
+
+//Update Student
+if(isset($_POST['update_student']))
+{
+    $student_id = $_POST['student_id'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $college = $_POST['college_name'];
+    $department = $_POST['department_name'];
+    $year_level = $_POST['year_level'];
+    $student_number = $_POST['student_number'];
+    $project_id = $_POST['project_id'];
+
+    //UPDATE the Student
+    $query = "UPDATE students SET fname = '$fname', lname = '$lname', college = '$college', department = '$department', year_level = '$year_level', student_number = '$student_number', project_id = '$project_id' WHERE id = '$student_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "Student has been Updated";
+        header('Location: student-edit.php?id='.$student_id);
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: student-edit.php?id='.$student_id);
+        exit(0);
+    }
+}
+
+
 
 // Add Project
 if(isset($_POST['project_add_btn'])) {

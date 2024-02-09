@@ -52,7 +52,7 @@ include('includes/header.php');
                                 $college_query_run = mysqli_query($con, $college_query);
                                 if(mysqli_num_rows($college_query_run) > 0) {
                                 ?>
-                                    <select name="college_name" required class="form-control">
+                                    <select name="college_name" required class="form-control select2">
                                         <option value="">--Select College--</option>
                                         <?php
                                         foreach($college_query_run as $college_list) {
@@ -76,7 +76,7 @@ include('includes/header.php');
                                 $department_query_run = mysqli_query($con, $department_query);
                                 if(mysqli_num_rows($department_query_run) > 0) {
                                 ?>
-                                    <select name="department_name" required class="form-control">
+                                    <select name="department_name" required class="form-control select2">
                                         <option value="">--Select Department--</option>
                                         <?php
                                         foreach($department_query_run as $department_list) {
@@ -100,7 +100,7 @@ include('includes/header.php');
                                 $faculty_query_run = mysqli_query($con, $faculty_query);
                                 if(mysqli_num_rows($faculty_query_run) > 0) {
                                 ?>
-                                    <select name="sd_coordinator" required class="form-control">
+                                    <select name="sd_coordinator" required class="form-control select2">
                                         <option value="">--Select Coordinator--</option>
                                         <?php
                                         foreach($faculty_query_run as $faculty_list) {
@@ -124,7 +124,7 @@ include('includes/header.php');
                                 $partner_query_run = mysqli_query($con, $partner_query);
                                 if(mysqli_num_rows($partner_query_run) > 0) {
                                 ?>
-                                    <select name="partner" required class="form-control">
+                                    <select name="partner" required class="form-control select2">
                                         <option value="">--Select Partner--</option>
                                         <?php
                                         foreach($partner_query_run as $partner_list) {
@@ -148,7 +148,7 @@ include('includes/header.php');
                                 $school_year_query_run = mysqli_query($con, $school_year_query);
                                 if(mysqli_num_rows($school_year_query_run) > 0) {
                                 ?>
-                                    <select name="school_year" required class="form-control">
+                                    <select name="school_year" required class="form-control select2">
                                         <option value="">--Select School Year--</option>
                                         <?php
                                         foreach($school_year_query_run as $school_year_list) {

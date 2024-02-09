@@ -22,5 +22,18 @@
             });
         </script>   
         <!-- //Summernote JS - CDN Link -->
+
+        <!-- CSS For Select2 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+<!-- JavaScript for Select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+    // Initialize Select2 for dropdowns
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+</script>
+
     </body>
 </html>

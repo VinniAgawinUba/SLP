@@ -26,7 +26,7 @@ include('config/dbcon.php');
                             <div>
                                 <!-- FETCH FROM DATABASE -->
                                 <?php
-                                $navbarCategory = "SELECT * FROM articles";
+                                $navbarCategory = "SELECT * FROM posts";
                                 $navbarCategory_run = mysqli_query($con, $navbarCategory);
                                 if(mysqli_num_rows($navbarCategory_run) > 0)
                                 {
@@ -34,7 +34,7 @@ include('config/dbcon.php');
                                     {
                                     ?>
                                     <ul class="nav-item">
-                                        <a class="nav-item" href="category.php?title=<?=$navItems['slug'];?>"><?=$navItems['name'];?></a>
+                                        <a class="nav-item" href="posts.php?title=<?=$navItems['name'];?>"><?=$navItems['name'];?></a>
                                     </ul>
                                     <?php
                                     }
