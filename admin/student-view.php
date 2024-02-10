@@ -49,8 +49,61 @@ include('includes/header.php');
                                         <td><?= $row['id']; ?></td>
                                         <td><?= $row['fname']; ?></td>
                                         <td><?= $row['lname']; ?></td>
-                                        <td><?= $row['college']; ?></td>
-                                        <td><?= $row['department']; ?></td>
+
+                                            <td>
+                                                <?php 
+                                                if($row['college_id'] > 0)
+                                                {
+                                                    $college_query = "SELECT name FROM college WHERE id = ".$row['college_id'];
+                                                    $college_query_run = mysqli_query($con, $college_query);
+                                                    if(mysqli_num_rows($college_query_run) > 0)
+                                                    {
+                                                        foreach($college_query_run as $college_list)
+                                                        {
+                                                            echo $college_list['name'];
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "No College Found";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo "No College Found";
+                                                }
+                                                
+                                                ?>
+                                            
+                                            </td>
+
+                                            <td>
+                                                <?php 
+                                                if($row['department_id'] > 0)
+                                                {
+                                                    $department_query = "SELECT name FROM department WHERE id = ".$row['department_id'];
+                                                    $department_query_run = mysqli_query($con, $department_query);
+                                                    if(mysqli_num_rows($department_query_run) > 0)
+                                                    {
+                                                        foreach($department_query_run as $department_list)
+                                                        {
+                                                            echo $department_list['name'];
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "No Department Found";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo "No Department Found";
+                                                }
+                                                
+                                                ?>
+                                            
+                                            </td>
+
                                         <td><?= $row['year_level']; ?></td>
                                         <td><?= $row['student_number']; ?></td>
                                         <!--Compare and Get Student's project_id with Projects_id and use project name -->

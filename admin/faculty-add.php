@@ -46,12 +46,12 @@ include('includes/header.php');
                                 $college_query_run = mysqli_query($con, $college_query);
                                 if(mysqli_num_rows($college_query_run) > 0) {
                                 ?>
-                                    <select name="college_name" required class="form-control select2">
+                                    <select name="college_id" required class="form-control select2">
                                         <option value="">--Select College--</option>
                                         <?php
                                         foreach($college_query_run as $college_list) {
                                         ?>
-                                            <option value="<?=$college_list['name']; ?>"> <?=$college_list['name'];?> </option>
+                                            <option value="<?=$college_list['id']; ?>"> <?=$college_list['name'];?> </option>
                                         <?php
                                         }
                                         ?>
@@ -70,12 +70,12 @@ include('includes/header.php');
                                 $department_query_run = mysqli_query($con, $department_query);
                                 if(mysqli_num_rows($department_query_run) > 0) {
                                 ?>
-                                    <select name="department_name" required class="form-control select2">
+                                    <select name="department_id" required class="form-control select2">
                                         <option value="">--Select Department--</option>
                                         <?php
                                         foreach($department_query_run as $department_list) {
                                         ?>
-                                            <option value="<?=$department_list['name']; ?>"> <?=$department_list['name'];?> </option>
+                                            <option value="<?=$department_list['id']; ?>"> <?=$department_list['name'];?> </option>
                                         <?php
                                         }
                                         ?>

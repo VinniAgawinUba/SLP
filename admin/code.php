@@ -164,8 +164,8 @@ if(isset($_POST['add_faculty'])) {
     $lname = $_POST['lname'];
     $full_name = $fname.''.$lname;
     $email = $_POST['email'];
-    $college = $_POST['college_name'];
-    $department = $_POST['department_name'];
+    $college_id = $_POST['college_id'];
+    $department_id = $_POST['department_id'];
     $role = $_POST['role'];
 
     // Image Upload
@@ -176,8 +176,8 @@ if(isset($_POST['add_faculty'])) {
 
 
     // Insert the Post with the category_id
-    $query = "INSERT INTO faculty (fname, lname, full_name, email, college, department, role, image) 
-              VALUES ('$fname', '$lname', '$full_name', '$email', '$college', '$department', '$role', '$filename')";
+    $query = "INSERT INTO faculty (fname, lname, full_name, email, college_id, department_id, role, image) 
+              VALUES ('$fname', '$lname', '$full_name', '$email', '$college_id', '$department_id', '$role', '$filename')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {
@@ -200,8 +200,8 @@ if(isset($_POST['update_faculty'])) {
     $lname = $_POST['lname'];
     $full_name = $fname.''.$lname;
     $email = $_POST['email'];
-    $college = $_POST['college_name'];
-    $department = $_POST['department_name'];
+    $college_id = $_POST['college_id'];
+    $department_id = $_POST['department_id'];
     $role = $_POST['role'];
 
     // Image Upload
@@ -213,7 +213,7 @@ if(isset($_POST['update_faculty'])) {
     $old_filename = $_POST['old_image'];
 
     // Update the Faculty with the new values
-    $query = "UPDATE faculty SET fname = '$fname', lname = '$lname', full_name = '$full_name', email = '$email', college = '$college', department = '$department', role = '$role', image = '$filename' WHERE id = '$faculty_id'";
+    $query = "UPDATE faculty SET fname = '$fname', lname = '$lname', full_name = '$full_name', email = '$email', college_id = '$college_id', department_id = '$department_id', role = '$role', image = '$filename' WHERE id = '$faculty_id'";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {
@@ -241,14 +241,14 @@ if(isset($_POST['add_student']))
 {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $college = $_POST['college_name'];
-    $department = $_POST['department_name'];
+    $college_id = $_POST['college_id'];
+    $department_id = $_POST['department_id'];
     $year_level = $_POST['year_level'];
     $student_number = $_POST['student_number'];
     $project_id = $_POST['project_id'];
 
     //Insert the Student
-    $query = "INSERT INTO students (fname, lname, college, department, year_level, student_number, project_id) VALUES ('$fname', '$lname', '$college', '$department', '$year_level', '$student_number', '$project_id')";
+    $query = "INSERT INTO students (fname, lname, college_id, department_id, year_level, student_number, project_id) VALUES ('$fname', '$lname', '$college', '$department', '$year_level', '$student_number', '$project_id')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
@@ -271,14 +271,14 @@ if(isset($_POST['update_student']))
     $student_id = $_POST['student_id'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $college = $_POST['college_name'];
-    $department = $_POST['department_name'];
+    $college_id = $_POST['college_id'];
+    $department_id = $_POST['department_id'];
     $year_level = $_POST['year_level'];
     $student_number = $_POST['student_number'];
     $project_id = $_POST['project_id'];
 
     //UPDATE the Student
-    $query = "UPDATE students SET fname = '$fname', lname = '$lname', college = '$college', department = '$department', year_level = '$year_level', student_number = '$student_number', project_id = '$project_id' WHERE id = '$student_id'";
+    $query = "UPDATE students SET fname = '$fname', lname = '$lname', college_id = '$college_id', department_id = '$department_id', year_level = '$year_level', student_number = '$student_number', project_id = '$project_id' WHERE id = '$student_id'";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
@@ -303,8 +303,8 @@ if(isset($_POST['project_add_btn'])) {
     $type = $_POST['type'];
     $description = $_POST['description'];
     $subject_hosted = $_POST['subject_hosted'];
-    $college = $_POST['college_name'];
-    $department = $_POST['department_name'];
+    $college_id = $_POST['college_name'];
+    $department_id = $_POST['department_name'];
     $sd_coordinator = $_POST['sd_coordinator'];
     $partner = $_POST['partner'];
     $school_year = $_POST['school_year'];
@@ -314,7 +314,7 @@ if(isset($_POST['project_add_btn'])) {
 
     // Insert the Project into the database
     $query = "INSERT INTO projects (name, type, description, subject_hosted, college, department, sd_coordinator, partner, school_year, semester, status) 
-              VALUES ('$name', '$type', '$description', '$subject_hosted', '$college', '$department', '$sd_coordinator', '$partner', '$school_year', '$semester', '$status')";
+              VALUES ('$name', '$type', '$description', '$subject_hosted', '$college_id', '$department_id', '$sd_coordinator', '$partner', '$school_year', '$semester', '$status')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {

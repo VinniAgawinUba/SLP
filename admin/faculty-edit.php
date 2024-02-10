@@ -68,12 +68,12 @@ if(isset($_GET['id'])) {
                                 $college_query_run = mysqli_query($con, $college_query);
                                 if(mysqli_num_rows($college_query_run) > 0) {
                                     ?>
-                                    <select name="college_name" required class="form-control select2">
+                                    <select name="college_id" required class="form-control select2">
                                         <option value="">--Select College--</option>
                                         <?php
                                         foreach($college_query_run as $college_list) {
                                             ?>
-                                            <option value="<?=$college_list['name']; ?>" <?=$college_list['name'] == $faculty_data['college'] ? 'selected' : '' ?>>
+                                            <option value="<?=$college_list['id']; ?>" <?=$college_list['id'] == $faculty_data['college_id'] ? 'selected' : '' ?>>
                                                 <?= $college_list['name'];?>
                                             </option>
                                             <?php
@@ -94,12 +94,12 @@ if(isset($_GET['id'])) {
                                 $department_query_run = mysqli_query($con, $department_query);
                                 if(mysqli_num_rows($department_query_run) > 0) {
                                     ?>
-                                    <select name="department_name" required class="form-control select2">
+                                    <select name="department_id" required class="form-control select2">
                                         <option value="">--Select Department--</option>
                                         <?php
                                         foreach($department_query_run as $department_list) {
                                             ?>
-                                             <option value="<?=$department_list['name']; ?>" <?=$department_list['name'] == $faculty_data['department'] ? 'selected' : '' ?>>
+                                             <option value="<?=$department_list['id']; ?>" <?=$department_list['id'] == $faculty_data['department_id'] ? 'selected' : '' ?>>
                                                 <?= $department_list['name'];?>
                                             </option>
                                             <?php
@@ -124,19 +124,11 @@ if(isset($_GET['id'])) {
 
                                     <select name="role" required class="form-control">
                                         <option value="">--Select Status--</option>
-                                        <?php
-                                        foreach($faculty_query_run as $faculty_list) {
-                                        ?>
-                                            <option value="<?=$faculty_list['role']; ?>" <?=$faculty_list['role'] == $faculty_row['role'] ? 'selected' : '' ?>>
-                                                <?= $faculty_list['role'];?>
-                                            </option>
-                                        <?php
-                                        }
-                                        ?>
-                                        <option value="In Progress">In Progress</option>
-                                        <option value="Finished">Finished</option>
-                                        <option value="TBD">TBD</option>
-                                        <option value="Cancelled">Cancelled</option>
+                                        
+                                        <option value="0"<?= $faculty_data['role'] =='0' ? 'selected': '' ; ?>>Faculty</option>
+                                        <option value="1"<?= $faculty_data['role'] =='1' ? 'selected': '' ; ?>>Coordinator</option>
+                                        <option value="2"<?= $faculty_data['role'] =='2' ? 'selected': '' ; ?>>Department Head</option>
+                                        <option value="3"<?= $faculty_data['role'] =='3' ? 'selected': '' ; ?>>Dean</option>
                                     </select>
 
 
