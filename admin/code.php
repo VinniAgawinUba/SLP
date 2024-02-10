@@ -299,7 +299,7 @@ if(isset($_POST['update_student']))
 
 // Add Project
 if(isset($_POST['project_add_btn'])) {
-    $name = $_POST['name'];
+    $name = $_POST['pname'];
     $type = $_POST['type'];
     $description = $_POST['description'];
     $subject_hosted = $_POST['subject_hosted'];
@@ -309,7 +309,6 @@ if(isset($_POST['project_add_btn'])) {
     $partner_id = $_POST['partner_id'];
     $school_year_id = $_POST['school_year_id'];
     $semester = $_POST['semester'];
-    
     $status = $_POST['status']; // Assuming all projects start as "In Progress"
 
     // Insert the Project into the database
@@ -318,6 +317,52 @@ if(isset($_POST['project_add_btn'])) {
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {
+        $project_id = mysqli_insert_id($con); // Get the last inserted project_id
+
+        // Debugging statement
+        echo "<pre>";
+        print_r($_FILES['project_documents']);
+        echo "</pre>";
+
+        // Upload multiple files
+        if(isset($_FILES['project_documents'])) {
+            $file_count = count($_FILES['project_documents']['name']);
+            for($i = 0; $i < $file_count; $i++) {
+                $file_name = $_FILES['project_documents']['name'][$i];
+                $file_tmp = $_FILES['project_documents']['tmp_name'][$i];
+                $file_type = $_FILES['project_documents']['type'][$i];
+                $file_size = $_FILES['project_documents']['size'][$i];
+                $file_error = $_FILES['project_documents']['error'][$i];
+
+                if($file_error === UPLOAD_ERR_OK) {
+                    $file_destination = '../uploads/project_documents/' . $file_name;
+                    if(move_uploaded_file($file_tmp, $file_destination)) {
+                        // Insert file details into project_documents table
+                        $query = "INSERT INTO project_documents (project_id, file_name, file_type, file_size, file_path) 
+                                  VALUES ('$project_id', '$file_name', '$file_type', '$file_size', '$file_destination')";
+                        $query_run = mysqli_query($con, $query);
+
+                        if(!$query_run) {
+                            $_SESSION['message'] = "Error inserting file details into database";
+                            header('Location: project-add.php');
+                            exit(0);
+                        }
+                    } else {
+                        $_SESSION['message'] = "Error moving uploaded file to destination folder";
+                        header('Location: project-add.php');
+                        exit(0);
+                    }
+                } else {
+                    $_SESSION['message'] = "Error uploading file: " . $_FILES['project_documents']['name'][$i];
+                    header('Location: project-add.php');
+                    exit(0);
+                }
+            }
+        } else {
+            // Debugging statement
+            echo "No project_documents uploaded";
+        }
+
         $_SESSION['message'] = "New Project has been added";
         header('Location: project-add.php');
         exit(0);
@@ -328,9 +373,8 @@ if(isset($_POST['project_add_btn'])) {
     }
 }
 
-//Update Project
-if(isset($_POST['project_edit_btn']))
-{
+// Update Project
+if (isset($_POST['project_edit_btn'])) {
     $project_id = $_POST['project_id'];
     $name = $_POST['name'];
     $type = $_POST['type'];
@@ -344,22 +388,43 @@ if(isset($_POST['project_edit_btn']))
     $semester = $_POST['semester'];
     $status = $_POST['status'];
 
-    //UPDATE the Project with the new values
+    // Begin by updating project details
     $query = "UPDATE projects SET name = '$name', type = '$type', description = '$description', subject_hosted = '$subject_hosted', college_id = '$college_id', department_id = '$department_id', sd_coordinator_id = '$sd_coordinator_id', partner_id = '$partner_id', school_year_id = '$school_year_id', semester = '$semester', status = '$status' WHERE id = '$project_id'";
     $query_run = mysqli_query($con, $query);
 
-    if($query_run) {
+    if ($query_run) {
+        // Check if any files are uploaded
+        if (!empty($_FILES['project_documents']['name'][0])) {
+            $file_count = count($_FILES['project_documents']['name']);
+            for ($i = 0; $i < $file_count; $i++) {
+                $file_name = $_FILES['project_documents']['name'][$i];
+                $file_tmp = $_FILES['project_documents']['tmp_name'][$i];
+                $file_type = $_FILES['project_documents']['type'][$i];
+                $file_size = $_FILES['project_documents']['size'][$i];
+                $file_error = $_FILES['project_documents']['error'][$i];
+
+                if ($file_error === UPLOAD_ERR_OK) {
+                    $file_destination = '../uploads/project_documents/' . $file_name;
+                    move_uploaded_file($file_tmp, $file_destination);
+
+                    // Insert file details into project_documents table
+                    $query = "INSERT INTO project_documents (project_id, file_name, file_type, file_size, file_path) 
+                              VALUES ('$project_id', '$file_name', '$file_type', '$file_size', '$file_destination')";
+                    $query_run = mysqli_query($con, $query);
+                }
+            }
+        }
+
         $_SESSION['message'] = "Project has been updated";
-        header('Location: project-edit.php?id='.$project_id);
+        header('Location: project-edit.php?id=' . $project_id);
         exit(0);
     } else {
         $_SESSION['message'] = "Something went wrong";
-        header('Location: project-edit.php?id='.$project_id);
+        header('Location: project-edit.php?id=' . $project_id);
         exit(0);
     }
-
-
 }
+
 
 
 //Delete Post

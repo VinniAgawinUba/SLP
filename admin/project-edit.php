@@ -33,7 +33,7 @@ include('includes/header.php');
                         ?>
                        
                     
-                       <form action="code.php" method="POST">
+                       <form action="code.php" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <input type="hidden" name="project_id" value="<?= $project_row['id']?>">
                             <div class="col-md-6 mb-3">
@@ -236,6 +236,13 @@ include('includes/header.php');
 
 
                             </div>
+
+                            <!-- Upload project related files to project_documents -->
+                            <div class="col-md-12 mb-3">
+                                <label for="">Project Documents</label>
+                                <input type="file" name="project_documents[]" multiple class="form-control">
+                            </div>
+
 
 
                             <!-- Add other project fields as needed -->

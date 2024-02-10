@@ -23,11 +23,11 @@ include('includes/header.php');
                 </div>
                 <div class="card-body">
 
-                    <form action="code.php" method="POST">
+                    <form action="code.php" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="">Name</label>
-                                <input type="text" name="name" required class="form-control">
+                                <input type="text" name="pname" required class="form-control">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="">Type</label>
@@ -187,6 +187,11 @@ include('includes/header.php');
                                     </select>
 
                             </div>
+                            <!-- Upload project related files to project_documents -->
+                            <div class="col-md-6 mb-3">
+                                <label for="">Upload Project Files</label>
+                                <input type="file" name="project_documents[]" multiple class="form-control">
+
 
 
                             <!-- Add other project fields as needed -->
