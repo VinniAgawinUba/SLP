@@ -197,7 +197,7 @@ include('includes/header.php');
                             <!-- Add other project fields as needed -->
 
                             <div class="col-md-12 mb-3">
-                                <button type="submit" name="project_add_btn" class="btn btn-primary">Add Project</button>
+                                <button type="submit" name="project_add_btn" class="btn btn-primary ">Add Project</button>
                             </div>
 
                         </div>

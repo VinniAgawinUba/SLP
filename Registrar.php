@@ -50,4 +50,6 @@ include('config/dbcon.php');
 </div>
 
 <!-- Footer -->
-<?php include('includes/footer.php'); ?>
+<div class="col-md-12 fixed-bottom">
+<?php include('includes/footer.php'); ?>    
+</div>

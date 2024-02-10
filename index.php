@@ -6,40 +6,41 @@ include('includes/navbar.php');
 include('config/dbcon.php');
 ?>
 
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-3" style="width:350px; position: fixed;">
-            <?php include('includes/sidebar.php'); ?>
-        </div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 fixed-left" style="width:350px">
+                <?php include('includes/sidebar.php'); ?>
+            </div>
 
-        <!-- Main Body -->
-        <div class="col-md-9 offset-md-3" style="margin-left: 350px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php include('message.php'); ?>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title text-center">Home</h4>
-                            </div>
-                            <div>
-                                <!-- FETCH FROM DATABASE -->
-                                <?php
-                                $navbarCategory = "SELECT * FROM categories WHERE navbar_status ='0' AND status='0'";
-                                $navbarCategory_run = mysqli_query($con, $navbarCategory);
-                                if(mysqli_num_rows($navbarCategory_run) > 0)
-                                {
-                                    foreach($navbarCategory_run as $navItems)
-                                    {
-                                    ?>
-                                    <ul class="nav-item">
-                                        <a class="nav-item" href="category.php?title=<?=$navItems['slug'];?>"><?=$navItems['name'];?></a>
-                                    </ul>
+            <!-- Main Body -->
+            <div class="col-md-9">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <?php include('message.php'); ?>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title text-center">Home</h4>
+                                </div>
+                                <div>
+                                    <!-- FETCH FROM DATABASE -->
                                     <?php
+                                    $navbarCategory = "SELECT * FROM categories";
+                                    $navbarCategory_run = mysqli_query($con, $navbarCategory);
+                                    if(mysqli_num_rows($navbarCategory_run) > 0)
+                                    {
+                                        foreach($navbarCategory_run as $navItems)
+                                        {
+                                        ?>
+                                        <ul class="nav-item">
+                                            <a class="nav-item" href="projects.php?title=<?=$navItems['id'];?>"><?=$navItems['name'];?></a>
+                                        </ul>
+                                        <?php
+                                        }
                                     }
-                                }
-                                ?>
+                                    ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -47,7 +48,9 @@ include('config/dbcon.php');
             </div>
         </div>
     </div>
-</div>
 
 <!-- Footer -->
+<div class="footer">
 <?php include('includes/footer.php'); ?>
+</div>
+ 

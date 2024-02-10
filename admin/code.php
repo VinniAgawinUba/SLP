@@ -373,6 +373,7 @@ if(isset($_POST['project_add_btn'])) {
     }
 }
 
+
 // Update Project
 if (isset($_POST['project_edit_btn'])) {
     $project_id = $_POST['project_id'];
