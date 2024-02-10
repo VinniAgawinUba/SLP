@@ -116,8 +116,8 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="#">Add Departments</a>
-                                            <a class="nav-link" href="#">View Departments</a>
+                                            <a class="nav-link" href="department-add.php">Add Departments</a>
+                                            <a class="nav-link" href="department-view.php">View Departments</a>
                                         </nav>
                                     </div>
                                 </nav>

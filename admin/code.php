@@ -3,6 +3,78 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include ('authentication.php');
+//Add Department
+if(isset($_POST['add_department']))
+{
+    $name = $_POST['name'];
+    $college_id = $_POST['college_id'];
+
+    //Insert the Department
+    $query = "INSERT INTO department (name, college_id) VALUES ('$name', '$college_id')";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "New Department has been added";
+        header('Location: department-add.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: department-add.php');
+        exit(0);
+    }
+}
+
+
+//Add College
+if(isset($_POST['add_college']))
+{
+    $name = $_POST['name'];
+
+    //Insert the College
+    $query = "INSERT INTO college (name) VALUES ('$name')";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "New College has been added";
+        header('Location: college-add.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: college-add.php');
+        exit(0);
+    }
+}
+
+//Update College
+if(isset($_POST['update_college']))
+{
+    $college_id = $_POST['id'];
+    $name = $_POST['name'];
+
+    //UPDATE the College
+    $query = "UPDATE college SET name = '$name' WHERE id = '$college_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "College has been Updated";
+        header('Location: college-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: college-edit.php');
+        exit(0);
+    }
+}
+
 //Add Partner
 if(isset($_POST['partner_add_btn']))
 {

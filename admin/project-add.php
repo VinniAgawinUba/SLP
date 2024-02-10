@@ -57,7 +57,7 @@ include('includes/header.php');
                                         <?php
                                         foreach($college_query_run as $college_list) {
                                         ?>
-                                            <option value="<?=$college_list['name']; ?>"> <?=$college_list['name'];?> </option>
+                                            <option value="<?=$college_list['id']; ?>"> <?=$college_list['name'];?> </option>
                                         <?php
                                         }
                                         ?>
@@ -81,7 +81,7 @@ include('includes/header.php');
                                         <?php
                                         foreach($department_query_run as $department_list) {
                                         ?>
-                                            <option value="<?=$department_list['name']; ?>"> <?=$department_list['name'];?> </option>
+                                            <option value="<?=$department_list['id']; ?>"> <?=$department_list['name'];?> </option>
                                         <?php
                                         }
                                         ?>
