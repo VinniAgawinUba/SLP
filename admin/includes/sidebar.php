@@ -139,7 +139,18 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <?php if(isset($_SESSION['auth_user'])) : ?>
+
+                        <a class="small" style="color:white;letter-spacing:3px" aria-expanded="false">
+                            <?= $_SESSION['auth_user']['user_name']; ?>
+                        </a>
+                            <form action="allcode.php" method="post">
+                            </li>
+                        </ul>
+
+                       
+
+                        <?php endif; ?>
                     </div>
                 </nav>
             </div>
