@@ -721,4 +721,51 @@ if(isset($_POST['update_user']))
     }
     
 }
+
+//Add School Year
+if(isset($_POST['add_school_year']))
+{
+    $school_year = $_POST['school_year'];
+
+    //Insert the School Year
+    $query = "INSERT INTO school_year (school_year) VALUES ('$school_year')";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "New School Year has been added";
+        header('Location: school_year-add.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: school_year-add.php');
+        exit(0);
+    }
+}
+
+//Update School Year
+if(isset($_POST['update_school_year']))
+{
+    $school_year_id = $_POST['id'];
+    $school_year = $_POST['school_year'];
+
+    //UPDATE the School Year
+    $query = "UPDATE school_year SET school_year = '$school_year' WHERE id = '$school_year_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "School Year has been Updated";
+        header('Location: school_year-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: school_year-edit.php');
+        exit(0);
+    }
+}
 ?>
