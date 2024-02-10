@@ -27,6 +27,31 @@ if(isset($_POST['add_department']))
     }
 }
 
+//Update Department
+if(isset($_POST['update_department']))
+{
+    $department_id = $_POST['id'];
+    $name = $_POST['name'];
+    $college_id = $_POST['college_id'];
+
+    //UPDATE the Department
+    $query = "UPDATE department SET name = '$name', college_id = '$college_id' WHERE id = '$department_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "Department has been Updated";
+        header('Location: department-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: department-edit.php');
+        exit(0);
+    }
+}
+
 
 //Add College
 if(isset($_POST['add_college']))
