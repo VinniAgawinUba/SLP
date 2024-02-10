@@ -63,12 +63,12 @@ include('includes/header.php');
                                 $college_query_run = mysqli_query($con, $college_query);
                                 if(mysqli_num_rows($college_query_run) > 0) {
                                 ?>
-                                    <select name="college_name" required class="form-control select2">
+                                    <select name="college_id" required class="form-control select2">
                                         <option value="">--Select College--</option>
                                         <?php
                                         foreach($college_query_run as $college_list) {
                                         ?>
-                                            <option value="<?=$college_list['name'];?>" <?= $college_list['name'] == $project_row['college'] ? 'selected' : '' ?>>
+                                            <option value="<?=$college_list['id'];?>" <?= $college_list['id'] == $project_row['college_id'] ? 'selected' : '' ?>>
                                                 <?= $college_list['name'];?>
 
                                                 </option>
@@ -90,12 +90,12 @@ include('includes/header.php');
                                 $department_query_run = mysqli_query($con, $department_query);
                                 if(mysqli_num_rows($department_query_run) > 0) {
                                 ?>
-                                    <select name="department_name" required class="form-control select2">
+                                    <select name="department_id" required class="form-control select2">
                                         <option value="">--Select Department--</option>
                                         <?php
                                         foreach($department_query_run as $department_list) {
                                         ?>
-                                            <option value="<?=$department_list['name']; ?>" <?=$department_list['name'] == $project_row['department'] ? 'selected' : '' ?> >
+                                            <option value="<?=$department_list['id']; ?>" <?=$department_list['id'] == $project_row['department_id'] ? 'selected' : '' ?> >
                                                 <?= $department_list['name'];?>
                                         
                                             </option>
@@ -117,13 +117,13 @@ include('includes/header.php');
                                 $faculty_query_run = mysqli_query($con, $faculty_query);
                                 if(mysqli_num_rows($faculty_query_run) > 0) {
                                 ?>
-                                    <select name="sd_coordinator" required class="form-control select2">
+                                    <select name="sd_coordinator_id" required class="form-control select2">
                                         <option value="">--Select Coordinator--</option>
                                         <?php
                                         foreach($faculty_query_run as $faculty_list) {
                                         ?>
-                                            <option value="<?=$faculty_list['full_name']; ?>" <?=$faculty_list['full_name'] ==  $project_row['sd_coordinator'] ? 'selected' : '' ?>>
-                                                <?= $faculty_list['full_name'];?>
+                                            <option value="<?=$faculty_list['id']; ?>" <?=$faculty_list['id'] ==  $project_row['sd_coordinator_id'] ? 'selected' : '' ?>>
+                                                <?= $faculty_list['fname'].'' .$faculty_list['lname'];?>
                                         
                                             </option>
                                         <?php
@@ -144,12 +144,12 @@ include('includes/header.php');
                                 $partner_query_run = mysqli_query($con, $partner_query);
                                 if(mysqli_num_rows($partner_query_run) > 0) {
                                 ?>
-                                    <select name="partner" required class="form-control select2">
+                                    <select name="partner_id" required class="form-control select2">
                                         <option value="">--Select Partner--</option>
                                         <?php
                                         foreach($partner_query_run as $partner_list) {
                                         ?>
-                                            <option value="<?=$partner_list['name']; ?>" <?=$partner_list['name'] ==  $project_row['partner'] ? 'selected' : '' ?>>
+                                            <option value="<?=$partner_list['id']; ?>" <?=$partner_list['id'] ==  $project_row['partner_id'] ? 'selected' : '' ?>>
                                                 <?= $partner_list['name'];?>
                             
                                             </option>
@@ -171,12 +171,12 @@ include('includes/header.php');
                                 $school_year_query_run = mysqli_query($con, $school_year_query);
                                 if(mysqli_num_rows($school_year_query_run) > 0) {
                                 ?>
-                                    <select name="school_year" required class="form-control select2">
+                                    <select name="school_year_id" required class="form-control select2">
                                         <option value="">--Select School Year--</option>
                                         <?php
                                         foreach($school_year_query_run as $school_year_list) {  
                                         ?>
-                                            <option value="<?=$school_year_list['school_year']; ?>" <?=$school_year_list['school_year'] == $project_row['school_year'] ? 'selected' : ''  ?>>
+                                            <option value="<?=$school_year_list['id']; ?>" <?=$school_year_list['id'] == $project_row['school_year_id'] ? 'selected' : ''  ?>>
                                                 <?= $school_year_list['school_year'];?>
                                             </option>
                                         <?php
@@ -220,26 +220,18 @@ include('includes/header.php');
                             <div class="col-md-6 mb-3">
                                     <label for="">Status</label>
                                     <?php
-                                    $semester_query = "SELECT * FROM projects";
-                                    $semester_query_run = mysqli_query($con, $semester_query);
-                                    if(mysqli_num_rows($semester_query_run) > 0){}
+                                    $project_query = "SELECT * FROM faculty";
+                                    $project_query_run = mysqli_query($con, $project_query);
+                                    if(mysqli_num_rows($project_query_run) > 0){}
                                     ?>
 
                                     <select name="status" required class="form-control">
                                         <option value="">--Select Status--</option>
-                                        <?php
-                                        foreach($semester_query_run as $semester_list) {
-                                        ?>
-                                            <option value="<?=$semester_list['status']; ?>" <?=$semester_list['status'] == $project_row['status'] ? 'selected' : '' ?>>
-                                                <?= $semester_list['status'];?>
-                                            </option>
-                                        <?php
-                                        }
-                                        ?>
-                                        <option value="In Progress">In Progress</option>
-                                        <option value="Finished">Finished</option>
-                                        <option value="TBD">TBD</option>
-                                        <option value="Cancelled">Cancelled</option>
+                                        
+                                        <option value="0"<?= $project_row['status'] =='0' ? 'selected': '' ; ?>>In Progress</option>
+                                        <option value="1"<?= $project_row['status'] =='1' ? 'selected': '' ; ?>>Finished</option>
+                                        <option value="2"<?= $project_row['status'] =='2' ? 'selected': '' ; ?>>TBD</option>
+                                        <option value="3"<?= $project_row['status'] =='3' ? 'selected': '' ; ?>>Cancelled</option>
                                     </select>
 
 

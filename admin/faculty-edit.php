@@ -123,7 +123,7 @@ if(isset($_GET['id'])) {
                                     ?>
 
                                     <select name="role" required class="form-control">
-                                        <option value="">--Select Status--</option>
+                                        <option value="">--Select Role--</option>
                                         
                                         <option value="0"<?= $faculty_data['role'] =='0' ? 'selected': '' ; ?>>Faculty</option>
                                         <option value="1"<?= $faculty_data['role'] =='1' ? 'selected': '' ; ?>>Coordinator</option>

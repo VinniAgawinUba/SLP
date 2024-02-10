@@ -55,13 +55,152 @@ include('includes/header.php');
                                         <td><?= $row['description']; ?></td>
                                         <td><?= $row['type']; ?></td>
                                         <td><?= $row['subject_hosted']; ?></td>
-                                        <td><?= $row['college']; ?></td>
-                                        <td><?= $row['department']; ?></td>
-                                        <td><?= $row['sd_coordinator']; ?></td>
-                                        <td><?= $row['partner']; ?></td>
-                                        <td><?= $row['school_year']; ?></td>
+                                        <td>
+                                                <?php 
+                                                if($row['college_id'] > 0)
+                                                {
+                                                    $college_query = "SELECT name FROM college WHERE id = ".$row['college_id'];
+                                                    $college_query_run = mysqli_query($con, $college_query);
+                                                    if(mysqli_num_rows($college_query_run) > 0)
+                                                    {
+                                                        foreach($college_query_run as $college_list)
+                                                        {
+                                                            echo $college_list['name'];
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "No College Found";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo "No College Found";
+                                                }
+                                                
+                                                ?>
+                                            
+                                            </td>
+
+                                            <td>
+                                                <?php 
+                                                if($row['department_id'] > 0)
+                                                {
+                                                    $department_query = "SELECT name FROM department WHERE id = ".$row['department_id'];
+                                                    $department_query_run = mysqli_query($con, $department_query);
+                                                    if(mysqli_num_rows($department_query_run) > 0)
+                                                    {
+                                                        foreach($department_query_run as $department_list)
+                                                        {
+                                                            echo $department_list['name'];
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "No Department Found";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo "No Department Found";
+                                                }
+                                                
+                                                ?>
+                                            
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                if($row['sd_coordinator_id'] > 0)
+                                                {
+                                                    $coordinator_query = "SELECT fname, lname FROM faculty WHERE id = ".$row['sd_coordinator_id'];
+                                                    $coordinator_query_run = mysqli_query($con, $coordinator_query);
+                                                    if(mysqli_num_rows($coordinator_query_run) > 0)
+                                                    {
+                                                        foreach($coordinator_query_run as $coordinator_list)
+                                                        {
+                                                            echo $coordinator_list['fname'].' '.$coordinator_list['lname'];
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "No Coordinator Found";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo "No Coordinator Found";
+                                                }
+                                                
+                                                ?>
+                                            
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                if($row['partner_id'] > 0)
+                                                {
+                                                    $partner_query = "SELECT name FROM partners WHERE id = ".$row['partner_id'];
+                                                    $partner_query_run = mysqli_query($con, $partner_query);
+                                                    if(mysqli_num_rows($partner_query_run) > 0)
+                                                    {
+                                                        foreach($partner_query_run as $partner_list)
+                                                        {
+                                                            echo $partner_list['name'];
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "No partner Found";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo "No partner Found";
+                                                }
+                                                
+                                                ?>
+                                            
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                if($row['school_year_id'] > 0)
+                                                {
+                                                    $sy_query = "SELECT school_year FROM school_year WHERE id = ".$row['school_year_id'];
+                                                    $sy_query_run = mysqli_query($con, $sy_query);
+                                                    if(mysqli_num_rows($sy_query_run) > 0)
+                                                    {
+                                                        foreach($sy_query_run as $sy_list)
+                                                        {
+                                                            echo $sy_list['school_year'];
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "No SY Found";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo "No SY Found";
+                                                }
+                                                
+                                                ?>
+                                            
+                                            </td>
                                         <td><?= $row['semester']; ?></td>
-                                        <td><?= $row['status']; ?></td>
+                                        <td><?php 
+                                            if ($row['status']==0) {
+                                                echo "In Progress";
+                                            } elseif ($row['status'] == 1) {
+                                                echo "Finished";
+                                            } elseif ($row['status'] == 2) {
+                                                echo "TBD";
+                                            } elseif ($row['status'] == 3) {
+                                                echo "Cancelled";
+                                            } else {
+                                                echo "Unknown Status";
+                                            }
+                                            ?>
+                                        </td>
                                         <td>
                                             <a href="project-edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
                                         </td>

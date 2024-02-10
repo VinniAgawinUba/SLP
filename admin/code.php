@@ -303,18 +303,18 @@ if(isset($_POST['project_add_btn'])) {
     $type = $_POST['type'];
     $description = $_POST['description'];
     $subject_hosted = $_POST['subject_hosted'];
-    $college_id = $_POST['college_name'];
-    $department_id = $_POST['department_name'];
-    $sd_coordinator = $_POST['sd_coordinator'];
-    $partner = $_POST['partner'];
-    $school_year = $_POST['school_year'];
+    $college_id = $_POST['college_id'];
+    $department_id = $_POST['department_id'];
+    $sd_coordinator_id = $_POST['sd_coordinator_id'];
+    $partner_id = $_POST['partner_id'];
+    $school_year_id = $_POST['school_year_id'];
     $semester = $_POST['semester'];
     
     $status = $_POST['status']; // Assuming all projects start as "In Progress"
 
     // Insert the Project into the database
-    $query = "INSERT INTO projects (name, type, description, subject_hosted, college, department, sd_coordinator, partner, school_year, semester, status) 
-              VALUES ('$name', '$type', '$description', '$subject_hosted', '$college_id', '$department_id', '$sd_coordinator', '$partner', '$school_year', '$semester', '$status')";
+    $query = "INSERT INTO projects (name, type, description, subject_hosted, college_id, department_id, sd_coordinator_id, partner_id, school_year_id, semester, status) 
+              VALUES ('$name', '$type', '$description', '$subject_hosted', '$college_id', '$department_id', '$sd_coordinator_id', '$partner_id', '$school_year_id', '$semester', '$status')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {
@@ -336,16 +336,16 @@ if(isset($_POST['project_edit_btn']))
     $type = $_POST['type'];
     $description = $_POST['description'];
     $subject_hosted = $_POST['subject_hosted'];
-    $college = $_POST['college_name'];
-    $department = $_POST['department_name'];
-    $sd_coordinator = $_POST['sd_coordinator'];
-    $partner = $_POST['partner'];
-    $school_year = $_POST['school_year'];
+    $college_id = $_POST['college_id'];
+    $department_id = $_POST['department_id'];
+    $sd_coordinator_id = $_POST['sd_coordinator_id'];
+    $partner_id = $_POST['partner_id'];
+    $school_year_id = $_POST['school_year_id'];
     $semester = $_POST['semester'];
     $status = $_POST['status'];
 
     //UPDATE the Project with the new values
-    $query = "UPDATE projects SET name = '$name', type = '$type', description = '$description', subject_hosted = '$subject_hosted', college = '$college', department = '$department', sd_coordinator = '$sd_coordinator', partner = '$partner', school_year = '$school_year', semester = '$semester', status = '$status' WHERE id = '$project_id'";
+    $query = "UPDATE projects SET name = '$name', type = '$type', description = '$description', subject_hosted = '$subject_hosted', college_id = '$college_id', department_id = '$department_id', sd_coordinator_id = '$sd_coordinator_id', partner_id = '$partner_id', school_year_id = '$school_year_id', semester = '$semester', status = '$status' WHERE id = '$project_id'";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {

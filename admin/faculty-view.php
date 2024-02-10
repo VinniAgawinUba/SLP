@@ -28,7 +28,6 @@ include('includes/header.php');
                                 <th>ID</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>Full Name</th>
                                 <th>Email</th>
                                 <th>College</th>
                                 <th>Department</th>
@@ -50,7 +49,6 @@ include('includes/header.php');
                                         <td><?= $row['id']; ?></td>
                                         <td><?= $row['fname']; ?></td>
                                         <td><?= $row['lname']; ?></td>
-                                        <td><?= $row['full_name']; ?></td>
                                         <td><?= $row['email']; ?></td>
                                         <td>
                                                 <?php 
