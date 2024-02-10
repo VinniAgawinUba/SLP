@@ -16,6 +16,7 @@ include('includes/header.php');
                 <?php include('message.php'); ?>
                 <div class="card">
                     <div class="card-header">
+                        <!-- Project Details -->
                         <h4>Project Details
                         <a href="project-view.php" class="btn btn-danger float-end">Back</a>
                         </h4>
@@ -37,6 +38,7 @@ include('includes/header.php');
                                 <th>School Year</th>
                                 <th>Semester</th>
                                 <th>Status</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -199,7 +201,9 @@ include('includes/header.php');
                                             }
                                             ?>
                                         </td>
-                                        
+                                        <td>
+                                            <a href="project-edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
+                                        </td>
                                         
                                     </tr>
                                     <?php
@@ -220,6 +224,7 @@ include('includes/header.php');
                         
                     </div>
 
+                    <!-- Project Documents -->
                     <div class="card-header">
                         <h4>Project Documents
                         
@@ -261,6 +266,7 @@ include('includes/header.php');
                                                 <button id="deleteButton" type="submit" name="delete_project_document" class="btn btn-danger" >Delete</button>
                                             </form>
                                         </td>
+
                                         <td>
                                         <a href="<?= $row['file_path']; ?>" download="<?= $row['file_name']; ?>" class="btn btn-primary">Download</a>
                                         </td>
