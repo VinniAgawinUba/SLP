@@ -3,6 +3,63 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include ('authentication.php');
+//Add Partner
+if(isset($_POST['partner_add_btn']))
+{
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $contact_person = $_POST['contact_person'];
+    $designation = $_POST['designation'];
+    $email = $_POST['email'];
+    $contact_number = $_POST['contact_number'];
+
+    //Insert the Partner
+    $query = "INSERT INTO partners (name, address, contact_person, designation, email, contact_number) VALUES ('$name', '$address', '$contact_person', '$designation', '$email', '$contact_number')";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "New Partner has been added";
+        header('Location: partner-add.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: partner-add.php');
+        exit(0);
+    }
+}
+
+//Update Partner
+if(isset($_POST['update_partner']))
+{
+    $partner_id = $_POST['id'];
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $contact_person = $_POST['contact_person'];
+    $designation = $_POST['designation'];
+    $email = $_POST['email'];
+    $contact_number = $_POST['contact_number'];
+
+    //UPDATE the Partner
+    $query = "UPDATE partners SET name = '$name', address = '$address', contact_person = '$contact_person', designation = '$designation', email = '$email', contact_number = '$contact_number' WHERE id = '$partner_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "Partner has been Updated";
+        header('Location: partner-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: partner-edit.php');
+        exit(0);
+    }
+}
+
 
 //Add Faculty
 if(isset($_POST['add_faculty'])) {
