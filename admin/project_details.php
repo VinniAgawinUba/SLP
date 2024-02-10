@@ -5,10 +5,10 @@ include('includes/header.php');
 
 
 <div class="container-fluid px-4">
-        <h4 class="mt-4">Projects</h4>
+        <h4 class="mt-4">Project Details</h4>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Dashboard</li>
-                <li class="breadcrumb-item">Projects</li>
+                <li class="breadcrumb-item">Project Details</li>
             </ol>
             <div class="row">
 
@@ -16,8 +16,8 @@ include('includes/header.php');
                 <?php include('message.php'); ?>
                 <div class="card">
                     <div class="card-header">
-                        <h4>View Projects
-                        <a href="project-add.php" class="btn btn-primary float-end">Add Project</a>
+                        <h4>Project Details
+                        <a href="project-view.php" class="btn btn-danger float-end">Back</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -37,21 +37,19 @@ include('includes/header.php');
                                 <th>School Year</th>
                                 <th>Semester</th>
                                 <th>Status</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             //$posts = "SELECT * FROM posts WHERE status != '2'";
-                            $posts = "SELECT * FROM projects";
+                            $posts = "SELECT * FROM projects where id = '$_GET[id]'";
                             $posts_run = mysqli_query($con, $posts);
                             if (mysqli_num_rows($posts_run) > 0) {
                                 foreach ($posts_run as $row) {
                                     ?>
                                     <tr>
                                         <td><?= $row['id']; ?></td>
-                                        <td><a href="project_details.php?id=<?= $row['id']; ?>"><?= $row['name']; ?></a></td>
+                                        <td><?= $row['name']; ?></td>
                                         <td><?= $row['description']; ?></td>
                                         <td><?= $row['type']; ?></td>
                                         <td><?= $row['subject_hosted']; ?></td>
@@ -201,15 +199,8 @@ include('includes/header.php');
                                             }
                                             ?>
                                         </td>
-                                        <td>
-                                            <a href="project-edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
-                                        </td>
-                                        <td>
-                                            <form action="code.php" method="POST">
-                                                <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                                                <button type="submit" name="project_delete_btn" value="<?=$post['id']?>" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </td>
+                                        
+                                        
                                     </tr>
                                     <?php
                                 }
@@ -228,6 +219,75 @@ include('includes/header.php');
                     </table>
                         
                     </div>
+
+                    <div class="card-header">
+                        <h4>Project Documents
+                        
+                        </h4>
+                    </div>
+                    <div class="card-body">
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Project ID</th>
+                                <th>File Name</th>
+                                <th>File Type</th>
+                                <th>File Size</th>
+                                <th>Delete</th>
+                                <th>Download</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            //$posts = "SELECT * FROM posts WHERE status != '2'";
+                            $posts = "SELECT * FROM project_documents WHERE project_id = '$_GET[id]'";
+                            $posts_run = mysqli_query($con, $posts);
+                            if (mysqli_num_rows($posts_run) > 0) {
+                                foreach ($posts_run as $row) {
+                                    ?>
+                                    <tr>
+                                        <td><?= $row['id']; ?></td>
+                                        <td><?= $row['project_id']; ?></td>
+                                        <td><?= $row['file_name']; ?></td>
+                                        <td><?= $row['file_type']; ?></td>
+                                        <td><?= $row['file_size']; ?></td>
+                                        <td>
+                                            <form action="code.php" method="POST">
+                                                <input type="hidden" name="document_id" value="<?= $row['id']; ?>">
+                                                <input type="hidden" name="project_id" value="<?= $row['project_id']; ?>">
+                                                <button id="deleteButton" type="submit" name="delete_project_document" class="btn btn-danger" >Delete</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                        <a href="<?= $row['file_path']; ?>" download="<?= $row['file_name']; ?>" class="btn btn-primary">Download</a>
+                                        </td>
+                                        
+                                        
+                                        
+                                        
+                                    </tr>
+                                    <?php
+                                }
+                            } else {
+                                ?>
+                                <tr>
+                                    <td colspan="1">No Record Found</td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        
+                    </div>
+
+                    
             </div>
         </div>
 </div>

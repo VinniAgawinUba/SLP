@@ -425,6 +425,25 @@ if (isset($_POST['project_edit_btn'])) {
     }
 }
 
+//Delete Project Document
+if(isset($_POST['delete_project_document'])) 
+{
+    $document_id = $_POST['document_id'];
+    $project_id = $_POST['project_id'];
+
+    $query = "DELETE FROM project_documents WHERE id = '$document_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run) {
+        $_SESSION['message'] = "Project Document has been Deleted";
+        header('Location: project_details.php?id='.$project_id);
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: project_details.php?id='.$project_id);
+        exit(0);
+    }
+}
 
 
 //Delete Post

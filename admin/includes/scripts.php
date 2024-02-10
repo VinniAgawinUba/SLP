@@ -35,5 +35,16 @@
     });
 </script>
 
+<!-- JavaScript for Delete Button Confirmation (Buttons Should have id of deleteButton) -->
+<script>
+    document.getElementById("deleteButton").addEventListener("click", function(event) {
+        if (confirm("Are you sure you want to delete this document?")) {
+            document.getElementById("deleteForm").submit();
+        } else {
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+</script>
+
     </body>
 </html>
