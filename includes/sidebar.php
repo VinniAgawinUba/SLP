@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse">
     <div class="position-sticky">
         <div class="list-group list-group-flush mx-3 mt-4">
             <!-- Main Dashboard -->
@@ -20,8 +20,8 @@
                     <div id="collapseSchoolYears" class="accordion-collapse collapse" aria-labelledby="schoolYearsHeading" data-bs-parent="#accordionSchoolYears">
                         <div class="accordion-body">
                             <ul class="list-group">
-                                <li><a class="list-group-item" href="#">2023-2024</a></li>
-                                <li><a class="list-group-item" href="#">2022-2023</a></li>
+                                <ul><a class="list-group-item" href="#">2023-2024</a></ul>
+                                <ul><a class="list-group-item" href="#">2022-2023</a></ul>
                                 <!-- Add more school years as needed -->
                             </ul>
                         </div>
@@ -41,8 +41,8 @@
                     <div id="collapseCollege" class="accordion-collapse collapse" aria-labelledby="collegeHeading" data-bs-parent="#accordionCollege">
                         <div class="accordion-body">
                             <ul class="list-group">
-                                <li><a class="list-group-item" href="#">College of Computer Studies</a></li>
-                                <li><a class="list-group-item" href="#">College of Nursing</a></li>
+                                <ul><a class="list-group-item" href="#">College of Computer Studies</a></ul>
+                                <ul><a class="list-group-item" href="#">College of Nursing</a></ul>
                                 <!-- Add more colleges as needed -->
                             </ul>
                         </div>
@@ -62,9 +62,9 @@
                     <div id="collapseDepartment" class="accordion-collapse collapse" aria-labelledby="departmentHeading" data-bs-parent="#accordionDepartment">
                         <div class="accordion-body">
                             <ul class="list-group">
-                                <li><a class="list-group-item" href="#">Information Technology</a></li>
-                                <li><a class="list-group-item" href="#">Information Systems</a></li>
-                                <li><a class="list-group-item" href="#">Computer Science</a></li>
+                                <ul><a class="list-group-item" href="#">Information Technology</a></ul>
+                                <ul><a class="list-group-item" href="#">Information Systems</a></ul>
+                                <ul><a class="list-group-item" href="#">Computer Science</a></ul>
                                 <!-- Add more departments as needed -->
                             </ul>
                         </div>

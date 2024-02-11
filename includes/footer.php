@@ -3,8 +3,8 @@
 <script src="assets/js/scripts.js"></script>
 
 <!-- Page Content-->
-<section class="pt-4">
-            <div class="container px-lg-5 ">
+<section class="pt-4 bg-light bg-gradient">
+            <div class="container px-lg-5">
                 <!-- Page Features-->
                 <div class="row gx-lg-5">
                     <div class="col-lg-6 col-xxl-4 mb-5">

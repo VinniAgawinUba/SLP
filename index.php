@@ -5,6 +5,7 @@ include('includes/header.php');
 include('includes/navbar.php');
 include('config/dbcon.php');
 ?>
+<link rel="stylesheet" href="assets/css/custom.css">
 
     <div class="container-fluid">
         <div class="row">
@@ -16,13 +17,13 @@ include('config/dbcon.php');
             <!-- Main Body -->
             <div class="col-md-9">
                 <div class="container">
-                    <div class="row">
+                    <div class="row ">
                         <div class="col-md-12">
                             <?php include('message.php'); ?>
-                            <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title text-center">Home</h4>
+                                    <h4 class="card-title text-center customHome">Home</h4>
                                 </div>
+                                
                                 <div>
                                     <!-- FETCH FROM DATABASE -->
                                     <?php
@@ -41,7 +42,6 @@ include('config/dbcon.php');
                                     }
                                     ?>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@ include('config/dbcon.php');
     </div>
 
 <!-- Footer -->
-<div class="footer">
+<footer class="footer">
 <?php include('includes/footer.php'); ?>
-</div>
+</footer>
  

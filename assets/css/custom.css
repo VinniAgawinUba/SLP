@@ -9,12 +9,17 @@
     width: 1100px;
     
 }
-/* CSS */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+
+.customHome{
+    background-color: #283971;
+    color:aliceblue;
+   border-radius: 20px;
 }
+
+.customSidebar{
+    background-color: #283971;
+}
+
 
 
 
