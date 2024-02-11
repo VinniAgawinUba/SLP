@@ -19,10 +19,22 @@
                     </h2>
                     <div id="collapseSchoolYears" class="accordion-collapse collapse" aria-labelledby="schoolYearsHeading" data-bs-parent="#accordionSchoolYears">
                         <div class="accordion-body">
+                            <!-- Query School Years -->
                             <ul class="list-group">
-                                <ul><a class="list-group-item" href="#">2023-2024</a></ul>
-                                <ul><a class="list-group-item" href="#">2022-2023</a></ul>
-                                <!-- Add more school years as needed -->
+                                <?php
+                                 $query = "SELECT * FROM school_year";
+                                 $query_run = mysqli_query($con, $query);
+                                 if(mysqli_num_rows($query_run) > 0){
+
+                                        foreach($query_run as $item)
+                                        {
+                                        ?>
+                                        <ul><a class="list-group-item" href="#"><?= $item['school_year']; ?></a></ul>
+                                        <?php
+                                        }
+                                 }
+                                 
+                                ?>
                             </ul>
                         </div>
                     </div>
@@ -40,10 +52,22 @@
                     </h2>
                     <div id="collapseCollege" class="accordion-collapse collapse" aria-labelledby="collegeHeading" data-bs-parent="#accordionCollege">
                         <div class="accordion-body">
-                            <ul class="list-group">
-                                <ul><a class="list-group-item" href="#">College of Computer Studies</a></ul>
-                                <ul><a class="list-group-item" href="#">College of Nursing</a></ul>
-                                <!-- Add more colleges as needed -->
+                        <!-- Query Colleges -->    
+                        <ul class="list-group">
+                                <?php
+                                 $query = "SELECT * FROM college";
+                                 $query_run = mysqli_query($con, $query);
+                                 if(mysqli_num_rows($query_run) > 0){
+
+                                        foreach($query_run as $item)
+                                        {
+                                        ?>
+                                        <ul><a class="list-group-item" href="#" style="white-space: nowrap;"><?= $item['name']; ?></a></ul>
+                                        <?php
+                                        }
+                                 }
+                                 
+                                ?>
                             </ul>
                         </div>
                     </div>
@@ -61,13 +85,23 @@
                     </h2>
                     <div id="collapseDepartment" class="accordion-collapse collapse" aria-labelledby="departmentHeading" data-bs-parent="#accordionDepartment">
                         <div class="accordion-body">
+                            <!-- Query School Departments -->
                             <ul class="list-group">
-                                <ul><a class="list-group-item" href="#">Information Technology</a></ul>
-                                <ul><a class="list-group-item" href="#">Information Systems</a></ul>
-                                <ul><a class="list-group-item" href="#">Computer Science</a></ul>
-                                <!-- Add more departments as needed -->
+                                <?php
+                                 $query = "SELECT * FROM department";
+                                 $query_run = mysqli_query($con, $query);
+                                 if(mysqli_num_rows($query_run) > 0){
+
+                                        foreach($query_run as $item)
+                                        {
+                                        ?>
+                                        <ul><a class="list-group-item" href="#" style="white-space: nowrap;"><?= $item['name']; ?></a></ul>
+                                        <?php
+                                        }
+                                 }
+                                 
+                                ?>
                             </ul>
-                        </div>
                     </div>
                 </div>
             </div>
