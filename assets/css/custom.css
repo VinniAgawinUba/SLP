@@ -10,10 +10,25 @@
     
 }
 
+.custombg-image-row {
+    background-image: url('../images/BG.png'); /* Specify the path to your image */
+    background-size: cover; /* Cover the entire area of the row */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    height: 700px;
+}
+
 .customHome{
     background-color: #283971;
     color:aliceblue;
    border-radius: 20px;
+   font-weight: bold;
+}
+
+.customNavbar{
+    background-color: #283971;
+    color:aliceblue;
+    white-space: nowrap;
 }
 
 .customSidebar{
@@ -41,6 +56,9 @@
 .customfont{
     font-family: 'Roboto', sans-serif;
     margin: 0 auto;
+    color:#3A53A5;
+    border-color: aqua;
+    font-weight: bold;
 }
 
 .customSidebar{

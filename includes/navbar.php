@@ -24,13 +24,13 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
         <li class="nav-item text-center customfont">
-          <a class="nav-link" href="#" style="color:blue; white-space:nowrap">About Us</a>
+          <a class="nav-link customfont" href="#">About Us</a>
         </li>
 
         <?php if(isset($_SESSION['auth_user'])) : ?>
 
         <li class="nav-item dropdown customfont">
-          <a class="nav-link dropdown-toggle" style="color:blue" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <?= $_SESSION['auth_user']['user_name']; ?>
           </a>
           <ul class="dropdown-menu customfont" aria-labelledby="navbarDropdown">
@@ -46,10 +46,10 @@
         <?php else : ?>
 
         <li class="nav-item">
-          <a class="nav-link customfont" href="login.php" style="color:blue">Login</a>
+          <a class="nav-link customfont" href="login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link customfont" href="register.php" style="color:blue">Register</a>
+          <a class="nav-link customfont" href="register.php" >Register</a>
         </li>
 
         <?php endif; ?>
@@ -72,19 +72,19 @@
 <!-- Nav Center -->
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" href="index.php">HOME</a>
+    <a class="nav-link active customfont" href="index.php">HOME</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="projects.php">PROJECTS</a>
+    <a class="nav-link customfont" href="projects.php">PROJECTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="articles.php">ARTICLES</a>
+    <a class="nav-link customfont" href="articles.php">ARTICLES</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="registrar.php">REGISTRAR</a>
+    <a class="nav-link customfont" href="registrar.php">REGISTRAR</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="gallery.php">GALLERY</a>
+    <a class="nav-link customfont" href="gallery.php">GALLERY</a>
   </li>
 </ul>
 
