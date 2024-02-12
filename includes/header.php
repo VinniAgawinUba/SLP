@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="assets/css/bootstrap5.min.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.css">
     
 
 </head>

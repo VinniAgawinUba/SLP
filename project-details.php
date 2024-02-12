@@ -131,25 +131,45 @@ if(isset($_GET['id'])) {
                                 $query2 = "SELECT * FROM project_documents WHERE project_id = $projectId";
                                 $query2_run = mysqli_query($con, $query2);
 
-                                // Check if the query was successful
-                                if($query2_run) {
+                                 // Check if the query was successful
+                                 if($query2_run) {
                                     // Check if there are project documents
                                     if(mysqli_num_rows($query2_run) > 0) { ?>
-                                        <div class="row">
+                                        <!-- Display project documents -->
+                                        <div id="project-documents" class="row">
                                             <?php
-                                            // Display project documents
-                                            foreach($query2_run as $items) { ?>
+                                            // Loop through project documents
+                                            foreach($query2_run as $items) {
+                                                // Determine file extension
+                                                $file_extension = pathinfo($items['file_name'], PATHINFO_EXTENSION);
+                                                ?>
                                                 <div class="col-md-4 mb-4">
                                                     <div class="card h-100">
                                                         <div class="card-body">
                                                             <h5 class="card-title">Project Document</h5>
-                                                            <p class="card-text"><?= $items['file_name']; ?></p>
-                                                            <!-- You can add more project details here -->
+                                                            <?php if($file_extension == 'pdf'): ?>
+                                                                <!-- Display PDF preview -->
+                                                                <embed src="uploads/project_documents/<?= $items['file_name']; ?>" type="application/pdf" width="100%" height="200px" />
+                                                            <?php else: ?>
+                                                                <!-- Display image preview using Viewer.js -->
+                                                                <img src="uploads/project_documents/<?= $items['file_name']; ?>" alt="<?= $items['file_name']; ?>" style="max-width: 100%; max-height: 200px;">
+                                                            <?php endif; ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             <?php } ?>
                                         </div>
+                                        <!-- Initialize Viewer.js for image files -->
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js"></script>
+                                        <script>
+                                            // Initialize Viewer.js for image files
+                                            const documentViewer = new Viewer(document.getElementById('project-documents'), {
+                                                inline: false,
+                                                viewed() {
+                                                    documentViewer.zoomTo(1);
+                                                },
+                                            });
+                                        </script>
                                     <?php } else { ?>
                                         <!-- Display a card indicating no project documents -->
                                         <div class="col-md-4 mb-4">
@@ -169,7 +189,9 @@ if(isset($_GET['id'])) {
                             </div>
                         </div>
                     </div>
+                    
                 </div>
+                
             </div>
         <?php } else {
             // If project details are not found
@@ -185,5 +207,8 @@ if(isset($_GET['id'])) {
 }
 
 // Footer
+
+echo '<div class="footer">';
 include('includes/footer.php');
+echo '</div>';
 ?>
