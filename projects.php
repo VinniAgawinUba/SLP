@@ -126,7 +126,7 @@ include('config/dbcon.php');
                                                 <?php
                                                 $project = $item['id'];
                                                 ?>
-                                                <a href="<?= $url ?>">
+                                                <a href="project-details.php?id=<?=$item['id']?>">
                                                     <h5 class="card-title"><?= $item['name']; ?></h5>
                                                     <p class="card-text"><?= $project; ?></p>
                                                 </a>
