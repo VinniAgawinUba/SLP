@@ -22,7 +22,7 @@ include('includes/header.php');
                     </div>
                     <div class="card-body">
                         
-                        <table class="table table-bordered">
+                        <table id="myCategory" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -63,7 +63,7 @@ include('includes/header.php');
                                             <td><a href="category-edit.php?id=<?=$row['id'];?>" class="btn btn-success">Edit</a></td>
                                             <td>
                                                 <form action="code.php" method="POST">
-                                                <button type="submit" name="category_delete" value="<?=$row['id'];?>" class="btn btn-danger">Delete</button>
+                                                <button type="submit" name="category_delete" value="<?=$row['id'];?>" id="deleteButton" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>

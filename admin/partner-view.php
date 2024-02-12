@@ -22,7 +22,7 @@ include('includes/header.php');
                     </div>
                     <div class="card-body">
 
-                    <table class="table table-bordered table-striped">
+                    <table id="myPartner" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -73,9 +73,7 @@ include('includes/header.php');
                                 <?php
                             }
                             ?>
-                            <tr>
-                                <td></td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                         
