@@ -1,9 +1,9 @@
 <!-- Sidebar -->
-<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse">
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse customfontSidebar">
     <div class="position-sticky">
-        <div class="list-group list-group-flush mx-3 mt-4">
+        <div class="list-group list-group-flush mx-3 mt-4 ">
             <!-- Main Dashboard -->
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple custombg_color" aria-current="true">
                 <i class="fas fa-tachometer-alt fa-fw me-3"></i>
                 <span>Sidebar</span>
             </a>
@@ -29,7 +29,7 @@
                                         foreach($query_run as $item)
                                         {
                                         ?>
-                                        <ul><a class="list-group-item" href="#"><?= $item['school_year']; ?></a></ul>
+                                        <ul><a class="list-group-item customSidebarItem" href="#"><?= $item['school_year']; ?></a></ul>
                                         <?php
                                         }
                                  }
@@ -51,7 +51,7 @@
                         </button>
                     </h2>
                     <div id="collapseCollege" class="accordion-collapse collapse" aria-labelledby="collegeHeading" data-bs-parent="#accordionCollege">
-                        <div class="accordion-body">
+                        <div class="accordion-body ">
                         <!-- Query Colleges -->    
                         <ul class="list-group">
                                 <?php
@@ -62,7 +62,7 @@
                                         foreach($query_run as $item)
                                         {
                                         ?>
-                                        <ul><a class="list-group-item" href="#" style="white-space: nowrap;"><?= $item['name']; ?></a></ul>
+                                        <ul><a class="list-group-item customSidebarItem" href="#"><?= $item['name']; ?></a></ul>
                                         <?php
                                         }
                                  }
@@ -95,7 +95,7 @@
                                         foreach($query_run as $item)
                                         {
                                         ?>
-                                        <ul><a class="list-group-item" href="#" style="white-space: nowrap;"><?= $item['name']; ?></a></ul>
+                                        <ul><a class="list-group-item customSidebarItem" href="#" style="white-space: nowrap;"><?= $item['name']; ?></a></ul>
                                         <?php
                                         }
                                  }
@@ -109,7 +109,6 @@
     </div>
 </nav>
 <!-- Sidebar -->
-
 <!-- Bootstrap JavaScript -->
 
 

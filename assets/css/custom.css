@@ -18,6 +18,17 @@
     height: 700px;
 }
 
+.XUcolorPalette{
+    background-color: #3A53A5;
+    background-color: #283971;
+    background-color: #A19158;
+}
+.custombg_color{
+    background-color: #3A53A5;
+    color:aliceblue;
+
+}
+
 .customHome{
     background-color: #283971;
     color:aliceblue;
@@ -33,6 +44,10 @@
 
 .customSidebar{
     background-color: #283971;
+}
+.customSidebarItem{
+    background-color: aliceblue;
+    color:#283971;
 }
 
 
@@ -54,6 +69,14 @@
 }
 
 .customfont{
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    color:#3A53A5;
+    border-color: aqua;
+    font-weight: bold;
+}
+
+.customfontSidebar{
     font-family: 'Roboto', sans-serif;
     margin: 0 auto;
     color:#3A53A5;
