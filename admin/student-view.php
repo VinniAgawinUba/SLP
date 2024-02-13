@@ -147,9 +147,7 @@ include('includes/header.php');
                                 <?php
                             }
                             ?>
-                            <tr>
-                                <td></td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                         
