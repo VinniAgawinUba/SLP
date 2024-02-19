@@ -9,13 +9,9 @@ include('config/dbcon.php');
 
     <div class="container-fluid custombg-image-row ">
         <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 fixed-left" style="width:350px">
-                <?php include('includes/sidebar.php'); ?>
-            </div>
-
+        
             <!-- Main Body -->
-            <div class="col-md-9">
+            <div class="col-12">
                 <div class="">
                     <div class="row ">
                         <div class="col-md-12">
