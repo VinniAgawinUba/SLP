@@ -8,7 +8,7 @@ include('config/dbcon.php');
 <link rel="stylesheet" href="assets/css/custom.css">
 
     <div class="container-fluid custombg-image-row">
-        <div class="row">
+        <div class="row gy-3">
             
     
             <!-- Main Body -->

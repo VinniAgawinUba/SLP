@@ -15,7 +15,7 @@
     background-size: cover; /* Cover the entire area of the row */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    height: 100vw;
+    height: 80vw;
     object-fit: contain;
 }
 .customPic {
@@ -25,12 +25,6 @@
     
 
 }
-
-.mainContent {
-    align-items: center;
-    
-}
-
 
 
 .customHome{
