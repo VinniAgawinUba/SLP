@@ -9,44 +9,40 @@ include('config/dbcon.php');
 
     <div class="container-fluid custombg-image-row ">
         <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 fixed-left" style="width:350px">
-                <?php include('includes/sidebar.php'); ?>
-            </div>
-
             <!-- Main Body -->
-            <div class="col-md-9">
-                <div class="">
-                    <div class="row ">
-                        <div class="col-md-12">
-                            <?php include('message.php'); ?>
-                                <div class="card-header">
-                                    <h4 class="card-title text-center customHome">Projects</h4>
-                                </div>
-                        </div>
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+            <h4 class="card-title text-center customHome">Projects</h4>
+            </div>
+            <div class="col-3"></div>
+            <div class="mainContent">
                     <div class="row">
                         <?php
-                        $query = "SELECT * FROM projects";
+                        $query = "SELECT * FROM posts";
                         $query_run = mysqli_query($con, $query);
                         if(mysqli_num_rows($query_run) > 0)
                         {
                             foreach($query_run as $item)
                             {
                             ?>
-                            <div class="col-md-4 mb-4">
-                                <div class="card h-100">
+                            <div class="col-md-3 mb-3 gy-3">
+                                <div class="card h-100" style="width: 20rem; margin-left: 2vw;">
+                                <a href="#"><img src="assets/images/vccineCrd.jpg" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
-                                        <h5 class="card-title"><?= $item['name']; ?></h5>
-                                        <p class="card-text"><?= $item['description']; ?></p>
+                                        <h5 class="card-title"><?= $item['id']; ?></h5>
+                                        <p class="card-text"><?= $item['name']; ?></p>
                                         <!-- You can add more project details here -->
                                     </div>
-                                </div>
+                                </div> 
                             </div>
+                            
                             <?php
                             }
                         }
                         ?>
                     </div>
+            </div>
                 </div>
             </div>
         </div>

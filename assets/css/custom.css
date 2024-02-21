@@ -15,14 +15,30 @@
     background-size: cover; /* Cover the entire area of the row */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    height: 700px;
+    height: 100vw;
+    object-fit: contain;
 }
+.customPic {
+    width: 100%;
+    height: 12vw;
+    object-fit: contain;
+    
+
+}
+
+.mainContent {
+    align-items: center;
+    
+}
+
+
 
 .customHome{
     background-color: #283971;
     color:aliceblue;
-   border-radius: 20px;
-   font-weight: bold;
+    border-radius: 20px;
+    font-weight: bold;   
+    
 }
 
 .customNavbar{
@@ -71,3 +87,4 @@
 .btn_custombtns {
     font-size: 30px;
 }
+
