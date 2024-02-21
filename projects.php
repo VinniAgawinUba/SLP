@@ -7,63 +7,37 @@ include('config/dbcon.php');
 ?>
 <link rel="stylesheet" href="assets/css/custom.css">
 
-<div class="container-fluid custombg-image-row">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-3 fixed-left" style="width:350px">
-            <?php include('includes/sidebar.php'); ?>
-        </div>
-
-        <!-- Main Body -->
-        <div class="col-md-9">
-            <div class="">
-                <div class="row ">
-                    <div class="col-md-12">
-                        <?php include('message.php'); ?>
-                        <div class="card-header">
-                            <h4 class="card-title text-center customHome">Projects</h4>
-                        </div>
-                    </div>
+    <div class="container-fluid custombg-image-row ">
+        <div class="row gy-3">
+            <!-- Main Body -->
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+            <h4 class="card-title text-center customHome">Projects</h4>
+            </div>
+            <div class="col-3"></div>
+            <div class="mainContent">
                     <div class="row">
                         <?php
-                        $query1 = "SELECT * FROM school_year";
-                        $query1_run = mysqli_query($con, $query1);
-                        $query2 = "SELECT * FROM college";
-                        $query2_run = mysqli_query($con, $query2);
-                       
-                        
-                        // Construct the base URL
-                        $base_url = $_SERVER['PHP_SELF'] . "?";
-                        
-                        // Append existing parameters to the base URL
-                        $existing_params = http_build_query(array_intersect_key($_GET, array_flip(['school_year', 'college','department'])));
-                        if (!empty($existing_params)) {
-                            $base_url .= $existing_params . "&";
-                        }
-                        
-                        //If school year is already set as params render All Colleges
-                        if(mysqli_num_rows($query1_run) > 0) {
-                            if(isset($_GET['school_year']) && !isset($_GET['college_id']) && !isset($_GET['department_id'])) {
-                                if (mysqli_num_rows($query2_run) > 0){
-                                foreach($query2_run as $item) {
-                                    ?>
-                                    <div class="col-md-4 mb-4">
-                                        <div class="card h-100">
-                                            <div class="card-body">
-                                                <?php
-                                                $college = $item['id'];
-                                                $url = $base_url . "college_id=" . urlencode($college);
-                                                ?>
-                                                <a href="<?= $url ?>">
-                                                    <h5 class="card-title"><?= $item['name']; ?></h5>
-                                                    <p class="card-text"><?= $college; ?></p>
-                                                </a>
-                                            </div>
-                                        </div>
+                        $query = "SELECT * FROM posts";
+                        $query_run = mysqli_query($con, $query);
+                        if(mysqli_num_rows($query_run) > 0)
+                        {
+                            foreach($query_run as $item)
+                            {
+                            ?>
+                            <div class="col-md-3 mb-3 gy-3">
+                                <div class="card h-100" style="width: 20rem; margin-left: 2vw;">
+                                <a href="#"><img src="assets/images/vccineCrd.jpg" class="customPic"></a> <!-- Placeholder for image-->
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $item['id']; ?></h5>
+                                        <p class="card-text"><?= $item['name']; ?></p>
+                                        <!-- You can add more project details here -->
                                     </div>
-                                    <?php
-                                }
-                                
+                                </div> 
+                            </div>
+                            
+                            <?php
                             }
                         }
                             //if School Year And College is Set as params render Departments
@@ -139,9 +113,10 @@ include('config/dbcon.php');
                            
                         } else {echo '<a style="color:white">No Records Found</a>';}
                     }
-                }
+                
                         ?>
                     </div>
+            </div>
                 </div>
             </div>
         </div>
