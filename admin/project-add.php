@@ -191,7 +191,13 @@ include('includes/header.php');
                             <div class="col-md-6 mb-3">
                                 <label for="">Upload Project Files</label>
                                 <input type="file" name="project_documents[]" multiple class="form-control">
+<<<<<<< Updated upstream
 
+=======
+                                <button type="button" id="pick-button" onclick="createPicker()">Select files from Google Drive</button>
+                            </div>
+                           
+>>>>>>> Stashed changes
 
 
                             <!-- Add other project fields as needed -->
