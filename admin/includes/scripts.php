@@ -7,6 +7,7 @@
 <script src="js/scripts.js"></script>
 <script src="js/datatables-simple-demo.js"></script>
 
+<!-- DataTables JS -->
         <script>
             $(document).ready( function () {
             $('#myCategory').DataTable();

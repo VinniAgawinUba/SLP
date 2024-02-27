@@ -1,6 +1,7 @@
 <?php
 include('authentication.php');
 include('includes/header.php');
+include('includes/gdriveapi.php');
 ?>
 
 <div class="container-fluid px-4">
@@ -191,7 +192,20 @@ include('includes/header.php');
                             <div class="col-md-6 mb-3">
                                 <label for="">Upload Project Files</label>
                                 <input type="file" name="project_documents[]" multiple class="form-control">
-
+                                <button type="button" id="pick-button" onclick="createPicker()">Select files from Google Drive</button>
+                            </div>
+                            <script >
+                                // A simple callback implementation.
+                                function pickerCallback(data) {
+                                let url = 'nothing';
+                                if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
+                                    let doc = data[google.picker.Response.DOCUMENTS][0];
+                                    url = doc[google.picker.Document.URL];
+                                }
+                                let message = `You picked: ${url}`;
+                                document.getElementById('result').innerText = message;
+                                }
+                            </script>
 
 
                             <!-- Add other project fields as needed -->
