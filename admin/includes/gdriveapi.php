@@ -59,7 +59,14 @@ function createPicker() {
     tokenClient.requestAccessToken({prompt: ''});
   }
 }
-    
 
-
+</script>
+<script >
+  // A simple callback implementation.
+  function pickerCallback(data) {
+    if (data.action == google.picker.Action.PICKED) {
+      var fileId = data.docs[0].id;
+      alert('The user selected: ' + fileId);
+    }
+  }
 </script>

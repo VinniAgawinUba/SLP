@@ -194,18 +194,7 @@ include('includes/gdriveapi.php');
                                 <input type="file" name="project_documents[]" multiple class="form-control">
                                 <button type="button" id="pick-button" onclick="createPicker()">Select files from Google Drive</button>
                             </div>
-                            <script >
-                                // A simple callback implementation.
-                                function pickerCallback(data) {
-                                let url = 'nothing';
-                                if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
-                                    let doc = data[google.picker.Response.DOCUMENTS][0];
-                                    url = doc[google.picker.Document.URL];
-                                }
-                                let message = `You picked: ${url}`;
-                                document.getElementById('result').innerText = message;
-                                }
-                            </script>
+                            
 
 
                             <!-- Add other project fields as needed -->
