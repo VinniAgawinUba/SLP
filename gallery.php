@@ -8,7 +8,7 @@ include('config/dbcon.php');
 <link rel="stylesheet" href="assets/css/custom.css">
 
     <div class="container-fluid custombg-image-row ">
-        <div class="row gy-3">
+        <div class="row gy-3" style="display: flex; justify-content: center;">
 
             <!-- Main Body -->
             <div class="col-3">
@@ -18,7 +18,7 @@ include('config/dbcon.php');
             </div>
             <div class="col-3"></div>
             <div class="mainContent">
-                    <div class="row">
+                    <div class="row" style="display: flex; justify-content: center;">
                         <?php
                         $query = "SELECT * FROM posts";
                         $query_run = mysqli_query($con, $query);
@@ -28,16 +28,19 @@ include('config/dbcon.php');
                             {
                             ?>
                             <div class="col-md-4 mb-4 gy-3" style="display: flex; justify-content: center;">
-                            <a href="#"><img src="assets/images/vccineCrd.jpg" class="galleryImage" style="position: relative; width: 100%; height: 390px; object-fit: contain; transform: rotate(-90deg); border-radius: 10%;"></a> <!-- Placeholder for image-->
-                            <div class="projectTitle">bro</div>
+                            <a href="#"><img src="assets/images/vccineCrd.jpg" class="galleryImage"></a> <!-- Placeholder for image-->
+                            <div class="projectTitle">LOREM IPSUM</div>
                             </div>
                             
                             <?php
                             }
                         }
                         ?>
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
                     </div>
-            </div>
+                </div>
                 </div>
             </div>
         </div>
