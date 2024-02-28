@@ -27,15 +27,9 @@ include('config/dbcon.php');
                             foreach($query_run as $item)
                             {
                             ?>
-                            <div class="col-md-3 mb-3 gy-3">
-                                <div class="card h-100" style="width: 20rem; margin-left: 2vw;">
-                                <a href="#"><img src="assets/images/vccineCrd.jpg" class="customPic"></a> <!-- Placeholder for image-->
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?= $item['id']; ?></h5>
-                                        <p class="card-text"><?= $item['name']; ?></p>
-                                        <!-- You can add more project details here -->
-                                    </div>
-                                </div> 
+                            <div class="col-md-4 mb-4 gy-3" style="display: flex; justify-content: center;">
+                            <a href="#"><img src="assets/images/vccineCrd.jpg" class="galleryImage" style="position: relative; width: 100%; height: 390px; object-fit: contain; transform: rotate(-90deg); border-radius: 10%;"></a> <!-- Placeholder for image-->
+                            <div class="projectTitle">bro</div>
                             </div>
                             
                             <?php
