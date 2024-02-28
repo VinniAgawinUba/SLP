@@ -81,9 +81,6 @@
     <a class="nav-link customfont" href="articles.php">ARTICLES</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link customfont" href="registrar.php">REGISTRAR</a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link customfont" href="gallery.php">GALLERY</a>
   </li>
 </ul>
