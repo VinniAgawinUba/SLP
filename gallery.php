@@ -20,6 +20,7 @@ include('config/dbcon.php');
                     <div class="row gy-3">
                         <?php
                         $query = "SELECT * FROM posts";
+                        $query = "SELECT * FROM posts";
                         $query_run = mysqli_query($con, $query);
                         if(mysqli_num_rows($query_run) > 0)
                         {
@@ -35,6 +36,7 @@ include('config/dbcon.php');
                                 </div>
                                 <div class="hr1"></div>    
                             </div>
+                            
                             
                             <?php
                             }

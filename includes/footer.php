@@ -3,6 +3,8 @@
 <script src="assets/js/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js"></script>
                                         
+<script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js"></script>
+                                        
 
 <!-- Page Content-->
 <section class="pt-4 bg-light bg-gradient">
