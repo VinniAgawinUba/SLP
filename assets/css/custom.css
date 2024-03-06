@@ -153,6 +153,7 @@
     object-fit: contain;
     width: 60vw;
     border-radius: 20px;
+    margin-bottom: 1rem;
    
    
 }
@@ -160,7 +161,7 @@
 .articles{
     background-color: #A19158;
     z-index: 100;
-    position: absolute;
+    position:absolute;
     color: white;
     font-size: 34px;
     font-family: "Inter", sans-serif;
@@ -170,9 +171,17 @@
     font-variation-settings: "slnt" 0;
     text-indent: 1cqw;
     padding: 15px 0;
-    top: 0;
+    margin-top: -20px;
+    
  
     
+}
+
+.articleImage{
+    margin-top: 5rem;
+    width: 100%;
+    height: 60vh;
+
 }
 
 .projects{

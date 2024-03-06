@@ -18,19 +18,26 @@ include('config/dbcon.php');
         <div class="row gy-3">
             <!-- Main Body -->
             <div class="mainContent">
-          
-            <div class="projects">PROJECTS</div>
-                    <div class="row">
+                    <div class="row gy-3">
                     <div class="articles">ARTICLES</div>
                         <?php
-                        $query = "SELECT * FROM posts";
-                        $query = "SELECT * FROM posts";
+                        
+                        $query = "SELECT * FROM students";
                         $query_run = mysqli_query($con, $query);
                         if(mysqli_num_rows($query_run) > 0)
                         {
                             foreach($query_run as $item)
                             {
                             ?>
+                            <div class="col-md-4 mb-4 gy-4">
+                            <div class="card bg-transparent border-0 articleImage">
+                                <img src="assets/images/images.jpg" class="card-img " alt="...">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title">g</h5>
+                                </div>
+                                </div>
+                                  
+                            </div>
                             
                             
                             <?php
@@ -40,6 +47,7 @@ include('config/dbcon.php');
 
                         
                     </div>
+                    
                     
                 </div>
                 </div>
