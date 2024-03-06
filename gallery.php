@@ -6,9 +6,8 @@ include('includes/navbar.php');
 include('config/dbcon.php');
 ?>
 <link rel="stylesheet" href="assets/css/custom.css">
-
     <div class="container-fluid custombg-image-row ">
-        <div class="row gy-3">
+        <div class="row gy-3" style="display: flex; justify-content: center;">
 
             <!-- Main Body -->
             <div class="col-3">
@@ -18,7 +17,7 @@ include('config/dbcon.php');
             </div>
             <div class="col-3"></div>
             <div class="mainContent">
-                    <div class="row">
+                    <div class="row gy-3">
                         <?php
                         $query = "SELECT * FROM posts";
                         $query_run = mysqli_query($con, $query);
@@ -27,23 +26,25 @@ include('config/dbcon.php');
                             foreach($query_run as $item)
                             {
                             ?>
-                            <div class="col-md-3 mb-3 gy-3">
-                                <div class="card h-100" style="width: 20rem; margin-left: 2vw;">
-                                <a href="#"><img src="assets/images/vccineCrd.jpg" class="customPic"></a> <!-- Placeholder for image-->
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?= $item['id']; ?></h5>
-                                        <p class="card-text"><?= $item['name']; ?></p>
-                                        <!-- You can add more project details here -->
-                                    </div>
-                                </div> 
+                            <div class="col-md-4 mb-4 gy-4">
+                            <div class="card bg-transparent border-0 ">
+                                <img src="assets/images/images.jpg" class="card-img galleryImage" alt="...">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title projectTitle"><?= $item['name']; ?></h5>
+                                </div>
+                                </div>
+                                <div class="hr1"></div>    
                             </div>
                             
                             <?php
                             }
                         }
                         ?>
+                        
+                        
                     </div>
-            </div>
+                    
+                </div>
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@ include('config/dbcon.php');
 <link rel="stylesheet" href="assets/css/custom.css">
 
     <div class="container-fluid custombg-image-row ">
-        <div class="row gy-3">
+        <div class="row gy-3" style="display: flex; justify-content: center;">
             <!-- Main Body -->
             <div class="col-3">
             </div>
@@ -26,7 +26,7 @@ include('config/dbcon.php');
                             foreach($query_run as $item)
                             {
                             ?>
-                            <div class="col-md-3 mb-3 gy-3">
+                            <div class="col-md-3 mb-3 gy-3" style="display: flex; justify-content: center;">
                                 <div class="card h-100" style="width: 20rem; margin-left: 2vw;">
                                 <a href="#"><img src="assets/images/vccineCrd.jpg" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">

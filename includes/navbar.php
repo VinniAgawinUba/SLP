@@ -16,7 +16,7 @@
   </a>
   
    <!-- Search Bar -->
-   <form class="d-flex justify-content-center">
+   <form class="d-flex justify-content-center ms-auto">
     <input class="form-control me-2 custom-search" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
@@ -73,6 +73,9 @@
 <ul class="nav justify-content-center">
   <li class="nav-item">
     <a class="nav-link active customfont" href="index.php">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link customfont" href="projects.php">PARTNERS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link customfont" href="projects.php">PROJECTS</a>
