@@ -7,11 +7,11 @@
                                         
 
 <!-- Page Content-->
-<section class="pt-4 bg-light bg-gradient">
+<section class="pt-4 bg-light bg-gradient" style="position: relative;">
             <div class="container px-lg-5">
                 <!-- Page Features-->
                 <div class="row gx-lg-5" >
-                    <div class="col-lg-5 col-xxl-4 ">
+                    <div class="col-lg-4 col-xxl-4 ">
                         <div class="card bg-light border-0">
                             <div class="card-body ">
                                 <h2 class="fs-4 fw-bold">CONTACT US</h2>
@@ -20,9 +20,12 @@
                             </div>
                         </div>
                     </div>
-                   
-                    <div class="col-lg-7 col-xxl-4">
-                        <div class="card bg-light border-0 " style="position:absolute; margin-left: 15rem;">
+                    <div class="col-lg-4 col-xxl-4">
+                        <div class="card bg-light border-0">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xxl-4">
+                        <div class="card bg-light border-0 ">
                             <div class="card-body">
                                 
                                 <h2 class="fs-4 fw-bold">REQUEST ACCESS</h2>
@@ -31,7 +34,10 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
+
+
                 <div class="row gx-lg-5">
                 <div class="col-lg-7 col-xxl-4">
                         <div class="card bg-light border-0 h-100">
@@ -44,10 +50,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-5 col-xxl-4 h-50">
+                        <div class="card bg-light border-0">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-xxl-4 h-50">
+                        <div class="card bg-light border-0">
+                        </div>
+                    </div>
                 </div>
                 <hr>
                 <div class="row gy-3">
-                    <div class="col" style="color: #3A53A5; position:absolute; margin-left: 33rem;"><p>© 2023 Xavier University - Ateneo De Cagayan Corrales Avenue, Cagayan de Oro, Philippines</p></div>
+                    <div class="col" style="color: #3A53A5; position:absolute; text-align: center;"><p>© 2023 Xavier University - Ateneo De Cagayan Corrales Avenue, Cagayan de Oro, Philippines</p></div>
                     
                 </div>
             </div>
