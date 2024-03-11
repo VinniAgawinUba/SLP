@@ -8,12 +8,12 @@ include('config/dbcon.php');
 <link rel="stylesheet" href="assets/css/custom.css">
     <div class="container-fluid custombg-image-row ">
         <div class="row gy-3" style="display: flex; justify-content: center;">
-
+            <h1 class="gallery">Gallery</h1>
             <!-- Main Body -->
             <div class="col-3">
             </div>
             <div class="col-6">
-            <h4 class="card-title text-center customHome">Gallery</h4>
+            <h4 class="card-title"></h4>
             </div>
             <div class="col-3"></div>
             <div class="mainContent">

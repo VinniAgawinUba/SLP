@@ -30,7 +30,7 @@ include('config/dbcon.php');
                             {
                             ?>
                             <div class="col-md-4 mb-4 gy-4">
-                            <div class="card bg-transparent border-0 p-3 marginCard">
+                            <div class="card bg-transparent border-0 p-3 FmarginCard">
                                 <img src="assets/images/images.jpg" class="card-img articleImage" alt="...">
                                 <div class="card-img-overlay">
                                    
