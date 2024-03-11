@@ -183,7 +183,7 @@
 .articleImage{
     margin-top: 5rem;
     width: 100%;
-    height: 60vh;
+    height: 30vh;
 
 }
 
@@ -191,8 +191,12 @@
 .secondContent {
     display: flex;
     flex-direction: row;
-    margin-top: 350px;
+    margin-top: 3rem;
     justify-content: center;
+}
+
+.marginCard {
+    margin-top: 3rem;
 }
 
 
@@ -209,7 +213,7 @@
     font-style: normal;
     font-variation-settings: "slnt" 0;
     padding: 15px 0;
-    margin-top: auto;
+    
     text-indent: 2cqw;
    
     

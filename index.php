@@ -29,11 +29,11 @@ include('config/dbcon.php');
                             foreach($query_run as $item)
                             {
                             ?>
-                            <div class="col-md-4 mb-4 gy-4" style="height: 10vh;">
-                            <div class="card bg-transparent border-0 articleImage">
-                                <img src="assets/images/images.jpg" class="card-img " alt="...">
+                            <div class="col-md-4 mb-4 gy-4">
+                            <div class="card bg-transparent border-0 p-3 marginCard">
+                                <img src="assets/images/images.jpg" class="card-img articleImage" alt="...">
                                 <div class="card-img-overlay">
-                                    <h5 class="card-title">g</h5>
+                                   
                                 </div>
                                 </div>
                                   
@@ -50,7 +50,7 @@ include('config/dbcon.php');
                 
                 <div class="secondContent" >
                     
-                    <div class="row gy-3" style="margin-top:auto;">
+                    <div class="row gy-3">
                     <div class="projects">PROJECTS</div>
                         <?php
                         
@@ -62,10 +62,10 @@ include('config/dbcon.php');
                             {
                             ?>
                             <div class="col-md-4 mb-4 gy-4">
-                            <div class="card bg-transparent border-0 articleImage">
-                                <img src="assets/images/images.jpg" class="card-img " alt="...">
+                            <div class="card bg-transparent border-0 p-3 marginCard">
+                                <img src="assets/images/images.jpg" class="card-img articleImage" alt="...">
                                 <div class="card-img-overlay">
-                                    <h5 class="card-title">g</h5>
+                                   
                                 </div>
                                 </div>
                                   
