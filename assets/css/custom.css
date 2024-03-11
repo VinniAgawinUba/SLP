@@ -34,6 +34,8 @@
     justify-content: center;
 }
 
+
+
 /* Gallery CSS*/
 .projectTitle {
     background-color: #A19158;
@@ -54,6 +56,7 @@
 
 .galleryImage {
     border-top-left-radius: 15%;
+
 }
 
 .hr1 {
@@ -184,7 +187,17 @@
 
 }
 
+
+.secondContent {
+    display: flex;
+    flex-direction: row;
+    margin-top: 350px;
+    justify-content: center;
+}
+
+
 .projects{
+    
     background-color: #A19158;
     z-index: 100;
     position: absolute;
@@ -195,9 +208,8 @@
     font-weight: 800;
     font-style: normal;
     font-variation-settings: "slnt" 0;
-    padding: 30px 0;
-    width: 100%;
-    
+    padding: 15px 0;
+    margin-top: auto;
     text-indent: 2cqw;
    
     
