@@ -144,6 +144,11 @@
                         <a class="small" style="color:white;letter-spacing:3px" aria-expanded="false">
                             <?= $_SESSION['auth_user']['user_name']; ?>
                         </a>
+
+                        <a class="small" href="../index.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-home"></i>Return to Front Page</div>
+                           
+                        </a>
                            
                             
 
