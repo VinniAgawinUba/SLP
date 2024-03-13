@@ -75,7 +75,7 @@
     <a class="nav-link active customfont" href="index.php">HOME</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link customfont" href="projects.php">PARTNERS</a>
+    <a class="nav-link customfont" href="partners.php">PARTNERS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link customfont" href="projects.php">PROJECTS</a>
