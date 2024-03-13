@@ -6,22 +6,17 @@ include('includes/navbar.php');
 include('config/dbcon.php');
 ?>
 <link rel="stylesheet" href="assets/css/custom.css">
-
+<body>
     <div class="container-fluid custombg-image-row">
-        <div class="row gy-3" style="display: flex; justify-content: center;">
-            
-    
+        <div class="row gy-3" >
+        <h1 class="articlePage">Articles</h1>
+        <div class="articleLine"></div>
+        
             <!-- Main Body -->
-            <div class="col-3">
-            </div>
-            <div class="col-6">
-            <h4 class="card-title text-center customHome" >Articles</h4>
-            </div>
-            <div class="col-3">
-            </div>
             
-            <div class="mainContent">
-                    <div class="row">
+            <div class="">
+                
+                    <div class="row" >
                         <?php
                         $query = "SELECT * FROM posts";
                         $query_run = mysqli_query($con, $query);
@@ -30,8 +25,8 @@ include('config/dbcon.php');
                             foreach($query_run as $item)
                             {
                             ?>
-                            <div class="col-md-3 mb-3 gy-3" style="display: flex; justify-content: center;">
-                                <div class="card h-100" style="width: 20rem; margin-left: 2vw;">
+                            <div class="col-md-4 mb-3 gy-3" style="display: flex; justify-content: center; ">
+                                <div class="card h-100" style="width: 15rem;">
                                 <a href="#"><img src="assets/images/vccineCrd.jpg" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $item['name']; ?></h5>
@@ -50,6 +45,6 @@ include('config/dbcon.php');
         </div>
     </div>
 </div>
-
+</body>
 <!-- Footer -->
 <?php include('includes/footer.php'); ?>

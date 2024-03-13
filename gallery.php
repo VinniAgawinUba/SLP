@@ -5,17 +5,14 @@ include('includes/header.php');
 include('includes/navbar.php');
 include('config/dbcon.php');
 ?>
+
 <link rel="stylesheet" href="assets/css/custom.css">
+<body>
     <div class="container-fluid custombg-image-row ">
-        <div class="row gy-3" style="display: flex; justify-content: center;">
+        <div class="row gy-3">
             <h1 class="gallery">Gallery</h1>
             <!-- Main Body -->
-            <div class="col-3">
-            </div>
-            <div class="col-6">
-            <h4 class="card-title"></h4>
-            </div>
-            <div class="col-3"></div>
+           
             <div class="mainContent">
                     <div class="row gy-3">
                         <?php
@@ -51,6 +48,6 @@ include('config/dbcon.php');
         </div>
     </div>
 </div>
-
+</body>
 <!-- Footer -->
 <?php include('includes/footer.php'); ?>

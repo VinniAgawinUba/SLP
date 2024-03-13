@@ -6,7 +6,7 @@ include('includes/navbar.php');
 include('config/dbcon.php');
 ?>
 <link rel="stylesheet" href="assets/css/custom.css">
-
+<body>
     <div class="container-fluid custombg-image-row ">
         <div class="row gy-3" style="display: flex; justify-content: center;">
             <!-- Main Body -->
@@ -122,6 +122,6 @@ include('config/dbcon.php');
         </div>
     </div>
 </div>
-
+                </body>
 <!-- Footer -->
 <?php include('includes/footer.php'); ?>

@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+body {
+    min-height: 100vh;
+}
 
 /* Search Bar */
 .custom-search {
@@ -37,6 +40,9 @@
 
 
 /* Gallery CSS*/
+
+
+
 .projectTitle {
     background-color: #A19158;
    
@@ -233,5 +239,35 @@
     margin-top: 50px;
     text-indent: 2cqw;
    
+    
+}
+
+/*index*/
+
+/*article*/
+.articlePage {
+    
+    background-color: white;
+ 
+    position: absolute;
+    color: #283971;
+    font-size: 34px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    padding: 30px 0;
+   
+    text-align: center;
+}
+
+.articleLine {
+    margin-top: 50px;
+    z-index: 100;
+    height: 50px;
+    border-bottom: 3px solid #283971;
+    width: 50%;
+    margin-bottom: 20px;
     
 }
