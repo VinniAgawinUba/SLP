@@ -23,9 +23,7 @@
       <!-- Navbar Links -->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        <li class="nav-item text-center customfont">
-          <a class="nav-link customfont" href="#">About Us</a>
-        </li>
+       
 
         <?php if(isset($_SESSION['auth_user'])) : ?>
 

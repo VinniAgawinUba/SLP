@@ -8,15 +8,12 @@ include('config/dbcon.php');
 <link rel="stylesheet" href="assets/css/custom.css">
 <body>
     <div class="container-fluid custombg-image-row ">
-        <div class="row gy-3" style="display: flex; justify-content: center;">
+        <div class="row gy-3">
+        <h1 class="articlePage">Projects</h1>
+        <div class="articleLine"></div>
             <!-- Main Body -->
-            <div class="col-3">
-            </div>
-            <div class="col-6">
-            <h4 class="card-title text-center customHome">Projects</h4>
-            </div>
-            <div class="col-3"></div>
-            <div class="mainContent">
+            
+            <div class="">
                     <div class="row">
                         <?php
                         $query = "SELECT * FROM posts";
@@ -68,7 +65,7 @@ include('config/dbcon.php');
                         }
                             //If school year is Not set render School Years to be placed as params
                             elseif (!isset($_GET['school_year']) && !isset($_GET['college_id']) && !isset($_GET['department_id'])) {
-                                foreach($query1_run as $item) {
+                                foreach($query3_run as $item) {
                                     ?>
                                     <div class="col-md-4 mb-4">
                                         <div class="card h-100">
