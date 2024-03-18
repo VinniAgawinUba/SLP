@@ -11,7 +11,8 @@ include('config/dbcon.php');
 <div class="card bg-transparent border-0 headImage">
   <img src="assets/images/images.jpg" class="card-img headPic" alt="...">
   <div class="card-img-overlay">
-    <h5 class="card-title" style="color: white;">Kachow</h5>
+    <h5 class="card-title" style="color: white;">About Us</h5>
+    <p class="card-text">Lorem Ipsum   </p>
     
   </div>
 </div>

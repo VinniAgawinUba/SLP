@@ -13,7 +13,7 @@ include('config/dbcon.php');
             <h1 class="gallery">Gallery</h1>
             <!-- Main Body -->
            
-            <div class="">
+            <div class="mainContent">
                     <div class="row gy-3">
                         <?php
                         $query = "SELECT * FROM posts";
