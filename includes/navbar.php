@@ -34,6 +34,14 @@
           <ul class="dropdown-menu customfont" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item customfont" href="#">My Profile</a></li>
             <li>
+              <!-- If logged in show shortcut to admin panel -->
+              <?php if($_SESSION['auth_role'] == '1' || $_SESSION['auth_role'] == '2'){
+                ?>
+              <a class="dropdown-item customfont" href="admin/index.php">Admin Panel</a>
+              <?php
+               }?>
+            </li>
+            <li>
               <form action="allcode.php" method="post">
                 <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
               </form>
