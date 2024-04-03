@@ -249,20 +249,15 @@ body {
 
 /*article*/
 .articlePage {
-    
-    background-color: white;
- 
-    position: absolute;
-    color: #283971;
-    font-size: 34px;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
+    font-family: 'Inter';
     font-style: normal;
-    font-variation-settings: "slnt" 0;
-    padding: 30px 0;
-   
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
     text-align: center;
+
+    color: #283971;
+    margin-top: 40px;
 }
 
 .articleLine {
