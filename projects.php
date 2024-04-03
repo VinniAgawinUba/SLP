@@ -144,7 +144,6 @@ include('config/dbcon.php');
         align-items: center;
         height: 160px;
         font-size: 36px;
-
     }
 
     #projects-font-style {
@@ -277,7 +276,7 @@ include('config/dbcon.php');
 
                 } else if (!isset($_GET['department'])) {
                     //If Department is not set as a parameter, render Departments
-                    $query = "SELECT * FROM department";
+                    $query = "SELECT * FROM department WHERE college_id = '$_GET[college]'";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
