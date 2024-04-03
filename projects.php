@@ -78,7 +78,7 @@ include('config/dbcon.php');
     }
 
      /* Add hover effect for card */
-     .card:hover {
+     .year:hover {
         transform: scale(1.1); /* Increase scale on hover */
         transition: transform 0.3s ease; /* Add smooth transition */
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Add box shadow for depth */
@@ -142,7 +142,7 @@ include('config/dbcon.php');
                             $card_id = 'school_year_' . $item['id'];
                     ?>
                             <div class="col-md-3 mb-6 gy-3" style="display: flex; justify-content: center; flex-wrap: wrap">
-                                <div class="card" id="<?= $card_id; ?>" onclick="handleCardClickSchool('<?= $item['id']; ?>')" style="height:15rem; background: url(assets/images/BGblueBook.png); background-size:300px; background-repeat:no-repeat;">
+                                <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickSchool('<?= $item['id']; ?>')" style="height:15rem; background: url(assets/images/BGblueBook.png); background-size:300px; background-repeat:no-repeat;">
                                     <div class="card-body">
                                         <h5 class="card-title text-white text-center"><?= $item['id']; ?></h5>
                                         <p class="card-text text-center" style="font-weight: bold; font-size:50px; color:#6ea6ff"><?= $item['school_year']; ?></p>
@@ -163,7 +163,7 @@ include('config/dbcon.php');
                 ?>
                         <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;">
                             <!-- Add a unique ID to each semester card and attach a click event -->
-                            <div class="card" id="<?= $card_id; ?>" onclick="handleCardClickSemester('<?= $key + 1; ?>')" style="height:15rem; background: url(assets/images/BGblueBook.png); background-size:300px; background-repeat:no-repeat;">
+                            <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickSemester('<?= $key + 1; ?>')" style="height:15rem; background: url(assets/images/BGblueBook.png); background-size:300px; background-repeat:no-repeat;">
                                 <div class="card-body">
                                     <h5 class="card-title text-white text-center"><?= $key + 1; ?></h5>
                                     <p class="card-text text-center" style="font-weight: bold; font-size:30px; color:#6ea6ff"><?= $semester; ?></p>
@@ -184,7 +184,7 @@ include('config/dbcon.php');
                             $card_id = 'college_' . $item['id'];
                     ?>
                             <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;">
-                                <div class="card" id="<?= $card_id; ?>" onclick="handleCardClickCollege('<?= $item['id']; ?>')" style="height:15rem; background: url(assets/images/BGblueBook.png); background-size:400px; background-repeat:no-repeat;">
+                                <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickCollege('<?= $item['id']; ?>')" style="height:15rem; background: url(assets/images/BGblueBook.png); background-size:400px; background-repeat:no-repeat;">
                                     <div class="card-body">
                                         <h5 class="card-title text-white text-center"><?= $item['id']; ?></h5>
                                         <p class="card-text text-center" style="font-weight: bold; font-size:30px; color:#6ea6ff"><?= $item['name']; ?></p>
@@ -207,7 +207,7 @@ include('config/dbcon.php');
                             $card_id = 'department_' . $item['id'];
                     ?>
                             <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;">
-                                <div class="card" id="<?= $card_id; ?>" onclick="handleCardClickDepartment('<?= $item['id']; ?>')" style="height:15rem; background: url(assets/images/BGblueBook.png); background-size:400px; background-repeat:no-repeat;">
+                                <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickDepartment('<?= $item['id']; ?>')" style="height:15rem; background: url(assets/images/BGblueBook.png); background-size:400px; background-repeat:no-repeat;">
                                     <div class="card-body">
                                         <h5 class="card-title text-white text-center"><?= $item['id']; ?></h5>
                                         <p class="card-text text-center" style="font-weight: bold; font-size:30px; color:#6ea6ff"><?= $item['name']; ?></p>
@@ -290,7 +290,7 @@ include('config/dbcon.php');
                         ?>
                         <!-- Display each article as a card -->
                         <div class="col-md-4 mb-4">
-                            <div class="card">
+                            <div class="year">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $row['name']; ?></h5>
                                     <p class="card-text"><?= $row['description']; ?></p>

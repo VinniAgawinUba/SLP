@@ -6,31 +6,6 @@ include('includes/navbar.php');
 include('config/dbcon.php');
 ?>
 <style>
-    /* .card {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .headImage {
-        position: relative;
-    } */
-
-    /* .card-img-overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 20px;
-        max-width: 80%;
-        text-align: center;
-    } */
-
-    /* .card-title,
-    .card-text {
-        margin-bottom: 0;
-    } */
-
     #home-box {
         width: 1101px;
         height: 513px;
