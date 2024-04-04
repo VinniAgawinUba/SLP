@@ -283,11 +283,7 @@ include('config/dbcon.php');
 
                 } else if (!isset($_GET['department'])) {
                     //If Department is not set as a parameter, render Departments
-<<<<<<< Updated upstream
                     $query = "SELECT * FROM department WHERE college_id = '$_GET[college]'";
-=======
-                    $query = "SELECT * FROM department WHERE college_id = $_GET[college]";
->>>>>>> Stashed changes
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {

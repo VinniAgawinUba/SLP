@@ -81,13 +81,37 @@ include('config/dbcon.php');
     #card {
         background: #FFFFFF;
         border-radius: 10px;
-        width: 230px;
+        width: 303px;
         height: 475px;
     }
 
     #card-box {
         flex-basis: 36px;
         margin: 29px;
+        text-overflow: ellipsis;
+    }
+
+    #title {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 23px;
+
+        color: #000000;
+        margin-top: 26px;
+    }
+
+    #card-text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+
+        margin-top: 8px;
+        color: #000000;
+        margin-bottom: 0px;
     }
 </style>
 
@@ -119,8 +143,8 @@ include('config/dbcon.php');
                             <div class="card h-100" style="margin-top: 50px !important;" id="card">
                                 <a href="#"><img src="assets/images/article-pic.png" class="customPic"></a> <!-- Placeholder for image-->
                                 <div class="card-body">
-                                    <h5 class="card-title"><?= $item['name']; ?></h5>
-                                    <p class="card-text"><?= $item['name']; ?></p>
+                                    <h5 id="title"><?= $item['name']; ?></h5>
+                                    <p id="card-text"><?= $item['description']; ?></p>
                                     <!-- You can add more project details here -->
                                 </div>
                             </div>
