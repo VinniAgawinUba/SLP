@@ -147,7 +147,7 @@ include('config/dbcon.php');
                                     <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
                                     
                                     <a href="article-view.php?id=<?= $item['id']; ?>" class="btn btn-primary">View</a>
-                                    <p id="card-text">Date Published: <?= $item['published_date']; ?></p>
+                                    <p id="card-text">Date Published: <?= date('F j, Y', strtotime($item['published_date'])); ?></p>
                                     <!-- You can add more project details here -->
                                 </div>
                             </div>

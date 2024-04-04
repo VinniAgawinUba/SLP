@@ -27,7 +27,7 @@ if(isset($_GET['id'])) {
                     <img src="uploads/articles/<?= $article['thumb_nail_pic']; ?>" class="customPic">
                     <h2 class="card-title"><?= $article['thumb_nail_title']; ?></h2>
                     <p class="card-text"><?= $article['content']; ?></p>
-                    <p class="card-text">Date Published: <?= $article['published_date']; ?></p>
+                    <p class="card-text">Date Published: <?= date('F j, Y', strtotime($article['published_date'])); ?></p>
                     <!-- Add more details or formatting as needed -->
                 </div>
             </div>
