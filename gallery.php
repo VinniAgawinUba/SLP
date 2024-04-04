@@ -16,16 +16,16 @@ include('config/dbcon.php');
             <div class="mainContent">
                     <div class="row gy-3">
                         <?php
-                        $query = "SELECT * FROM posts";
+                        $query = "SELECT * FROM gallery";
                         $query_run = mysqli_query($con, $query);
                         if(mysqli_num_rows($query_run) > 0)
                         {
                             foreach($query_run as $item)
                             {
                             ?>
-                            <div class="col-md-4 mb-4 gy-4">
+                            <div class="">
                             <div class="card bg-transparent border-0 ">
-                                <img src="assets/images/images.jpg" class="card-img galleryImage" alt="...">
+                                <img src="assets/images/article-pic.png" class="card-img galleryImage" alt="...">
                                 <div class="card-img-overlay">
                                     <h5 class="card-title projectTitle"><?= $item['name']; ?></h5>
                                 </div>

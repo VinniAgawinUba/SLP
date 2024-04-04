@@ -345,17 +345,14 @@ if(isset($_POST['project_add_btn'])) {
                         if(!$query_run) {
                             $_SESSION['message'] = "Error inserting file details into database";
                             header('Location: project-add.php');
-                            exit(0);
                         }
                     } else {
                         $_SESSION['message'] = "Error moving uploaded file to destination folder";
                         header('Location: project-add.php');
-                        exit(0);
                     }
                 } else {
                     $_SESSION['message'] = "Error uploading file: " . $_FILES['project_documents']['name'][$i];
                     header('Location: project-add.php');
-                    exit(0);
                 }
             }
         } else {
@@ -365,11 +362,9 @@ if(isset($_POST['project_add_btn'])) {
 
         $_SESSION['message'] = "New Project has been added";
         header('Location: project-add.php');
-        exit(0);
     } else {
         $_SESSION['message'] = "Something went wrong";
         header('Location: project-add.php');
-        exit(0);
     }
 }
 
