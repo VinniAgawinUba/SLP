@@ -102,20 +102,24 @@ include('config/dbcon.php');
                     <div class="articles">ARTICLES</div>
                     <?php
 
-                    $query = "SELECT * FROM students";
+                    $query = "SELECT * FROM articles ORDER BY published_date DESC LIMIT 3";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
-                            <div class="col-md-4 mb-4 gy-4">
-                                <div class="card bg-transparent border-0 p-3 FmarginCard">
-                                    <img src="assets/images/images.jpg" class="card-img articleImage" alt="...">
-                                    <div class="card-img-overlay">
-
-                                    </div>
+                            <div class="col-md-3">
+                            <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                <a href="article-view.php?id=<?= $item['id']; ?>"><img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"></a> <!-- Placeholder for image-->
+                                <div class="card-body">
+                                    <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
+                                    <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
+                                    
+                                    <a href="article-view.php?id=<?= $item['id']; ?>" class="btn btn-primary">View</a>
+                                    <p id="card-text">Date Published: <?= date('F j, Y', strtotime($item['published_date'])); ?></p>
+                                    <!-- You can add more project details here -->
                                 </div>
-
                             </div>
+                        </div>
                     <?php
                         }
                     }
@@ -132,20 +136,23 @@ include('config/dbcon.php');
                     <div class="projects">PROJECTS</div>
                     <?php
 
-                    $query = "SELECT * FROM students";
+                    $query = "SELECT * FROM projects LIMIT 3";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
-                            <div class="col-md-4 mb-4 gy-4">
-                                <div class="card bg-transparent border-0 p-3 marginCard">
-                                    <img src="assets/images/images.jpg" class="card-img articleImage" alt="...">
-                                    <div class="card-img-overlay">
-
-                                    </div>
+                            <div class="col-md-3">
+                            <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                <a href="article-view.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic"></a> <!-- Placeholder for image-->
+                                <div class="card-body">
+                                    <h5 id="title"><?= $item['name']; ?></h5>
+                                    <p id="card-text"><?= $item['description']; ?></p>
+                                    
+                                    <a href="article-view.php?id=<?= $item['id']; ?>" class="btn btn-primary">View</a>
+                                    <!-- You can add more project details here -->
                                 </div>
-
                             </div>
+                        </div>
                     <?php
                         }
                     }
