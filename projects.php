@@ -156,6 +156,14 @@ include('config/dbcon.php');
 
     }
 
+    #project-card {
+        box-sizing: border-box;
+        background: #FFFFFF;
+        border-radius: 10px;
+        width: 222px;
+        height: auto;
+    }
+
     <?php
     // Set the yellow tag based on the URL parameters
     if (!isset($_GET['school_year'])) {
@@ -221,7 +229,7 @@ include('config/dbcon.php');
                         <?php
                         }
                     }
-                    
+
                     // Semester Cards
                     // Shows Semester Buttons and functional
                     // SQL queries using PHP
@@ -235,7 +243,7 @@ include('config/dbcon.php');
                         <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;">
                             <!-- Add a unique ID to each semester card and attach a click event -->
                             <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickSemester('<?= $key + 1; ?>')" style="background: url(assets/images/BGblueBook.png);">
-                                <div class="card-body" >
+                                <div class="card-body">
                                     <h5 class="card-title text-white text-center"></h5>
                                     <p class="card-text text-center" id="semester-font-style"><?= $semester; ?></p>
                                     <!-- You can add more project details here -->
@@ -265,7 +273,6 @@ include('config/dbcon.php');
                                     </div>
                                 </div>
                             </div>
-
                         <?php
                         }
                     }
@@ -276,13 +283,17 @@ include('config/dbcon.php');
 
                 } else if (!isset($_GET['department'])) {
                     //If Department is not set as a parameter, render Departments
+<<<<<<< Updated upstream
                     $query = "SELECT * FROM department WHERE college_id = '$_GET[college]'";
+=======
+                    $query = "SELECT * FROM department WHERE college_id = $_GET[college]";
+>>>>>>> Stashed changes
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                             $card_id = 'department_' . $item['id'];
                         ?>
-                            <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;">
+                            <div class="col-md-4 mb-6 gy-3">
                                 <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickDepartment('<?= $item['id']; ?>')" style="background: url(assets/images/BGblueBook.png);">
                                     <div class="card-body">
                                         <h5 class="card-title text-white text-center"></h5>
@@ -296,7 +307,10 @@ include('config/dbcon.php');
                         }
                     }
                 }
-                
+
+
+                // PROJECTS
+
                 //If Everything is set render all requests with matching paramaters
                 else if (isset($_GET['school_year']) && isset($_GET['semester']) && isset($_GET['college']) && isset($_GET['department'])) {
                     $school_year = $_GET['school_year'];
@@ -308,8 +322,8 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                         ?>
-                            <div class="col-md-6 mb-3 gy-3" style="display: flex; justify-content: center; ">
-                                <div class="card h-100" style="width: 15rem;">
+                            <div class="col-md-6 mb-3 gy-3" style="display: flex; justify-content: center; " id="three-columns">
+                                <div class="card h-100" id="project-card">
                                     <a href="#"><img src="" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $item['name']; ?></h5>
