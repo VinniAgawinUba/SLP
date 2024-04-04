@@ -126,25 +126,28 @@ include('config/dbcon.php');
 </select>
 
 <body class="main-content">
-    <div class="custombg-image-row" id="main-body>
-        <div class=" row gy-3">
+    <div class="custombg-image-row" id="main-body">
+        <div class="row gy-3">
         <!-- Main Body -->
 
         <div class="main-content">
 
             <div class="row">
                 <?php
-                $query = "SELECT * FROM posts";
+                $query = "SELECT * FROM articles";
                 $query_run = mysqli_query($con, $query);
                 if (mysqli_num_rows($query_run) > 0) {
                     foreach ($query_run as $item) {
                 ?>
                         <div style="display: flex; justify-content: center; " id="card-box">
                             <div class="card h-100" style="margin-top: 50px !important;" id="card">
-                                <a href="#"><img src="assets/images/article-pic.png" class="customPic"></a> <!-- Placeholder for image-->
+                                <a href="article-view.php?id=<?= $item['id']; ?>"><img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"></a> <!-- Placeholder for image-->
                                 <div class="card-body">
-                                    <h5 id="title"><?= $item['name']; ?></h5>
-                                    <p id="card-text"><?= $item['description']; ?></p>
+                                    <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
+                                    <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
+                                    
+                                    <a href="article-view.php?id=<?= $item['id']; ?>" class="btn btn-primary">View</a>
+                                    <p id="card-text">Date Published: <?= $item['published_date']; ?></p>
                                     <!-- You can add more project details here -->
                                 </div>
                             </div>

@@ -1,13 +1,32 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script> <!-- Move this line up -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" /> <!-- Move this line up -->
+<script src="../admin/js/jquery.min.js"></script>
+<script src="../admin/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="../admin/js/simple-datatables.min.js" crossorigin="anonymous"></script>
+<script src="../admin/js/jquery.dataTables.js"></script> <!-- Move this line up -->
+<link rel="stylesheet" href="../admin/css/jquery.dataTables.css" /> <!-- Move this line up -->
 
-<script src="js/scripts.js"></script>
-<script src="js/datatables-simple-demo.js"></script>
+<!-- JavaScript for Navlink open close -->
+<script>
+    window.addEventListener('DOMContentLoaded', event => {
 
-        <script>
+// Toggle the side navigation
+const sidebarToggle = document.body.querySelector('#sidebarToggle');
+if (sidebarToggle) {
+    // Uncomment Below to persist sidebar toggle between refreshes
+    // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+    //     document.body.classList.toggle('sb-sidenav-toggled');
+    // }
+    sidebarToggle.addEventListener('click', event => {
+        event.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+        localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+    });
+}
+
+});
+</script>
+
+
+<script>
             $(document).ready( function () {
             $('#myCategory').DataTable();
             $('#myCollege').DataTable();
@@ -38,11 +57,12 @@
     });
 </script>
 
-<!-- CSS For Select2 -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <!-- CSS For Select2 -->
+    <link href="../admin/css/select2.min.css" rel="stylesheet" />
 
-<!-- JavaScript for Select2 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <!-- JavaScript for Select2 -->
+    <script src="../admin/js/select2.min.js"></script>
+
 <script>
     // Initialize Select2 for dropdowns
     $(document).ready(function() {
@@ -52,14 +72,25 @@
 
 <!-- JavaScript for Delete Button Confirmation (Buttons Should have id of deleteButton) -->
 <script>
-    document.getElementById("deleteButton").addEventListener("click", function(event) {
-        if (confirm("Are you sure you want to delete this document?")) {
-            document.getElementById("deleteForm").submit();
-        } else {
-            event.preventDefault(); // Prevent form submission
-        }
+    // Select all elements with the class 'deleteButton'
+    var deleteButtons = document.querySelectorAll(".deleteButton");
+    
+    // Iterate over each delete button and attach event listener
+    deleteButtons.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+            if (confirm("Are you sure you want to delete this document?")) {
+                // Find the closest form and submit it
+                this.closest(".deleteForm").submit();
+            } else {
+                event.preventDefault(); // Prevent form submission
+            }
+        });
     });
 </script>
+
+
+
+
 
 </body>
 </html>

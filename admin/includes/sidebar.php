@@ -67,16 +67,16 @@
                                 </nav>
                             </div>
 
-                             <!--- Post Interface -->
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePosts" aria-expanded="false" aria-controls="collapsePosts">
+                             <!--- Articles Interface -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseArticles" aria-expanded="false" aria-controls="collapseArticles">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Posts
+                                Articles
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsePosts" aria-labelledby="Posts" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseArticles" aria-labelledby="Articles" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="post-add.php">Add Post</a>
-                                    <a class="nav-link" href="post-view.php">View Post</a>
+                                    <a class="nav-link" href="article-add.php">Add Article</a>
+                                    <a class="nav-link" href="article-view.php">View Articles</a>
                                 </nav>
                             </div>
 

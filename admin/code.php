@@ -532,6 +532,124 @@ if(isset($_POST['post_update'])) {
     }
 }
 
+///Add Article
+if(isset($_POST['article_add_btn'])) {
+    $thumb_nail_title = mysqli_real_escape_string($con, $_POST['thumb_nail_title']);
+    $project_id = mysqli_real_escape_string($con, $_POST['project_id']);
+    $content = mysqli_real_escape_string($con, $_POST['content']);
+    $thumb_nail_summary = mysqli_real_escape_string($con, $_POST['thumb_nail_summary']);
+
+    // Image Upload
+    $thumb_nail_pic = $_FILES['thumb_nail_pic']['name'];
+    // Rename this image
+    $image_extension = pathinfo($thumb_nail_pic, PATHINFO_EXTENSION);
+    $filename = time() . '.' . $image_extension;
+
+    // Insert the Article with the project_id
+    $query = "INSERT INTO articles (thumb_nail_title, project_id, content, thumb_nail_summary, thumb_nail_pic) 
+              VALUES ('$thumb_nail_title', '$project_id', '$content', '$thumb_nail_summary', '$filename')";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run) {
+        // Upload the image to uploads folder
+        move_uploaded_file($_FILES['thumb_nail_pic']['tmp_name'],'../uploads/articles/'.$filename);
+        $_SESSION['message'] = "New Article has been added";
+        header('Location: article-add.php');
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: article-add.php');
+        exit(0);
+    }
+}
+
+// Update Article
+if(isset($_POST['article_edit_btn'])) {
+    $article_id = $_POST['article_id'];
+    $thumb_nail_title = mysqli_real_escape_string($con, $_POST['thumb_nail_title']);
+    $project_id = mysqli_real_escape_string($con, $_POST['project_id']);
+    $content = mysqli_real_escape_string($con, $_POST['content']);
+    $thumb_nail_summary = mysqli_real_escape_string($con, $_POST['thumb_nail_summary']);
+
+    // Get the old filename
+    $old_filename = $_POST['old_thumb_nail_pic'];
+
+    // Initialize filename variable
+    $filename = $old_filename;
+
+    // Check if a new thumbnail is being uploaded
+    if(isset($_FILES['thumb_nail_pic']) && $_FILES['thumb_nail_pic']['error'] != UPLOAD_ERR_NO_FILE) {
+        // New thumbnail is being uploaded, handle image processing
+        $thumb_nail_pic = $_FILES['thumb_nail_pic']['name'];
+        $image_extension = pathinfo($thumb_nail_pic, PATHINFO_EXTENSION);
+        $filename = time() . '.' . $image_extension;
+    }
+
+    // Update the Article with the project_id
+    $query = "UPDATE articles SET thumb_nail_title = '$thumb_nail_title', project_id = '$project_id', content = '$content', thumb_nail_summary = '$thumb_nail_summary'";
+    
+    // Check if a new thumbnail was uploaded and update the query accordingly
+    if(isset($thumb_nail_pic)) {
+        $query .= ", thumb_nail_pic = '$filename'";
+    }
+    
+    $query .= " WHERE id = '$article_id'";
+    
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run) {
+        // Check if a new thumbnail was uploaded
+        if(isset($thumb_nail_pic)) {
+            // New thumbnail was uploaded, delete the old image
+            if(file_exists('../uploads/articles/' . $old_filename)) {
+                unlink('../uploads/articles/' . $old_filename);
+            }
+            // Upload the new image to uploads folder
+            move_uploaded_file($_FILES['thumb_nail_pic']['tmp_name'], '../uploads/articles/' . $filename);
+        }
+
+        $_SESSION['message'] = "Article has been updated";
+        header('Location: article-edit.php?id='.$article_id);
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: article-edit.php?id='.$article_id);
+        exit(0);
+    }
+}
+
+//Delete Article
+if(isset($_POST['article_delete_btn'])) 
+{
+    $article_id = $_POST['id'];
+
+    $check_img_query = "SELECT * FROM articles WHERE id = '$article_id' LIMIT 1";
+    $img_res = mysqli_query($con, $check_img_query);
+    $res_data = mysqli_fetch_all($img_res);
+
+    $image = $res_data['thumb_nail_pic'];
+   
+    $query = "DELETE FROM articles WHERE id = '$article_id' LIMIT 1";
+    $query_run = mysqli_query($con, $query);
+
+    
+
+    if($query_run) {
+            if(file_exists('../uploads/articles/'.$image)) 
+            {
+                unlink('../uploads/articles/'.$image);
+            }
+
+        $_SESSION['message'] = "Article has been Deleted";
+        header('Location: article-view.php');
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: article-view.php');
+        exit(0);
+    }
+
+}
 
 
 //Add Post

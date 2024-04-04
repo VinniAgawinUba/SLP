@@ -78,12 +78,22 @@
                         <a class="nav-link customfont" href="#">About Us</a>
                     </li>
                     <?php if (isset($_SESSION['auth_user'])) : ?>
-                        <li class="nav-item dropdown customfont">
-                            <a class="nav-link dropdown-toggle customfont" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item text-center dropdown customfont">
+                            <a class="nav-link text-center dropdown-toggle customfont" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?= $_SESSION['auth_user']['user_name']; ?>
                             </a>
-                            <ul class="dropdown-menu customfont" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu text-center customfont" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item customfont font-style" href="#">My Profile</a></li>
+
+                                <li>
+                                    <!-- If logged in and admin show shortcut to admin panel -->
+                                    <?php if($_SESSION['auth_role'] == '1'){
+                                    ?>
+                                    <a class="dropdown-item" href="admin/index.php">Admin Panel</a>
+                                    <?php
+                                    }?>
+                                </li>
+
                                 <li>
                                     <form action="allcode.php" method="post">
                                         <button type="submit" name="logout_btn" class="dropdown-item font-style" href="#">Logout</button>
