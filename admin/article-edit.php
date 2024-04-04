@@ -11,6 +11,14 @@ if(isset($_GET['id'])) {
     $query_run = mysqli_query($con, $query);
     if(mysqli_num_rows($query_run) > 0) {
         $article = mysqli_fetch_assoc($query_run);
+        // Decode Base64-encoded images in content
+        $article['content'] = preg_replace_callback('/<img[^>]+src="([^">]+)"/', function($match) {
+            if(strpos($match[1], 'data:image') !== false) {
+                return '<img src="' . $match[1] . '">';
+            } else {
+                return $match[0];
+            }
+        }, $article['content']);
     } else {
         echo "Article not found!";
         exit; // Stop execution if article not found
@@ -19,6 +27,7 @@ if(isset($_GET['id'])) {
     echo "Article ID not provided!";
     exit; // Stop execution if article ID not provided
 }
+
 ?>
 
 <div class="container-fluid px-4">
@@ -75,7 +84,7 @@ if(isset($_GET['id'])) {
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="">Thumbnail Summary</label>
-                                <textarea name="thumb_nail_summary" required max="191" class="form-control" placeholder="Brief Summary of Article to entice viewers"><?= $article['thumb_nail_summary']; ?></textarea>
+                                <textarea name="thumb_nail_summary" required max="191" class="form-control" placeholder="Brief Summary of Article to entice viewers" maxlength="500"><?= $article['thumb_nail_summary']; ?></textarea>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="">Thumbnail Pic</label>

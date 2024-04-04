@@ -91,6 +91,12 @@ include('config/dbcon.php');
         text-overflow: ellipsis;
     }
 
+    #card-box:hover {
+        transition: transform 0.2s;
+        transform: scale(1.05);
+    }
+
+
     #title {
         font-family: 'Inter';
         font-style: normal;
@@ -139,19 +145,21 @@ include('config/dbcon.php');
                 if (mysqli_num_rows($query_run) > 0) {
                     foreach ($query_run as $item) {
                 ?>
-                        <div style="display: flex; justify-content: center; " id="card-box">
-                            <div class="card h-100" style="margin-top: 50px !important;" id="card">
-                                <a href="article-view.php?id=<?= $item['id']; ?>"><img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"></a> <!-- Placeholder for image-->
-                                <div class="card-body">
-                                    <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
-                                    <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
-                                    
-                                    <a href="article-view.php?id=<?= $item['id']; ?>" class="btn btn-primary">View</a>
-                                    <p id="card-text">Date Published: <?= date('F j, Y', strtotime($item['published_date'])); ?></p>
-                                    <!-- You can add more project details here -->
+                        <div style="display: flex; justify-content: center;" id="card-box">
+                            <a href="article-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                    <div class="card-body">
+                                        <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
+                                        <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
+                                        <!-- You can add more project details here -->
+                                    </div>
+                                    <!--Bottom of Card to place date-->
+                                    <p style="padding:5px; font-size:12px" id="card-text">Date Published: <?= date('F j, Y', strtotime($item['published_date'])); ?></p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
+
                 <?php
                     }
                 }

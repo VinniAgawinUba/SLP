@@ -64,7 +64,7 @@ include('includes/scripts.php');
                                 
                                 <div class="col-md-12 mb-3">
                                     <label for="">Thumbnail Summary</label>
-                                    <textarea name="thumb_nail_summary" required max="191" class="form-control" placeholder="Brief Summary of Article to entice viewers"> </textarea>
+                                    <textarea name="thumb_nail_summary" required max="191" class="form-control" placeholder="Brief Summary of Article to entice viewers, Maximum of 500 characters" maxlength="500"> </textarea>
                                 </div>
                                 
                                 <div class="col-md-6 mb-3">
