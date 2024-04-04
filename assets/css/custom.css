@@ -21,9 +21,11 @@ body {
     background-size: cover; /* Cover the entire area of the row */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    height: 80vw;
+    max-height: 80vw; /* Set a maximum height for the div */
     object-fit: contain;
+    overflow-y: auto; /* Add vertical scrollbar when content exceeds height */
 }
+
 
 .customPic {
     width: 100%;
