@@ -310,6 +310,7 @@ if(isset($_POST['project_add_btn'])) {
     $school_year_id = $_POST['school_year_id'];
     $semester = $_POST['semester'];
     $status = $_POST['status']; // Assuming all projects start as "In Progress"
+    $sdgs = $_POST['sdgs'];
 
     // Insert the Project into the database
     $query = "INSERT INTO projects (name, type, description, subject_hosted, college_id, department_id, sd_coordinator_id, partner_id, school_year_id, semester, status) 
@@ -318,6 +319,17 @@ if(isset($_POST['project_add_btn'])) {
 
     if($query_run) {
         $project_id = mysqli_insert_id($con); // Get the last inserted project_id
+
+        /// Update SDGs with sdg array
+            foreach ($sdgs as $sdg) {
+                $sdg_query = "INSERT INTO project_sdgs (project_id, sdg) VALUES ('$project_id', '$sdg')";
+                $sdg_query_run = mysqli_query($con, $sdg_query);
+                if(!$sdg_query_run) {
+                    $_SESSION['message'] = "Error inserting SDGs into database";
+                    header('Location: project-add.php');
+                }
+            }
+        
 
         //Check if faculty post array is SET
          if(isset($_POST['faculty']) && is_array($_POST['faculty'])) {

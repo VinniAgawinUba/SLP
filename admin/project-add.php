@@ -212,14 +212,68 @@ include('includes/header.php');
                                 <button type="button" class="btn btn-success mt-2" onclick="addFacultySelect()">Add Faculty</button>
                             </div>
 
+                            <!--Sustainable Development Goals-->
+                            <div class="col-md-12 mb-3 card">
+                            <label for="">SDGs Covered</label><br>
+                            <div class="row">
+                            <?php
+                            // List of SDGs
+                            $sdgs = array(
+                                'No Poverty', 
+                                'Zero Hunger', 
+                                'Good Health and Well-being', 
+                                'Quality Education', 
+                                'Gender Equality', 
+                                'Clean Water and Sanitation', 
+                                'Affordable and Clean Energy', 
+                                'Decent Work and Economic Growth', 
+                                'Industry, Innovation, and Infrastructure', 
+                                'Reduced Inequality', 
+                                'Sustainable Cities and Communities', 
+                                'Responsible Consumption and Production', 
+                                'Climate Action', 
+                                'Life Below Water', 
+                                'Life on Land', 
+                                'Peace, Justice, and Strong Institutions', 
+                                'Partnerships for the Goals'
+                            );
+
+                            // Loop through SDGs array to create checkboxes and their respective icons
+                            $index = 0;
+                                    foreach ($sdgs as $sdg) {
+                                        $icon_path = '../uploads/SDGs/icons/sdg_' . ($index + 1) . '.png'; // Assuming icons are named as sdg_1.png, sdg_2.png, etc.
+                                        if (file_exists($icon_path)) {
+                                            echo '<div class="col-md-3 mb-2">';
+                                            echo '<div class="form-check">';
+                                            echo '<img src="' . $icon_path . '" alt="' . $sdg . '" class="sdg-icon img-fluid" style="height:100px; width:100px">';
+                                            echo '<input class="form-check-input" type="checkbox" name="sdgs[]" id="sdg_' . strtolower(str_replace(' ', '_', $sdg)) . '" value="'.'sdg_'.($index + 1).'">';
+                                            echo '<label class="form-check-label" for="sdg_' . strtolower(str_replace(' ', '_', $sdg)) . '">' . $sdg . '</label>';
+                                            echo '</div>';
+                                            echo '</div>';
+                                        } else {
+                                            // If icon file doesn't exist, display the SDG name without icon
+                                            echo '<div class="col-md-3 mb-2">';
+                                            echo '<div class="form-check">';
+                                            echo '<input class="form-check-input" type="checkbox" name="sdgs[]" id="sdg_' . strtolower(str_replace(' ', '_', $sdg)) . '" value="' . $sdg . '">';
+                                            echo '<label class="form-check-label" for="sdg_' . strtolower(str_replace(' ', '_', $sdg)) . '">' . $sdg . '</label>';
+                                            echo '</div>';
+                                            echo '</div>';
+                                        }
+                                        $index++;
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+
+
 
 
                             <!-- Upload project related files to project_documents -->
                             <div class="col-md-12 mb-3">
                                 <label for="">Upload Project Files</label>
                                 <input type="file" name="project_documents[]" multiple class="form-control">
-
-
+                                
+                                
 
                             <!-- Add other project fields as needed -->
 
