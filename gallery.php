@@ -23,13 +23,15 @@ include('config/dbcon.php');
                             foreach($query_run as $item)
                             {
                             ?>
-                            <div class="">
-                            <div class="card bg-transparent border-0 ">
-                                <img src="assets/images/article-pic.png" class="card-img galleryImage" alt="...">
-                                <div class="card-img-overlay">
-                                    <h5 class="card-title projectTitle"><?= $item['name']; ?></h5>
-                                </div>
-                                </div>
+                            <div class="col-md-4 px-3">
+                                <a href="gallery-view.php?id=<?= $item['id']; ?>">
+                                    <div class="card bg-transparent border-0 ">
+                                        <img src="assets/images/article-pic.png" class="card-img galleryImage" alt="...">
+                                        <div class="card-img-overlay">
+                                            <h5 class="card-title projectTitle"><?= $item['name']; ?></h5>
+                                        </div>
+                                    </div>
+                                </a>
                                 <div class="hr1"></div>    
                             </div>
                             
