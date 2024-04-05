@@ -192,26 +192,11 @@ include('includes/header.php');
 
                             <div class="col-md-6 mb-3">
                                     <label for="">Semester</label>
-                                    <?php
-                                    $semester_query = "SELECT * FROM projects WHERE id = '$project_id' LIMIT 1";
-                                    $semester_query_run = mysqli_query($con, $semester_query);
-                                    if(mysqli_num_rows($semester_query_run) > 0){}
-                                    ?>
-
                                     <select name="semester" required class="form-control">
                                         <option value="">--Select Semester--</option>
-                                        <?php
-                                        foreach($semester_query_run as $semester_list) {
-                                        ?>
-                                            <option value="<?=$semester_list['semester']; ?>" <?=$semester_list['semester'] == $project_row['semester'] ? 'selected' : '' ?>>
-                                                <?= $semester_list['semester'];?>
-                                            </option>
-                                        <?php
-                                        }
-                                        ?>
-                                        <option value="1">First Semester</option>
-                                        <option value="2">Second Semester</option>
-                                        <option value="3">Intersession Summer</option>
+                                        <option value="1"<?= $project_row['semester'] == '1' ? 'selected' : '' ?>>First Semester</option>
+                                        <option value="2"<?= $project_row['semester'] == '2' ? 'selected' : '' ?>>Second Semester</option>
+                                        <option value="3"<?= $project_row['semester'] == '3' ? 'selected' : '' ?>>Intersession Summer</option>
                                     </select>
 
 
@@ -219,23 +204,61 @@ include('includes/header.php');
 
                             <div class="col-md-6 mb-3">
                                     <label for="">Status</label>
-                                    <?php
-                                    $project_query = "SELECT * FROM faculty";
-                                    $project_query_run = mysqli_query($con, $project_query);
-                                    if(mysqli_num_rows($project_query_run) > 0){}
-                                    ?>
-
                                     <select name="status" required class="form-control">
                                         <option value="">--Select Status--</option>
-                                        
-                                        <option value="0"<?= $project_row['status'] =='0' ? 'selected': '' ; ?>>In Progress</option>
-                                        <option value="1"<?= $project_row['status'] =='1' ? 'selected': '' ; ?>>Finished</option>
-                                        <option value="2"<?= $project_row['status'] =='2' ? 'selected': '' ; ?>>TBD</option>
-                                        <option value="3"<?= $project_row['status'] =='3' ? 'selected': '' ; ?>>Cancelled</option>
+                                        <option value="0"<?= $project_row['status'] == '0' ? 'selected' : '' ?>>In Progress</option>
+                                        <option value="1"<?= $project_row['status'] == '1' ? 'selected' : '' ?>>Finished</option>
+                                        <option value="2"<?= $project_row['status'] == '2' ? 'selected' : '' ?>>TBD</option>
+                                        <option value="3"<?= $project_row['status'] == '3' ? 'selected' : '' ?>>Cancelled</option>
                                     </select>
 
 
                             </div>
+
+                            <!-- Dynamic Faculty -->
+                            <div class="col-md-3 mb-3" id="faculty-select-container">
+                                <label for="">Faculty Members</label>
+                                <?php
+                                $project_faculty_query = "SELECT * FROM project_faculty WHERE project_id = '$project_id'";
+                                $project_faculty_query_run = mysqli_query($con, $project_faculty_query);
+                                $faculty_ids = array();
+                                while ($project_faculty = mysqli_fetch_assoc($project_faculty_query_run)) {
+                                    $faculty_ids[] = $project_faculty['faculty_id'];
+                                }
+                                echo json_encode($faculty_ids);
+
+                                
+                                foreach ($faculty_ids as $faculty_id) {
+                                    $faculty_query = "SELECT * FROM faculty WHERE id = '$faculty_id'";
+                                    $faculty_query_run = mysqli_query($con, $faculty_query);
+                                    $faculty = mysqli_fetch_assoc($faculty_query_run);
+
+                                    $all_faculty_query = "SELECT * FROM faculty";
+                                    $all_faculty_query_run = mysqli_query($con, $all_faculty_query);
+                                    if ($faculty) {
+                                ?>
+                                        <div class="faculty-select-wrapper">
+                                            <select name="faculty[]" class="form-control select2">
+                                                <option value="<?= $faculty['id'] ?>" selected><?= $faculty['fname'] . ' ' . $faculty['lname'] ?></option>
+                                                <?php foreach ($all_faculty_query_run as $all_faculty) {
+                                                    if ($all_faculty['id'] != $faculty['id']) {
+                                                ?>
+                                                        <option value="<?= $all_faculty['id'] ?>"><?= $all_faculty['fname'] . ' ' . $all_faculty['lname'] ?></option>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                            <button type="button" class="btn btn-danger mt-2" onclick="removeFacultySelect(this)">Remove</button>
+                                        </div>
+                                <?php
+                                    }
+                                }
+                                ?>
+                                <button type="button" class="btn btn-success mt-2" onclick="addFacultySelect()">Add Faculty</button>
+                            </div>
+
+
 
                             <!-- Upload project related files to project_documents -->
                             <div class="col-md-12 mb-3">
@@ -248,7 +271,7 @@ include('includes/header.php');
                             <!-- Add other project fields as needed -->
 
                             <div class="col-md-12 mb-3">
-                                <button type="submit" name="project_edit_btn" class="btn btn-primary">Edit Project</button>
+                                <button type="submit" name="project_edit_btn" class="btn btn-primary">Update Project</button>
                             </div>
 
                         </div>
@@ -274,3 +297,71 @@ include('includes/header.php');
 include('includes/footer.php');
 include('includes/scripts.php');
 ?>
+
+
+<?php
+//Query all faculty from faculty table
+$faculty_query = "SELECT * FROM faculty";
+$faculty_query_run = mysqli_query($con, $faculty_query);
+$faculties = array();
+if(mysqli_num_rows($faculty_query_run) > 0) {
+    while($faculty_row = mysqli_fetch_assoc($faculty_query_run)) {
+        $faculties[] = $faculty_row;
+    }
+}
+?>
+
+
+<script>
+    // Define a JavaScript variable to hold the faculty data
+    var faculties = <?php echo json_encode($faculties); ?>;
+
+    function addFacultySelect() {
+        var container = document.getElementById("faculty-select-container");
+        var wrapper = document.createElement("div");
+        wrapper.classList.add("faculty-select-wrapper");
+
+        var select = document.createElement("select");
+        select.name = "faculty[]";
+        select.required = true;
+        select.classList.add("form-control", "select2");
+
+        var option = document.createElement("option");
+        option.value = "";
+        option.text = "--Select Faculty--";
+        select.appendChild(option);
+
+        // Add faculty options from JavaScript variable
+        faculties.forEach(function(faculty) {
+            var option = document.createElement("option");
+            option.value = faculty.id;
+            option.text = faculty.fname + " " + faculty.lname;
+            select.appendChild(option);
+        });
+
+        wrapper.appendChild(select);
+
+        var removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.classList.add("btn", "btn-danger", "mt-2");
+        removeBtn.textContent = "Remove";
+        removeBtn.onclick = function() {
+            container.removeChild(wrapper);
+        };
+
+        wrapper.appendChild(removeBtn);
+
+        container.appendChild(wrapper);
+
+        // Initialize Select2 for the new dropdown
+        $(select).select2();
+    }
+
+    function removeFacultySelect(button) {
+        var container = document.getElementById("faculty-select-container");
+        var wrapper = button.parentNode;
+        container.removeChild(wrapper);
+    }
+</script>
+
+

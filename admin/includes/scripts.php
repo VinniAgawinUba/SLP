@@ -28,17 +28,39 @@ if (sidebarToggle) {
 
 <script>
             $(document).ready( function () {
-            $('#myCategory').DataTable();
-            $('#myCollege').DataTable();
-            $('#myProject').DataTable();
-            $('#myDepartment').DataTable();
-            $('#myFaculty').DataTable();
-            $('#myPartner').DataTable();
-            $('#myPost').DataTable();
-           
-            $('#myProject').DataTable();
-            $('#mySchoolyear').DataTable();
-            $('#myStudent').DataTable();
+            $('#myCategory').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#myCollege').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#myProject').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#myDepartment').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#myFaculty').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#myPartner').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#myPost').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#myGallery').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#myArticle').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#mySchoolyear').DataTable({
+                order: [[0, 'desc']]
+            });
+            $('#myStudent').DataTable({
+                order: [[0, 'desc']]
+            });
 
             } );
         </script>

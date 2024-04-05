@@ -235,7 +235,7 @@ include('config/dbcon.php');
                     // SQL queries using PHP
                 } else if (!isset($_GET['semester'])) {
                     // Define static semesters
-                    $semesters = array("1st Semester", "2nd Semester", "Intersession Summer");
+                    $semesters = array("1st Semester", "2nd Semester", "Intersession");
                     foreach ($semesters as $key => $semester) {
                         // Generate a unique ID for each semester card
                         $card_id = 'semester_' . ($key + 1); // Add 1 to start IDs from 1

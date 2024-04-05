@@ -92,7 +92,7 @@ include('config/dbcon.php');
                 <img src="assets/images/BG.png" alt="sample-photo" id="sample-photo">
             </aside>
             <article class="home-article">
-                <h4 id="home-header">STUDENT LEARNING PROGRAM</h4>
+                <h4 id="home-header">SERVICE LEARNING PROGRAM</h4>
                 <p class="" style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

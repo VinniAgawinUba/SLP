@@ -22,7 +22,7 @@ include('includes/header.php');
                     </div>
                     <div class="card-body">
 
-                    <table id="myPost" class="table table-bordered table-striped">
+                    <table id="myGallery" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>

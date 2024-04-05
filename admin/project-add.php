@@ -27,22 +27,22 @@ include('includes/header.php');
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="">Name</label>
-                                <input type="text" name="pname" required class="form-control">
+                                <input type="text" name="pname" required class="form-control" placeholder="Project Name">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="">Type</label>
-                                <input type="text" name="type" required class="form-control">
+                                <input type="text" name="type" required class="form-control" placeholder="Project Type">
                             </div>
                             <!-- Add other project fields as needed -->
 
                             <div class="col-md-12 mb-3">
                                 <label for="">Description</label>
-                                <textarea name="description" class="form-control" required rows="4"></textarea>
+                                <textarea name="description" class="form-control" required rows="4" placeholder="Project Description"></textarea>
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="">Subject Hosted</label>
-                                <input type="text" name="subject_hosted" required class="form-control">
+                                <input type="text" name="subject_hosted" required class="form-control" placeholder="Subject Hosted Ex. ITCC 42">
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -187,8 +187,35 @@ include('includes/header.php');
                                     </select>
 
                             </div>
+
+                            <!-- Dynamic Faculty -->
+                            <div class="col-md-3 mb-3" id="faculty-select-container">
+                                <label for="">Faculty Members</label>
+                                <div class="faculty-select-wrapper">
+                                    <select name="faculty[]" class="form-control select2">
+                                        <option value="">--Select Faculty--</option>
+                                        <?php
+                                        $faculty_query = "SELECT * FROM faculty";
+                                        $faculty_query_run = mysqli_query($con, $faculty_query);
+                                        if(mysqli_num_rows($faculty_query_run) > 0) {
+                                            foreach($faculty_query_run as $faculty_list) {
+                                        ?>
+                                                <option value="<?=$faculty_list['id']?>"> <?=$faculty_list['fname'].' '.$faculty_list['lname']?> </option>
+                                        <?php
+                                            }
+                                        } else {
+                                            echo "<option value=''>No Faculty Found</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-success mt-2" onclick="addFacultySelect()">Add Faculty</button>
+                            </div>
+
+
+
                             <!-- Upload project related files to project_documents -->
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-12 mb-3">
                                 <label for="">Upload Project Files</label>
                                 <input type="file" name="project_documents[]" multiple class="form-control">
 
@@ -208,6 +235,57 @@ include('includes/header.php');
         </div>
     </div>
 </div>
+
+<script>
+function addFacultySelect() {
+    var container = document.getElementById("faculty-select-container");
+    var wrapper = document.createElement("div");
+    wrapper.classList.add("faculty-select-wrapper");
+
+    var select = document.createElement("select");
+    select.name = "faculty[]";
+    select.required = true;
+    select.classList.add("form-control", "select2");
+
+    var option = document.createElement("option");
+    option.value = "";
+    option.text = "--Select Faculty--";
+    select.appendChild(option);
+
+    <?php
+    $faculty_query_run = mysqli_query($con, $faculty_query);
+    if(mysqli_num_rows($faculty_query_run) > 0) {
+        foreach($faculty_query_run as $faculty_list) {
+    ?>
+            var option = document.createElement("option");
+            option.value = "<?=$faculty_list['id']?>";
+            option.text = "<?=$faculty_list['fname'].' '.$faculty_list['lname']?>";
+            select.appendChild(option);
+    <?php
+        }
+    }
+    ?>
+
+    wrapper.appendChild(select);
+
+    var removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.classList.add("btn", "btn-danger", "mt-2");
+    removeBtn.textContent = "Remove";
+    removeBtn.onclick = function() {
+        container.removeChild(wrapper);
+    };
+
+    wrapper.appendChild(removeBtn);
+
+    container.appendChild(wrapper);
+
+    // Initialize Select2 for the new dropdown
+    $(select).select2();
+}
+</script>
+
+
 <?php
 include('includes/footer.php');
 include('includes/scripts.php');
