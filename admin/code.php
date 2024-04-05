@@ -646,6 +646,201 @@ if(isset($_POST['article_delete_btn']))
 
 }
 
+//Add Gallery
+if(isset($_POST['gallery_add_btn'])) {
+    $project_id = mysqli_real_escape_string($con, $_POST['project_id']);
+    $name = mysqli_real_escape_string($con, $_POST['name']);
+
+
+    // Insert the Article with the project_id
+    $query = "INSERT INTO gallery ( project_id, name) 
+              VALUES ('$project_id', '$name')";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run) {
+
+        $gallery_id = mysqli_insert_id($con); // Get the last inserted gallery_id
+
+
+        // Debugging statement
+        echo "<pre>";
+        print_r($_FILES['gallery_photos']);
+        echo "</pre>";
+
+        // Upload multiple files
+        if(isset($_FILES['pictures'])) {
+            $file_count = count($_FILES['pictures']['name']);
+            for($i = 0; $i < $file_count; $i++) {
+                $file_name = $_FILES['pictures']['name'][$i];
+                $file_tmp = $_FILES['pictures']['tmp_name'][$i];
+                $file_type = $_FILES['pictures']['type'][$i];
+                $file_size = $_FILES['pictures']['size'][$i];
+                $file_error = $_FILES['pictures']['error'][$i];
+
+                if($file_error === UPLOAD_ERR_OK) {
+                    $file_destination = '../uploads/gallery_photos/' . $file_name;
+                    if(move_uploaded_file($file_tmp, $file_destination)) {
+                        // Insert file details into gallery_photos table
+                        $query = "INSERT INTO gallery_photos (gallery_id ,project_id, file_name, file_type, file_size, file_path) 
+                                  VALUES ('$gallery_id','$project_id', '$file_name', '$file_type', '$file_size', '$file_destination')";
+                        $query_run = mysqli_query($con, $query);
+
+                        if(!$query_run) {
+                            $_SESSION['message'] = "Error inserting file details into database";
+                            header('Location: gallery-add.php');
+                        }
+                    } else {
+                        $_SESSION['message'] = "Error moving uploaded file to destination folder";
+                        header('Location: gallery-add.php');
+                    }
+                } else {
+                    $_SESSION['message'] = "Error uploading file: " . $_FILES['pictures']['name'][$i];
+                    header('Location: gallery-add.php');
+                }
+            }
+        } else {
+            // Debugging statement
+            echo "No pictures uploaded";
+        }
+
+        $_SESSION['message'] = "New Gallery has been added";
+        header('Location: gallery-add.php');
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: gallery-add.php');
+    }
+
+}
+
+// Edit Gallery
+if(isset($_POST['gallery_edit_btn'])) {
+    $gallery_id = mysqli_real_escape_string($con, $_POST['gallery_id']);
+    $project_id = mysqli_real_escape_string($con, $_POST['project_id']);
+    $name = mysqli_real_escape_string($con, $_POST['name']);
+
+    // Update gallery details
+    $update_query = "UPDATE gallery SET project_id = '$project_id', name = '$name' WHERE id = '$gallery_id'";
+    $update_result = mysqli_query($con, $update_query);
+
+    if($update_result) {
+        // Check if new photos are being uploaded
+        if(!empty($_FILES['pictures']['name'][0])) {
+            $files = $_FILES['pictures'];
+
+            foreach($files['name'] as $key => $file_name) {
+                // File details
+                $file_tmp = $files['tmp_name'][$key];
+                $file_size = $files['size'][$key];
+                $file_error = $files['error'][$key];
+
+                // Handle file upload
+                if($file_error === UPLOAD_ERR_OK) {
+                    // Move uploaded file to the destination directory
+                    $file_path = '../uploads/gallery_photos/' . $file_name;
+                    move_uploaded_file($file_tmp, $file_path);
+
+                    // Insert photo details into database
+                    $insert_query = "INSERT INTO gallery_photos (gallery_id, project_id, file_name, file_path) VALUES ('$gallery_id', '$project_id', '$file_name', '$file_path')";
+                    $insert_result = mysqli_query($con, $insert_query);
+
+                    if(!$insert_result) {
+                        $_SESSION['error'] = "Error inserting file details into database";
+                        header('Location: gallery_edit.php?id='.$gallery_id);
+                        exit;
+                    }
+                } else {
+                    $_SESSION['error'] = "Error uploading file: " . $file_name;
+                    header('Location: gallery_edit.php?id='.$gallery_id);
+                    exit;
+                }
+            }
+        }
+
+        $_SESSION['message'] = "Gallery details updated successfully";
+        header('Location: gallery-view.php');
+        exit;
+    } else {
+        $_SESSION['error'] = "Failed to update gallery details";
+        header('Location: gallery_edit.php?id='.$gallery_id);
+        exit;
+    }
+}
+
+
+// Delete Photos in Gallery
+if(isset($_POST['delete_photo_btn'])) {
+    $photo_id = $_POST['photo_id'];
+    $gallery_id = $_POST['gallery_id'];
+
+    // Retrieve the file path of the photo
+    $photo_query = "SELECT * FROM gallery_photos WHERE id = '$photo_id'";
+    $photo_query_run = mysqli_query($con, $photo_query);
+    $photo_data = mysqli_fetch_assoc($photo_query_run);
+    $photo_path = $photo_data['file_path'];
+
+    // Delete photo record from the database
+    $delete_query = "DELETE FROM gallery_photos WHERE id = '$photo_id'";
+    $delete_query_run = mysqli_query($con, $delete_query);
+
+    // Delete photo file from the server directory
+    if($delete_query_run) {
+        if(file_exists($photo_path)) {
+            unlink($photo_path); // Delete the file
+        }
+        $_SESSION['message'] = "Gallery Photo has been Deleted";
+        header('Location: gallery-edit.php?id='.$gallery_id);
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: gallery-edit.php?id='.$gallery_id);
+        exit(0);
+    }
+}
+
+// Delete Gallery
+if(isset($_POST['delete_gallery_btn'])) {
+    $gallery_id = mysqli_real_escape_string($con, $_POST['gallery_id']);
+
+    // First, delete all associated photos from the database and unlink the files
+    $delete_photos_query = "SELECT file_path FROM gallery_photos WHERE gallery_id = '$gallery_id'";
+    $delete_photos_result = mysqli_query($con, $delete_photos_query);
+
+    if($delete_photos_result) {
+        while($row = mysqli_fetch_assoc($delete_photos_result)) {
+            $file_path = $row['file_path'];
+            // Unlink the file from the server
+            if(file_exists($file_path)) {
+                unlink($file_path);
+            }
+        }
+        // Now delete associated photos from the database
+        $delete_photos_query = "DELETE FROM gallery_photos WHERE gallery_id = '$gallery_id'";
+        $delete_photos_result = mysqli_query($con, $delete_photos_query);
+
+        if(!$delete_photos_result) {
+            $_SESSION['error'] = "Error deleting gallery photos";
+            header('Location: gallery-view.php');
+            exit;
+        }
+    }
+
+    // Next, delete the gallery from the database
+    $delete_gallery_query = "DELETE FROM gallery WHERE id = '$gallery_id'";
+    $delete_gallery_result = mysqli_query($con, $delete_gallery_query);
+
+    if($delete_gallery_result) {
+        $_SESSION['message'] = "Gallery deleted successfully";
+        header('Location: gallery-view.php');
+        exit;
+    } else {
+        $_SESSION['error'] = "Error deleting gallery";
+        header('Location: gallery-view.php');
+        exit;
+    }
+}
+
+
+
 
 //Add Post
 if(isset($_POST['post_add_btn'])) {

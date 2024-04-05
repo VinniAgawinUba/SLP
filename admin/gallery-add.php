@@ -6,10 +6,10 @@ include('includes/scripts.php');
 
 
 <div class="container-fluid px-4">
-        <h4 class="mt-4">Articles</h4>
+        <h4 class="mt-4">Gallery</h4>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Dashboard</li>
-                <li class="breadcrumb-item">Articles</li>
+                <li class="breadcrumb-item">Galleries</li>
             </ol>
             <div class="row">
 
@@ -19,8 +19,8 @@ include('includes/scripts.php');
 
                 <div class="card">
                     <div class="card-header">
-                        <h4>Add Articles
-                        <a href="article-view.php" class="btn btn-danger float-end">BACK</a>
+                        <h4>Add Galleries
+                        <a href="gallery-view.php" class="btn btn-danger float-end">BACK</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -29,8 +29,8 @@ include('includes/scripts.php');
                             <div class="row">
 
                                 <div class="col-md-6 mb-3">
-                                    <label for="">Title</label>
-                                    <input type="text" name="thumb_nail_title" required class="form-control" placeholder="Article Title">
+                                    <label for="">Gallery Name</label>
+                                    <input type="text" name="name" required class="form-control" placeholder="Gallery Name">
                                 </div>
 
                                 <div>
@@ -57,24 +57,15 @@ include('includes/scripts.php');
                                 ?>
                                 </div>
                                 
-                                <div class="col-md-12 mb-3">
-                                    <label for="">Content</label>
-                                    <textarea name="content" class="form-control" id="summernote" required rows="4"> </textarea>
-                                </div>
-                                
-                                <div class="col-md-12 mb-3">
-                                    <label for="">Thumbnail Summary</label>
-                                    <textarea name="thumb_nail_summary" required max="191" class="form-control" placeholder="Brief Summary of Article to entice viewers, Maximum of 500 characters" maxlength="500"> </textarea>
-                                </div>
                                 
                                 <div class="col-md-6 mb-3">
-                                    <label for="">Thumbnail Pic</label>
-                                    <input type="file" name="thumb_nail_pic" required class="form-control">
+                                    <label for="">Pictures</label>
+                                    <input type="file" name="pictures[]" multiple class="form-control">
                                 </div>
 
 
                                 <div class="col-md-12 mb-3">
-                                    <button type="submit" name = "article_add_btn" class="btn btn-primary">Save Post</button>
+                                    <button type="submit" name = "gallery_add_btn" class="btn btn-primary">Save Post</button>
                                 
                             </div>
 

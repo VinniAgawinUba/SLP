@@ -80,6 +80,19 @@
                                 </nav>
                             </div>
 
+                            <!--- Galleries Interface -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseGalleries" aria-expanded="false" aria-controls="collapseGalleries">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Gallery
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseGalleries" aria-labelledby="Galleries" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="gallery-add.php">Add Gallery</a>
+                                    <a class="nav-link" href="gallery-view.php">View Galleries</a>
+                                </nav>
+                            </div>
+
                              <!--- Project Interface -->
                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProjects" aria-expanded="false" aria-controls="collapseProjects">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>

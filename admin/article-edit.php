@@ -74,7 +74,7 @@ if(isset($_GET['id'])) {
                                     </select>
                                 <?php
                                 } else {
-                                    echo "No Category Found";
+                                    echo "No Project Found";
                                 }
                                 ?>
                             </div>
