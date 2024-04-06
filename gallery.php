@@ -10,19 +10,20 @@ include('config/dbcon.php');
 <body>
     <div class="container-fluid custombg-image-row ">
         <div class="row gy-3">
-            <h1 class="gallery">Gallery</h1>
+            <h1 class="gallery col-md-12" style="margin-top:-5px;">Galleries</h1>
             <!-- Main Body -->
            
             <div class="mainContent">
                     <div class="row gy-3">
                         <?php
-                        $query = "SELECT * FROM gallery";
+                        //Gets galleries from database
+                        $query = "SELECT * FROM gallery ORDER BY id DESC LIMIT 9";
                         $query_run = mysqli_query($con, $query);
                         if(mysqli_num_rows($query_run) > 0)
                         {
                             foreach($query_run as $item)
                             {
-                            ?>
+                            ?>  
                             <div class="col-md-4 px-5">
                                 <a href="gallery-view.php?id=<?= $item['id']; ?>">
                                     <div class="card bg-transparent border-0 ">

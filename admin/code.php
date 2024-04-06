@@ -415,10 +415,38 @@ if (isset($_POST['project_edit_btn'])) {
     $query_run = mysqli_query($con, $query);
 
     if ($query_run) {
+        // Update SDGs covered by the project
+        $selected_sdgs = isset($_POST['sdgs']) ? $_POST['sdgs'] : array();
+        $delete_query = "DELETE FROM project_sdgs WHERE project_id = '$project_id'";
+        mysqli_query($con, $delete_query);
+        foreach ($selected_sdgs as $sdg) {
+            $insert_query = "INSERT INTO project_sdgs (project_id, sdg) VALUES ('$project_id', '$sdg')";
+            mysqli_query($con, $insert_query);
+        }
+
+
         // Check if any files are uploaded
         if (!empty($_FILES['project_documents']['name'][0])) {
-            // Upload project documents
-            // Code for uploading project documents...
+            $file_count = count($_FILES['project_documents']['name']);
+            for ($i = 0; $i < $file_count; $i++) {
+                $file_name = $_FILES['project_documents']['name'][$i];
+                $file_tmp = $_FILES['project_documents']['tmp_name'][$i];
+                $file_type = $_FILES['project_documents']['type'][$i];
+                $file_size = $_FILES['project_documents']['size'][$i];
+                $file_error = $_FILES['project_documents']['error'][$i];
+
+                if ($file_error === UPLOAD_ERR_OK) {
+                    $file_destination = '../uploads/project_documents/' . $file_name;
+                    move_uploaded_file($file_tmp, $file_destination);
+
+
+
+                    // Insert file details into project_documents table
+                    $query = "INSERT INTO project_documents (project_id, file_name, file_type, file_size, file_path) 
+                              VALUES ('$project_id', '$file_name', '$file_type', '$file_size', '$file_destination')";
+                    $query_run = mysqli_query($con, $query);
+                }
+            }
         }
 
         // Handle faculty members

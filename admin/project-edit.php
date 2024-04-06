@@ -258,6 +258,61 @@ include('includes/header.php');
                                 <button type="button" class="btn btn-success mt-2" onclick="addFacultySelect()">Add Faculty</button>
                             </div>
 
+                            <div class="col-md-12 mb-3 card">
+                            <label for="">SDGs Covered</label><br>
+                            <div class="row">
+                                <?php
+                                // Fetch the SDGs associated with the current project from the database
+                                $project_id = $_GET['id'];
+                                $project_sdgs_query = "SELECT sdg FROM project_sdgs WHERE project_id = '$project_id'";
+                                $project_sdgs_query_run = mysqli_query($con, $project_sdgs_query);
+                                $project_sdgs = array();
+                                if(mysqli_num_rows($project_sdgs_query_run) > 0) {
+                                    while($row = mysqli_fetch_assoc($project_sdgs_query_run)) {
+                                        $project_sdgs[] = $row['sdg'];
+                                    }
+                                }
+
+                                // Associative array mapping SDG names to their corresponding sdg_# format
+                                $sdgs = array(
+                                    'No Poverty' => 'sdg_1', 
+                                    'Zero Hunger' => 'sdg_2', 
+                                    'Good Health and Well-being' => 'sdg_3', 
+                                    'Quality Education' => 'sdg_4', 
+                                    'Gender Equality' => 'sdg_5', 
+                                    'Clean Water and Sanitation' => 'sdg_6', 
+                                    'Affordable and Clean Energy' => 'sdg_7', 
+                                    'Decent Work and Economic Growth' => 'sdg_8', 
+                                    'Industry, Innovation, and Infrastructure' => 'sdg_9', 
+                                    'Reduced Inequality' => 'sdg_10', 
+                                    'Sustainable Cities and Communities' => 'sdg_11', 
+                                    'Responsible Consumption and Production' => 'sdg_12', 
+                                    'Climate Action' => 'sdg_13', 
+                                    'Life Below Water' => 'sdg_14', 
+                                    'Life on Land' => 'sdg_15', 
+                                    'Peace, Justice, and Strong Institutions' => 'sdg_16', 
+                                    'Partnerships for the Goals' => 'sdg_17'
+                                );
+
+                                // Loop through SDGs array to create checkboxes and mark selected ones as checked
+                                foreach ($sdgs as $sdg_name => $sdg_value) {
+                                    $icon_path = '../uploads/SDGs/icons/' . $sdg_value . '.png'; // Path to the icon file
+                                    echo '<div class="col-md-3 mb-2">';
+                                    echo '<div class="form-check">';
+                                    if (file_exists($icon_path)) {
+                                        echo '<img src="' . $icon_path . '" alt="' . $sdg_name . '" class="sdg-icon img-fluid" style="height:100px; width:100px">';
+                                    }
+                                    $checked = in_array($sdg_value, $project_sdgs) ? 'checked' : '';
+                                    echo '<input class="form-check-input" type="checkbox" name="sdgs[]" id="' . $sdg_value . '" value="'.$sdg_value.'" ' . $checked . '>';
+                                    echo '<label class="form-check-label" for="' . $sdg_value . '">' . $sdg_name . '</label>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+
 
 
                             <!-- Upload project related files to project_documents -->

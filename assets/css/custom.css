@@ -24,6 +24,8 @@ body {
     max-height: 80vw; /* Set a maximum height for the div */
     object-fit: contain;
     overflow-y: auto; /* Add vertical scrollbar when content exceeds height */
+    -ms-overflow-style: none;  /*  HIDE SCROLL BAR IE and Edge */
+  scrollbar-width: none;  /* HIDE SCROLL BAR Firefox */
 }
 
 
