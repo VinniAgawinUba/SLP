@@ -462,6 +462,8 @@ if (isset($_POST['project_edit_btn'])) {
             }
         }
 
+        //Check if faculty array is empty, if it is delete
+
         $_SESSION['message'] = "Project has been updated";
         header('Location: project-edit.php?id=' . $project_id);
         exit(0);
@@ -469,6 +471,21 @@ if (isset($_POST['project_edit_btn'])) {
         $_SESSION['message'] = "Something went wrong";
         header('Location: project-edit.php?id=' . $project_id);
         exit(0);
+    }
+}
+
+//Delete project_faculty
+if(isset($_POST['delete_project_faculty'])) 
+{
+    $faculty_id = $_POST['faculty_id'];
+    $project_id = $_POST['project_id'];
+
+    $query = "DELETE FROM project_faculty WHERE faculty_id = '$faculty_id' AND project_id = '$project_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run) {
+        $_SESSION['message'] = "Faculty Member has been Deleted For Project";
+        header('Location: project-edit.php?id='.$project_id);
     }
 }
 

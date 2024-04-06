@@ -249,7 +249,13 @@ include('includes/header.php');
                                                 }
                                                 ?>
                                             </select>
-                                            <button type="button" class="btn btn-danger mt-2" onclick="removeFacultySelect(this)">Remove</button>
+
+                                            <form action="code.php" method="POST">
+                                                <input type="hidden" name="project_id" value="<?= $project_id ?>">
+                                                <input type="hidden" name="faculty_id" value="<?= $faculty['id'] ?>">
+                                                <button type="submit" name="delete_project_faculty" class="btn btn-danger mt-2">Remove</button>
+                                            </form>
+
                                         </div>
                                 <?php
                                     }
