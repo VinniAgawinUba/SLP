@@ -167,7 +167,7 @@ include('config/dbcon.php');
     <?php
     // Set the yellow tag based on the URL parameters
     if (!isset($_GET['school_year'])) {
-        $YellowTag = "YEARS";
+        $YellowTag = "SCHOOL YEAR";
     } else if (isset($_GET['school_year']) && !isset($_GET['semester'])) {
         $YellowTag = "SEMESTER";
     } else if (isset($_GET['semester']) && isset($_GET['school_year']) && !isset($_GET['college'])) {
@@ -220,7 +220,7 @@ include('config/dbcon.php');
                                 <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickSchool('<?= $item['id']; ?>')" style="text-align: center; justify-content: center;">
                                     <div class="card-body">
                                         <!-- <h5 class="card-title text-white text-center"><?= $item['id']; ?></h5> -->
-                                        <p class="card-text text-center" id="year-font-style"><?= $item['school_year']; ?></p>
+                                        <p class="card-text text-center" id="year-font-style">SY <?= $item['school_year']; ?></p>
                                         <!-- You can add more project details here -->
                                     </div>
                                 </div>
@@ -258,7 +258,15 @@ include('config/dbcon.php');
 
                 } else if (!isset($_GET['college'])) {
                     //If College is not set as a parameter, render Colleges
-                    $query = "SELECT * FROM college";
+                    $semester = $_GET['semester'];
+                    $selectedSchoolYearId = $_GET['school_year'];
+                    //only show colleges if there are existing projects assoxciated with those colleges for that timeframe, if not, show nothing and go back 
+                    $query = "SELECT * FROM projects
+                    INNER JOIN school_year ON projects.school_year_id = school_year.id
+                    INNER JOIN college ON projects.college_id = college.id
+                    WHERE projects.semester = $semester
+                    AND school_year.id = $selectedSchoolYearId
+                    GROUP BY college_id";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -276,6 +284,12 @@ include('config/dbcon.php');
                         <?php
                         }
                     }
+                    else {
+                        // If no projects are found, echo no projects found tag
+                        echo "<h1 class='text-white'>No projects found Will go back in 3 seconds</h1>";
+                        //Go back to the previous page
+                        echo "<script>setTimeout(\"location.href = 'projects.php';\",3000);</script>";
+                    }
 
 
                     // DEPARTMENT
@@ -283,7 +297,16 @@ include('config/dbcon.php');
 
                 } else if (!isset($_GET['department'])) {
                     //If Department is not set as a parameter, render Departments
-                    $query = "SELECT * FROM department WHERE college_id = '$_GET[college]'";
+                    $semester = $_GET['semester'];
+                    $selectedSchoolYearId = $_GET['school_year'];
+                    //only show departments if there are existing projects associated with those departments for that timeframe, if not, show nothing and go back
+                    $query = "SELECT * FROM projects, school_year, college, department 
+                    WHERE projects.school_year_id = school_year.id 
+                    AND projects.semester = $semester 
+                    AND projects.college_id = college.id 
+                    AND projects.department_id = department.id 
+                    AND school_year.id = $selectedSchoolYearId
+                    GROUP BY department_id";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -301,6 +324,12 @@ include('config/dbcon.php');
 
                         <?php
                         }
+                    }
+                    else {
+                        // If no projects are found, echo no projects found tag
+                        echo "<h1 class='text-white'>No projects found Will go back in 3 seconds</h1>";
+                        //Go back to the previous page
+                        echo "<script>setTimeout(\"location.href = 'projects.php';\",3000);</script>";
                     }
                 }
 
