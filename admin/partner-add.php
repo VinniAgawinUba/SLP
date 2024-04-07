@@ -46,15 +46,21 @@ include('includes/header.php');
                                 
                                 <div class="col-md-6 mb-3">
                                     <label for="">Designation</label>
-                                    <input type="text" name="meta_title" required max="191" class="form-control">
+                                    <input type="text" name="designation" required max="191" class="form-control">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="">Email</label>
-                                    <input type="text" name="meta_description" max="191" required class="form-control" rows="4"> </input>
+                                    <input type="text" name="email" max="191" required class="form-control" rows="4"> </input>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="">Contact Number</label>
-                                    <input type="text" name="meta_keyword" max="191" class="form-control" required rows="4"> </input>
+                                    <input type="text" name="contact_number" max="191" class="form-control" required rows="4"> </input>
+                                </div>
+
+                                <!--Logo Image-->
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Logo Image</label>
+                                    <input type="file" name="logo_image" class="form-control">
                                 </div>
                                
 

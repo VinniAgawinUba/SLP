@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2024 at 07:42 AM
+-- Generation Time: Apr 07, 2024 at 08:00 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -235,6 +235,7 @@ INSERT INTO `gallery_photos` (`id`, `gallery_id`, `project_id`, `file_name`, `fi
 CREATE TABLE `partners` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL,
+  `logo_image` varchar(191) DEFAULT NULL,
   `address` varchar(191) NOT NULL,
   `contact_person` varchar(191) NOT NULL,
   `designation` varchar(191) NOT NULL,
@@ -247,8 +248,9 @@ CREATE TABLE `partners` (
 -- Dumping data for table `partners`
 --
 
-INSERT INTO `partners` (`id`, `name`, `address`, `contact_person`, `designation`, `email`, `contact_number`, `featured`) VALUES
-(1, 'Test Partner', 'Test Address', 'Test Contact Person', 'Captain President', 'test@gmail.com', '987654321', 0);
+INSERT INTO `partners` (`id`, `name`, `logo_image`, `address`, `contact_person`, `designation`, `email`, `contact_number`, `featured`) VALUES
+(1, 'Test Partner', '1712469181.png', 'Test Address', 'Test Contact Person', 'Captain President', 'test@gmail.com', '987654321', 0),
+(4, 'Jollibee', '1712469532.png', 'Quimpo Blvd., Davao City', 'Mr. Jolli Bee', 'a', 'email', '1234', 0);
 
 -- --------------------------------------------------------
 
@@ -545,6 +547,12 @@ ALTER TABLE `gallery_photos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `partners`
+--
+ALTER TABLE `partners`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -650,6 +658,12 @@ ALTER TABLE `gallery`
 --
 ALTER TABLE `gallery_photos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `partners`
+--
+ALTER TABLE `partners`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `posts`

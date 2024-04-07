@@ -147,36 +147,52 @@ if(isset($_POST['update_college'])) {
 
 
 //Add Partner
-if(isset($_POST['partner_add_btn']))
-{
+if(isset($_POST['partner_add_btn'])) {
     $name = $_POST['name'];
     $address = $_POST['address'];
     $contact_person = $_POST['contact_person'];
     $designation = $_POST['designation'];
     $email = $_POST['email'];
     $contact_number = $_POST['contact_number'];
+    $logo_image = $_FILES['logo_image'];
 
-    //Insert the Partner
-    $query = "INSERT INTO partners (name, address, contact_person, designation, email, contact_number) VALUES ('$name', '$address', '$contact_person', '$designation', '$email', '$contact_number')";
-    $query_run = mysqli_query($con, $query);
+    // Check if a new file is uploaded
+    if($logo_image['size'] > 0) {
+        // Rename the file
+        $image_extension = pathinfo($logo_image['name'], PATHINFO_EXTENSION);
+        $filename = time() . '.' . $image_extension;
 
-    if($query_run)
-    {
+        // Move the uploaded file to the target directory
+        $target_directory = '../uploads/partner_logos/';
+        $target_file = $target_directory . $filename;
+        if(move_uploaded_file($logo_image['tmp_name'], $target_file)) {
+            // Insert the Partner record with the new logo image
+            $query = "INSERT INTO partners (name, address, contact_person, designation, email, contact_number, logo_image) VALUES ('$name', '$address', '$contact_person', '$designation', '$email', '$contact_number', '$filename')";
+            $query_run = mysqli_query($con, $query);
+        } else {
+            $_SESSION['message'] = "Failed to upload file";
+            header('Location: partner-add.php');
+            exit(); // Terminate script after redirect
+        }
+    } else {
+        // No new file uploaded, insert the Partner record without the logo image
+        $query = "INSERT INTO partners (name, address, contact_person, designation, email, contact_number) VALUES ('$name', '$address', '$contact_person', '$designation', '$email', '$contact_number')";
+        $query_run = mysqli_query($con, $query);
+    }
+
+    // Check if the query for adding the Partner was successful
+    if($query_run) {
         $_SESSION['message'] = "New Partner has been added";
         header('Location: partner-add.php');
-        exit(0);
-    }
-    else
-    {
+    } else {
         $_SESSION['message'] = "Something went wrong";
         header('Location: partner-add.php');
-        exit(0);
     }
 }
 
+
 //Update Partner
-if(isset($_POST['update_partner']))
-{
+if(isset($_POST['update_partner'])) {
     $partner_id = $_POST['id'];
     $name = $_POST['name'];
     $address = $_POST['address'];
@@ -184,24 +200,45 @@ if(isset($_POST['update_partner']))
     $designation = $_POST['designation'];
     $email = $_POST['email'];
     $contact_number = $_POST['contact_number'];
+    $logo_image = $_FILES['logo_image'];
 
-    //UPDATE the Partner
-    $query = "UPDATE partners SET name = '$name', address = '$address', contact_person = '$contact_person', designation = '$designation', email = '$email', contact_number = '$contact_number' WHERE id = '$partner_id'";
+    // Check if a new file is uploaded
+    if($logo_image['size'] > 0) {
+        // Rename the file
+        $image_extension = pathinfo($logo_image['name'], PATHINFO_EXTENSION);
+        $filename = time() . '.' . $image_extension;
+
+        // Move the uploaded file to the target directory
+        $target_directory = '../uploads/partner_logos/';
+        $target_file = $target_directory . $filename;
+        if(move_uploaded_file($logo_image['tmp_name'], $target_file)) {
+            // Remove old file if exists
+            if(!empty($_POST['old_logo_image']) && file_exists($target_directory . $_POST['old_logo_image'])) {
+                unlink($target_directory . $_POST['old_logo_image']);
+            }
+        } else {
+            $_SESSION['message'] = "Failed to upload file";
+            header('Location: partner-edit.php?id=' . $partner_id);
+            exit(); // Terminate script after redirect
+        }
+    } else {
+        // No new file uploaded, use the existing one
+        $filename = $_POST['old_logo_image'];
+    }
+
+    // Update the Partner record
+    $query = "UPDATE partners SET name = '$name', address = '$address', contact_person = '$contact_person', designation = '$designation', email = '$email', contact_number = '$contact_number', logo_image = '$filename' WHERE id = '$partner_id'";
     $query_run = mysqli_query($con, $query);
 
-    if($query_run)
-    {
+    if($query_run) {
         $_SESSION['message'] = "Partner has been Updated";
         header('Location: partner-view.php');
-        exit(0);
-    }
-    else
-    {
+    } else {
         $_SESSION['message'] = "Something went wrong";
-        header('Location: partner-edit.php');
-        exit(0);
+        header('Location: partner-edit.php?id=' . $partner_id);
     }
 }
+
 
 
 //Add Faculty

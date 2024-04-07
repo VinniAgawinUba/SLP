@@ -27,6 +27,7 @@ include('includes/header.php');
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Logo</th>
                                 <th>Address</th>
                                 <th>Contact Person</th>
                                 <th>Designation</th>
@@ -49,6 +50,7 @@ include('includes/header.php');
                                     <tr>
                                         <td><?= $row['id']; ?></td>
                                         <td><?= $row['name']; ?></td>
+                                        <td><img src="../uploads/partner_logos/<?=$row['logo_image']; ?>" alt="<?= $row['name']; ?>-logo" style="width: 100px;"></td>
                                         <td><?= $row['address']; ?></td>
                                         <td><?= $row['contact_person']; ?></td>
                                         <td><?= $row['designation']; ?></td>

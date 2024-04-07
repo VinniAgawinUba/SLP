@@ -37,7 +37,7 @@ include('includes/header.php');
 
                            
 
-                        <form action="code.php" method="POST">
+                        <form action="code.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?= $partner['id'];?>">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -63,6 +63,13 @@ include('includes/header.php');
                                 <div class="col-md-6 mb-3">
                                     <label for="">Contact Number</label>
                                     <input type="text" name="contact_number" class="form-control" value="<?= $partner['contact_number'];?>">
+                                </div>
+
+                                <!--Logo Image-->
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Logo Image</label>
+                                    <input type="file" name="logo_image" class="form-control">
+                                    <img src="../uploads/partner_logos/<?= $partner['logo_image']; ?>" alt="<?= $partner['name']; ?>-logo" style="width: 100px;">
                                 </div>
                                 
                                
