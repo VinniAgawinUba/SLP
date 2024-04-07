@@ -8,19 +8,41 @@ include('config/dbcon.php');
 
 <style>
     /* Header Style */
-    .headers{
+    .headers {
         background-color: #A19158;
-    color: white;
-    font-size: 34px;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-    padding: 15px 0;
+        color: white;
+        font-size: 34px;
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 800;
+        font-style: normal;
+        padding: 15px 0;
+    }
+
+    /* Carousel Style */
+    .carousel-item img {
+        border-radius: 10px;
+        height: 250px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #A19158;
+    }
+
+    /* Card Style */
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
     }
 </style>
 
-<link rel="stylesheet" href="assets/css/custom.css">
 <body>
     <div class="container-fluid custombg-image-row">
         <div class="row">
@@ -31,17 +53,17 @@ include('config/dbcon.php');
             // Get galleries from the database
             $query = "SELECT * FROM gallery ORDER BY id DESC LIMIT 9";
             $query_run = mysqli_query($con, $query);
-            
+
             if(mysqli_num_rows($query_run) > 0) {
                 while($gallery = mysqli_fetch_assoc($query_run)) {
                     $gallery_id = $gallery['id'];
-                    
+
                     // Get photos for this gallery
                     $photo_query = "SELECT * FROM gallery_photos WHERE gallery_id = $gallery_id LIMIT 5";
                     $photo_query_run = mysqli_query($con, $photo_query);
                     $photos = mysqli_fetch_all($photo_query_run, MYSQLI_ASSOC);
                     ?>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-4">
                         <div class="card">
                             <div id="carousel<?= $gallery_id; ?>" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-indicators">
@@ -61,7 +83,7 @@ include('config/dbcon.php');
                                     foreach($photos as $index => $photo) {
                                         ?>
                                         <div class="carousel-item <?php echo $first ? 'active' : ''; ?>">
-                                            <img src="uploads/gallery_photos/<?php echo $photo['file_name']; ?>" class="d-block w-100" alt="<?php echo $photo['file_name']; ?>" style="height:250px; width:500px;">
+                                            <img src="uploads/gallery_photos/<?php echo $photo['file_name']; ?>" class="d-block w-100" alt="<?php echo $photo['file_name']; ?>">
                                         </div>
                                         <?php
                                         $first = false;
