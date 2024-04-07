@@ -5,10 +5,10 @@ include('includes/header.php');
 
 
 <div class="container-fluid px-4">
-        <h4 class="mt-4">Projects</h4>
+        <h4 class="mt-4">Partners</h4>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Dashboard</li>
-                <li class="breadcrumb-item">Projects</li>
+                <li class="breadcrumb-item">Partners</li>
             </ol>
             <div class="row">
 
