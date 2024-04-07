@@ -21,11 +21,36 @@ include('includes/header.php');
                     </div>
                     <div class="card-body">
                     
-                    <form action="code.php" method="POST">
+                    <form action="code.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="">Name</label>
                                     <input type="text" name="name" required class="form-control">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Dean</label>
+                                    <select name="dean_id" class="form-control">
+                                        <option value="">--Select Dean From Faculty--</option>
+                                        <?php
+                                        $faculties = "SELECT * FROM faculty";
+                                        $faculties_run = mysqli_query($con, $faculties);
+                                        
+
+                                        if(mysqli_num_rows($faculties_run) > 0) {
+                                            foreach($faculties_run as $faculty) {
+                                                echo '<option value="'.$faculty['id'].'">'.$faculty['fname'].' '.$faculty['lname'].'</option>';
+                                            }
+                                        } else {
+                                            echo "<option value=''>No Faculties Found</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Logo</label>
+                                    <input type="file" name="logo_image" required class="form-control">
                                 </div>
                                 
                                 <div class="col-md-12 mb-3">

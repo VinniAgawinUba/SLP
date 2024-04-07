@@ -21,11 +21,13 @@ include('includes/header.php');
                         </h4>
                     </div>
                     <div class="card-body">
-                        <table id="myCollege" class="table table-bordered">
+                        <table id="myCollege" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
+                                    <th>Logo</th>
+                                    <th>Dean</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -43,7 +45,21 @@ include('includes/header.php');
                                         <tr>
                                             <td><?= $row['id']; ?></td>
                                             <td><?= $row['name']; ?></td>
-                                            <td><a href="college-edit.php?id=<?=$row['id'];?>" class="btn btn-success">Edit</a></td>
+                                            <td><img src="../uploads/college_logos/<?= $row['logo_image'];?>" width="100px;"></td>
+                                            <td>
+                                                <?php
+                                                $deanId = $row['dean_id'];
+                                                $query = "SELECT fname, lname FROM faculty WHERE id = '$deanId'";
+                                                $result = mysqli_query($con, $query);
+                                                if(mysqli_num_rows($result) > 0) {
+                                                    $dean = mysqli_fetch_assoc($result);
+                                                    echo $dean['fname'] . ' ' . $dean['lname'];
+                                                } else {
+                                                    echo 'No Dean Found';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td><a href="college-edit.php?id=<?=$row['id'];?>" class="btn btn-primary">Edit</a></td>
                                             <td>
                                                 <form action="code.php" method="POST">
                                                 <button type="submit" name="college_delete" value="<?=$row['id'];?>" class="btn btn-danger">Delete</button>

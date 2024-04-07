@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2024 at 06:42 AM
+-- Generation Time: Apr 07, 2024 at 07:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -85,7 +85,7 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `meta_title`, `me
 CREATE TABLE `college` (
   `id` int(11) NOT NULL,
   `name` varchar(191) NOT NULL,
-  `dean` int(11) DEFAULT NULL COMMENT 'faculty id of dean',
+  `dean_id` int(11) DEFAULT NULL COMMENT 'faculty id of dean',
   `logo_image` varchar(191) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -93,10 +93,11 @@ CREATE TABLE `college` (
 -- Dumping data for table `college`
 --
 
-INSERT INTO `college` (`id`, `name`, `dean`, `logo_image`) VALUES
+INSERT INTO `college` (`id`, `name`, `dean_id`, `logo_image`) VALUES
 (1, 'College of Computer Studies', NULL, NULL),
 (2, 'College of Nursing', NULL, NULL),
-(3, 'College of Engineering', NULL, NULL);
+(3, 'College of Engineering', 7, '1712468064.jpg'),
+(4, 'College of Agriculture', 5, '1712468470.png');
 
 -- --------------------------------------------------------
 
@@ -618,7 +619,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `college`
 --
 ALTER TABLE `college`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `department`

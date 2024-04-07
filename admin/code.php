@@ -54,51 +54,97 @@ if(isset($_POST['update_department']))
 
 
 //Add College
-if(isset($_POST['add_college']))
-{
+if(isset($_POST['add_college'])) {
     $name = $_POST['name'];
+    $dean_id = $_POST['dean_id'];
+    $logo_image = $_FILES['logo_image'];
 
-    //Insert the College
-    $query = "INSERT INTO college (name) VALUES ('$name')";
-    $query_run = mysqli_query($con, $query);
+    // Check if a new file is uploaded
+    if($logo_image['size'] > 0) {
+        // Rename the file
+        $image_extension = pathinfo($logo_image['name'], PATHINFO_EXTENSION);
+        $filename = time() . '.' . $image_extension;
 
-    if($query_run)
-    {
+        // Move the uploaded file to the target directory
+        $target_directory = '../uploads/college_logos/';
+        $target_file = $target_directory . $filename;
+        if(move_uploaded_file($logo_image['tmp_name'], $target_file)) {
+            // Insert the College record with the new logo image
+            $query = "INSERT INTO college (name, dean_id, logo_image) VALUES ('$name', '$dean_id', '$filename')";
+            $query_run = mysqli_query($con, $query);
+        } else {
+            $_SESSION['message'] = "Failed to upload file";
+            header('Location: college-add.php');
+            exit(); // Terminate script after redirect
+        }
+    } else {
+        // No new file uploaded, insert the College record without the logo image
+        $query = "INSERT INTO college (name, dean_id) VALUES ('$name', '$dean_id')";
+        $query_run = mysqli_query($con, $query);
+    }
+
+    // Check if the query for adding the College was successful
+    if($query_run) {
         $_SESSION['message'] = "New College has been added";
         header('Location: college-add.php');
-        exit(0);
-    }
-    else
-    {
+    } else {
         $_SESSION['message'] = "Something went wrong";
         header('Location: college-add.php');
-        exit(0);
     }
 }
 
-//Update College
-if(isset($_POST['update_college']))
-{
+
+if(isset($_POST['update_college'])) {
     $college_id = $_POST['id'];
     $name = $_POST['name'];
+    $dean_id = $_POST['dean_id'];
+    $logo_image = $_FILES['logo_image'];
 
-    //UPDATE the College
-    $query = "UPDATE college SET name = '$name' WHERE id = '$college_id'";
+    // Check if a new file is uploaded
+    if($logo_image['size'] > 0) {
+        // Rename the file
+        $image_extension = pathinfo($logo_image['name'], PATHINFO_EXTENSION);
+        $filename = time() . '.' . $image_extension;
+        
+        // Move the uploaded file to the target directory
+        $target_directory = '../uploads/college_logos/';
+        $target_file = $target_directory . $filename;
+        if(move_uploaded_file($logo_image['tmp_name'], $target_file)) {
+            // Remove old file if exists
+            if(!empty($_POST['old_logo_image']) && file_exists($target_directory . $_POST['old_logo_image'])) {
+                unlink($target_directory . $_POST['old_logo_image']);
+            }
+        } else {
+            $_SESSION['message'] = "Failed to upload file";
+            header('Location: college-edit.php?id=' . $college_id);
+            exit(); // Terminate script after redirect
+        }
+    } else {
+        // No new file uploaded, use the existing one
+        $filename = $_POST['old_logo_image'];
+    }
+
+    // Update the College record, excluding the logo image field
+    $query = "UPDATE college SET name = '$name', dean_id = '$dean_id' WHERE id = '$college_id'";
     $query_run = mysqli_query($con, $query);
 
-    if($query_run)
-    {
+    // Check if the query for updating other fields was successful
+    if($query_run) {
+        // If a new logo image is uploaded, update the logo image field
+        if(isset($filename)) {
+            $query = "UPDATE college SET logo_image = '$filename' WHERE id = '$college_id'";
+            $query_run = mysqli_query($con, $query);
+        }
+        
         $_SESSION['message'] = "College has been Updated";
         header('Location: college-view.php');
-        exit(0);
-    }
-    else
-    {
+    } else {
         $_SESSION['message'] = "Something went wrong";
-        header('Location: college-edit.php');
-        exit(0);
+        header('Location: college-edit.php?id=' . $college_id);
     }
 }
+
+
 
 //Add Partner
 if(isset($_POST['partner_add_btn']))

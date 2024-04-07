@@ -37,12 +37,41 @@ include('includes/header.php');
 
                            
 
-                        <form action="code.php" method="POST">
+                        <form action="code.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?= $college['id'];?>">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="">Name</label>
                                     <input type="text" name="name" class="form-control" value="<?= $college['name'];?>">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Dean</label>
+                                    <select name="dean_id" class="form-control">
+                                        <option value="">--Select Dean From Faculty--</option>
+                                        <?php
+                                        $faculties = "SELECT * FROM faculty";
+                                        $faculties_run = mysqli_query($con, $faculties);
+                                        $college_dean_id = $college['dean_id']; // Assuming 'faculty_id' is the column name for dean in college table
+
+                                        if(mysqli_num_rows($faculties_run) > 0) {
+                                            foreach($faculties_run as $faculty) {
+                                                $selected = ($faculty['id'] == $college_dean_id) ? 'selected' : '';
+                                                echo '<option value="'.$faculty['id'].'" '.$selected.'>'.$faculty['fname'].' '.$faculty['lname'].'</option>';
+                                            }
+                                        } else {
+                                            echo "<option value=''>No Faculties Found</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Logo</label>
+                                    <input type="file" name="logo_image" class="form-control">
+                                    <img src="../uploads/college_logos/<?= $college['logo_image']; ?>" width="100px;">
+
                                 </div>
                                 
                                 <div class="col-md-12 mb-3">
