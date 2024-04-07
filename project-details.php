@@ -158,25 +158,25 @@ if(isset($_GET['id'])) {
                                     'Partnerships for the Goals' => 'sdg_17'
                                 );
 
-                                // Loop through SDGs array to create checkboxes and mark selected ones as checked
-                                foreach ($sdgs as $sdg_name => $sdg_value) {
+                                // Loop through the checked SDGs and render their details
+                                foreach ($project_sdgs as $sdg_value) {
+                                    $sdg_name = array_search($sdg_value, $sdgs); // Get SDG name from the array
                                     $icon_path = 'uploads/SDGs/icons/' . $sdg_value . '.png'; // Path to the icon file
                                     echo '<div class="col-md-3 mb-2">';
                                     echo '<div class="form-check">';
                                     if (file_exists($icon_path)) {
                                         echo '<img src="' . $icon_path . '" alt="' . $sdg_name . '" class="sdg-icon img-fluid" style="height:100px; width:100px">';
                                     }
-                                    $checked = in_array($sdg_value, $project_sdgs) ? 'checked' : '';
-                                    echo '<input class="form-check-input" type="checkbox" name="sdgs[]" id="' . $sdg_value . '" value="'.$sdg_value.'" ' . $checked . '>';
+                                    echo '<input class="form-check-input" type="checkbox" name="sdgs[]" id="' . $sdg_value . '" value="'.$sdg_value.'" checked>';
                                     echo '<label class="form-check-label" for="' . $sdg_value . '">' . $sdg_name . '</label>';
                                     echo '</div>';
                                     echo '</div>';
                                 }
                                 ?>
                             </div>
-                        </div>
-
                     </div>
+
+                 </div>
 
 
                     
