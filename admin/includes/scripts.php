@@ -100,7 +100,7 @@ if (sidebarToggle) {
     // Iterate over each delete button and attach event listener
     deleteButtons.forEach(function(button) {
         button.addEventListener("click", function(event) {
-            if (confirm("Are you sure you want to delete this document?")) {
+            if (confirm("Are you sure you want to delete this?")) {
                 // Find the closest form and submit it
                 this.closest(".deleteForm").submit();
             } else {

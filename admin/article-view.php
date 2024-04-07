@@ -31,6 +31,7 @@ include('includes/header.php');
                                 <th>Thumbnail Title</th>
                                 <th>Thumbnail Sumamry</th>
                                 <th>Published Date</th>
+                                <th>Featured</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -50,6 +51,10 @@ include('includes/header.php');
                                         <td><?= $row['thumb_nail_title']; ?></td>
                                         <td><?= $row['thumb_nail_summary']; ?></td>
                                         <td><?= $row['published_date']; ?></td>
+                                        <td>
+                                                <input type="checkbox" name="featured" value="<?= $row['id']; ?>" <?php if ($row['featured'] == 1) echo "checked"; ?>>
+                                                
+                                        </td>
                                         <td>
                                             <a href="article-edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
                                         </td>
@@ -74,20 +79,32 @@ include('includes/header.php');
             </div>
         </div>
 </div>
-<!-- JavaScript for Delete Button Confirmation (Buttons Should have class of deleteButton) -->
+
+
+<!-- JavaScript for handling checkbox clicks -->
 <script>
-    // Select all elements with the class 'deleteButton'
-    var deleteButtons = document.querySelectorAll(".deleteButton");
-    
-    // Iterate over each delete button and attach event listener
-    deleteButtons.forEach(function(button) {
-        button.addEventListener("click", function(event) {
-            if (confirm("Are you sure you want to delete this Article?")) {
-                // Find the closest form and submit it
-                this.closest(".deleteForm").submit();
-            } else {
-                event.preventDefault(); // Prevent form submission
-            }
+    // Listen for click events on checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+        checkbox.addEventListener('click', function() {
+            // Get the article ID and the checked status
+            var articleId = this.value;
+            var isChecked = this.checked ? 1 : 0;
+
+            // Send AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'javascript-update_featured_article.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    // Handle response
+                    if (xhr.status === 200) {
+                        console.log('Featured status updated successfully');
+                    } else {
+                        console.error('Error updating featured status');
+                    }
+                }
+            };
+            xhr.send('id=' + articleId + '&featured=' + isChecked);
         });
     });
 </script>

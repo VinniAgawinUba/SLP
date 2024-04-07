@@ -37,6 +37,7 @@ include('includes/header.php');
                                 <th>School Year</th>
                                 <th>Semester</th>
                                 <th>Status</th>
+                                <th>Featured</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -201,13 +202,18 @@ include('includes/header.php');
                                             }
                                             ?>
                                         </td>
+
+                                        <td>
+                                            <input type="checkbox" name="featured" value="<?= $row['id']; ?>" <?php if ($row['featured'] == 1) echo "checked"; ?>>
+                                        </td>
+
                                         <td>
                                             <a href="project-edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
                                         </td>
                                         <td>
                                             <form action="code.php" method="POST">
                                                 <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                                                <button type="submit" name="project_delete_btn" value="<?=$post['id']?>" class="btn btn-danger">Delete</button>
+                                                <button type="submit" name="project_delete_btn" value="<?=$post['id']?>" class="btn btn-danger deleteButton">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -229,6 +235,35 @@ include('includes/header.php');
             </div>
         </div>
 </div>
+
+
+<!-- JavaScript for handling checkbox clicks -->
+<script>
+    // Listen for click events on checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+        checkbox.addEventListener('click', function() {
+            // Get the project ID and the checked status
+            var projectID = this.value;
+            var isChecked = this.checked ? 1 : 0;
+
+            // Send AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'javascript-update_featured_project.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    // Handle response
+                    if (xhr.status === 200) {
+                        console.log('Featured status updated successfully');
+                    } else {
+                        console.error('Error updating featured status');
+                    }
+                }
+            };
+            xhr.send('id=' + projectID + '&featured=' + isChecked);
+        });
+    });
+</script>
         
 <?php
 include('includes/footer.php');
