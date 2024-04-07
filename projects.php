@@ -349,7 +349,7 @@ include('config/dbcon.php');
                         ?>
                             <div class="col-md-6 mb-3 gy-3" style="display: flex; justify-content: center; " id="three-columns">
                                 <div class="card h-100" id="project-card">
-                                    <a href="#"><img src="" class="customPic"></a> <!-- Placeholder for image-->
+                                    <a href="project-details.php?id=<?= $item['id']; ?>"><img src="" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $item['name']; ?></h5>
                                         <p class="card-text">Description:<?= $item['description']; ?></p>

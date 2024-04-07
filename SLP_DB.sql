@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2024 at 08:00 AM
+-- Generation Time: Apr 07, 2024 at 09:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -94,7 +94,7 @@ CREATE TABLE `college` (
 --
 
 INSERT INTO `college` (`id`, `name`, `dean_id`, `logo_image`) VALUES
-(1, 'College of Computer Studies', NULL, NULL),
+(1, 'College of Computer Studies', 0, '1712474814.jpg'),
 (2, 'College of Nursing', NULL, NULL),
 (3, 'College of Engineering', 7, '1712468064.jpg'),
 (4, 'College of Agriculture', 5, '1712468470.png');
@@ -189,16 +189,7 @@ INSERT INTO `gallery` (`id`, `project_id`, `name`) VALUES
 (1, 28, 'Gallery for NEW PROJECT TO TEST GALLERY'),
 (2, 2, 'GAl 2'),
 (3, 27, 'GAL 3'),
-(4, 29, 'Gallery for Project Faculty Test'),
-(5, 30, 'Gallery for Test SDG'),
-(6, 31, 'Gallery for Test SDG'),
-(7, 32, 'Gallery for Test SDG'),
-(8, 33, 'Gallery for Test SDG'),
-(9, 34, 'Gallery for Test SDG'),
-(10, 35, 'Gallery for Test SDG'),
-(11, 36, 'Gallery for Test SDG'),
-(12, 37, 'Gallery for Test SDG'),
-(13, 38, 'Gallery for Test SDG');
+(4, 29, 'Gallery for Project Faculty Test');
 
 -- --------------------------------------------------------
 
@@ -382,7 +373,9 @@ INSERT INTO `project_faculty` (`id`, `project_id`, `faculty_id`) VALUES
 (11, 35, 0),
 (12, 36, 0),
 (13, 37, 0),
-(18, 38, 7);
+(20, 38, 7),
+(21, 27, 7),
+(22, 27, 5);
 
 -- --------------------------------------------------------
 
@@ -401,10 +394,11 @@ CREATE TABLE `project_sdgs` (
 --
 
 INSERT INTO `project_sdgs` (`id`, `project_id`, `sdg`) VALUES
-(62, 38, 'sdg_1'),
-(63, 38, 'sdg_2'),
-(64, 38, 'sdg_6'),
-(65, 38, 'sdg_9');
+(66, 38, 'sdg_1'),
+(67, 38, 'sdg_2'),
+(68, 38, 'sdg_5'),
+(69, 38, 'sdg_6'),
+(70, 38, 'sdg_9');
 
 -- --------------------------------------------------------
 
@@ -687,13 +681,13 @@ ALTER TABLE `project_documents`
 -- AUTO_INCREMENT for table `project_faculty`
 --
 ALTER TABLE `project_faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `project_sdgs`
 --
 ALTER TABLE `project_sdgs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `school_year`
