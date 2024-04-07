@@ -394,7 +394,7 @@ include('config/dbcon.php');
     <div class="mainContent" style="border:5px solid">
         <?php
         // Fetch 3 articles
-        $query = "SELECT * FROM posts LIMIT 3";
+        $query = "SELECT * FROM projects WHERE featured=1 LIMIT 3";
         $query_run = mysqli_query($con, $query);
 
         // Check if any posts are returned

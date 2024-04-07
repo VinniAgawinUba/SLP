@@ -112,7 +112,7 @@ include('config/dbcon.php');
                     <div class="articles">ARTICLES</div>
                     <?php
 
-                    $query = "SELECT * FROM articles ORDER BY published_date DESC LIMIT 3";
+                    $query = "SELECT * FROM articles WHERE featured = 1 ORDER BY published_date DESC LIMIT 3";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -147,7 +147,7 @@ include('config/dbcon.php');
                     <div class="projects">PROJECTS</div>
                     <?php
 
-                    $query = "SELECT * FROM projects LIMIT 3";
+                    $query = "SELECT * FROM projects WHERE featured = 1 LIMIT 3";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
