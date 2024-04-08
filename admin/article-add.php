@@ -59,7 +59,7 @@ include('includes/scripts.php');
                                 
                                 <div class="col-md-12 mb-3">
                                     <label for="">Content</label>
-                                    <textarea name="content" class="form-control" id="summernote" required rows="4"> </textarea>
+                                    <textarea name="content" class="form-control" id="" required rows="4"> </textarea>
                                 </div>
                                 
                                 <div class="col-md-12 mb-3">

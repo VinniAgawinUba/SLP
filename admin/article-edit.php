@@ -80,7 +80,7 @@ if(isset($_GET['id'])) {
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="">Content</label>
-                                <textarea name="content" class="form-control" id="summernote" required rows="4"><?= $article['content']; ?></textarea>
+                                <textarea name="content" class="form-control" id="" required rows="4"><?= $article['content']; ?></textarea>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="">Thumbnail Summary</label>

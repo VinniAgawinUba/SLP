@@ -111,10 +111,11 @@ include('config/dbcon.php');
     }
 
     #year-font-style {
-        margin-top: calc(178px / 3);
+        margin-top: calc(120px / 3);
         justify-content: center;
         text-align: center;
         white-space: pre-wrap;
+        padding-bottom: 30px;
     }
 
     #semester-font-style {
@@ -220,7 +221,7 @@ include('config/dbcon.php');
                                 <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickSchool('<?= $item['id']; ?>')" style="text-align: center; justify-content: center;">
                                     <div class="card-body">
                                         <!-- <h5 class="card-title text-white text-center"><?= $item['id']; ?></h5> -->
-                                        <p class="card-text text-center" id="year-font-style">SY <?= $item['school_year']; ?></p>
+                                        <p class="card-text text-center" id="year-font-style">SY <br><?= $item['school_year']; ?></p>
                                         <!-- You can add more project details here -->
                                     </div>
                                 </div>
@@ -348,7 +349,7 @@ include('config/dbcon.php');
                         foreach ($query_run as $item) {
                         ?>
                             <div class="col-md-6 mb-3 gy-3" style="display: flex; justify-content: center; " id="three-columns">
-                                <div class="card h-100" id="project-card">
+                                <div class="card" id="project-card">
                                     <a href="project-details.php?id=<?= $item['id']; ?>"><img src="" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $item['name']; ?></h5>

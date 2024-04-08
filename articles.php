@@ -118,6 +118,25 @@ include('config/dbcon.php');
         margin-top: 8px;
         color: #000000;
         margin-bottom: 0px;
+        text-align: justify;
+    }
+
+    #main-body {
+        margin-top: 10px;
+        height: 1000px;
+    }
+
+    #card-date {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 10px;
+
+        color: #6F6F6F;
+        text-align: right;
+        margin-right: 30px;
+        margin-bottom: 30px;
     }
 </style>
 
@@ -134,39 +153,39 @@ include('config/dbcon.php');
 <body class="main-content">
     <div class="custombg-image-row" id="main-body">
         <div class="row gy-3">
-        <!-- Main Body -->
+            <!-- Main Body -->
 
-        <div class="main-content">
+            <div class="main-content">
 
-            <div class="row">
-                <?php
-                $query = "SELECT * FROM articles";
-                $query_run = mysqli_query($con, $query);
-                if (mysqli_num_rows($query_run) > 0) {
-                    foreach ($query_run as $item) {
-                ?>
-                        <div style="display: flex; justify-content: center;" id="card-box">
-                            <a href="article-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
-                                <div class="card h-100" style="margin-top: 50px !important;" id="card">
-                                    <img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"> <!-- Placeholder for image-->
-                                    <div class="card-body">
-                                        <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
-                                        <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
-                                        <!-- You can add more project details here -->
+                <div class="row">
+                    <?php
+                    $query = "SELECT * FROM articles";
+                    $query_run = mysqli_query($con, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $item) {
+                    ?>
+                            <div style="display: flex; justify-content: center;" id="card-box">
+                                <a href="article-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                        <img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <div class="card-body">
+                                            <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
+                                            <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
+                                            <!-- You can add more project details here -->
+                                        </div>
+                                        <!--Bottom of Card to place date-->
+                                        <p style="padding:5px; font-size:12px" id="card-date"><?= date('F j, Y', strtotime($item['published_date'])); ?></p>
                                     </div>
-                                    <!--Bottom of Card to place date-->
-                                    <p style="padding:5px; font-size:12px" id="card-text">Date Published: <?= date('F j, Y', strtotime($item['published_date'])); ?></p>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
 
-                <?php
+                    <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     </div>
 </body>
