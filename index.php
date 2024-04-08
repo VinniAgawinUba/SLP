@@ -52,27 +52,28 @@ include('config/dbcon.php');
     }
 
     #find-out-more-button {
-            width: 140px;
-            height: 32px;
-            left: 865px;
-            top: 2714px;
-            border: none;
-            background: #283971;
-            border-radius: 30px;
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 13px;
-            line-height: 16px;
-            text-align: center;
-            color: #FFFFFF;
-        }
+        width: 140px;
+        height: 32px;
+        left: 865px;
+        top: 2714px;
+        border: none;
+        background: #283971;
+        border-radius: 30px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+        text-align: center;
+        color: #FFFFFF;
+    }
 
-        #find-out-more-button:hover {
-            background-color: #A19158;
-            transition: color 5s;
-        }
-        #card-box {
+    #find-out-more-button:hover {
+        background-color: #A19158;
+        transition: color 5s;
+    }
+
+    #card-box {
         flex-basis: 36px;
         margin: 29px;
         text-overflow: ellipsis;
@@ -118,19 +119,19 @@ include('config/dbcon.php');
                         foreach ($query_run as $item) {
                     ?>
                             <div class="col-md-3" class="cardClass">
-                            <a href="article-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
-                                <div class="card h-100" style="margin-top: 50px !important;" id="card">
-                                    <img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"> <!-- Placeholder for image-->
-                                    <div class="card-body">
-                                        <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
-                                        <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
-                                        <!-- You can add more project details here -->
+                                <a href="article-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                        <img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <div class="card-body">
+                                            <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
+                                            <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
+                                            <!-- You can add more project details here -->
+                                        </div>
+                                        <!--Bottom of Card to place date-->
+                                        <p style="padding:5px; font-size:12px" id="card-text">Date Published: <?= date('F j, Y', strtotime($item['published_date'])); ?></p>
                                     </div>
-                                    <!--Bottom of Card to place date-->
-                                    <p style="padding:5px; font-size:12px" id="card-text">Date Published: <?= date('F j, Y', strtotime($item['published_date'])); ?></p>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
                     <?php
                         }
                     }
@@ -153,17 +154,17 @@ include('config/dbcon.php');
                         foreach ($query_run as $item) {
                     ?>
                             <div class="col-md-3" class="cardClass">
-                            <div class="card h-100" style="margin-top: 50px !important;" id="card">
-                                <a href="project-details.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic"></a> <!-- Placeholder for image-->
-                                <div class="card-body">
-                                    <h5 id="title"><?= $item['name']; ?></h5>
-                                    <p id="card-text"><?= $item['description']; ?></p>
-                                    
-                                    <a href="article-view.php?id=<?= $item['id']; ?>" class="btn btn-primary">View</a>
-                                    <!-- You can add more project details here -->
+                                <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <a href="article-view.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic"></a> <!-- Placeholder for image-->
+                                    <div class="card-body">
+                                        <h5 id="title"><?= $item['name']; ?></h5>
+                                        <p id="card-text"><?= $item['description']; ?></p>
+
+                                        <a href="article-view.php?id=<?= $item['id']; ?>" class="btn btn-primary">View</a>
+                                        <!-- You can add more project details here -->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     <?php
                         }
                     }

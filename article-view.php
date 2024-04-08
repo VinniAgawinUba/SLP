@@ -39,7 +39,14 @@
     }
 
     #article-text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        letter-spacing: 0.075em;
+
         color: #FFFFFF;
+        text-align: justify;
+
     }
 
     #super-container {
@@ -54,8 +61,10 @@
         border-radius: 5px;
     }
 
-    article {
-        color: #FFFFFF;
+    #customPic {
+        width: 500px;
+        height: auto;
+
     }
 </style>
 
@@ -90,13 +99,13 @@ if (isset($_GET['id'])) {
             <div class="col-md-12">
                 <div class="card" id="card">
                     <div class="card-body" id="card-body">
-                        <img src="uploads/articles/<?= $article['thumb_nail_pic']; ?>" class="customPic">
+                        <img src="uploads/articles/<?= $article['thumb_nail_pic']; ?>" id="customPic">
                         <!-- Add more details or formatting as needed -->
                     </div>
                 </div>
                 <article id="article-text">
                     <p><?= $article['content']; ?></p>
-                </article>
+                </article>+
             </div>
         </div>
     </div>

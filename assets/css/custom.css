@@ -21,13 +21,9 @@ body {
     background-size: cover; /* Cover the entire area of the row */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    max-height: 80vw; /* Set a maximum height for the div */
+    height: 80vw;
     object-fit: contain;
-    overflow-y: auto; /* Add vertical scrollbar when content exceeds height */
-    -ms-overflow-style: none;  /*  HIDE SCROLL BAR IE and Edge */
-  scrollbar-width: none;  /* HIDE SCROLL BAR Firefox */
 }
-
 
 .customPic {
     width: 100%;
@@ -253,15 +249,20 @@ body {
 
 /*article*/
 .articlePage {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 58px;
-    text-align: center;
-
+    
+    background-color: white;
+ 
+    position: absolute;
     color: #283971;
-    margin-top: 40px;
+    font-size: 48px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    padding: 30px 0;
+   
+    text-align: center;
 }
 
 .articleLine {
