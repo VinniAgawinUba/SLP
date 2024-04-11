@@ -53,6 +53,8 @@
         background-color: #283971;
         height: 1000px;
         padding: 36px;
+        overflow: auto;
+        scrollbar-width: none;
     }
 
     #card-body {

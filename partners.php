@@ -10,7 +10,7 @@ include('config/dbcon.php');
 <body>
     <div class="container-fluid custombg-image-row ">
         <div class="row gy-3">
-        <h1 class="articlePage">Partners</h1>
+        <h1 class="articlePage">PARTNERS</h1>
         <div class="articleLine"></div>
             <!-- Main Body -->
            

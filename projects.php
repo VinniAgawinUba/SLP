@@ -16,7 +16,7 @@ include('config/dbcon.php');
         text-align: center;
 
         color: #283971;
-        margin-top: 40px;
+        margin-top: 99px;
     }
 
     #main-image {
@@ -29,7 +29,7 @@ include('config/dbcon.php');
         left: calc(50% - 798px/2 - 8px);
         width: 40%;
         margin-left: 20%;
-        margin-top: 60px;
+        margin-bottom: 78px;
     }
 
     ::placeholder {
@@ -75,6 +75,8 @@ include('config/dbcon.php');
         margin: auto;
         border-top: 4px solid #283971 !important;
         border-radius: 14px;
+        margin-top: 36px;
+        margin-bottom: 57px;
     }
 
     /* Add hover effect for card */
@@ -181,7 +183,7 @@ include('config/dbcon.php');
 
     ?>
 </style>
-<h4 class="header">Projects</h4>
+<h4 class="header">PROJECTS</h4>
 <hr class="horizontal-line">
 <input type="search" name="" id="textfield" placeholder="    Input search keywords...">
 <span class="filter">Filter ↓</span>
@@ -348,7 +350,7 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                         ?>
-                            <div class="col-md-6 mb-3 gy-3" style="display: flex; justify-content: center; " id="three-columns">
+                            <div class="col-md-6 mb-3 gy-3" style="display: flex; justify-content: center; ">
                                 <div class="card" id="project-card">
                                     <a href="project-details.php?id=<?= $item['id']; ?>"><img src="" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">

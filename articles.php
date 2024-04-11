@@ -17,7 +17,7 @@ include('config/dbcon.php');
         text-align: center;
 
         color: #283971;
-        margin-top: 40px;
+        margin-top: 99px;
     }
 
     .horizontal-line {
@@ -26,10 +26,8 @@ include('config/dbcon.php');
         margin: auto;
         border-top: 4px solid #283971 !important;
         border-radius: 14px;
-    }
-
-    #card-box {
-        margin-top: 10px;
+        margin-top: 36px;
+        margin-bottom: 57px;
     }
 
     #textfield {
@@ -38,7 +36,7 @@ include('config/dbcon.php');
         left: calc(50% - 798px/2 - 8px);
         width: 40%;
         margin-left: 20%;
-        margin-top: 60px;
+        margin-bottom: 78px;
     }
 
     ::placeholder {
@@ -122,7 +120,7 @@ include('config/dbcon.php');
     }
 
     #main-body {
-        margin-top: 10px;
+        margin-top: 34px;
         height: 1000px;
     }
 
@@ -140,7 +138,7 @@ include('config/dbcon.php');
     }
 </style>
 
-<h1 class="headers">Articles</h1>
+<h1 class="headers">ARTICLES</h1>
 <hr class="horizontal-line">
 <input type="search" name="" id="textfield" placeholder="    Input search keywords...">
 <span class="filter">Filter ↓</span>

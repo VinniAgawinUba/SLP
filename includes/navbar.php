@@ -18,6 +18,9 @@
             font-family: 'Inter';
             padding: 8px 12px;
             border: 1px solid #ccc;
+            background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px;
+            background-size: 20px;
+            padding-left: 40px;
         }
 
         ::placeholder {
@@ -55,6 +58,33 @@
             transition: color 0.3s
         }
 
+        #nav-item:active {
+            color: #8D7F4D;
+        }
+
+        #search-button {
+            border: none;
+            background: #283971;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 16px;
+            text-align: center;
+            color: #FFFFFF;
+            background: #283971;
+            border-radius: 10px;
+            width: 100px;
+            margin-left: 10px;
+        }
+
+        #search-button:hover {
+            background-color: #A19158;
+        }
+
+        #search-button:active {
+            background-color: #8D7F4D;
+        }
     </style>
 </head>
 
@@ -87,11 +117,11 @@
 
                                 <li>
                                     <!-- If logged in and admin show shortcut to admin panel -->
-                                    <?php if($_SESSION['auth_role'] == '1'){
+                                    <?php if ($_SESSION['auth_role'] == '1') {
                                     ?>
-                                    <a class="dropdown-item" href="admin/index.php">Admin Panel</a>
+                                        <a class="dropdown-item" href="admin/index.php">Admin Panel</a>
                                     <?php
-                                    }?>
+                                    } ?>
                                 </li>
 
                                 <li>
