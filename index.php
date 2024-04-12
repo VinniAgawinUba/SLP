@@ -132,7 +132,7 @@ include('config/dbcon.php');
 
         border-radius: 30px;
         border: none;
-        margin-left: 830px;
+        margin-left: 700px;
     }
 
     #see-all-button:hover {
@@ -142,6 +142,7 @@ include('config/dbcon.php');
 
     #see-all-button:active {
         background: hsl(227, 49%, 20%);
+        color: white;
     }
 
     .aside-button {
@@ -150,6 +151,78 @@ include('config/dbcon.php');
 
     #article-header {
         margin-top: 10px;
+    }
+
+    body {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .card-body {
+        box-sizing: border-box;
+        border-radius: 10px;
+        height: 120px;
+    }
+
+    #title {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #000000;
+    }
+
+    #card-text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        height: 41.75px;
+
+        color: #000000;
+    }
+
+    #publish-date {
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #6F6F6F;
+        text-align: right;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    #project-header {
+        padding: 20px;
+        margin-left: 180px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+
+        color: #FFFFFF;
+    }
+
+    .project-header {
+        display: flex;
+        background-color: #A19158;
+        padding: 15px 0;
+        color: white;
+
+        font-size: 34px;
+        font-family: 'Inter';
+        font-weight: 800;
+        font-style: normal;
+        margin-top: 100px;
     }
 </style>
 <link rel="stylesheet" href="assets/css/custom.css">
@@ -201,7 +274,7 @@ include('config/dbcon.php');
                                             <!-- You can add more project details here -->
                                         </div>
                                         <!--Bottom of Card to place date-->
-                                        <p style="padding:5px; font-size:12px" id="card-text">Date Published: <?= date('F j, Y', strtotime($item['published_date'])); ?></p>
+                                        <p style="padding:5px; font-size:12px" id="publish-date"><?= date('F j, Y', strtotime($item['published_date'])); ?></p>
                                     </div>
                                 </a>
                             </div>
@@ -218,7 +291,12 @@ include('config/dbcon.php');
             <div class="secondContent">
 
                 <div class="row gy-3">
-                    <div class="projects">PROJECTS</div>
+                    <div class="project-header">
+                        <h5 id="project-header">PROJECTS</h5>
+                        <aside class="aside-button">
+                            <button id="see-all-button">See All...</button>
+                        </aside>
+                    </div>
                     <?php
 
                     $query = "SELECT * FROM projects WHERE featured = 1 LIMIT 3";
