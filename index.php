@@ -73,6 +73,10 @@ include('config/dbcon.php');
         transition: color 5s;
     }
 
+    #find-out-more-button:active {
+        background-color: #8D7F4D;
+    }
+
     #card-box {
         flex-basis: 36px;
         margin: 29px;
@@ -82,6 +86,55 @@ include('config/dbcon.php');
     #card-box:hover {
         transition: transform 0.2s;
         transform: scale(1.05);
+    }
+
+    #article-header {
+        padding: 20px;
+        margin-left: 180px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+
+        color: #FFFFFF;
+    }
+
+    .header {
+        display: flex;
+        background-color: #A19158;
+        padding: 15px 0;
+        color: white;
+
+        font-size: 34px;
+        font-family: 'Inter';
+        font-weight: 800;
+        font-style: normal;
+
+        margin-top: -60px;
+    }
+
+    #see-all-button {
+
+        background: #FFFFFF;
+        width: 95px;
+        height: 35px;
+
+
+        padding: 10px;
+        padding-bottom: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        color: #A19158;
+
+        border-radius: 30px;
+        border: none;
+
+        margin-left: 100px;
     }
 </style>
 <link rel="stylesheet" href="assets/css/custom.css">
@@ -110,7 +163,12 @@ include('config/dbcon.php');
             <!-- Main Body -->
             <div class="mainContent">
                 <div class="row gy-3">
-                    <div class="articles">ARTICLES</div>
+                    <div class="header">
+                        <h5 id="article-header">ARTICLES</h5>
+                        <aside>
+                            <button id="see-all-button">See All...</button>
+                        </aside>
+                    </div>
                     <?php
 
                     $query = "SELECT * FROM articles WHERE featured = 1 ORDER BY published_date DESC LIMIT 3";

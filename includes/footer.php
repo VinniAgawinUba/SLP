@@ -57,6 +57,10 @@
             transition: color 5s;
         }
 
+        #request-button:active {
+            background-color: #8D7F4D;
+        }
+
         #footer-container {
             margin-top: 100px;
         }
