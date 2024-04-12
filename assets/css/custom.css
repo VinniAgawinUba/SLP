@@ -21,7 +21,7 @@ body {
     background-size: cover; /* Cover the entire area of the row */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    height: 80vw;
+    height: 50vw;
     object-fit: contain;
 }
 

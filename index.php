@@ -20,10 +20,9 @@ include('config/dbcon.php');
 
 
     #home-layer {
-        border-radius: 10px;
         border: none;
         padding-bottom: 10px;
-
+        margin-bottom: 10px;
     }
 
     #home-header {
@@ -110,7 +109,7 @@ include('config/dbcon.php');
         font-family: 'Inter';
         font-weight: 800;
         font-style: normal;
-        margin-top: -65px;
+        margin-top: -90px;
     }
 
     #see-all-button {
@@ -222,8 +221,27 @@ include('config/dbcon.php');
         font-family: 'Inter';
         font-weight: 800;
         font-style: normal;
+    }
+
+    #first-content {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 50vw;
+        object-fit: contain;
         margin-top: 100px;
     }
+
+    #second-content {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vw;
+        object-fit: contain;
+    }
+    
 </style>
 <link rel="stylesheet" href="assets/css/custom.css">
 
@@ -245,8 +263,7 @@ include('config/dbcon.php');
             </article>
         </div>
     </div>
-    </div>
-    <div class="container-fluid custombg-image-row ">
+    <div class="container-fluid" id="first-content">
         <div class="row gy-3">
             <!-- Main Body -->
             <div class="mainContent">
@@ -288,6 +305,11 @@ include('config/dbcon.php');
 
             </div>
 
+        </div>
+    </div>
+    </div>
+    <div class="container-fluid" id="second-content">
+        <div class="row gy-3">
             <div class="secondContent">
 
                 <div class="row gy-3">
@@ -325,9 +347,6 @@ include('config/dbcon.php');
 
             </div>
         </div>
-    </div>
-    </div>
-    </div>
     </div>
 </body>
 <!-- Footer -->
