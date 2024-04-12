@@ -110,8 +110,7 @@ include('config/dbcon.php');
         font-family: 'Inter';
         font-weight: 800;
         font-style: normal;
-
-        margin-top: -60px;
+        margin-top: -65px;
     }
 
     #see-all-button {
@@ -133,8 +132,24 @@ include('config/dbcon.php');
 
         border-radius: 30px;
         border: none;
+        margin-left: 830px;
+    }
 
-        margin-left: 100px;
+    #see-all-button:hover {
+        background: #283971;
+        color: white;
+    }
+
+    #see-all-button:active {
+        background: hsl(227, 49%, 20%);
+    }
+
+    .aside-button {
+        margin-top: 15px;
+    }
+
+    #article-header {
+        margin-top: 10px;
     }
 </style>
 <link rel="stylesheet" href="assets/css/custom.css">
@@ -165,7 +180,7 @@ include('config/dbcon.php');
                 <div class="row gy-3">
                     <div class="header">
                         <h5 id="article-header">ARTICLES</h5>
-                        <aside>
+                        <aside class="aside-button">
                             <button id="see-all-button">See All...</button>
                         </aside>
                     </div>
