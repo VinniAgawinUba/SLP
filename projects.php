@@ -19,9 +19,6 @@ include('config/dbcon.php');
         margin-top: 99px;
     }
 
-    #main-image {
-        margin-top: 10px;
-    }
 
     #textfield {
         border: 4px solid #435283;
@@ -79,26 +76,26 @@ include('config/dbcon.php');
         margin-bottom: 57px;
     }
 
-    
+
     .year {
         border-radius: 20px;
         margin-top: 30px;
-        
+
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 30px;
         line-height: 36px;
-        
+
         width: 300px;
         height: 178px;
         color: #89A5FF;
         background: url(assets/images/BGbluebook.png);
         padding: 50px;
         padding-top: 10px;
-        
+
     }
-    
+
     /* Add hover effect for card */
     .year:hover {
         transform: scale(1.1);
@@ -108,6 +105,7 @@ include('config/dbcon.php');
         box-shadow: 0px 0px 5px #FFFFFF;
         cursor: pointer;
     }
+
     #three-columns {
         flex-basis: 36px;
         margin: 29px;
@@ -175,8 +173,6 @@ include('config/dbcon.php');
         background-repeat: no-repeat;
         height: 70vw;
         object-fit: contain;
-        /* margin-top: 100px; */
-
     }
 
     body {
@@ -191,7 +187,7 @@ include('config/dbcon.php');
         padding: 15px 0;
         margin-left: -12px;
         margin-right: -12px;
-        margin-top: -12px;
+        margin-top: -20px;
         justify-content: left;
         align-items: left;
         border-radius: 5px;
@@ -207,6 +203,75 @@ include('config/dbcon.php');
         line-height: 39px;
 
         color: #FFFFFF;
+    }
+
+    #sy {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 16px;
+        text-align: center;
+        font-style: normal;
+        color: #5C80FA;
+
+        mix-blend-mode: normal;
+    }
+
+    #college-of {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 16px;
+        text-align: center;
+        letter-spacing: 0.205em;
+        color: #5C80FA;
+
+        mix-blend-mode: normal;
+    }
+
+    .header-container {
+        display: flex;
+        background-color: #A19158;
+        padding: 15px 0;
+        margin-left: -12px;
+        margin-right: -12px;
+        justify-content: left;
+        align-items: left;
+        border-radius: 5px;
+    }
+
+    #featured-header {
+        padding: 20px;
+        margin-left: 100px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+
+        color: #FFFFFF;
+    }
+
+    .featured-section {
+        margin-top: -50px;
+    }
+
+    #background-image-featured {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vw;
+        object-fit: contain;
+        /* margin-top: 100px; */
+
+    }
+
+    .card-body-featured {
+        background: #FFFFFF;
+        border-radius: 10px;
+        width: 303px;
+        height: 475px;
     }
     <?php
     // Set the yellow tag based on the URL parameters
@@ -241,7 +306,7 @@ include('config/dbcon.php');
                 <!-- <img src="assets/images/Rectangle84.png">
                 <div style="position: absolute; top: 50%; left: 10%; transform: translate(-50%, -50%); color: white; font-size: 36px; font-weight: bold;">
                     </div> -->
-                    <h5 id="year-header"><?= $YellowTag ?></h5>
+                <h5 id="year-header"><?= $YellowTag ?></h5>
             </div>
         </div>
 
@@ -263,7 +328,7 @@ include('config/dbcon.php');
                                 <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickSchool('<?= $item['id']; ?>')" style="text-align: center; justify-content: center;">
                                     <div class="card-body">
                                         <!-- <h5 class="card-title text-white text-center"><?= $item['id']; ?></h5> -->
-                                        <p class="card-text text-center" id="year-font-style">SY <br><?= $item['school_year']; ?></p>
+                                        <p class="card-text text-center" id="year-font-style"><span id="sy">SY</span> <br><?= $item['school_year']; ?></p>
                                         <!-- You can add more project details here -->
                                     </div>
                                 </div>
@@ -323,7 +388,7 @@ include('config/dbcon.php');
                                 <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickCollege('<?= $item['id']; ?>')" style="background: url(assets/images/BGblueBook.png);">
                                     <div class="card-body">
                                         <h5 class="card-title text-white text-center"></h5>
-                                        <p class="card-text text-center" id="college-font-style"><?= $item['name']; ?></p>
+                                        <p class="card-text text-center" id="college-font-style"> <span id="college-of">COLLEGE OF</span> <?= $item['name']; ?></p>
                                         <!-- You can add more project details here -->
                                     </div>
                                 </div>
@@ -425,46 +490,46 @@ include('config/dbcon.php');
 </div>
 
 <!-- Featured Section -->
-<div class="row">
-    <div class="col-12">
-        <!-- Yellow Tag -->
-        <div style="position: relative;">
-            <img src="assets/images/Rectangle84.png">
-            <div style="position: absolute; top: 50%; left: 10%; transform: translate(-50%, -50%); color: white; font-size: 36px; font-weight: bold;">
-                FEATURED
+<div class="featured-section">
+
+    <div class="container-fluid" id="background-image-featured">
+        <div class="col-12">
+            <!-- Yellow Tag -->
+            <div class="header-container">
+                <h5 id="featured-header">FEATURED</h5>
             </div>
+        </div>
+        <div class="mainContent">
+            <?php
+            // Fetch 3 articles
+            $query = "SELECT * FROM projects WHERE featured=1 LIMIT 3";
+            $query_run = mysqli_query($con, $query);
+    
+            // Check if any posts are returned
+            if (mysqli_num_rows($query_run) > 0) {
+                // Loop through the returned posts
+                while ($row = mysqli_fetch_assoc($query_run)) {
+            ?>
+                    <!-- Display each article as a card -->
+                    <div class="col-md-4 mb-4">
+                        <div class="year">
+                            <div class="card-body-featured">
+                                <h5 class="card-title"><?= $row['name']; ?></h5>
+                                <p class="card-description"><?= $row['description']; ?></p>
+                                <!-- You can add more post details here -->
+                            </div>
+                        </div>
+                    </div>
+            <?php
+                }
+            } else {
+                // If no articles are found, display a message
+                echo "<div class='col-12'><p>No featured articles available.</p></div>";
+            }
+            ?>
         </div>
     </div>
 
-    <div class="mainContent" style="border:5px solid">
-        <?php
-        // Fetch 3 articles
-        $query = "SELECT * FROM projects WHERE featured=1 LIMIT 3";
-        $query_run = mysqli_query($con, $query);
-
-        // Check if any posts are returned
-        if (mysqli_num_rows($query_run) > 0) {
-            // Loop through the returned posts
-            while ($row = mysqli_fetch_assoc($query_run)) {
-        ?>
-                <!-- Display each article as a card -->
-                <div class="col-md-4 mb-4">
-                    <div class="year">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $row['name']; ?></h5>
-                            <p class="card-text"><?= $row['description']; ?></p>
-                            <!-- You can add more post details here -->
-                        </div>
-                    </div>
-                </div>
-        <?php
-            }
-        } else {
-            // If no articles are found, display a message
-            echo "<div class='col-12'><p>No featured articles available.</p></div>";
-        }
-        ?>
-    </div>
 </div>
 
 
