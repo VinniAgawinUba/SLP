@@ -163,6 +163,9 @@ include('config/dbcon.php');
         height: 120px;
     }
 
+    a {
+        text-decoration: none;
+    }
     #title {
         font-family: 'Inter';
         font-style: normal;
@@ -365,14 +368,15 @@ include('config/dbcon.php');
                     ?>
                             <div class="col-md-3">
                                 <div style="margin-top: 50px !important;" id="projects-card">
-                                    <a href="article-view.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic"></a> <!-- Placeholder for image-->
+                                    <a href="project-details.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic">
                                     <div class="card-body">
                                         <h5 id="project-title"><?= $item['name']; ?></h5>
                                         <p id="project-text"><?= $item['description']; ?></p>
 
-                                        <a href="article-view.php?id=<?= $item['id']; ?>"></a>
+                                        <a href="project-details.php?id=<?= $item['id']; ?>"></a>
                                         <!-- You can add more project details here -->
                                     </div>
+                                    </a> 
                                 </div>
                             </div>
                     <?php

@@ -8,6 +8,7 @@
     <script src="assets/js/bootstrap5.bundle.min.js"></script>
     <script src="assets/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/google.css"/>
 
     <style>
         #headers {
@@ -64,7 +65,19 @@
         #footer-container {
             margin-top: 100px;
         }
-        
+
+        .mail-icon {
+            margin-right: 10px;
+        }
+
+        .phone-icon {
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -79,9 +92,19 @@
                         <div class="card-body ">
                             <h2 class="fs-4 fw-bold" id="headers">CONTACT US</h2>
                             <a href="">
-                                <p class="mb-0" id="contact-details">rso@xu.edu.ph</p>
+                                <p class="mb-0" id="contact-details">
+                                    <span class="mail-icon">
+                                        <img src="../slp/assets/images/mail-icon.svg" alt="mail-icon">
+                                    </span>
+                                     rso@xu.edu.ph
+                                </p>
                             </a>
-                            <p class="mb-0" id="contact-details">(088) 853-9800 | Local 9173</p>
+                            <p class="mb-0" id="contact-details">
+                                <span class="phone-icon">
+                                    <img src="..\slp\assets\images\phone.svg" alt="phone-icon">
+                                </span>
+                                (088) 853-9800 | Local 9173
+                            </p>
                         </div>
                     </div>
                 </div>
