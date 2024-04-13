@@ -79,6 +79,26 @@ include('config/dbcon.php');
         margin-bottom: 57px;
     }
 
+    
+    .year {
+        border-radius: 20px;
+        margin-top: 30px;
+        
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 36px;
+        
+        width: 300px;
+        height: 178px;
+        color: #89A5FF;
+        background: url(assets/images/BGbluebook.png);
+        padding: 50px;
+        padding-top: 10px;
+        
+    }
+    
     /* Add hover effect for card */
     .year:hover {
         transform: scale(1.1);
@@ -88,25 +108,6 @@ include('config/dbcon.php');
         box-shadow: 0px 0px 5px #FFFFFF;
         cursor: pointer;
     }
-
-    .year {
-        border-radius: 20px;
-
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 30px;
-        line-height: 36px;
-
-        width: 300px;
-        height: 178px;
-        color: #89A5FF;
-        background: url(assets/images/BGbluebook.png);
-        padding: 50px;
-        padding-top: 10px;
-
-    }
-
     #three-columns {
         flex-basis: 36px;
         margin: 29px;
@@ -167,6 +168,46 @@ include('config/dbcon.php');
         height: auto;
     }
 
+    #background-image {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 70vw;
+        object-fit: contain;
+        /* margin-top: 100px; */
+
+    }
+
+    body {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+
+    .school-year-header {
+        display: flex;
+        background-color: #A19158;
+        padding: 15px 0;
+        margin-left: -12px;
+        margin-right: -12px;
+        margin-top: -12px;
+        justify-content: left;
+        align-items: left;
+        border-radius: 5px;
+    }
+
+    #year-header {
+        padding: 20px;
+        margin-left: 100px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+
+        color: #FFFFFF;
+    }
     <?php
     // Set the yellow tag based on the URL parameters
     if (!isset($_GET['school_year'])) {
@@ -192,20 +233,19 @@ include('config/dbcon.php');
     <option value="">Year</option>
     <option value="">Department</option>
 </select>
-<div class="container-fluid custombg-image-row " id="main-image">
+<div class="container-fluid" id="background-image">
     <div class="row gy-3" style="display: flex; justify-content: center;">
-
         <div class="col-12">
             <!--Yellow Tag-->
-            <div style="position: relative;">
-                <img src="assets/images/Rectangle84.png">
+            <div class="school-year-header">
+                <!-- <img src="assets/images/Rectangle84.png">
                 <div style="position: absolute; top: 50%; left: 10%; transform: translate(-50%, -50%); color: white; font-size: 36px; font-weight: bold;">
-                    <?= $YellowTag ?>
-                </div>
+                    </div> -->
+                    <h5 id="year-header"><?= $YellowTag ?></h5>
             </div>
         </div>
 
-        <div class="mainContent">
+        <div>
 
             <!-- 1st Row YEAR, SEM, PROJECTS,ETC. -->
             <div class="row">
@@ -233,9 +273,13 @@ include('config/dbcon.php');
                         }
                     }
 
-                    // Semester Cards
-                    // Shows Semester Buttons and functional
-                    // SQL queries using PHP
+
+
+
+                    // SEMESTER
+
+
+
                 } else if (!isset($_GET['semester'])) {
                     // Define static semesters
                     $semesters = array("1st Semester", "2nd Semester", "Intersession");
@@ -243,7 +287,7 @@ include('config/dbcon.php');
                         // Generate a unique ID for each semester card
                         $card_id = 'semester_' . ($key + 1); // Add 1 to start IDs from 1
                         ?>
-                        <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;">
+                        <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;" id="three-columns">
                             <!-- Add a unique ID to each semester card and attach a click event -->
                             <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickSemester('<?= $key + 1; ?>')" style="background: url(assets/images/BGblueBook.png);">
                                 <div class="card-body">
@@ -275,7 +319,7 @@ include('config/dbcon.php');
                         foreach ($query_run as $item) {
                             $card_id = 'college_' . $item['id'];
                         ?>
-                            <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;">
+                            <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;" id="three-columns">
                                 <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickCollege('<?= $item['id']; ?>')" style="background: url(assets/images/BGblueBook.png);">
                                     <div class="card-body">
                                         <h5 class="card-title text-white text-center"></h5>
@@ -286,8 +330,7 @@ include('config/dbcon.php');
                             </div>
                         <?php
                         }
-                    }
-                    else {
+                    } else {
                         // If no projects are found, echo no projects found tag
                         echo "<h1 class='text-white'>No projects found Will go back in 3 seconds</h1>";
                         //Go back to the previous page
@@ -315,7 +358,7 @@ include('config/dbcon.php');
                         foreach ($query_run as $item) {
                             $card_id = 'department_' . $item['id'];
                         ?>
-                            <div class="col-md-4 mb-6 gy-3">
+                            <div class="col-md-4 mb-6 gy-3" id="three-columns">
                                 <div class="year" id="<?= $card_id; ?>" onclick="handleCardClickDepartment('<?= $item['id']; ?>')" style="background: url(assets/images/BGblueBook.png);">
                                     <div class="card-body">
                                         <h5 class="card-title text-white text-center"></h5>
@@ -327,8 +370,7 @@ include('config/dbcon.php');
 
                         <?php
                         }
-                    }
-                    else {
+                    } else {
                         // If no projects are found, echo no projects found tag
                         echo "<h1 class='text-white'>No projects found Will go back in 3 seconds</h1>";
                         //Go back to the previous page

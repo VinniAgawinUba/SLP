@@ -136,6 +136,11 @@ include('config/dbcon.php');
         margin-right: 30px;
         margin-bottom: 30px;
     }
+
+    body {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
 </style>
 
 <h1 class="headers">ARTICLES</h1>

@@ -48,10 +48,10 @@ include('includes/header.php');
                                     </select>
                                 </div>
 
-                                <div class="col-md-6 mb-3">
+                                <!-- <div class="col-md-6 mb-3">
                                     <label for="">Logo</label>
                                     <input type="file" name="logo_image" required class="form-control">
-                                </div>
+                                </div> -->
                                 
                                 <div class="col-md-12 mb-3">
                                     <button type="submit" name = "add_college" class="btn btn-primary">Add College</button>

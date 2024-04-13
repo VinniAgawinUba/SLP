@@ -30,6 +30,11 @@ include('config/dbcon.php');
         margin-top: 36px;
         margin-bottom: 57px;
     }
+
+    body {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
 </style>
 
 <body>
@@ -43,7 +48,7 @@ include('config/dbcon.php');
                 <div class="row gy-3">
                     <div class="articles">Major Partners</div>
                     <?php
-                    $query = "SELECT * FROM students";
+                    $query = "SELECT * FROM partners";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -74,7 +79,7 @@ include('config/dbcon.php');
                     <div class="projects">Partners</div>
                     <?php
 
-                    $query = "SELECT * FROM students";
+                    $query = "SELECT * FROM partners";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {

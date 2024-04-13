@@ -131,7 +131,7 @@ include('config/dbcon.php');
 
         border-radius: 30px;
         border: none;
-        margin-left: 700px;
+        margin-left: 650px;
     }
 
     #see-all-button:hover {
@@ -241,9 +241,38 @@ include('config/dbcon.php');
         height: 40vw;
         object-fit: contain;
     }
-    
+
+    #projects-card {
+        background: #FFFFFF;
+        border-radius: 10px;
+        width: 266px;
+    }
+
+    #project-title {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 10px;
+        color: #000000;
+    }
+
+    #project-text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        height: 41.75px;
+        padding-left: 10px;
+        margin-top: -10px;
+        color: #000000;
+    }
 </style>
 <link rel="stylesheet" href="assets/css/custom.css">
+
+</p>
 
 <body>
     <div class="card headImage" id="home-layer">
@@ -271,7 +300,11 @@ include('config/dbcon.php');
                     <div class="header">
                         <h5 id="article-header">ARTICLES</h5>
                         <aside class="aside-button">
-                            <button id="see-all-button">See All...</button>
+                            <a href="articles.php">
+                                <button id="see-all-button">
+                                    See All...
+                                </button>
+                            </a>
                         </aside>
                     </div>
                     <?php
@@ -316,7 +349,11 @@ include('config/dbcon.php');
                     <div class="project-header">
                         <h5 id="project-header">PROJECTS</h5>
                         <aside class="aside-button">
-                            <button id="see-all-button">See All...</button>
+                        <a href="projects.php">
+                                <button id="see-all-button">
+                                    See All...
+                                </button>
+                            </a>
                         </aside>
                     </div>
                     <?php
@@ -326,14 +363,14 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
-                            <div class="col-md-3" class="cardClass">
-                                <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                            <div class="col-md-3">
+                                <div style="margin-top: 50px !important;" id="projects-card">
                                     <a href="article-view.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
-                                        <h5 id="title"><?= $item['name']; ?></h5>
-                                        <p id="card-text"><?= $item['description']; ?></p>
+                                        <h5 id="project-title"><?= $item['name']; ?></h5>
+                                        <p id="project-text"><?= $item['description']; ?></p>
 
-                                        <a href="article-view.php?id=<?= $item['id']; ?>" class="btn btn-primary">View</a>
+                                        <a href="article-view.php?id=<?= $item['id']; ?>"></a>
                                         <!-- You can add more project details here -->
                                     </div>
                                 </div>
