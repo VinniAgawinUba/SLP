@@ -691,17 +691,17 @@ VALUES (
     1
   );
 --
--- Triggers `projects`
---
-DELIMITER $$
+DELIMITER //
+
 CREATE TRIGGER `create_gallery_after_insert`
-AFTER
-INSERT ON `projects` FOR EACH ROW BEGIN
-DECLARE gallery_name VARCHAR(255);
-SET gallery_name = CONCAT('Gallery for ', NEW.name);
-INSERT INTO gallery (project_id, name)
-VALUES (NEW.id, gallery_name);
-END $$ DELIMITER;
+AFTER INSERT ON `projects` FOR EACH ROW 
+BEGIN
+    SET @gallery_name = CONCAT('Gallery for ', NEW.name);
+    INSERT INTO gallery (project_id, name) VALUES (NEW.id, @gallery_name);
+END;
+//
+
+DELIMITER ;
 -- --------------------------------------------------------
 --
 -- Table structure for table `project_documents`
