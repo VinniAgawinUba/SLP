@@ -161,7 +161,7 @@ include('config/dbcon.php');
                                         <li>🤝 Aligns with the Jesuit mission of solidarity with those in need and the United Nations’ Sustainable Development Goals.</li>
                                     </ul>
                                 </div>
-                                <h2>Mandate and Vision</h2>
+                                <h2 style="text-align: center;">Mandate and Vision</h2>
                                 <div class="mandate-vision-section">
                                     <div class="box">
                                         <div class="icon">🔍</div>
