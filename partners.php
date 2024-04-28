@@ -145,6 +145,9 @@ include('config/dbcon.php');
 
 </style>
 
+<h1 class="headers">PARTNERS</h1>
+<hr class="horizontal-line">
+
 <body class="main-content">
     <div class="custombg-image-row" id="main-body">
         <div class="row gy-3">
@@ -154,22 +157,20 @@ include('config/dbcon.php');
 
                 <div class="row">
                     <?php
-                    $query = "SELECT * FROM articles";
+                    $query = "SELECT * FROM partners";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
                             <div style="display: flex; justify-content: center;" id="card-box">
-                                <a href="article-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
                                     <div class="card h-100" style="margin-top: 50px !important;" id="card">
-                                        <img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
                                         <div class="card-body">
-                                            <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
-                                            <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
+                                            <h5 id="title"><?= $item['name']; ?></h5>
+                                            <p id="card-text"><?= $item['address']; ?></p>
                                             <!-- You can add more project details here -->
                                         </div>
-                                        <!--Bottom of Card to place date-->
-                                        <p style="padding:5px; font-size:12px" id="card-date"><?= date('F j, Y', strtotime($item['published_date'])); ?></p>
                                     </div>
                                 </a>
                             </div>
