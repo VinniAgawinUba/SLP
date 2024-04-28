@@ -60,7 +60,7 @@ include('config/dbcon.php');
         height: 40vw;
         object-fit: contain;
         margin-top: 100px;
-        margin-bottom: 1000px;
+        margin-bottom: 1500px;
         color: #283971;
     }
 
@@ -212,24 +212,31 @@ include('config/dbcon.php');
                                 </div>
                                 <div class="approach-section">
                                     <h2>Service Learning as Approach to Teaching (Competence)</h2>
-                                    <p id="home-text">As an approach to teaching, actual student community engagement is integrated in the syllabus and forms part 
-                                        of the teaching methodology to achieve the learning objectives of a course or subject. The students’ engagements 
+                                    <p id="home-text">As an approach to teaching, actual student community engagement is integrated in the syllabus and forms part
+                                        of the teaching methodology to achieve the learning objectives of a course or subject. The students’ engagements
                                         are based on needs expressed by partner communities by which they can possibly offer solutions and new perspectives
 
                                         <br>
                                         <br>
-                                        The faculty is expected to craft rubrics for each area visit/work to assess how the learning objectives are achieved 
-                                        as the students progress in their engagement. Service learning components such as area work performance, final SL 
-                                        outputs, presentation of SL outputs to partner community, summative reflection, attendance during the processing 
+                                        The faculty is expected to craft rubrics for each area visit/work to assess how the learning objectives are achieved
+                                        as the students progress in their engagement. Service learning components such as area work performance, final SL
+                                        outputs, presentation of SL outputs to partner community, summative reflection, attendance during the processing
                                         session, are also integrated in the grading matrix.
                                     </p>
-                                    
+
                                 </div>
 
                                 <div class="program-section">
                                     <h2>SLP Program Structure</h2>
-                                    <p id="home-text">As a program, SLP is lodged under the Social Development Cluster and is run by a team of formators who provide oversight function in the preparation, implementation, and post-implementation of the students’ engagements. Below is the SL process of implementation in Xavier Ateneo:</p>
+                                    <p id="home-text">As a program, SLP is lodged under the Social Development Cluster and is run by a team of formators
+                                        who provide oversight function in the preparation, implementation, and post-implementation of the students’ engagements.
+                                        Below is the SL process of implementation in Xavier Ateneo:</p>
                                     <!-- Add more detailed information about the SL process here -->
+                                    <ul>
+                                        <li>Preparation: Oversight by a team of formators.</li>
+                                        <li>Implementation: Integration of service learning components into curriculum.</li>
+                                        <li>Post-Implementation: Evaluation and reflection on student engagements.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
