@@ -60,7 +60,7 @@ include('config/dbcon.php');
         height: 40vw;
         object-fit: contain;
         margin-top: 100px;
-        margin-bottom: 1500px;
+        margin-bottom: 2000px;
         color: #283971;
     }
 
@@ -237,6 +237,7 @@ include('config/dbcon.php');
                                         <li>Implementation: Integration of service learning components into curriculum.</li>
                                         <li>Post-Implementation: Evaluation and reflection on student engagements.</li>
                                     </ul>
+                                    <img src="assets\images\bgslp.png" alt="">
                                 </div>
                             </div>
                         </div>
