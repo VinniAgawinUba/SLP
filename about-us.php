@@ -64,31 +64,6 @@ include('config/dbcon.php');
         color: #283971;
     }
 
-    #third-content {
-        background-image: url('assets/images/BG.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no
-    }
-
-    #fourth-content {
-        background-image: url('assets/images/BG.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 35vw;
-        object-fit: contain;
-    }
-
-    #fifth-content {
-        background-image: url('assets/images/BG.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 40vw;
-        object-fit: contain;
-    }
-
     #home-text {
         color: #283971;
         font-size: 16px;
