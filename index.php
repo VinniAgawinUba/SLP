@@ -13,7 +13,6 @@ include('config/dbcon.php');
 
         background: url(assets/images/BG.png);
         border-radius: 10px;
-        margin-bottom: 100px;
         margin-top: 1px;
         padding: 100px;
     }
