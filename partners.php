@@ -157,7 +157,7 @@ include('config/dbcon.php');
 
                 <div class="row">
                     <?php
-                    $query = "SELECT * FROM partners";
+                    $query = "SELECT * FROM partners WHERE featured = 1";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
