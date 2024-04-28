@@ -22,6 +22,7 @@ include('config/dbcon.php');
         border: none;
         padding-bottom: 10px;
         margin-bottom: 10px;
+        border-radius: 5px;
     }
 
     #home-header {
@@ -47,6 +48,7 @@ include('config/dbcon.php');
         float: left;
         text-align: left;
         padding: 30px;
+
     }
 
     #find-out-more-button {
@@ -277,7 +279,7 @@ include('config/dbcon.php');
 </p>
 
 <body>
-    <div class="card headImage" id="home-layer">
+    <div class="card headImage" id="home-layer"">
         <div class="" id="home-box">
             <aside>
                 <img src="assets/images/BG.png" alt="sample-photo" id="sample-photo">
