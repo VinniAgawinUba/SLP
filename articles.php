@@ -164,7 +164,7 @@ include('config/dbcon.php');
                 <div class="row">
                     <?php
                     // Modify the query to select only featured articles
-                    $query = "SELECT * FROM articles WHERE featured = 1";
+                    $query = "SELECT * FROM articles";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
