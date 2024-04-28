@@ -9,7 +9,7 @@ include('config/dbcon.php');
 <link rel="stylesheet" href="assets/css/custom.css">
 
 <style>
-    .partners-header {
+    .headers {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
@@ -31,68 +31,149 @@ include('config/dbcon.php');
         margin-bottom: 57px;
     }
 
+    #textfield {
+        border: 4px solid #435283;
+        border-radius: 15px;
+        left: calc(50% - 798px/2 - 8px);
+        width: 40%;
+        margin-left: 20%;
+        margin-bottom: 78px;
+    }
+
+    ::placeholder {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.205em;
+
+        color: rgba(40, 57, 113, 0.47);
+    }
+
+    .filter {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: 0.2em;
+
+        color: #6F6F6F;
+        margin-left: 100px;
+    }
+
+    .filter-type {
+        background: #283971;
+        border-radius: 30px;
+        width: 157.07px;
+        height: 38.96px;
+        border: none;
+        padding: 8px;
+        color: #FFFFFF;
+        font-weight: bold;
+        border: none;
+        text-decoration: none;
+    }
+
+    #card {
+        background: #FFFFFF;
+        border-radius: 10px;
+        width: 303px;
+        height: 475px;
+    }
+
+    #card-box {
+        flex-basis: 36px;
+        margin: 29px;
+        text-overflow: ellipsis;
+    }
+
+    #card-box:hover {
+        transition: transform 0.2s;
+        transform: scale(1.05);
+    }
+
+
+    #title {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 23px;
+
+        color: #000000;
+        margin-top: 26px;
+    }
+
+    #card-text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+
+        margin-top: 8px;
+        color: #000000;
+        margin-bottom: 0px;
+        text-align: justify;
+    }
+
+    #main-body {
+        margin-top: 34px;
+        height: 1000px;
+    }
+
+    #card-date {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 10px;
+
+        color: #6F6F6F;
+        text-align: right;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+
     body {
         margin-left: 100px;
         margin-right: 100px;
     }
+
 </style>
 
-<body>
-    <h1 class="partners-header">PARTNERS</h1>
-    <hr class="horizontal-line">
-    <div class="container-fluid custombg-image-row ">
+<body class="main-content">
+    <div class="custombg-image-row" id="main-body">
         <div class="row gy-3">
             <!-- Main Body -->
 
-            <div class="mainContent">
-                <div class="row gy-3">
-                    <div class="articles">Major Partners</div>
+            <div class="main-content">
+
+                <div class="row">
                     <?php
-                    $query = "SELECT * FROM partners";
+                    $query = "SELECT * FROM articles";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
-                            <div class="col-md-4 mb-4 gy-4">
-                                <div class="card bg-transparent border-0 ">
-                                    <img src="assets/images/images.jpg" class="card-img articleImage" alt="...">
-                                    <div class="card-img-overlay">
-
+                            <div style="display: flex; justify-content: center;" id="card-box">
+                                <a href="article-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                        <img src="uploads/articles/<?= $item['thumb_nail_pic']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <div class="card-body">
+                                            <h5 id="title"><?= $item['thumb_nail_title']; ?></h5>
+                                            <p id="card-text"><?= $item['thumb_nail_summary']; ?></p>
+                                            <!-- You can add more project details here -->
+                                        </div>
+                                        <!--Bottom of Card to place date-->
+                                        <p style="padding:5px; font-size:12px" id="card-date"><?= date('F j, Y', strtotime($item['published_date'])); ?></p>
                                     </div>
-                                </div>
-
+                                </a>
                             </div>
 
-
-                    <?php
-                        }
-                    }
-                    ?>
-
-
-                </div>
-
-            </div>
-            <div class="secondContent">
-
-                <div class="row gy-3">
-                    <div class="projects">Partners</div>
-                    <?php
-
-                    $query = "SELECT * FROM partners";
-                    $query_run = mysqli_query($con, $query);
-                    if (mysqli_num_rows($query_run) > 0) {
-                        foreach ($query_run as $item) {
-                    ?>
-                            <div class="col-md-4 mb-4 gy-4">
-                                <div class="card bg-transparent border-0 p-3 marginCard">
-                                    <img src="assets/images/images.jpg" class="card-img articleImage" alt="...">
-                                    <div class="card-img-overlay">
-
-                                    </div>
-                                </div>
-
-                            </div>
                     <?php
                         }
                     }
@@ -100,7 +181,6 @@ include('config/dbcon.php');
                 </div>
             </div>
         </div>
-    </div>
     </div>
     </div>
 </body>
