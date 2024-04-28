@@ -7,47 +7,144 @@ include('config/dbcon.php');
 ?>
 
 <style>
-    /* Header Style */
     .headers {
-        background-color: #A19158;
-        color: white;
-        font-size: 34px;
-        font-family: "Inter", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 800;
+        font-family: 'Inter';
         font-style: normal;
-        padding: 15px 0;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 58px;
+        text-align: center;
+
+        color: #283971;
+        margin-top: 99px;
     }
 
-    /* Carousel Style */
-    .carousel-item img {
-        border-radius: 10px;
-        height: 250px;
+    .horizontal-line {
+        background-color: #283971;
+        width: 50%;
+        margin: auto;
+        border-top: 4px solid #283971 !important;
+        border-radius: 14px;
+        margin-top: 36px;
+        margin-bottom: 57px;
     }
 
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        background-color: #A19158;
-    }
-
-    /* Card Style */
-    .card {
-        border: none;
+    #textfield {
+        border: 4px solid #435283;
         border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
+        left: calc(50% - 798px/2 - 8px);
+        width: 40%;
+        margin-left: 20%;
+        margin-bottom: 78px;
     }
 
-    .card:hover {
-        transform: translateY(-5px);
+    ::placeholder {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.205em;
+
+        color: rgba(40, 57, 113, 0.47);
     }
+
+    .filter {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: 0.2em;
+
+        color: #6F6F6F;
+        margin-left: 100px;
+    }
+
+    .filter-type {
+        background: #283971;
+        border-radius: 30px;
+        width: 157.07px;
+        height: 38.96px;
+        border: none;
+        padding: 8px;
+        color: #FFFFFF;
+        font-weight: bold;
+        border: none;
+        text-decoration: none;
+    }
+
+    #card {
+        background: #FFFFFF;
+        border-radius: 10px;
+        width: 303px;
+        height: 475px;
+    }
+
+    #card-box {
+        flex-basis: 36px;
+        margin: 29px;
+        text-overflow: ellipsis;
+    }
+
+    #card-box:hover {
+        transition: transform 0.2s;
+        transform: scale(1.05);
+    }
+
+
+    #title {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 23px;
+
+        color: #000000;
+        margin-top: 26px;
+    }
+
+    #card-text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+
+        margin-top: 8px;
+        color: #000000;
+        margin-bottom: 0px;
+        text-align: justify;
+    }
+
+    #main-body {
+        margin-top: 34px;
+        height: 1000px;
+    }
+
+    #card-date {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 10px;
+
+        color: #6F6F6F;
+        text-align: right;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+
+    body {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
 </style>
 
 <body>
     <div class="container-fluid custombg-image-row">
-        <div class="row">
-                <h1 class="headers">Galleries</h1>
-        </div>
         <div class="row">
             <?php
             // Get galleries from the database
