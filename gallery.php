@@ -143,6 +143,9 @@ include('config/dbcon.php');
 
 </style>
 
+<h1 class="headers">GALLERY</h1>
+<hr class="horizontal-line">
+
 <body>
     <div class="container-fluid custombg-image-row">
         <div class="row">
