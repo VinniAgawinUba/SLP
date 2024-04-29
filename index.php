@@ -15,6 +15,7 @@ include('config/dbcon.php');
         border-radius: 10px;
         margin-top: 1px;
         padding: 100px;
+        box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
     }
 
 
@@ -23,6 +24,7 @@ include('config/dbcon.php');
         padding-bottom: 10px;
         margin-bottom: 10px;
         border-radius: 5px;
+        background-color: whitesmoke;
     }
 
     #home-header {
