@@ -46,7 +46,6 @@ include('config/dbcon.php');
         background-repeat: no-repeat;
         height: 40vw;
         object-fit: contain;
-        margin-top: 3cap0px;
         margin-bottom: 2000px;
         color: #283971;
     }
@@ -101,6 +100,16 @@ include('config/dbcon.php');
 
         color: #283971;
         margin-top: 99px;
+    }
+
+    .horizontal-line {
+        background-color: #283971;
+        width: 50%;
+        margin: auto;
+        border-top: 4px solid #283971 !important;
+        border-radius: 14px;
+        margin-top: 36px;
+        margin-bottom: -60px;
     }
 </style>
 <link rel="stylesheet" href="assets/css/custom.css">
