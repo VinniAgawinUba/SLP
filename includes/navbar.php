@@ -17,7 +17,7 @@
             letter-spacing: 3px;
             font-family: 'Inter';
             padding: 8px 12px;
-            border: 1px solid black;
+            border: 1px solid #ccc;
             background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px;
             background-size: 20px;
             padding-left: 40px;
@@ -85,9 +85,11 @@
         #search-button:active {
             background-color: #8D7F4D;
         }
-        
-        header {
-            background-color: #ccc;
+
+        #header-links {
+            background-color: whitesmoke;
+            padding: 15px;
+            border-bottom: 1px solid #283971;
         }
     </style>
 </head>
@@ -153,23 +155,25 @@
                 </div>
                 <div></div>
             </div>
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active customfont font-style" id="nav-item" href="index.php">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link customfont font-style" id="nav-item" href="partners.php">PARTNERS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link customfont font-style" id="nav-item" href="projects.php">PROJECTS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link customfont font-style" id="nav-item" href="articles.php">ARTICLES</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link customfont font-style" id="nav-item" href="gallery.php">GALLERY</a>
-                </li>
-            </ul>
+            <div id="header-links">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active customfont font-style" id="nav-item" href="index.php">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link customfont font-style" id="nav-item" href="partners.php">PARTNERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link customfont font-style" id="nav-item" href="projects.php">PROJECTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link customfont font-style" id="nav-item" href="articles.php">ARTICLES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link customfont font-style" id="nav-item" href="gallery.php">GALLERY</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </header>
 </body>
