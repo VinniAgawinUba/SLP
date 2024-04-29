@@ -292,7 +292,9 @@ include('config/dbcon.php');
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
-                <button id="find-out-more-button">Find out more</button>
+                <a href="about-us.php" style="text-decoration: none; color: inherit;">
+                    <button id="find-out-more-button">Find out more</button>
+                </a>
             </article>
         </div>
     </div>
