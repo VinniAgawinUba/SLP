@@ -14,6 +14,7 @@ include('config/dbcon.php');
         background: url(assets/images/BG.png);
         border-radius: 10px;
         margin-top: 1px;
+        padding: 100px;
         box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
     }
 
