@@ -12,19 +12,6 @@ include('config/dbcon.php');
         flex: 1;
     }
 
-    #article-header {
-        padding: 20px;
-        margin-left: auto;
-        margin-right: auto;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 39px;
-        color: #FFFFFF;
-        text-align: center;
-    }
-
     .header {
         display: flex;
         justify-content: center;
@@ -59,7 +46,7 @@ include('config/dbcon.php');
         background-repeat: no-repeat;
         height: 40vw;
         object-fit: contain;
-        margin-top: 100px;
+        margin-top: 3cap0px;
         margin-bottom: 2000px;
         color: #283971;
     }
@@ -103,12 +90,26 @@ include('config/dbcon.php');
     h2 {
         margin-top: 30px;
     }
+
+    .headers {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 58px;
+        text-align: center;
+
+        color: #283971;
+        margin-top: 99px;
+    }
 </style>
 <link rel="stylesheet" href="assets/css/custom.css">
 
 </p>
 
 <body>
+    <h1 class="headers">ABOUT US</h1>
+    <hr class="horizontal-line">
     <div class="container-fluid" id="first-content">
         <div class="row gy-3">
             <!-- Main Body -->
@@ -190,7 +191,6 @@ include('config/dbcon.php');
                                     <p id="home-text">As an approach to teaching, actual student community engagement is integrated in the syllabus and forms part
                                         of the teaching methodology to achieve the learning objectives of a course or subject. The students’ engagements
                                         are based on needs expressed by partner communities by which they can possibly offer solutions and new perspectives
-
                                         <br>
                                         <br>
                                         The faculty is expected to craft rubrics for each area visit/work to assess how the learning objectives are achieved
