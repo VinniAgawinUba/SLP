@@ -154,6 +154,7 @@ if(isset($_POST['partner_add_btn'])) {
     $designation = $_POST['designation'];
     $email = $_POST['email'];
     $contact_number = $_POST['contact_number'];
+    $type_id = $_POST['type_id'];
     $logo_image = $_FILES['logo_image'];
 
     // Check if a new file is uploaded
@@ -176,7 +177,23 @@ if(isset($_POST['partner_add_btn'])) {
         }
     } else {
         // No new file uploaded, insert the Partner record without the logo image
-        $query = "INSERT INTO partners (name, address, contact_person, designation, email, contact_number) VALUES ('$name', '$address', '$contact_person', '$designation', '$email', '$contact_number')";
+        $query = "INSERT INTO partners (
+            name, 
+            address, 
+            contact_person, 
+            designation, 
+            email, 
+            contact_number, 
+            type_id
+            ) VALUES (
+                '$name', 
+                '$address', 
+                '$contact_person', 
+                '$designation', 
+                '$email', 
+                '$contact_number',
+                '$type_id' 
+            )";
         $query_run = mysqli_query($con, $query);
     }
 
@@ -200,6 +217,7 @@ if(isset($_POST['update_partner'])) {
     $designation = $_POST['designation'];
     $email = $_POST['email'];
     $contact_number = $_POST['contact_number'];
+    $type_id = $_POST['type_id'];
     $logo_image = $_FILES['logo_image'];
 
     // Check if a new file is uploaded
@@ -227,7 +245,16 @@ if(isset($_POST['update_partner'])) {
     }
 
     // Update the Partner record
-    $query = "UPDATE partners SET name = '$name', address = '$address', contact_person = '$contact_person', designation = '$designation', email = '$email', contact_number = '$contact_number', logo_image = '$filename' WHERE id = '$partner_id'";
+    $query = "UPDATE partners SET 
+    name = '$name', 
+    address = '$address', 
+    contact_person = '$contact_person', 
+    designation = '$designation', 
+    email = '$email', 
+    contact_number = '$contact_number', 
+    type_id = '$type_id',
+    logo_image = '$filename' 
+    WHERE id = '$partner_id'";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {

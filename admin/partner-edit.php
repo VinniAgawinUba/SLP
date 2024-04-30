@@ -26,8 +26,8 @@ include('includes/header.php');
                     if(isset($_GET['id']))
                     {
                         $partner_id = $_GET['id'];
-                        $partners = "SELECT * FROM partners WHERE id = '$partner_id'";
-                        $partners_run = mysqli_query($con, $partners);
+                        $partners_query = "SELECT * FROM partners WHERE id = '$partner_id'";
+                        $partners_run = mysqli_query($con, $partners_query);
 
                         if(mysqli_num_rows($partners_run) > 0)
                         {
@@ -63,6 +63,25 @@ include('includes/header.php');
                                 <div class="col-md-6 mb-3">
                                     <label for="">Contact Number</label>
                                     <input type="text" name="contact_number" class="form-control" value="<?= $partner['contact_number'];?>">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Partner Type</label>
+                                    <select name="type_id" id="type_id" class="form-select" required>
+                                    <option value="">--Select Partner Type--</option>
+                                        <?php
+                                        $type_query = "SELECT * FROM type";
+                                        $type_query_run = mysqli_query($con, $type_query);
+                                        if(mysqli_num_rows($type_query_run) > 0) {
+                                            while($type_list = mysqli_fetch_assoc($type_query_run)) {
+                                                $selected = ($type_list["id"] == $partner['type_id']) ? 'selected' : '';
+                                                echo '<option value="'.$type_list['id'].'" '.$selected.'>'.$type_list['type_name'].'</option>';
+                                            }
+                                        } else {
+                                            echo '<option value="">No Type Found</option>';
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
 
                                 <!--Logo Image-->
