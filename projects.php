@@ -273,31 +273,104 @@ include('config/dbcon.php');
         width: 303px;
         height: 475px;
     }
-    <?php
-    // Set the yellow tag based on the URL parameters
-    if (!isset($_GET['school_year'])) {
-        $YellowTag = "SCHOOL YEAR";
-    } else if (isset($_GET['school_year']) && !isset($_GET['semester'])) {
-        $YellowTag = "SEMESTER";
-    } else if (isset($_GET['semester']) && isset($_GET['school_year']) && !isset($_GET['college'])) {
-        $YellowTag = "COLLEGES";
-    } else if (!isset($_GET['department']) && isset($_GET['college']) && isset($_GET['school_year']) && isset($_GET['semester'])) {
-        $YellowTag = "DEPARTMENTS";
-    } else if (isset($_GET['school_year']) && isset($_GET['semester']) && isset($_GET['college']) && isset($_GET['department'])) {
-        $YellowTag = "PROJECTS";
-    }
 
-    ?>
+    .hidden {
+        display: none;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 </style>
+<?php
+// Set the yellow tag based on the URL parameters
+if (!isset($_GET['school_year'])) {
+    $YellowTag = "SCHOOL YEAR";
+} else if (isset($_GET['school_year']) && !isset($_GET['semester'])) {
+    $YellowTag = "SEMESTER";
+} else if (isset($_GET['semester']) && isset($_GET['school_year']) && !isset($_GET['college'])) {
+    $YellowTag = "COLLEGES";
+} else if (!isset($_GET['department']) && isset($_GET['college']) && isset($_GET['school_year']) && isset($_GET['semester'])) {
+    $YellowTag = "DEPARTMENTS";
+} else if (isset($_GET['school_year']) && isset($_GET['semester']) && isset($_GET['college']) && isset($_GET['department'])) {
+    $YellowTag = "PROJECTS";
+}
+
+?>
 <h4 class="header">PROJECTS</h4>
 <hr class="horizontal-line">
 <input type="search" name="" id="textfield" placeholder="    Input search keywords...">
 <span class="filter">Filter ↓</span>
 <select name="" id="" class="filter-type">
-    <option value="">Alphabetical</option>
-    <option value="">Year</option>
-    <option value="">Department</option>
+    <option value="">Alphabetical A-Z</option>
+    <option value="">Alphabetical Z-A</option>
 </select>
+
+<script>
+    // Function to filter items based on search input
+    function filterSY() {
+        // Get the search input value
+        var searchText = document.getElementById('textfield').value.toLowerCase();
+
+        // Get all containers containing items to be filtered
+        var containers = document.querySelectorAll('.col-md-3');
+
+        // Loop through each container and hide/show based on the search text
+        containers.forEach(function(container) {
+            // Get the item within the container
+            var item = container.querySelector('.card-body');
+
+            // Get the text content of the item
+            var itemText = item.textContent.toLowerCase();
+
+            // Check if the item text contains the search text
+            if (itemText.includes(searchText)) {
+                // Show the container
+                container.style.display = 'block';
+            } else {
+                // Hide the container
+                container.style.display = 'none';
+            }
+        });
+    }
+    
+
+    // Bind an event listener to the search input to trigger filterItems function on input change
+    document.getElementById('textfield').addEventListener('input', filterSY);
+</script>
+<script>
+    // Function to filter items based on search input
+    function filterProject() {
+        // Get the search input value
+        var searchText = document.getElementById('textfield').value.toLowerCase();
+
+        // Get all containers containing items to be filtered
+        var containers = document.querySelectorAll('.col-md-3 mb-3 gy-3');
+
+        // Loop through each container and hide/show based on the search text
+        containers.forEach(function(container) {
+            // Get the item within the container
+            var item = container.querySelector('.card-body');
+
+            // Get the text content of the item
+            var itemText = item.textContent.toLowerCase();
+
+            // Check if the item text contains the search text
+            if (itemText.includes(searchText)) {
+                // Show the container
+                container.style.display = 'block';
+            } else {
+                // Hide the container
+                container.style.display = 'none';
+            }
+        });
+    }
+
+    // Bind an event listener to the search input to trigger filterItems function on input change
+    document.getElementById('textfield').addEventListener('input', filterProject);
+</script>
+
 <div class="container-fluid" id="background-image">
     <div class="row gy-3" style="display: flex; justify-content: center;">
         <div class="col-12">
@@ -316,9 +389,30 @@ include('config/dbcon.php');
             <div class="row">
 
                 <?php
+                // Define the number of school years per page
+                $itemsPerPage = 12;
+
+                // Get the current page number, default to 1 if not provided
+                $page = isset($_GET['school_year_page']) ? $_GET['school_year_page'] : 1;
+
+                // Calculate the offset for the SQL query
+                $offset = ($page - 1) * $itemsPerPage;
+                // Define the number of projects per page
+                $projectsPerPage = 3;
+
+                // Get the current page number for projects, default to 1 if not provided
+                $projectPage = isset($_GET['project_page']) ? $_GET['project_page'] : 1;
+
+                // Calculate the offset for the SQL query
+                $projectOffset = ($projectPage - 1) * $projectsPerPage;
+
+                // Query to retrieve school years with pagination
+                $query = "SELECT * FROM school_year ORDER BY school_year DESC LIMIT $offset, $itemsPerPage";
+                $query_run = mysqli_query($con, $query);
+
                 //If School Year is not set as a parameter, render School Years
                 if (!isset($_GET['school_year'])) {
-                    $query = "SELECT * FROM school_year ORDER BY school_year DESC";
+                    $query = "SELECT * FROM school_year ORDER BY school_year DESC LIMIT $offset, $itemsPerPage";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -338,7 +432,21 @@ include('config/dbcon.php');
                         }
                     }
 
+                    // Get total number of school years
+                    $totalSchoolYearsQuery = "SELECT COUNT(*) AS total FROM school_year";
+                    $totalSchoolYearsResult = mysqli_query($con, $totalSchoolYearsQuery);
+                    $totalSchoolYears = mysqli_fetch_assoc($totalSchoolYearsResult)['total'];
 
+                    // Calculate total number of pages
+                    $totalSchoolYearPages = ceil($totalSchoolYears / $itemsPerPage);
+
+                    // Display pagination controls for school years
+                    echo "<div class='pagination'>";
+                    for ($i = 1; $i <= $totalSchoolYearPages; $i++) {
+                        $active = $i == $page ? 'active' : '';
+                        echo "<a href='?school_year_page=$i' class='page-link $active'>$i</a>";
+                    }
+                    echo "</div>";
 
 
                     // SEMESTER
@@ -452,12 +560,12 @@ include('config/dbcon.php');
                     $semester = $_GET['semester'];
                     $college = $_GET['college'];
                     $department = $_GET['department'];
-                    $query = "SELECT * FROM projects WHERE school_year_id = '$school_year' AND semester = '$semester' AND college_id = '$college' AND department_id = '$department'";
+                    $query = "SELECT * FROM projects WHERE school_year_id = '$school_year' AND semester = '$semester' AND college_id = '$college' AND department_id = '$department' LIMIT $projectOffset, $projectsPerPage";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                         ?>
-                            <div class="col-md-6 mb-3 gy-3" style="display: flex; justify-content: center; ">
+                            <div class="col-md-3 mb-3 gy-3" style="display: flex; justify-content: center; ">
                                 <div class="card" id="project-card">
                                     <a href="project-details.php?id=<?= $item['id']; ?>"><img src="" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
@@ -471,6 +579,40 @@ include('config/dbcon.php');
                             </div>
                 <?php
                         }
+                        // Get total number of projects
+                        $totalProjectsQuery = "SELECT COUNT(*) AS total FROM projects WHERE school_year_id = '$school_year' AND semester = '$semester' AND college_id = '$college' AND department_id = '$department'";
+                        $totalProjectsResult = mysqli_query($con, $totalProjectsQuery);
+                        $totalProjects = 0; // Initialize totalProjects variable
+                        if ($totalProjectsResult) {
+                            $totalProjectsData = mysqli_fetch_assoc($totalProjectsResult);
+                            if ($totalProjectsData && isset($totalProjectsData['total'])) {
+                                $totalProjects = $totalProjectsData['total'];
+                            }
+                        }
+
+                        // Calculate total number of pages for projects
+                        $totalProjectPages = ceil($totalProjects / $projectsPerPage);
+
+
+                        // Display pagination controls for projects
+                        echo "<div class='pagination'>";
+                        for ($i = 1; $i <= $totalProjectPages; $i++) {
+                            $active = $i == $projectPage ? 'active' : '';
+                            // Build the URL with existing parameters and the project_page parameter
+                            $url = "projects.php?project_page=$i";
+                            if (isset($_GET['school_year_page']))
+                                $url .= "&school_year_page={$_GET['school_year_page']}";
+                            if (isset($_GET['school_year']))
+                                $url .= "&school_year={$_GET['school_year']}";
+                            if (isset($_GET['semester']))
+                                $url .= "&semester={$_GET['semester']}";
+                            if (isset($_GET['college']))
+                                $url .= "&college={$_GET['college']}";
+                            if (isset($_GET['department']))
+                                $url .= "&department={$_GET['department']}";
+                            echo "<a href='$url' class='page-link $active'>$i</a>";
+                        }
+                        echo "</div>";
                     } else {
                         // If no projects are found, echo no projects found tag
                         echo "<h1 class='text-white'>No projects found Will go back in 3 seconds</h1>";
@@ -504,7 +646,7 @@ include('config/dbcon.php');
             // Fetch 3 articles
             $query = "SELECT * FROM projects WHERE featured=1 LIMIT 3";
             $query_run = mysqli_query($con, $query);
-    
+
             // Check if any posts are returned
             if (mysqli_num_rows($query_run) > 0) {
                 // Loop through the returned posts

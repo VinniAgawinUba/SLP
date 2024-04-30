@@ -142,8 +142,49 @@ include('config/dbcon.php');
         margin-right: 100px;
     }
 
-</style>
+    .pagination {
+        padding: 20px 0;
+        margin-top: 20px;
+        text-align: center;
+        justify-content: center;
+    }
 
+    .pagination a {
+        color: #283971;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+    }
+
+    .pagination a.active {
+        background-color: #283971;
+        color: white;
+        border: 1px solid #283971;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
+<?php
+//PAGINATION
+// Define the number of articles per page
+$articlesPerPage = 9;
+
+// Determine the current page
+if (isset($_GET['page'])) {
+    $currentPage = $_GET['page'];
+} else {
+    $currentPage = 1;
+}
+
+// Calculate the offset
+$offset = ($currentPage - 1) * $articlesPerPage;
+
+?>
 <h1 class="headers">ARTICLES</h1>
 <hr class="horizontal-line">
 <input type="search" name="" id="textfield" placeholder="    Input search keywords...">
@@ -153,6 +194,37 @@ include('config/dbcon.php');
     <option value="">Year</option>
     <option value="">Department</option>
 </select>
+
+<script>
+    // Function to filter articles based on search input
+    function filterArticles() {
+        // Get the search input value
+        var searchText = document.getElementById('textfield').value.toLowerCase();
+
+        // Get all containers containing articles to be filtered
+        var containers = document.querySelectorAll('.card');
+
+        // Loop through each container and hide/show based on the search text
+        containers.forEach(function(container) {
+            // Get the title and summary within the container
+            var title = container.querySelector('#title').textContent.toLowerCase();
+            var summary = container.querySelector('#card-text').textContent.toLowerCase();
+
+            // Check if the title or summary contains the search text
+            if (title.includes(searchText) || summary.includes(searchText)) {
+                // Show the container
+                container.parentElement.style.display = 'block';
+            } else {
+                // Hide the container
+                container.parentElement.style.display = 'none';
+            }
+        });
+    }
+
+    // Bind an event listener to the search input to trigger filterArticles function on input change
+    document.getElementById('textfield').addEventListener('input', filterArticles);
+</script>
+
 
 <body class="main-content">
     <div class="custombg-image-row" id="main-body">
@@ -164,7 +236,7 @@ include('config/dbcon.php');
                 <div class="row">
                     <?php
                     // Modify the query to select only featured articles
-                    $query = "SELECT * FROM articles";
+                    $query = "SELECT * FROM articles LIMIT $offset, $articlesPerPage";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -189,6 +261,22 @@ include('config/dbcon.php');
                     } else {
                         echo "No featured articles found";
                     }
+
+                    // Pagination links
+                    $totalArticlesQuery = "SELECT COUNT(*) AS total FROM articles";
+                    $totalArticlesResult = mysqli_query($con, $totalArticlesQuery);
+                    $totalArticles = mysqli_fetch_assoc($totalArticlesResult)['total'];
+                    $totalPages = ceil($totalArticles / $articlesPerPage);
+
+                    echo "<div class='pagination'>";
+                    for ($i = 1; $i <= $totalPages; $i++) {
+                        if ($i == $currentPage) {
+                            echo "<a class='active' href='articles.php?page=$i'>$i</a>";
+                        } else {
+                            echo "<a href='articles.php?page=$i'>$i</a>";
+                        }
+                    }
+                    echo "</div>";
                     ?>
                 </div>
             </div>
