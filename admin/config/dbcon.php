@@ -2,7 +2,7 @@
 $host = "localhost:3306";
 $username = "root";
 $password = "";
-$database = "slp_db";
+$database = "slp";
 
 $con = mysqli_connect($host, $username, $password, $database);
 

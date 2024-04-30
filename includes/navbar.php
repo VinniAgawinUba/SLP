@@ -105,7 +105,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <a href="index.php" style="width:400px;">
-                            <img src="assets/images/XU_LOGO.png" alt="Logo" style="width: 80%;">
+                            <img src="assets/images/XULOGO.png" alt="Logo" style="width: 80%;">
                         </a>
                         <form class="d-flex justify-content-center ms-auto">
                             <input class="form-control me-2 custom-search" id="custom-search" type="search" placeholder="Search">
