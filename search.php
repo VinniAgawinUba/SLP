@@ -12,14 +12,14 @@ if (isset($_GET['query'])) {
     $searchQuery = $_GET['query'];
 
     // Construct SQL queries to search across relevant columns in different tables
-    $sqlPosts = "SELECT * FROM posts WHERE name LIKE '%$searchQuery%' OR description LIKE '%$searchQuery%'";
+    $sqlArticles = "SELECT * FROM articles WHERE name LIKE '%$searchQuery%' OR description LIKE '%$searchQuery%'";
     $sqlProjects = "SELECT * FROM projects WHERE name LIKE '%$searchQuery%' OR description LIKE '%$searchQuery%'";
     $sqlGallery = "SELECT * FROM gallery WHERE name LIKE '%$searchQuery%'";
     $sqlPartners = "SELECT * FROM partners WHERE name LIKE '%$searchQuery%'";
     $sqlFaculty = "SELECT * FROM faculty WHERE fname LIKE '%$searchQuery%' OR lname LIKE '%$searchQuery%'";
 
     // Execute the SQL queries
-    $resultPosts = mysqli_query($con, $sqlPosts);
+    $resultArticles = mysqli_query($con, $sqlArticles);
     $resultProjects = mysqli_query($con, $sqlProjects);
     $resultGallery = mysqli_query($con, $sqlGallery);
     $resultPartners = mysqli_query($con, $sqlPartners);
@@ -29,11 +29,11 @@ if (isset($_GET['query'])) {
     echo "<div class='container'>";
     echo "<h1>Search Results for '$searchQuery'</h1>";
 
-    // Display search results for posts
+    // Display search results for Articles
     echo "<div class='search-results'>";
-    echo "<h2>Posts</h2>";
+    echo "<h2>Articles</h2>";
     echo "<ul>";
-    while ($row = mysqli_fetch_assoc($resultPosts)) {
+    while ($row = mysqli_fetch_assoc($resultArticles)) {
         $postId = $row['id'];
         $postName = $row['name'];
         // Construct URL for article-view.php
