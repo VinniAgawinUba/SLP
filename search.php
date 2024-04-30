@@ -12,7 +12,7 @@ if (isset($_GET['query'])) {
     $searchQuery = $_GET['query'];
 
     // Construct SQL queries to search across relevant columns in different tables
-    $sqlArticles = "SELECT * FROM articles WHERE name LIKE '%$searchQuery%' OR description LIKE '%$searchQuery%'";
+    $sqlArticles = "SELECT * FROM articles WHERE thumb_nail_title LIKE '%$searchQuery%' ";
     $sqlProjects = "SELECT * FROM projects WHERE name LIKE '%$searchQuery%' OR description LIKE '%$searchQuery%'";
     $sqlGallery = "SELECT * FROM gallery WHERE name LIKE '%$searchQuery%'";
     $sqlPartners = "SELECT * FROM partners WHERE name LIKE '%$searchQuery%'";
@@ -34,11 +34,11 @@ if (isset($_GET['query'])) {
     echo "<h2>Articles</h2>";
     echo "<ul>";
     while ($row = mysqli_fetch_assoc($resultArticles)) {
-        $postId = $row['id'];
-        $postName = $row['name'];
+        $articleId = $row['id'];
+        $articleName = $row['thumb_nail_title'];
         // Construct URL for article-view.php
-        $url = "article-view.php?id=$postId";
-        echo "<li><a href='$url'>$postName</a></li>";
+        $url = "article-view.php?id=$articleId";
+        echo "<li><a href='$url'>$articleName</a></li>";
     }
     echo "</ul>";
     echo "</div>";
