@@ -140,7 +140,32 @@ include('config/dbcon.php');
         margin-left: 100px;
         margin-right: 100px;
     }
+    .pagination {
+        padding: 20px 0;
+        margin-top: 20px;
+        text-align: center;
+        justify-content: center;
+    }
 
+    .pagination a {
+        color: #283971;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+    }
+
+    .pagination a.active {
+        background-color: #283971;
+        color: white;
+        border: 1px solid #283971;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ffff;
+    }
 </style>
 
 <h1 class="headers">GALLERY</h1>
@@ -148,31 +173,42 @@ include('config/dbcon.php');
 
 <body>
     <div class="container-fluid custombg-image-row">
-        <div class="row">
+        <div class="row py-3">
             <?php
+            //Pagination
+             $itemsPerPage = 3;
+             $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+             $offset = ($currentPage - 1) * $itemsPerPage;
+             // Get total number of galleries
+            $totalGalleriesQuery = "SELECT COUNT(*) AS total FROM gallery";
+            $totalGalleriesResult = mysqli_query($con, $totalGalleriesQuery);
+            $totalGalleries = mysqli_fetch_assoc($totalGalleriesResult)['total'];
+            $totalPages = ceil($totalGalleries / $itemsPerPage);
+
+
             // Get galleries from the database
-            $query = "SELECT * FROM gallery ORDER BY id DESC LIMIT 9";
+            $query = "SELECT * FROM gallery ORDER BY id DESC LIMIT $offset, $itemsPerPage";
             $query_run = mysqli_query($con, $query);
 
-            if(mysqli_num_rows($query_run) > 0) {
-                while($gallery = mysqli_fetch_assoc($query_run)) {
+            if (mysqli_num_rows($query_run) > 0) {
+                while ($gallery = mysqli_fetch_assoc($query_run)) {
                     $gallery_id = $gallery['id'];
 
                     // Get photos for this gallery
                     $photo_query = "SELECT * FROM gallery_photos WHERE gallery_id = $gallery_id LIMIT 5";
                     $photo_query_run = mysqli_query($con, $photo_query);
                     $photos = mysqli_fetch_all($photo_query_run, MYSQLI_ASSOC);
-                    ?>
+            ?>
                     <div class="col-md-3 mb-4">
                         <div class="card">
                             <div id="carousel<?= $gallery_id; ?>" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-indicators">
                                     <?php
                                     $first = true;
-                                    foreach($photos as $index => $photo) {
-                                        ?>
+                                    foreach ($photos as $index => $photo) {
+                                    ?>
                                         <button type="button" data-bs-target="#carousel<?= $gallery_id; ?>" data-bs-slide-to="<?= $index; ?>" class="<?php echo $first ? 'active' : ''; ?>"></button>
-                                        <?php
+                                    <?php
                                         $first = false;
                                     }
                                     ?>
@@ -180,12 +216,12 @@ include('config/dbcon.php');
                                 <div class="carousel-inner">
                                     <?php
                                     $first = true;
-                                    foreach($photos as $index => $photo) {
-                                        ?>
+                                    foreach ($photos as $index => $photo) {
+                                    ?>
                                         <div class="carousel-item <?php echo $first ? 'active' : ''; ?>">
                                             <img src="uploads/gallery_photos/<?php echo $photo['file_name']; ?>" class="d-block w-100" alt="<?php echo $photo['file_name']; ?>">
                                         </div>
-                                        <?php
+                                    <?php
                                         $first = false;
                                     }
                                     ?>
@@ -205,12 +241,23 @@ include('config/dbcon.php');
                             </div>
                         </div>
                     </div>
-                    <?php
+            <?php
                 }
             } else {
                 echo "<p>No galleries found.</p>";
             }
+            echo "<div class='pagination'>";
+                    for ($i = 1; $i <= $totalPages; $i++) {
+                        if ($i == $currentPage) {
+                            echo "<a class='active' href='gallery.php?page=$i'>$i</a>";
+                        } else {
+                            echo "<a href='gallery.php?page=$i'>$i</a>";
+                        }
+                    }
+                    echo "</div>";
             ?>
+
+            
         </div>
     </div>
 </body>
