@@ -481,7 +481,7 @@ include('config/dbcon.php');
                         <h5 id="article-header">Local Government Units</h5>
                     </div>
                     <?php
-                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query = "SELECT * FROM partners WHERE featured = 1 AND type_id = 1";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -521,7 +521,7 @@ include('config/dbcon.php');
                         <h5 id="project-header">Civil Society Organizations</h5>
                     </div>
                     <?php
-                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query = "SELECT * FROM partners WHERE featured = 1 AND type_id = 2";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -559,7 +559,7 @@ include('config/dbcon.php');
                         <h5 id="project-header">Industry</h5>
                     </div>
                     <?php
-                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query = "SELECT * FROM partners WHERE featured = 1 AND type_id = 3";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -597,7 +597,7 @@ include('config/dbcon.php');
                         <h5 id="project-header">Non - Government</h5>
                     </div>
                     <?php
-                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query = "SELECT * FROM partners WHERE featured = 1 AND type_id = 4";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -635,7 +635,7 @@ include('config/dbcon.php');
                         <h5 id="project-header">Private Sector</h5>
                     </div>
                     <?php
-                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query = "SELECT * FROM partners WHERE featured = 1 AND type_id = 5";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -673,7 +673,7 @@ include('config/dbcon.php');
                         <h5 id="project-header">In - XU</h5>
                     </div>
                     <?php
-                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query = "SELECT * FROM partners WHERE featured = 1 AND type_id = 6";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -711,7 +711,7 @@ include('config/dbcon.php');
                         <h5 id="project-header">Government Agencies</h5>
                     </div>
                     <?php
-                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query = "SELECT * FROM partners WHERE featured = 1 AND type_id = 7";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
@@ -749,7 +749,7 @@ include('config/dbcon.php');
                         <h5 id="project-header">Schools</h5>
                     </div>
                     <?php
-                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query = "SELECT * FROM partners WHERE featured = 1 AND type_id = 8";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
