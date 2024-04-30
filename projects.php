@@ -278,9 +278,30 @@ include('config/dbcon.php');
         display: none;
     }
     .pagination {
-        display: flex;
-        justify-content: center;
+        padding: 20px 0;
         margin-top: 20px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .pagination a {
+        color: #283971;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+    }
+
+    .pagination a.active {
+        background-color: #283971;
+        color: white;
+        border: 1px solid #283971;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ffff;
     }
 </style>
 <?php
