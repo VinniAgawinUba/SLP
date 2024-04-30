@@ -94,6 +94,14 @@
         #nav-bar {
             margin-top: -20px;
         }
+
+        #search-bar {
+            margin-top: -30px;
+        }
+
+        #beside-search-bar {
+            margin-top: -30px;
+        }
     </style>
 </head>
 
@@ -110,11 +118,11 @@
                         <a href="index.php" style="width:400px;">
                             <img src="assets/images/XULOGO.png" alt="Logo" style="width: 80%;">
                         </a>
-                        <form class="d-flex justify-content-center ms-auto">
+                        <form class="d-flex justify-content-center ms-auto" id="search-bar">
                             <input class="form-control me-2 custom-search" id="custom-search" type="search" placeholder="Search">
                             <button class="btn btn-outline-primary" id="search-button" type="submit">Search</button>
                         </form>
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="beside-search-bar">
                             <li class="nav-item text-center customfont">
                                 <a class="nav-link customfont" href="about-us.php">About Us</a>
                             </li>
