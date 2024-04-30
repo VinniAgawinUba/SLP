@@ -274,31 +274,103 @@ include('config/dbcon.php');
         height: 475px;
     }
 
-    <?php
-    // Set the yellow tag based on the URL parameters
-    if (!isset($_GET['school_year'])) {
-        $YellowTag = "SCHOOL YEAR";
-    } else if (isset($_GET['school_year']) && !isset($_GET['semester'])) {
-        $YellowTag = "SEMESTER";
-    } else if (isset($_GET['semester']) && isset($_GET['school_year']) && !isset($_GET['college'])) {
-        $YellowTag = "COLLEGES";
-    } else if (!isset($_GET['department']) && isset($_GET['college']) && isset($_GET['school_year']) && isset($_GET['semester'])) {
-        $YellowTag = "DEPARTMENTS";
-    } else if (isset($_GET['school_year']) && isset($_GET['semester']) && isset($_GET['college']) && isset($_GET['department'])) {
-        $YellowTag = "PROJECTS";
+    .hidden {
+        display: none;
     }
-
-    ?>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 </style>
+<?php
+// Set the yellow tag based on the URL parameters
+if (!isset($_GET['school_year'])) {
+    $YellowTag = "SCHOOL YEAR";
+} else if (isset($_GET['school_year']) && !isset($_GET['semester'])) {
+    $YellowTag = "SEMESTER";
+} else if (isset($_GET['semester']) && isset($_GET['school_year']) && !isset($_GET['college'])) {
+    $YellowTag = "COLLEGES";
+} else if (!isset($_GET['department']) && isset($_GET['college']) && isset($_GET['school_year']) && isset($_GET['semester'])) {
+    $YellowTag = "DEPARTMENTS";
+} else if (isset($_GET['school_year']) && isset($_GET['semester']) && isset($_GET['college']) && isset($_GET['department'])) {
+    $YellowTag = "PROJECTS";
+}
+
+?>
 <h4 class="header">PROJECTS</h4>
 <hr class="horizontal-line">
 <input type="search" name="" id="textfield" placeholder="    Input search keywords...">
 <span class="filter">Filter ↓</span>
 <select name="" id="" class="filter-type">
-    <option value="">Alphabetical</option>
-    <option value="">Year</option>
-    <option value="">Department</option>
+    <option value="">Alphabetical A-Z</option>
+    <option value="">Alphabetical Z-A</option>
 </select>
+
+<script>
+    // Function to filter items based on search input
+    function filterSY() {
+        // Get the search input value
+        var searchText = document.getElementById('textfield').value.toLowerCase();
+
+        // Get all containers containing items to be filtered
+        var containers = document.querySelectorAll('.col-md-3');
+
+        // Loop through each container and hide/show based on the search text
+        containers.forEach(function(container) {
+            // Get the item within the container
+            var item = container.querySelector('.card-body');
+
+            // Get the text content of the item
+            var itemText = item.textContent.toLowerCase();
+
+            // Check if the item text contains the search text
+            if (itemText.includes(searchText)) {
+                // Show the container
+                container.style.display = 'block';
+            } else {
+                // Hide the container
+                container.style.display = 'none';
+            }
+        });
+    }
+    
+
+    // Bind an event listener to the search input to trigger filterItems function on input change
+    document.getElementById('textfield').addEventListener('input', filterSY);
+</script>
+<script>
+    // Function to filter items based on search input
+    function filterProject() {
+        // Get the search input value
+        var searchText = document.getElementById('textfield').value.toLowerCase();
+
+        // Get all containers containing items to be filtered
+        var containers = document.querySelectorAll('.col-md-3 mb-3 gy-3');
+
+        // Loop through each container and hide/show based on the search text
+        containers.forEach(function(container) {
+            // Get the item within the container
+            var item = container.querySelector('.card-body');
+
+            // Get the text content of the item
+            var itemText = item.textContent.toLowerCase();
+
+            // Check if the item text contains the search text
+            if (itemText.includes(searchText)) {
+                // Show the container
+                container.style.display = 'block';
+            } else {
+                // Hide the container
+                container.style.display = 'none';
+            }
+        });
+    }
+
+    // Bind an event listener to the search input to trigger filterItems function on input change
+    document.getElementById('textfield').addEventListener('input', filterProject);
+</script>
+
 <div class="container-fluid" id="background-image">
     <div class="row gy-3" style="display: flex; justify-content: center;">
         <div class="col-12">
@@ -318,7 +390,7 @@ include('config/dbcon.php');
 
                 <?php
                 // Define the number of school years per page
-                $itemsPerPage = 1;
+                $itemsPerPage = 12;
 
                 // Get the current page number, default to 1 if not provided
                 $page = isset($_GET['school_year_page']) ? $_GET['school_year_page'] : 1;
@@ -326,7 +398,7 @@ include('config/dbcon.php');
                 // Calculate the offset for the SQL query
                 $offset = ($page - 1) * $itemsPerPage;
                 // Define the number of projects per page
-                $projectsPerPage = 2;
+                $projectsPerPage = 3;
 
                 // Get the current page number for projects, default to 1 if not provided
                 $projectPage = isset($_GET['project_page']) ? $_GET['project_page'] : 1;
@@ -493,7 +565,7 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                         ?>
-                            <div class="col-md-6 mb-3 gy-3" style="display: flex; justify-content: center; ">
+                            <div class="col-md-3 mb-3 gy-3" style="display: flex; justify-content: center; ">
                                 <div class="card" id="project-card">
                                     <a href="project-details.php?id=<?= $item['id']; ?>"><img src="" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
