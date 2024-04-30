@@ -88,8 +88,11 @@
 
         #header-links {
             background-color: whitesmoke;
-            padding: 15px;
             border-bottom: 1px solid #283971;
+        }
+
+        #nav-bar {
+            margin-top: -20px;
         }
     </style>
 </head>
@@ -105,7 +108,7 @@ else {
 <body>
     <header>
         <div class="container">
-            <div class="container-fluid px-2">
+            <div class="container-fluid px-2" id="nav-bar">
                 <nav class="navbar navbar-expand-lg">
                     <a class="navbar-brand d-block d-sm-none d-md-none" href="#"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

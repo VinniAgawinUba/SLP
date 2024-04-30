@@ -1,6 +1,18 @@
 <?php
 include('authentication.php');
 include('includes/header.php');
+
+// Define an associative array to map type IDs to their names
+$partnerTypes = array(
+    1 => 'Local Government Units',
+    2 => 'Civil Society Organizations',
+    3 => 'Industry',
+    4 => 'Non - Government',
+    5 => 'Private Sectors',
+    6 => 'In - Xu',
+    7 => 'Government Agencies',
+    8 => 'Schools'
+);
 ?>
 
 
@@ -32,7 +44,8 @@ include('includes/header.php');
                                 <th>Contact Person</th>
                                 <th>Designation</th>
                                 <th>Email</th>
-                                <th>Contacy Number</th>
+                                <th>Contact Number</th>
+                                <th>Partner Type</th>
                                 <th>Featured</th>
                                 
                                 <th>Edit</th>
@@ -56,8 +69,9 @@ include('includes/header.php');
                                         <td><?= $row['designation']; ?></td>
                                         <td><?= $row['email']; ?></td>
                                         <td><?= $row['contact_number']; ?></td>
+                                        <td><?= isset($partnerTypes[$row['type_id']]) ? $partnerTypes[$row['type_id']] : 'Unknown'; ?></td>
                                         <td>
-                                            <input type="checkbox" value="<?= $row['id']; ?>" <?= $row['featured'] == 1 ? 'checked' : ''; ?>>
+                                            <input type="checkbox" value="<?= $row['id']; ?>" <?= $row['featured'] == 1 ? 'checked' : ''; ?> data-partnerid="<?= $row['id']; ?>">
                                         </td>
                                         <td>
                                             <a href="partner-edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
@@ -93,13 +107,13 @@ include('includes/header.php');
     // Listen for click events on checkboxes
     document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
         checkbox.addEventListener('click', function() {
-            // Get the project ID and the checked status
+            // Get the partner ID and the checked status
             var partnerID = this.value;
             var isChecked = this.checked ? 1 : 0;
 
             // Send AJAX request
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'javascript-update_featured_partners.php', true);
+            xhr.open('POST', 'code.php', true); // Update the URL to your PHP file
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -111,7 +125,7 @@ include('includes/header.php');
                     }
                 }
             };
-            xhr.send('id=' + partnerID + '&featured=' + isChecked);
+            xhr.send('update_featured=true&id=' + partnerID + '&featured=' + isChecked);
         });
     });
 </script>
