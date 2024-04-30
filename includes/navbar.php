@@ -94,6 +94,14 @@
     </style>
 </head>
 
+<?php
+if (isset($_GET['query'])) {
+    $placeholder = $_GET['query'];
+}
+else {
+    $placeholder = 'Search';
+}
+?>
 <body>
     <header>
         <div class="container">
@@ -107,10 +115,11 @@
                         <a href="index.php" style="width:400px;">
                             <img src="assets/images/XULOGO.png" alt="Logo" style="width: 80%;">
                         </a>
-                        <form class="d-flex justify-content-center ms-auto">
-                            <input class="form-control me-2 custom-search" id="custom-search" type="search" placeholder="Search">
+                        <form class="d-flex justify-content-center ms-auto" action="search.php" method="GET">
+                            <input class="form-control me-2 custom-search" id="custom-search" type="search" placeholder="<?=$placeholder?>" name="query">
                             <button class="btn btn-outline-primary" id="search-button" type="submit">Search</button>
                         </form>
+
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item text-center customfont">
                                 <a class="nav-link customfont" href="about-us.php">About Us</a>
