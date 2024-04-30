@@ -250,6 +250,60 @@ include('config/dbcon.php');
         object-fit: contain;
     }
 
+    #third-content {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vw;
+        object-fit: contain;
+    }
+
+    #fourth-content {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vw;
+        object-fit: contain;
+    }
+
+    #fifth-content {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vw;
+        object-fit: contain;
+    }
+
+    #sixth-content {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vw;
+        object-fit: contain;
+    }
+
+    #seventh-content {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vw;
+        object-fit: contain;
+    }
+
+    #eigth-content {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vw;
+        object-fit: contain;
+    }
+
     #projects-card {
         background: #FFFFFF;
         border-radius: 10px;
@@ -424,14 +478,7 @@ include('config/dbcon.php');
             <div class="mainContent">
                 <div class="row gy-3">
                     <div class="header">
-                        <h5 id="article-header">ARTICLES</h5>
-                        <aside class="aside-button">
-                            <a href="articles.php">
-                                <button id="see-all-button">
-                                    See All...
-                                </button>
-                            </a>
-                        </aside>
+                        <h5 id="article-header">Local Government Units</h5>
                     </div>
                     <?php
                     $query = "SELECT * FROM partners WHERE featured = 1";
@@ -464,21 +511,14 @@ include('config/dbcon.php');
 
         </div>
     </div>
-    </div>
+
     <div class="container-fluid" id="second-content">
         <div class="row gy-3">
             <div class="secondContent">
 
                 <div class="row gy-3">
                     <div class="project-header">
-                        <h5 id="project-header">PROJECTS</h5>
-                        <aside class="aside-button">
-                        <a href="projects.php">
-                                <button id="see-all-button">
-                                    See All...
-                                </button>
-                            </a>
-                        </aside>
+                        <h5 id="project-header">Civil Society Organizations</h5>
                     </div>
                     <?php
                     $query = "SELECT * FROM partners WHERE featured = 1";
@@ -509,6 +549,235 @@ include('config/dbcon.php');
             </div>
         </div>
     </div>
+
+    <div class="container-fluid" id="third-content">
+        <div class="row gy-3">
+            <div class="secondContent">
+
+                <div class="row gy-3">
+                    <div class="project-header">
+                        <h5 id="project-header">Industry</h5>
+                    </div>
+                    <?php
+                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query_run = mysqli_query($con, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $item) {
+                    ?>
+                            <div style="display: flex; justify-content: center;" id="card-box">
+                                <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                        <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <div class="card-body">
+                                            <h5 id="title"><?= $item['name']; ?></h5>
+                                            <p id="card-text"><?= $item['address']; ?></p>
+                                            <!-- You can add more project details here -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="fourth-content">
+        <div class="row gy-3">
+            <div class="secondContent">
+
+                <div class="row gy-3">
+                    <div class="project-header">
+                        <h5 id="project-header">Non - Government</h5>
+                    </div>
+                    <?php
+                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query_run = mysqli_query($con, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $item) {
+                    ?>
+                            <div style="display: flex; justify-content: center;" id="card-box">
+                                <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                        <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <div class="card-body">
+                                            <h5 id="title"><?= $item['name']; ?></h5>
+                                            <p id="card-text"><?= $item['address']; ?></p>
+                                            <!-- You can add more project details here -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="fifth-content">
+        <div class="row gy-3">
+            <div class="secondContent">
+
+                <div class="row gy-3">
+                    <div class="project-header">
+                        <h5 id="project-header">Private Sector</h5>
+                    </div>
+                    <?php
+                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query_run = mysqli_query($con, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $item) {
+                    ?>
+                            <div style="display: flex; justify-content: center;" id="card-box">
+                                <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                        <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <div class="card-body">
+                                            <h5 id="title"><?= $item['name']; ?></h5>
+                                            <p id="card-text"><?= $item['address']; ?></p>
+                                            <!-- You can add more project details here -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="sixth-content">
+        <div class="row gy-3">
+            <div class="secondContent">
+
+                <div class="row gy-3">
+                    <div class="project-header">
+                        <h5 id="project-header">In - XU</h5>
+                    </div>
+                    <?php
+                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query_run = mysqli_query($con, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $item) {
+                    ?>
+                            <div style="display: flex; justify-content: center;" id="card-box">
+                                <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                        <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <div class="card-body">
+                                            <h5 id="title"><?= $item['name']; ?></h5>
+                                            <p id="card-text"><?= $item['address']; ?></p>
+                                            <!-- You can add more project details here -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="seventh-content">
+        <div class="row gy-3">
+            <div class="secondContent">
+
+                <div class="row gy-3">
+                    <div class="project-header">
+                        <h5 id="project-header">Government Agencies</h5>
+                    </div>
+                    <?php
+                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query_run = mysqli_query($con, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $item) {
+                    ?>
+                            <div style="display: flex; justify-content: center;" id="card-box">
+                                <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                        <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <div class="card-body">
+                                            <h5 id="title"><?= $item['name']; ?></h5>
+                                            <p id="card-text"><?= $item['address']; ?></p>
+                                            <!-- You can add more project details here -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="eigth-content">
+        <div class="row gy-3">
+            <div class="secondContent">
+
+                <div class="row gy-3">
+                    <div class="project-header">
+                        <h5 id="project-header">Schools</h5>
+                    </div>
+                    <?php
+                    $query = "SELECT * FROM partners WHERE featured = 1";
+                    $query_run = mysqli_query($con, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $item) {
+                    ?>
+                            <div style="display: flex; justify-content: center;" id="card-box">
+                                <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                        <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
+                                        <div class="card-body">
+                                            <h5 id="title"><?= $item['name']; ?></h5>
+                                            <p id="card-text"><?= $item['address']; ?></p>
+                                            <!-- You can add more project details here -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
     </div>
 </body>
 <!-- Footer -->
