@@ -38,14 +38,17 @@ include('config/dbcon.php');
 
     .header {
         display: flex;
-        background-color: #A19158;
-        padding: 15px 0;
+        padding: 20px 0;
         color: white;
 
         font-size: 34px;
         font-family: 'Inter';
         font-weight: 800;
         font-style: normal;
+        width: 38.8em;
+
+        background: #A19158;
+        mix-blend-mode: normal;
         margin-top: -90px;
     }
 
@@ -57,6 +60,11 @@ include('config/dbcon.php');
         height: 50vw;
         object-fit: contain;
         margin-top: 100px;
+    }
+
+    body {
+        margin-right: 100px;
+        margin-left: 100px;
     }
 </style>
 
