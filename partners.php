@@ -67,33 +67,6 @@ include('config/dbcon.php');
 
         color: #FFFFFF;
     }
-
-    .header-container {
-        display: flex;
-        background-color: #A19158;
-        padding: 15px 0;
-        margin-left: -12px;
-        margin-right: -12px;
-        justify-content: left;
-        align-items: left;
-        border-radius: 5px;
-    }
-
-    #featured-header {
-        padding: 20px;
-        margin-left: 100px;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 39px;
-
-        color: #FFFFFF;
-    }
-
-    .featured-section {
-        margin-top: -50px;
-    }
 </style>
 <h4 class="header">PROJECTS</h4>
 <hr class="horizontal-line">
