@@ -30,6 +30,10 @@ include('config/dbcon.php');
         margin-top: 36px;
         margin-bottom: 57px;
     }
+
+    #local-governments-header {
+        margin-top: 10px;
+    }
 </style>
 
 <h1 class="headers">PARTNERS</h1>
@@ -42,7 +46,7 @@ include('config/dbcon.php');
             <div class="mainContent">
                 <div class="row gy-3">
                     <div class="header">
-                        <h5 id="article-header">Local Government Units</h5>
+                        <h5 id="local-governments-header">Local Government Units</h5>
                     </div>
                     <?php
                     $query = "SELECT * FROM partners WHERE featured = 1 AND type_id = 1";
