@@ -33,6 +33,30 @@ include('config/dbcon.php');
 
     #local-governments-header {
         margin-top: 10px;
+        font-family: 'Inter';
+    }
+
+    .header {
+        display: flex;
+        background-color: #A19158;
+        padding: 15px 0;
+        color: white;
+
+        font-size: 34px;
+        font-family: 'Inter';
+        font-weight: 800;
+        font-style: normal;
+        margin-top: -90px;
+    }
+
+    #first-content {
+        background-image: url('assets/images/BG.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 50vw;
+        object-fit: contain;
+        margin-top: 100px;
     }
 </style>
 
@@ -72,9 +96,6 @@ include('config/dbcon.php');
                     }
                     ?>
                 </div>
-
-
-
             </div>
 
         </div>
