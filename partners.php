@@ -68,7 +68,7 @@ include('config/dbcon.php');
         color: #FFFFFF;
     }
 </style>
-<h4 class="header">PROJECTS</h4>
+<h4 class="header">PARTNERS</h4>
 <hr class="horizontal-line">
 
 <div class="container-fluid" id="background-image">
