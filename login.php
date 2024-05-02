@@ -54,10 +54,27 @@ include('includes/navbar.php');
         color: #283971;
     }
 
+    #textfield {
+        left: calc(50% - 798px/2 - 8px);
+        width: 40%;
+        margin-left: 20%;
+        margin-bottom: 78px;
+        border-radius: 15px;
+        padding: 8px 12px;
+        border: 3px solid #ccc;
+        padding-left: 40px;
+        background-size: 20px;
+    }
+
     ::placeholder {
-        color: gray;
+        font-family: 'Inter';
         font-style: normal;
-        font-weight: 400;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.205em;
+
+        color: rgba(40, 57, 113, 0.47);
     }
 
     #Login-button {
@@ -103,12 +120,12 @@ include('includes/navbar.php');
                         <div class="card-body">
                             <form action="logincode.php" method="POST">
                                 <div class="form-group mb-3">
-                                    <label>Email ID</label>
-                                    <input required type="email" name="email" placeholder="Enter Email Address" class="form-control">
+                                    <label>Email ID </label>
+                                    <input required type="email" name="email" placeholder=" 📧Enter Email Address" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Password</label>
-                                    <input required type="password" name="password" placeholder="Enter Password" class="form-control">
+                                    <label>Password </label>
+                                    <input required type="password" name="password" placeholder="🔑Enter Password" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <button required type="submit" name="login_btn" class="btn btn-primary" id="Login-button">Login Now</button>

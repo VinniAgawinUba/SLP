@@ -104,23 +104,23 @@ include('includes/navbar.php');
                             <form action="registercode.php" method="post">
                                 <div class="form-group mb-3">
                                     <label>First Name</label>
-                                    <input required type="text" name="fname" placeholder="Enter First Name" class="form-control">
+                                    <input required type="text" name="fname" placeholder="👤Enter First Name" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Last Name</label>
-                                    <input required type="text" name="lname" placeholder="Enter Last Name" class="form-control">
+                                    <input required type="text" name="lname" placeholder="👤Enter Last Name" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Email ID</label>
-                                    <input required type="email" name="email" placeholder="Enter Email Address" class="form-control">
+                                    <input required type="email" name="email" placeholder="📧Enter Email Address" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Password</label>
-                                    <input required type="password" name="password" placeholder="Enter Password" class="form-control">
+                                    <input required type="password" name="password" placeholder="🔑Enter Password" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Confirm Password</label>
-                                    <input required type="password" name="cpassword" placeholder="Confirm Password" class="form-control">
+                                    <input required type="password" name="cpassword" placeholder="🔑Confirm Password" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <button required type="submit" name="register_btn" class="btn btn-primary" id="Register-button">Register Now</button>
