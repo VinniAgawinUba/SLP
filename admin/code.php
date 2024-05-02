@@ -272,7 +272,6 @@ if(isset($_POST['update_partner'])) {
 if(isset($_POST['add_faculty'])) {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $full_name = $fname.''.$lname;
     $email = $_POST['email'];
     $college_id = $_POST['college_id'];
     $department_id = $_POST['department_id'];
@@ -286,8 +285,8 @@ if(isset($_POST['add_faculty'])) {
 
 
     // Insert the Post with the category_id
-    $query = "INSERT INTO faculty (fname, lname, full_name, email, college_id, department_id, role, image) 
-              VALUES ('$fname', '$lname', '$full_name', '$email', '$college_id', '$department_id', '$role', '$filename')";
+    $query = "INSERT INTO faculty (fname, lname, email, college_id, department_id, role, image) 
+              VALUES ('$fname', '$lname', '$email', '$college_id', '$department_id', '$role', '$filename')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {
@@ -341,6 +340,28 @@ if(isset($_POST['update_faculty'])) {
     } else {
         $_SESSION['message'] = "Something went wrong";
         header('Location: faculty-edit.php?id='.$faculty_id);
+        exit(0);
+    }
+}
+
+//Delete Faculty
+if(isset($_POST['faculty_delete_btn']))
+{
+    $faculty_id = $_POST['faculty_delete_btn'];
+
+    $query = "DELETE FROM faculty WHERE id = '$faculty_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "Faculty has been deleted";
+        header('Location: faculty-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: faculty-view.php');
         exit(0);
     }
 }
