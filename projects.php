@@ -21,12 +21,16 @@ include('config/dbcon.php');
 
 
     #textfield {
-        border: 4px solid #435283;
-        border-radius: 15px;
         left: calc(50% - 798px/2 - 8px);
         width: 40%;
         margin-left: 20%;
         margin-bottom: 78px;
+        border-radius: 15px;
+        padding: 8px 12px;
+        background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px ;
+        border: 3px solid #ccc;
+        padding-left: 40px;
+        background-size: 20px;
     }
 
     ::placeholder {
@@ -277,6 +281,7 @@ include('config/dbcon.php');
     .hidden {
         display: none;
     }
+
     .pagination {
         padding: 20px 0;
         margin-top: 20px;
@@ -355,7 +360,7 @@ if (!isset($_GET['school_year'])) {
             }
         });
     }
-    
+
 
     // Bind an event listener to the search input to trigger filterItems function on input change
     document.getElementById('textfield').addEventListener('input', filterSY);
