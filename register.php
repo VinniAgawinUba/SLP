@@ -83,6 +83,10 @@ include('includes/navbar.php');
     #Register-button:active {
         background-color: #8D7F4D;
     }
+    
+    .card {
+        box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+    }
 </style>
 
 <body>

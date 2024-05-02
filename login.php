@@ -87,7 +87,7 @@ include('includes/navbar.php');
     }
 
     .card {
-        box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.5);
+        box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
     }
 </style>
 
