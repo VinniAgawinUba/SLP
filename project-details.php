@@ -175,13 +175,8 @@ if(isset($_GET['id'])) {
                                 ?>
                             </div>
                     </div>
-
                  </div>
-
-
-                    
                 </div>
-
                     <!-- You can add more details here as needed -->
                 </div>
             </div>

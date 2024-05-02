@@ -96,9 +96,7 @@ include('includes/navbar.php');
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-5">
-
                     <?php include('message.php'); ?>
-
                     <div class="card">
                         <div class="card-body">
                             <form action="registercode.php" method="post">
@@ -127,7 +125,6 @@ include('includes/navbar.php');
                                 </div>
                                 <p>Already have an account? <a href="login.php">Login</a></p>
                             </form>
-
                         </div>
                     </div>
                 </div>

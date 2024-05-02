@@ -27,7 +27,7 @@ include('config/dbcon.php');
         margin-bottom: 78px;
         border-radius: 15px;
         padding: 8px 12px;
-        background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px ;
+        background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px;
         border: 3px solid #ccc;
         padding-left: 40px;
         background-size: 20px;
@@ -308,6 +308,10 @@ include('config/dbcon.php');
     .pagination a:hover:not(.active) {
         background-color: #ffff;
     }
+
+    #project-card {
+        
+    }
 </style>
 <?php
 // Set the yellow tag based on the URL parameters
@@ -408,9 +412,7 @@ if (!isset($_GET['school_year'])) {
                 <h5 id="year-header"><?= $YellowTag ?></h5>
             </div>
         </div>
-
         <div>
-
             <!-- 1st Row YEAR, SEM, PROJECTS,ETC. -->
             <div class="row">
 
@@ -498,8 +500,6 @@ if (!isset($_GET['school_year'])) {
                         </div>
                         <?php
                     }
-
-
                     // COLLEGE CARDS
 
                 } else if (!isset($_GET['college'])) {
@@ -535,8 +535,6 @@ if (!isset($_GET['school_year'])) {
                         //Go back to the previous page
                         echo "<script>setTimeout(\"location.href = 'projects.php';\",3000);</script>";
                     }
-
-
                     // DEPARTMENT
 
 
@@ -576,10 +574,7 @@ if (!isset($_GET['school_year'])) {
                         echo "<script>setTimeout(\"location.href = 'projects.php';\",3000);</script>";
                     }
                 }
-
-
                 // PROJECTS
-
                 //If Everything is set render all requests with matching paramaters
                 else if (isset($_GET['school_year']) && isset($_GET['semester']) && isset($_GET['college']) && isset($_GET['department'])) {
                     $school_year = $_GET['school_year'];
@@ -736,8 +731,6 @@ if (!isset($_GET['school_year'])) {
         window.location.href = url.toString();
     }
 </script>
-
-
 
 <!-- Footer -->
 <?php include('includes/footer.php'); ?>
