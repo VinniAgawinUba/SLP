@@ -16,7 +16,7 @@
             letter-spacing: 3px;
             font-family: 'Inter';
             padding: 8px 12px;
-            border: 1px solid black;
+            border: 3px solid #ccc;
             background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px;
             background-size: 20px;
             padding-left: 40px;
@@ -124,7 +124,7 @@ if (isset($_GET['query'])) {
                             <img src="assets/images/XULOGO.png" alt="Logo" style="width: 80%;">
                         </a>
                         <form class="d-flex justify-content-center ms-auto" action="search.php" method="GET">
-                            <input class="form-control me-2 custom-search" id="custom-search" type="search" placeholder="<?= $placeholder ?>" name="query">
+                            <input class="" id="custom-search" type="search" placeholder="<?= $placeholder ?>" name="query">
                             <button class="btn btn-outline-primary" id="search-button" type="submit">Search</button>
                         </form>
 
