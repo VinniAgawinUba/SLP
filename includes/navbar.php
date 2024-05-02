@@ -12,7 +12,6 @@
         #custom-search {
             width: 585.91px;
             height: 43.82px;
-            background: rgba(40, 57, 113, 0.15);
             border-radius: 22px;
             letter-spacing: 3px;
             font-family: 'Inter';
@@ -26,7 +25,6 @@
         ::placeholder {
             color: #283971;
             font-style: normal;
-            font-weight: 700;
         }
 
         .font-style {

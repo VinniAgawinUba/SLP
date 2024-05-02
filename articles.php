@@ -38,7 +38,7 @@ include('config/dbcon.php');
         border-radius: 15px;
         padding: 8px 12px;
         background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px ;
-        border: 1px solid #ccc;
+        border: 3px solid #ccc;
         padding-left: 40px;
         background-size: 20px;
     }
