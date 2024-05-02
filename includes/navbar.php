@@ -89,6 +89,7 @@
         #header-links {
             background-color: whitesmoke;
             border-bottom: 1px solid #283971;
+            margin-bottom: 10px;
         }
 
         #nav-bar {
