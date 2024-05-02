@@ -329,7 +329,6 @@ if(isset($_POST['update_faculty'])) {
     $faculty_id = $_POST['faculty_id'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $full_name = $fname.''.$lname;
     $email = $_POST['email'];
     $college_id = $_POST['college_id'];
     $department_id = $_POST['department_id'];
@@ -344,7 +343,7 @@ if(isset($_POST['update_faculty'])) {
     $old_filename = $_POST['old_image'];
 
     // Update the Faculty with the new values
-    $query = "UPDATE faculty SET fname = '$fname', lname = '$lname', full_name = '$full_name', email = '$email', college_id = '$college_id', department_id = '$department_id', role = '$role', image = '$filename' WHERE id = '$faculty_id'";
+    $query = "UPDATE faculty SET fname = '$fname', lname = '$lname', email = '$email', college_id = '$college_id', department_id = '$department_id', role = '$role', image = '$filename' WHERE id = '$faculty_id'";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {
