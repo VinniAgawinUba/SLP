@@ -93,7 +93,7 @@ if(isset($_POST['add_college'])) {
     }
 }
 
-
+//Update College
 if(isset($_POST['update_college'])) {
     $college_id = $_POST['id'];
     $name = $_POST['name'];
@@ -141,6 +141,28 @@ if(isset($_POST['update_college'])) {
     } else {
         $_SESSION['message'] = "Something went wrong";
         header('Location: college-edit.php?id=' . $college_id);
+    }
+}
+
+//Delete College
+if(isset($_POST['college_delete']))
+{
+    $college_id = $_POST['college_delete'];
+
+    $query = "DELETE FROM college WHERE id = '$college_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "College has been deleted";
+        header('Location: college-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: college-view.php');
+        exit(0);
     }
 }
 
