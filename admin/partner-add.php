@@ -45,10 +45,6 @@ include('includes/header.php');
                                 </div>
                                 
                                 <div class="col-md-6 mb-3">
-                                    <label for="">Designation</label>
-                                    <input type="text" name="designation" required max="191" class="form-control">
-                                </div>
-                                <div class="col-md-6 mb-3">
                                     <label for="">Email</label>
                                     <input type="text" name="email" max="191" required class="form-control" rows="4"> </input>
                                 </div>
