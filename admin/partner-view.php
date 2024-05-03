@@ -42,7 +42,6 @@ $partnerTypes = array(
                                 <th>Logo</th>
                                 <th>Address</th>
                                 <th>Contact Person</th>
-                                <th>Designation</th>
                                 <th>Email</th>
                                 <th>Contact Number</th>
                                 <th>Partner Type</th>
@@ -66,7 +65,6 @@ $partnerTypes = array(
                                         <td><img src="../uploads/partner_logos/<?=$row['logo_image']; ?>" alt="<?= $row['name']; ?>-logo" style="width: 100px;"></td>
                                         <td><?= $row['address']; ?></td>
                                         <td><?= $row['contact_person']; ?></td>
-                                        <td><?= $row['designation']; ?></td>
                                         <td><?= $row['email']; ?></td>
                                         <td><?= $row['contact_number']; ?></td>
                                         <td><?= isset($partnerTypes[$row['type_id']]) ? $partnerTypes[$row['type_id']] : 'Unknown'; ?></td>
