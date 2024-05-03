@@ -21,12 +21,16 @@ include('config/dbcon.php');
 
 
     #textfield {
-        border: 4px solid #435283;
-        border-radius: 15px;
         left: calc(50% - 798px/2 - 8px);
         width: 40%;
         margin-left: 20%;
         margin-bottom: 78px;
+        border-radius: 15px;
+        padding: 8px 12px;
+        background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px;
+        border: 3px solid #ccc;
+        padding-left: 40px;
+        background-size: 20px;
     }
 
     ::placeholder {
@@ -277,6 +281,7 @@ include('config/dbcon.php');
     .hidden {
         display: none;
     }
+
     .pagination {
         padding: 20px 0;
         margin-top: 20px;
@@ -302,6 +307,10 @@ include('config/dbcon.php');
 
     .pagination a:hover:not(.active) {
         background-color: #ffff;
+    }
+
+    #project-card {
+        
     }
 </style>
 <?php
@@ -355,7 +364,7 @@ if (!isset($_GET['school_year'])) {
             }
         });
     }
-    
+
 
     // Bind an event listener to the search input to trigger filterItems function on input change
     document.getElementById('textfield').addEventListener('input', filterSY);
@@ -403,9 +412,7 @@ if (!isset($_GET['school_year'])) {
                 <h5 id="year-header"><?= $YellowTag ?></h5>
             </div>
         </div>
-
         <div>
-
             <!-- 1st Row YEAR, SEM, PROJECTS,ETC. -->
             <div class="row">
 
@@ -493,8 +500,6 @@ if (!isset($_GET['school_year'])) {
                         </div>
                         <?php
                     }
-
-
                     // COLLEGE CARDS
 
                 } else if (!isset($_GET['college'])) {
@@ -530,8 +535,6 @@ if (!isset($_GET['school_year'])) {
                         //Go back to the previous page
                         echo "<script>setTimeout(\"location.href = 'projects.php';\",3000);</script>";
                     }
-
-
                     // DEPARTMENT
 
 
@@ -571,10 +574,7 @@ if (!isset($_GET['school_year'])) {
                         echo "<script>setTimeout(\"location.href = 'projects.php';\",3000);</script>";
                     }
                 }
-
-
                 // PROJECTS
-
                 //If Everything is set render all requests with matching paramaters
                 else if (isset($_GET['school_year']) && isset($_GET['semester']) && isset($_GET['college']) && isset($_GET['department'])) {
                     $school_year = $_GET['school_year'];
@@ -731,8 +731,6 @@ if (!isset($_GET['school_year'])) {
         window.location.href = url.toString();
     }
 </script>
-
-
 
 <!-- Footer -->
 <?php include('includes/footer.php'); ?>

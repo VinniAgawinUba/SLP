@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2024 at 06:34 AM
+-- Generation Time: May 03, 2024 at 03:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -93,14 +93,13 @@ CREATE TABLE `college` (
 --
 
 INSERT INTO `college` (`id`, `name`, `dean_id`, `logo_image`) VALUES
-(1, 'College of Computer Studies', 0, '1712474814.jpg'),
-(2, 'College of Nursing', NULL, NULL),
-(3, 'College of Engineering', 7, '1712468064.jpg'),
-(4, 'College of Agriculture', 5, '1712468470.png'),
-(5, 'College of Agriculture', 0, NULL),
-(6, 'College of Arts and Sciences', 0, NULL),
-(7, 'College of Business and Management', 0, NULL),
-(8, 'College of Education', 0, NULL);
+(1, 'College of Computer Studies', 14, '1714640756.jpg'),
+(2, 'College of Nursing', 13, NULL),
+(3, 'College of Engineering', 12, '1714640590.jpg'),
+(5, 'College of Agriculture', 11, '1714640218.png'),
+(6, 'College of Arts and Sciences', 10, '1714640015.jpg'),
+(7, 'School of Business and Management', 9, '1714640001.jpg'),
+(8, 'School of Education', 8, '1714639968.jpg');
 
 -- --------------------------------------------------------
 
@@ -122,9 +121,31 @@ CREATE TABLE `department` (
 INSERT INTO `department` (`id`, `name`, `college_id`, `college_name`) VALUES
 (1, 'Information Technology', 1, 'College of Computer Studies'),
 (2, 'Computer Science', 1, 'College of Computer Studies'),
-(3, 'Electrical Engineering', 3, ''),
+(3, 'Electronics Communication Engineering', 3, ''),
 (4, 'Information Systems', 1, 'College of Computer Studies'),
-(7, 'Entertainment and Multimedia Computing', 1, '');
+(7, 'Entertainment and Multimedia Computing', 1, ''),
+(8, 'Elementary Education', 8, ''),
+(9, 'Early Childhood Education', 8, ''),
+(10, 'Special Needs Education', 8, ''),
+(11, 'Secondary Education', 8, ''),
+(16, 'Business Administration', 7, ''),
+(17, 'Industrial Engineering', 3, ''),
+(18, 'Chemical Engineering', 3, ''),
+(19, 'Mechanical Engineering', 3, ''),
+(20, 'Chemistry', 6, ''),
+(21, 'Marine Biology', 6, ''),
+(22, 'Psychology', 6, ''),
+(23, 'Economics', 6, ''),
+(24, 'Sociology-Anthropology', 6, ''),
+(25, 'Agriculture', 5, ''),
+(26, 'Nursing', 2, ''),
+(27, 'Civil Engineering', 3, ''),
+(28, 'Electrical Engineering', 3, ''),
+(29, 'Development Communication', 5, ''),
+(30, 'Agriculture and Biosystems Engineering', 5, ''),
+(31, 'Food Technology', 5, ''),
+(32, 'Biology', 6, ''),
+(33, 'Philosophy', 6, '');
 
 -- --------------------------------------------------------
 
@@ -169,9 +190,13 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`id`, `fname`, `lname`, `email`, `college_id`, `department_id`, `role`, `image`) VALUES
-(1, 'testName', 'testLname', 'testemail@gmail.com', 3, 3, 1, '1707547627.'),
-(5, 'test', 'Faculty', 'Faculty@gmail.com', 1, 2, 0, '1707547639.'),
-(7, 'Vinni', 'Uba', 'vinniuba1@gmail.com', 0, 0, 0, '1707493975.png');
+(8, 'Dr Edralin', 'C Manla', 'EdralinCManla@gmail.com', 8, 7, 3, '1714635528.jpg'),
+(9, 'Ruth Love', 'Russel', 'ruthloverussel@gmail.com', 7, 7, 3, '1714639808.jpg'),
+(10, 'Judy', 'Sendaydiego', 'JudySendaydiego@gmail.com', 6, 8, 3, '1714640125.jpg'),
+(11, 'Maria', 'R. Mosqueda', 'MariaRMosqueda@gmail.com', 5, 8, 3, '1714640911.png'),
+(12, 'Hercules', 'Cascon', 'HerculesCascon@gmail.com', 3, 3, 3, '1714640575.jpg'),
+(13, 'Grace', 'Paayas', 'GracePaayas@gmail.com', 2, 8, 3, '1714640653.png'),
+(14, 'Meldie', 'Apag', 'MedlieApag@gmail.com', 1, 2, 3, '1714640858.jpg');
 
 -- --------------------------------------------------------
 
@@ -658,7 +683,7 @@ ALTER TABLE `college`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `drive_files`
@@ -670,7 +695,7 @@ ALTER TABLE `drive_files`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `gallery`

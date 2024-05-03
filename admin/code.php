@@ -52,6 +52,28 @@ if(isset($_POST['update_department']))
     }
 }
 
+//Delete Department
+if(isset($_POST['department_delete']))
+{
+    $department_id = $_POST['department_delete'];
+
+    $query = "DELETE FROM department WHERE id = '$department_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "Department has been deleted";
+        header('Location: department-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: department-view.php');
+        exit(0);
+    }
+}
+
 
 //Add College
 if(isset($_POST['add_college'])) {
@@ -93,7 +115,7 @@ if(isset($_POST['add_college'])) {
     }
 }
 
-
+//Update College
 if(isset($_POST['update_college'])) {
     $college_id = $_POST['id'];
     $name = $_POST['name'];
@@ -141,6 +163,28 @@ if(isset($_POST['update_college'])) {
     } else {
         $_SESSION['message'] = "Something went wrong";
         header('Location: college-edit.php?id=' . $college_id);
+    }
+}
+
+//Delete College
+if(isset($_POST['college_delete']))
+{
+    $college_id = $_POST['college_delete'];
+
+    $query = "DELETE FROM college WHERE id = '$college_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "College has been deleted";
+        header('Location: college-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: college-view.php');
+        exit(0);
     }
 }
 
@@ -272,7 +316,6 @@ if(isset($_POST['update_partner'])) {
 if(isset($_POST['add_faculty'])) {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $full_name = $fname.''.$lname;
     $email = $_POST['email'];
     $college_id = $_POST['college_id'];
     $department_id = $_POST['department_id'];
@@ -286,8 +329,8 @@ if(isset($_POST['add_faculty'])) {
 
 
     // Insert the Post with the category_id
-    $query = "INSERT INTO faculty (fname, lname, full_name, email, college_id, department_id, role, image) 
-              VALUES ('$fname', '$lname', '$full_name', '$email', '$college_id', '$department_id', '$role', '$filename')";
+    $query = "INSERT INTO faculty (fname, lname, email, college_id, department_id, role, image) 
+              VALUES ('$fname', '$lname', '$email', '$college_id', '$department_id', '$role', '$filename')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {
@@ -308,7 +351,6 @@ if(isset($_POST['update_faculty'])) {
     $faculty_id = $_POST['faculty_id'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $full_name = $fname.''.$lname;
     $email = $_POST['email'];
     $college_id = $_POST['college_id'];
     $department_id = $_POST['department_id'];
@@ -323,7 +365,7 @@ if(isset($_POST['update_faculty'])) {
     $old_filename = $_POST['old_image'];
 
     // Update the Faculty with the new values
-    $query = "UPDATE faculty SET fname = '$fname', lname = '$lname', full_name = '$full_name', email = '$email', college_id = '$college_id', department_id = '$department_id', role = '$role', image = '$filename' WHERE id = '$faculty_id'";
+    $query = "UPDATE faculty SET fname = '$fname', lname = '$lname', email = '$email', college_id = '$college_id', department_id = '$department_id', role = '$role', image = '$filename' WHERE id = '$faculty_id'";
     $query_run = mysqli_query($con, $query);
 
     if($query_run) {
@@ -341,6 +383,28 @@ if(isset($_POST['update_faculty'])) {
     } else {
         $_SESSION['message'] = "Something went wrong";
         header('Location: faculty-edit.php?id='.$faculty_id);
+        exit(0);
+    }
+}
+
+//Delete Faculty
+if(isset($_POST['faculty_delete_btn']))
+{
+    $faculty_id = $_POST['faculty_delete_btn'];
+
+    $query = "DELETE FROM faculty WHERE id = '$faculty_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "Faculty has been deleted";
+        header('Location: faculty-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: faculty-view.php');
         exit(0);
     }
 }

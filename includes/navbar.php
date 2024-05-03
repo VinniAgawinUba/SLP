@@ -12,21 +12,25 @@
         #custom-search {
             width: 585.91px;
             height: 43.82px;
-            background: rgba(40, 57, 113, 0.15);
             border-radius: 22px;
             letter-spacing: 3px;
             font-family: 'Inter';
             padding: 8px 12px;
-            border: 1px solid #ccc;
+            border: 3px solid #ccc;
             background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px;
             background-size: 20px;
             padding-left: 40px;
         }
 
         ::placeholder {
-            color: #283971;
+            font-family: 'Inter';
             font-style: normal;
-            font-weight: 700;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 16px;
+            letter-spacing: 0.205em;
+
+            color: rgba(40, 57, 113, 0.47);
         }
 
         .font-style {
@@ -89,6 +93,7 @@
         #header-links {
             background-color: whitesmoke;
             border-bottom: 1px solid #283971;
+            margin-bottom: 10px;
         }
 
         #nav-bar {
@@ -100,11 +105,11 @@
 <?php
 if (isset($_GET['query'])) {
     $placeholder = $_GET['query'];
-}
-else {
+} else {
     $placeholder = 'Search';
 }
 ?>
+
 <body>
     <header>
         <div class="container">
@@ -119,7 +124,7 @@ else {
                             <img src="assets/images/XULOGO.png" alt="Logo" style="width: 80%;">
                         </a>
                         <form class="d-flex justify-content-center ms-auto" action="search.php" method="GET">
-                            <input class="form-control me-2 custom-search" id="custom-search" type="search" placeholder="<?=$placeholder?>" name="query">
+                            <input class="" id="custom-search" type="search" placeholder="<?= $placeholder ?>" name="query">
                             <button class="btn btn-outline-primary" id="search-button" type="submit">Search</button>
                         </form>
 

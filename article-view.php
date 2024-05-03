@@ -1,7 +1,8 @@
 <style>
     .title-container {
         background-color: #A19158;
-        padding: 40px;
+
+        padding: 28px;
     }
 
     #card-title {
@@ -91,27 +92,29 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<div class="title-container">
-    <h2 class="card-title" id="card-title"><?= $article['thumb_nail_title']; ?></h2>
-    <p class="publish-date-text"><?= date('F j, Y', strtotime($article['published_date'])); ?></p>
-</div>
-<div id=super-container>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card" id="card">
-                    <div class="card-body" id="card-body">
-                        <img src="uploads/articles/<?= $article['thumb_nail_pic']; ?>" id="customPic">
-                        <!-- Add more details or formatting as needed -->
+<body>
+    <div class="title-container">
+        <h2 class="card-title" id="card-title"><?= $article['thumb_nail_title']; ?></h2>
+        <p class="publish-date-text"><?= date('F j, Y', strtotime($article['published_date'])); ?></p>
+    </div>
+    <div id=super-container>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" id="card">
+                        <div class="card-body" id="card-body">
+                            <img src="uploads/articles/<?= $article['thumb_nail_pic']; ?>" id="customPic">
+                            <!-- Add more details or formatting as needed -->
+                        </div>
                     </div>
+                    <article id="article-text">
+                        <p><?= $article['content']; ?></p>
+                    </article>+
                 </div>
-                <article id="article-text">
-                    <p><?= $article['content']; ?></p>
-                </article>+
             </div>
         </div>
     </div>
-</div>
+</body>
 
 <!-- Footer -->
 <?php include('includes/footer.php'); ?>
