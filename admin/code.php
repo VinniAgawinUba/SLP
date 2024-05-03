@@ -52,6 +52,28 @@ if(isset($_POST['update_department']))
     }
 }
 
+//Delete Department
+if(isset($_POST['department_delete']))
+{
+    $department_id = $_POST['department_delete'];
+
+    $query = "DELETE FROM department WHERE id = '$department_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "Department has been deleted";
+        header('Location: department-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: department-view.php');
+        exit(0);
+    }
+}
+
 
 //Add College
 if(isset($_POST['add_college'])) {
