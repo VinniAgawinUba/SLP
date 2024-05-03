@@ -77,10 +77,10 @@ $partnerTypes = array(
                                             <a href="partner-edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
                                         </td>
                                         <td>
-                                            <form action="code.php" method="POST">
-                                                <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                                                <button type="submit" name="partner_delete_btn" value="<?=$post['id']?>" class="btn btn-danger deleteButton">Delete</button>
-                                            </form>
+                                        <form action="code.php" method="POST">
+                                            <input type="hidden" name="partner_delete_btn" value="<?= $row['id']; ?>">
+                                            <button type="submit" class="btn btn-danger deleteButton">Delete</button>
+                                        </form>
                                         </td>
                                     </tr>
                                     <?php
