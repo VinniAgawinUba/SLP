@@ -195,7 +195,6 @@ if(isset($_POST['partner_add_btn'])) {
     $name = $_POST['name'];
     $address = $_POST['address'];
     $contact_person = $_POST['contact_person'];
-    $designation = $_POST['designation'];
     $email = $_POST['email'];
     $contact_number = $_POST['contact_number'];
     $type_id = $_POST['type_id'];
@@ -212,7 +211,7 @@ if(isset($_POST['partner_add_btn'])) {
         $target_file = $target_directory . $filename;
         if(move_uploaded_file($logo_image['tmp_name'], $target_file)) {
             // Insert the Partner record with the new logo image
-            $query = "INSERT INTO partners (name, address, contact_person, designation, email, contact_number, logo_image) VALUES ('$name', '$address', '$contact_person', '$designation', '$email', '$contact_number', '$filename')";
+            $query = "INSERT INTO partners (name, address, contact_person, email, contact_number, logo_image) VALUES ('$name', '$address', '$contact_person', '$email', '$contact_number', '$filename')";
             $query_run = mysqli_query($con, $query);
         } else {
             $_SESSION['message'] = "Failed to upload file";
@@ -225,7 +224,6 @@ if(isset($_POST['partner_add_btn'])) {
             name, 
             address, 
             contact_person, 
-            designation, 
             email, 
             contact_number, 
             type_id
@@ -233,7 +231,6 @@ if(isset($_POST['partner_add_btn'])) {
                 '$name', 
                 '$address', 
                 '$contact_person', 
-                '$designation', 
                 '$email', 
                 '$contact_number',
                 '$type_id' 
@@ -258,7 +255,6 @@ if(isset($_POST['update_partner'])) {
     $name = $_POST['name'];
     $address = $_POST['address'];
     $contact_person = $_POST['contact_person'];
-    $designation = $_POST['designation'];
     $email = $_POST['email'];
     $contact_number = $_POST['contact_number'];
     $type_id = $_POST['type_id'];
@@ -293,7 +289,6 @@ if(isset($_POST['update_partner'])) {
     name = '$name', 
     address = '$address', 
     contact_person = '$contact_person', 
-    designation = '$designation', 
     email = '$email', 
     contact_number = '$contact_number', 
     type_id = '$type_id',
