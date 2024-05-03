@@ -310,6 +310,29 @@ if(isset($_POST['update_partner'])) {
     }
 }
 
+if(isset($_POST['partner_delete_btn']))
+{
+    $partners_id = $_POST['partner_delete_btn'];
+
+    // Ensure that $partners_id is properly sanitized to prevent SQL injection
+
+    $query = "DELETE FROM partners WHERE id = '$partners_id'";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "Partner has been deleted";
+        header('Location: partner-view.php');
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Something went wrong";
+        header('Location: partner-view.php');
+        exit(0);
+    }
+}
+
 
 
 //Add Faculty
