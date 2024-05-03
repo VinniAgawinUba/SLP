@@ -211,7 +211,7 @@ if(isset($_POST['partner_add_btn'])) {
         $target_file = $target_directory . $filename;
         if(move_uploaded_file($logo_image['tmp_name'], $target_file)) {
             // Insert the Partner record with the new logo image
-            $query = "INSERT INTO partners (name, address, contact_person, email, contact_number, logo_image) VALUES ('$name', '$address', '$contact_person', '$email', '$contact_number', '$filename')";
+            $query = "INSERT INTO partners (name, address, contact_person, email, contact_number, type_id, logo_image) VALUES ('$name', '$address', '$contact_person', '$type_id', '$email', '$contact_number', '$filename')";
             $query_run = mysqli_query($con, $query);
         } else {
             $_SESSION['message'] = "Failed to upload file";
@@ -305,6 +305,8 @@ if(isset($_POST['update_partner'])) {
     }
 }
 
+
+//PARTNER DELETE
 if(isset($_POST['partner_delete_btn']))
 {
     $partners_id = $_POST['partner_delete_btn'];
