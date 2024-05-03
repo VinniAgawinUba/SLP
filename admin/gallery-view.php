@@ -51,7 +51,7 @@ include('includes/header.php');
                                         </td>
                                         <td>
                                             <form action="code.php" method="POST">
-                                                <input type="hidden" name="id" value="<?= $row['id']; ?>" class="DeleteForm">
+                                                <input type="hidden" name="id" value="<?= $row['id']; ?>" class="deleteForm">
                                                 <button type="submit" name="gallery_delete_btn" value="<?=$post['id']?>" class="btn btn-danger deleteButton">Delete</button>
                                             </form>
                                         </td>
@@ -78,7 +78,7 @@ include('includes/header.php');
     // Iterate over each delete button and attach event listener
     deleteButtons.forEach(function(button) {
         button.addEventListener("click", function(event) {
-            if (confirm("Are you sure you want to delete this Article?")) {
+            if (confirm("Are you sure you want to delete this?")) {
                 // Find the closest form and submit it
                 this.closest(".deleteForm").submit();
             } else {

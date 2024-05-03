@@ -12,18 +12,7 @@
                                 Registered Users
                             </a>
 
-                             <!--- Students -->
-                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseStudents" aria-expanded="false" aria-controls="collapseStudents">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user-graduate"></i></div>
-                                Students
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseStudents" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="student-add.php">Add Students</a>
-                                    <a class="nav-link" href="student-view.php">View Students</a>
-                                </nav>
-                            </div>
+                            
 
                             <!--- Faculty -->
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFaculty" aria-expanded="false" aria-controls="collapseFaculty">
@@ -53,20 +42,7 @@
 
 
                             <div class="sb-sidenav-menu-heading">Interface</div>
-                            <!--- Category Interface -->
-
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Category
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="category-add.php">Add Category</a>
-                                    <a class="nav-link" href="category-view.php">View Category</a>
-                                </nav>
-                            </div>
-
+                           
                              <!--- Articles Interface -->
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseArticles" aria-expanded="false" aria-controls="collapseArticles">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -141,13 +117,7 @@
                                     </a>
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            
-                            
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a>
+                          
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
