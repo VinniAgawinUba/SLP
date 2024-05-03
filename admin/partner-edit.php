@@ -53,10 +53,6 @@ include('includes/header.php');
                                     <input type="text" name="contact_person" class="form-control" value="<?= $partner['contact_person'];?>">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="">Designation</label>
-                                    <input type="text" name="designation" class="form-control" value="<?= $partner['designation'];?>">
-                                </div>
-                                <div class="col-md-6 mb-3">
                                     <label for="">Email</label>
                                     <input type="text" name="email" class="form-control" value="<?= $partner['email'];?>">
                                 </div>
