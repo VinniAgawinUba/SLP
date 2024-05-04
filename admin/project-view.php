@@ -211,10 +211,10 @@ include('includes/header.php');
                                             <a href="project-edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
                                         </td>
                                         <td>
-                                            <form action="code.php" method="POST">
-                                                <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                                                <button type="submit" name="project_delete_btn" value="<?=$post['id']?>" class="btn btn-danger deleteButton">Delete</button>
-                                            </form>
+                                        <form action="code.php" method="POST">
+                                            <input type="hidden" name="project_id" value="<?= $row['id']; ?>">
+                                            <button type="submit" name="project_delete_btn" class="btn btn-danger deleteButton">Delete</button>
+                                        </form>
                                         </td>
                                     </tr>
                                     <?php
