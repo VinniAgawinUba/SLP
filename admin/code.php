@@ -668,6 +668,29 @@ if (isset($_POST['project_edit_btn'])) {
     }
 }
 
+// Delete Project
+if (isset($_POST['project_delete_btn'])) {
+    $project_id = $_POST['project_id'];
+
+    // Delete project from the database
+    $delete_query = "DELETE FROM projects WHERE id = '$project_id'";
+    $delete_query_run = mysqli_query($con, $delete_query);
+
+    // Check if deletion was successful
+    if ($delete_query_run) {
+        // Redirect to project view page
+        $_SESSION['message'] = "Project deleted successfully";
+        header('Location: project-view.php');
+        exit();
+    } else {
+        $_SESSION['message'] = "Error deleting project";
+        header('Location: project-edit.php?id=' . $project_id);
+        exit();
+    }
+}
+
+
+
 //Delete project_faculty
 if(isset($_POST['delete_project_faculty'])) 
 {
