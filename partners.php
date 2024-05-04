@@ -34,7 +34,7 @@ include('config/dbcon.php');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 30vw;
+        height: 50vw;
         object-fit: contain;
     }
 
@@ -84,9 +84,10 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
+                    <div class='col-md-2'>
                             <div style="display: flex; justify-content: center;" id="card-box">
                                 <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
-                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <div class="card h-70" style="margin-top: 50px !important;" id="card">
                                         <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
                                         <div class="card-body">
                                             <h5 id="title"><?= $item['name']; ?></h5>
@@ -96,6 +97,7 @@ include('config/dbcon.php');
                                     </div>
                                 </a>
                             </div>
+                    </div>
 
                     <?php
                         }
@@ -105,7 +107,6 @@ include('config/dbcon.php');
         </div>
     </div>
 </div>
-
 <div class="container-fluid" id="background-image">
     <div class="row gy-3" style="display: flex; justify-content: center;">
         <div class="col-12">
@@ -154,9 +155,10 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
+                    <div class='col-md-2'>
                             <div style="display: flex; justify-content: center;" id="card-box">
                                 <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
-                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <div class="card h-70" style="margin-top: 50px !important;" id="card">
                                         <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
                                         <div class="card-body">
                                             <h5 id="title"><?= $item['name']; ?></h5>
@@ -166,6 +168,7 @@ include('config/dbcon.php');
                                     </div>
                                 </a>
                             </div>
+                    </div>
 
                     <?php
                         }
@@ -189,9 +192,10 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
+                    <div class='col-md-2'>
                             <div style="display: flex; justify-content: center;" id="card-box">
                                 <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
-                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <div class="card h-70" style="margin-top: 50px !important;" id="card">
                                         <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
                                         <div class="card-body">
                                             <h5 id="title"><?= $item['name']; ?></h5>
@@ -201,6 +205,7 @@ include('config/dbcon.php');
                                     </div>
                                 </a>
                             </div>
+                    </div>
 
                     <?php
                         }
@@ -224,9 +229,10 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
+                    <div class='col-md-2'>
                             <div style="display: flex; justify-content: center;" id="card-box">
                                 <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
-                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <div class="card h-70" style="margin-top: 50px !important;" id="card">
                                         <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
                                         <div class="card-body">
                                             <h5 id="title"><?= $item['name']; ?></h5>
@@ -236,6 +242,7 @@ include('config/dbcon.php');
                                     </div>
                                 </a>
                             </div>
+                    </div>
 
                     <?php
                         }
@@ -259,9 +266,10 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
+                    <div class='col-md-2'>
                             <div style="display: flex; justify-content: center;" id="card-box">
                                 <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
-                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <div class="card h-70" style="margin-top: 50px !important;" id="card">
                                         <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
                                         <div class="card-body">
                                             <h5 id="title"><?= $item['name']; ?></h5>
@@ -271,6 +279,7 @@ include('config/dbcon.php');
                                     </div>
                                 </a>
                             </div>
+                    </div>
 
                     <?php
                         }
@@ -294,9 +303,10 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
+                    <div class='col-md-2'>
                             <div style="display: flex; justify-content: center;" id="card-box">
                                 <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
-                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <div class="card h-70" style="margin-top: 50px !important;" id="card">
                                         <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
                                         <div class="card-body">
                                             <h5 id="title"><?= $item['name']; ?></h5>
@@ -306,6 +316,7 @@ include('config/dbcon.php');
                                     </div>
                                 </a>
                             </div>
+                    </div>
 
                     <?php
                         }
@@ -329,9 +340,10 @@ include('config/dbcon.php');
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $item) {
                     ?>
+                    <div class='col-md-2'>
                             <div style="display: flex; justify-content: center;" id="card-box">
                                 <a href="partner-view.php?id=<?= $item['id']; ?>" style="text-decoration: none; color: inherit;">
-                                    <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <div class="card h-70" style="margin-top: 50px !important;" id="card">
                                         <img src="uploads/partner_logos/<?= $item['logo_image']; ?>" class="customPic"> <!-- Placeholder for image-->
                                         <div class="card-body">
                                             <h5 id="title"><?= $item['name']; ?></h5>
@@ -341,6 +353,7 @@ include('config/dbcon.php');
                                     </div>
                                 </a>
                             </div>
+                    </div>
 
                     <?php
                         }
