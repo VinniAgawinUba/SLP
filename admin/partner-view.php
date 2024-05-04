@@ -111,7 +111,7 @@ $partnerTypes = array(
 
             // Send AJAX request
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'code.php', true); // Update the URL to your PHP file
+            xhr.open('POST', 'javascript-update_featured_partners.php', true); // Update the URL to your PHP file
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
