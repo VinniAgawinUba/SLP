@@ -1,6 +1,7 @@
 <style>
     .title-container {
         padding: 28px;
+        
     }
 
     #card-title {
@@ -10,8 +11,9 @@
         font-size: 30px;
         line-height: 48px;
         text-align: left;
-        margin-left: 20px;
-
+    
+        color: black;
+        text-align: justify;
         color: #283971;
     }
 
@@ -22,9 +24,9 @@
         font-size: 16px;
         line-height: 24px;
         text-align: left;
-        margin-left: 20px;
+        
 
-        color: #283971;
+        color: blacks;
     }
 
     .col-md-12 {
@@ -43,15 +45,15 @@
         font-weight: 500;
         font-size: 14px;
         color: #283971;
-        text-align: justify;
-
     }
 
     #super-container {
         height: auto;
         padding: 36px;
-        overflow: auto;
         scrollbar-width: none;
+        justify-content: space-between;
+        text-align: justify;
+        color: #283971;
     }
 
     #card-body {
@@ -65,7 +67,22 @@
         height: auto;
         float: left;
         margin-right: 30px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        flex: 1;
+    }
+
+
+    .article-container {
+        flex: 1;
+        /* Let the article content occupy remaining space */
+
+    }
+
+
+    .content-container {
+        display: flex;
+        align-items: flex-start;
+        /* Ensure content aligns to the start */
     }
 </style>
 
@@ -92,22 +109,23 @@ if (isset($_GET['id'])) {
 
 <body>
     <div class="title-container">
-        </div>
-        <div id=super-container>
-            <div class="container">
-                <img src="uploads/articles/<?= $article['thumb_nail_pic']; ?>" id="customPic">
-                <!-- Add more details or formatting as needed -->
-                <h2 class="card-title" id="card-title"><?= $article['thumb_nail_title']; ?></h2>
-                <p class="publish-date-text"><?= date('F j, Y', strtotime($article['published_date'])); ?></p>
-            <article id="article-text">
-                <p><?= $article['content']; ?></p>
-            </article>
-            
-                
+    </div>
+    <div id="super-container">
+        <div class="container">
+            <div class="content-container"> <!-- New container for article content -->
+                <aside>
+                    <img src="uploads/articles/<?= $article['thumb_nail_pic']; ?>" id="customPic">
+                </aside>
+                <article class="article-container">
+                    <h2 id="card-title"><?= $article['thumb_nail_title']; ?></h2>
+                    <p class="publish-date-text"><?= date('F j, Y', strtotime($article['published_date'])); ?></p>
+                    <p><?= $article['content']; ?></p>
+                </article>
             </div>
         </div>
     </div>
 </body>
+
 
 <!-- Footer -->
 <?php include('includes/footer.php'); ?>
