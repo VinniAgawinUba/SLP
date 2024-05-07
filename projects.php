@@ -542,11 +542,13 @@ if (!isset($_GET['school_year'])) {
                     //If Department is not set as a parameter, render Departments
                     $semester = $_GET['semester'];
                     $selectedSchoolYearId = $_GET['school_year'];
+                    $selectedCollegeId = $_GET['college'];
+
                     //only show departments if there are existing projects associated with those departments for that timeframe, if not, show nothing and go back
                     $query = "SELECT * FROM projects, school_year, college, department 
                     WHERE projects.school_year_id = school_year.id 
                     AND projects.semester = $semester 
-                    AND projects.college_id = college.id 
+                    AND projects.college_id = $selectedCollegeId
                     AND projects.department_id = department.id 
                     AND school_year.id = $selectedSchoolYearId
                     GROUP BY department_id";
