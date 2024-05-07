@@ -121,7 +121,7 @@ include('includes/navbar.php');
                             <form action="logincode.php" method="POST">
                                 <div class="form-group mb-3">
                                     <label>Email ID </label>
-                                    <input required type="email" name="email" placeholder=" 📧Enter Email Address" class="form-control">
+                                    <input required type="email" name="email" placeholder="📧Enter Email Address" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Password </label>
