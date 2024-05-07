@@ -1,7 +1,5 @@
 <style>
     .title-container {
-        background-color: #A19158;
-
         padding: 28px;
     }
 
@@ -9,24 +7,24 @@
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
-        font-size: 40px;
+        font-size: 30px;
         line-height: 48px;
-        text-align: center;
-        letter-spacing: 0.1em;
+        text-align: left;
+        margin-left: 20px;
 
-        color: #FFFFFF;
+        color: #283971;
     }
 
     .publish-date-text {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
-        font-size: 20px;
+        font-size: 16px;
         line-height: 24px;
-        text-align: center;
-        letter-spacing: 0.1em;
+        text-align: left;
+        margin-left: 20px;
 
-        color: #FFFFFF;
+        color: #283971;
     }
 
     .col-md-12 {
@@ -43,16 +41,14 @@
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
-        letter-spacing: 0.075em;
-
-        color: #FFFFFF;
+        font-size: 14px;
+        color: #283971;
         text-align: justify;
 
     }
 
     #super-container {
-        background-color: #283971;
-        height: 1000px;
+        height: auto;
         padding: 36px;
         overflow: auto;
         scrollbar-width: none;
@@ -67,7 +63,9 @@
     #customPic {
         width: 500px;
         height: auto;
-
+        float: left;
+        margin-right: 30px;
+        margin-bottom: 20px;
     }
 </style>
 
@@ -94,23 +92,18 @@ if (isset($_GET['id'])) {
 
 <body>
     <div class="title-container">
-        <h2 class="card-title" id="card-title"><?= $article['thumb_nail_title']; ?></h2>
-        <p class="publish-date-text"><?= date('F j, Y', strtotime($article['published_date'])); ?></p>
-    </div>
-    <div id=super-container>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card" id="card">
-                        <div class="card-body" id="card-body">
-                            <img src="uploads/articles/<?= $article['thumb_nail_pic']; ?>" id="customPic">
-                            <!-- Add more details or formatting as needed -->
-                        </div>
-                    </div>
-                    <article id="article-text">
-                        <p><?= $article['content']; ?></p>
-                    </article>+
-                </div>
+        </div>
+        <div id=super-container>
+            <div class="container">
+                <img src="uploads/articles/<?= $article['thumb_nail_pic']; ?>" id="customPic">
+                <!-- Add more details or formatting as needed -->
+                <h2 class="card-title" id="card-title"><?= $article['thumb_nail_title']; ?></h2>
+                <p class="publish-date-text"><?= date('F j, Y', strtotime($article['published_date'])); ?></p>
+            <article id="article-text">
+                <p><?= $article['content']; ?></p>
+            </article>
+            
+                
             </div>
         </div>
     </div>
