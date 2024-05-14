@@ -105,12 +105,9 @@ include('config/dbcon.php');
 
     }
 
-    /* Add hover effect for card */
     .year:hover {
         transform: scale(1.1);
-
         transition: transform 0.3s ease;
-
         box-shadow: 0px 0px 5px #FFFFFF;
         cursor: pointer;
     }
@@ -272,8 +269,6 @@ include('config/dbcon.php');
         background-repeat: no-repeat;
         height: 50vw;
         object-fit: contain;
-        /* margin-top: 100px; */
-
     }
 
     .card-body-featured {
@@ -360,6 +355,9 @@ include('config/dbcon.php');
         height: 41.75px;
         margin-top: 5px;
         color: #000000;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .card-subtitle-projects {
