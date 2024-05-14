@@ -369,7 +369,7 @@ include('config/dbcon.php');
         margin-right: 30px;
         margin-bottom: 30px;
         text-transform: uppercase;
-        margin-right: -10px;
+        margin-right: -3px;
     }
 </style>
 <?php
@@ -652,9 +652,9 @@ if (!isset($_GET['school_year'])) {
                                     <a href="project-details.php?id=<?= $item['id']; ?>"><img src="" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
                                         <h5 class="card-title-projects"><?= $item['name']; ?></h5>
-                                        <p class="card-text-projects">Description:<?= $item['description']; ?></p>
-                                        <p class="card-text-projects">Type:<?= $item['type']; ?></p>
-                                        <h5 class="card-subtitle-projects">Subject Hosted:<?= $item['subject_hosted']; ?></h5>
+                                        <p class="card-text-projects"><?= $item['description']; ?></p>
+                                        <p class="card-text-projects"><?= $item['type']; ?></p>
+                                        <h5 class="card-subtitle-projects"><?= $item['subject_hosted']; ?></h5>
                                         <!-- You can add more project details here -->
                                     </div>
                                 </div>
