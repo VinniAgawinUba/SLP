@@ -31,13 +31,13 @@ include('config/dbcon.php');
     }
 
     #textfield {
-        left: calc(50% - 798px/2 - 8px);
         width: 40%;
-        margin-left: 20%;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 78px;
         border-radius: 15px;
         padding: 8px 12px;
-        background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px ;
+        background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px;
         border: 3px solid #ccc;
         padding-left: 40px;
         background-size: 20px;
@@ -172,6 +172,12 @@ include('config/dbcon.php');
     .pagination a:hover:not(.active) {
         background-color: #ddd;
     }
+
+    .centered-textfield {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 <?php
 //PAGINATION
@@ -191,13 +197,11 @@ $offset = ($currentPage - 1) * $articlesPerPage;
 ?>
 <h1 class="headers">ARTICLES</h1>
 <hr class="horizontal-line">
-<input type="search" name="" id="textfield" placeholder="    Input search keywords...">
-<span class="filter">Filter ↓</span>
-<select name="" id="" class="filter-type">
-    <option value="">Alphabetical</option>
-    <option value="">Year</option>
-    <option value="">Department</option>
-</select>
+
+<div class="centered-textfield">
+    <input type="search" name="" id="textfield" placeholder="    Input search keywords...">
+</div>
+
 
 <script>
     // Function to filter articles based on search input
