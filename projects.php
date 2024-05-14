@@ -336,6 +336,41 @@ include('config/dbcon.php');
         margin-top: -10px;
         color: #000000;
     }
+
+    .card-title-projects {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+    } 
+
+    .card-text-projects {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        height: 41.75px;
+        margin-top: 5px;
+        color: #000000;
+    }
+
+    .card-subtitle-projects {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #6F6F6F;
+        text-align: right;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        margin-right: -10px;
+    }
 </style>
 <?php
 // Set the yellow tag based on the URL parameters
@@ -616,10 +651,10 @@ if (!isset($_GET['school_year'])) {
                                 <div class="card">
                                     <a href="project-details.php?id=<?= $item['id']; ?>"><img src="" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
-                                        <h5 class="card-title"><?= $item['name']; ?></h5>
-                                        <p class="card-text">Description:<?= $item['description']; ?></p>
-                                        <p class="card-text">Type:<?= $item['type']; ?></p>
-                                        <h5 class="card-title">Subject Hosted:<?= $item['subject_hosted']; ?></h5>
+                                        <h5 class="card-title-projects"><?= $item['name']; ?></h5>
+                                        <p class="card-text-projects">Description:<?= $item['description']; ?></p>
+                                        <p class="card-text-projects">Type:<?= $item['type']; ?></p>
+                                        <h5 class="card-subtitle-projects">Subject Hosted:<?= $item['subject_hosted']; ?></h5>
                                         <!-- You can add more project details here -->
                                     </div>
                                 </div>
