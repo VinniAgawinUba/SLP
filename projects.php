@@ -23,7 +23,6 @@ include('config/dbcon.php');
         display: flex;
         justify-content: center;
         align-items: center;
-        /* Adjust as needed */
     }
 
     #textfield {
