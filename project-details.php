@@ -120,6 +120,28 @@ if (isset($_GET['id'])) {
         letter-spacing: 0.2em;
 
         color: #283971;
+    }
+
+    .logo-name {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 23px;
+        line-height: 28px;
+        letter-spacing: 0.2em;
+
+        color: #6E6E6E;
+        width: 300px;
+    }
+
+    .dean-name {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+
+        color: #283971;
 
 
     }
@@ -236,25 +258,31 @@ if (isset($_GET['id'])) {
                                 ?>
                                     <div class="col-md-12">
                                         <h5 class="detail-title">COLLEGE DETAILS</h5>
-                                        <p><strong>ID:</strong> <?= htmlspecialchars($college['id']); ?></p>
-                                        <p><strong>Name:</strong> <?= htmlspecialchars($college['name']); ?></p>
-                                        <p><strong>Logo:</strong> <img src="uploads/college_logos/<?= htmlspecialchars($college['logo_image']); ?>" alt="College Logo" style="max-width: 100px;"></p>
-                                        <p><strong>Dean:</strong>
-                                            <?php
-                                            // Fetch dean details
-                                            $stmt_faculty = $con->prepare("SELECT fname, lname FROM faculty WHERE id = ?");
-                                            $stmt_faculty->bind_param("i", $college['dean_id']);
-                                            $stmt_faculty->execute();
-                                            $query_run_faculty = $stmt_faculty->get_result();
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <p><img src="uploads/college_logos/<?= htmlspecialchars($college['logo_image']); ?>" alt="College Logo" style="max-width: 200px;"></p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p class="logo-name"><?= htmlspecialchars($college['name']); ?></p>
+                                                <p class="dean-name"><strong>Dean:</strong>
+                                                    <?php
+                                                    // Fetch dean details
+                                                    $stmt_faculty = $con->prepare("SELECT fname, lname FROM faculty WHERE id = ?");
+                                                    $stmt_faculty->bind_param("i", $college['dean_id']);
+                                                    $stmt_faculty->execute();
+                                                    $query_run_faculty = $stmt_faculty->get_result();
 
-                                            if ($query_run_faculty && mysqli_num_rows($query_run_faculty) > 0) {
-                                                $faculty = mysqli_fetch_assoc($query_run_faculty);
-                                                echo htmlspecialchars($faculty['fname'] . ' ' . $faculty['lname']);
-                                            } else {
-                                                echo "Dean not found!";
-                                            }
-                                            ?>
-                                        </p>
+                                                    if ($query_run_faculty && mysqli_num_rows($query_run_faculty) > 0) {
+                                                        $faculty = mysqli_fetch_assoc($query_run_faculty);
+                                                        echo htmlspecialchars($faculty['fname'] . ' ' . $faculty['lname']);
+                                                    } else {
+                                                        echo "Dean not found!";
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 <?php
                                 } else {
