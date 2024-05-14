@@ -19,11 +19,17 @@ include('config/dbcon.php');
         margin-top: 99px;
     }
 
+    .centered-textfield {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Adjust as needed */
+    }
 
     #textfield {
-        left: calc(50% - 798px/2 - 8px);
         width: 40%;
-        margin-left: 20%;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 78px;
         border-radius: 15px;
         padding: 8px 12px;
@@ -344,7 +350,7 @@ include('config/dbcon.php');
         font-size: 16px;
         line-height: 19px;
         color: #000000;
-    } 
+    }
 
     .card-text-projects {
         font-family: 'Inter';
@@ -389,12 +395,10 @@ if (!isset($_GET['school_year'])) {
 ?>
 <h4 class="header">PROJECTS</h4>
 <hr class="horizontal-line">
-<input type="search" name="" id="textfield" placeholder="    Input search keywords...">
-<span class="filter">Filter ↓</span>
-<select name="" id="" class="filter-type">
-    <option value="">Alphabetical A-Z</option>
-    <option value="">Alphabetical Z-A</option>
-</select>
+<div class="centered-textfield">
+
+    <input type="search" name="" id="textfield" placeholder="    Input search keywords...">
+</div>
 
 <script>
     // Function to filter items based on search input
@@ -738,10 +742,10 @@ if (!isset($_GET['school_year'])) {
                     <div class="col-md-4 mb-4">
                         <div class="row">
                             <div class="card-body-featured">
-                            <a href="project-details.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic">
-                                <h5 class="card-title-featured"><?= $row['name']; ?></h5>
-                                <p class="card-description-featured"><?= $row['description']; ?></p>
-                                <!-- You can add more post details here -->
+                                <a href="project-details.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic">
+                                    <h5 class="card-title-featured"><?= $row['name']; ?></h5>
+                                    <p class="card-description-featured"><?= $row['description']; ?></p>
+                                    <!-- You can add more post details here -->
                             </div>
                         </div>
                     </div>
