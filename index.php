@@ -274,6 +274,12 @@ include('config/dbcon.php');
         margin-top: -10px;
         color: #000000;
     }
+
+    .card-body-projects {
+        box-sizing: border-box;
+        border-radius: 10px;
+        height: 15em;
+    }
 </style>
 <link rel="stylesheet" href="assets/css/custom.css">
 
@@ -373,7 +379,7 @@ include('config/dbcon.php');
                             <div class="col-md-3">
                                 <div style="margin-top: 50px !important;" id="projects-card">
                                     <a href="project-details.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic">
-                                    <div class="card-body">
+                                    <div class="card-body-projects">
                                         <h5 id="project-title"><?= $item['name']; ?></h5>
                                         <p id="project-text"><?= $item['description']; ?></p>
 
