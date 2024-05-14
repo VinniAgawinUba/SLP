@@ -265,7 +265,7 @@ include('config/dbcon.php');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 40vw;
+        height: 50vw;
         object-fit: contain;
         /* margin-top: 100px; */
 
@@ -309,8 +309,32 @@ include('config/dbcon.php');
         background-color: #ffff;
     }
 
-    #project-card {
-        
+    .card-body-featured {
+        box-sizing: border-box;
+        border-radius: 10px;
+        height: 25em;
+    }
+
+    .card-title-featured {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 10px;
+        color: #000000;
+    }
+
+    .card-description-featured {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        height: 41.75px;
+        padding-left: 10px;
+        margin-top: -10px;
+        color: #000000;
     }
 </style>
 <?php
@@ -589,7 +613,7 @@ if (!isset($_GET['school_year'])) {
                         foreach ($query_run as $item) {
                         ?>
                             <div class="col-md-3 mb-3 gy-3" style="display: flex; justify-content: center; ">
-                                <div class="card" id="project-card">
+                                <div class="card">
                                     <a href="project-details.php?id=<?= $item['id']; ?>"><img src="" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $item['name']; ?></h5>
@@ -677,10 +701,11 @@ if (!isset($_GET['school_year'])) {
             ?>
                     <!-- Display each article as a card -->
                     <div class="col-md-4 mb-4">
-                        <div class="year">
+                        <div class="row">
                             <div class="card-body-featured">
-                                <h5 class="card-title"><?= $row['name']; ?></h5>
-                                <p class="card-description"><?= $row['description']; ?></p>
+                            <a href="project-details.php?id=<?= $item['id']; ?>"><img src="assets/images/article-pic.png" class="customPic">
+                                <h5 class="card-title-featured"><?= $row['name']; ?></h5>
+                                <p class="card-description-featured"><?= $row['description']; ?></p>
                                 <!-- You can add more post details here -->
                             </div>
                         </div>
