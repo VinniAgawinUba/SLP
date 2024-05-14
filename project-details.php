@@ -54,8 +54,6 @@ if (isset($_GET['id'])) {
     .card-status {
         width: 269px;
         height: 44px;
-
-        background: #F4A836;
         border-radius: 0px 30px 30px 0px;
 
         font-family: 'Inter';
@@ -69,37 +67,62 @@ if (isset($_GET['id'])) {
     }
 
     .card-text {
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 20px;
-            margin-top: 5px;
-            color: #283971;
-        }
-        .card-text strong {
-            color: #283971;
-        }
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .card-header {
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px 8px 0 0;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .container {
-            margin-top: 20px;
-        }
-        .row {
-            margin-bottom: 15px;
-        }
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 5px;
+        color: #283971;
+    }
+
+    .card-text strong {
+        color: #283971;
+    }
+
+    .cards {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+
+    .row {
+        margin-bottom: 15px;
+    }
+
+    .sdg-icon {
+        width: 50px;
+    }
+
+    .detail-title {
+        /* STUDENT DEVELOPMENT GOALS PRESENT */
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: center;
+        letter-spacing: 0.2em;
+
+        color: #283971;
+
+
+    }
 </style>
 
 <div class="container mt-4" id="container">
@@ -109,7 +132,7 @@ if (isset($_GET['id'])) {
             while ($project = mysqli_fetch_assoc($query_run)) {
         ?>
                 <div class="col-md-12 mb-4">
-                    <div class="card shadow-sm">
+                    <div class="cards shadow-sm">
                         <div class="card-body">
                             <div class="row">
                                 <!-- Column 1 of Card -->
@@ -165,26 +188,36 @@ if (isset($_GET['id'])) {
                                     <?php
                                     // Assuming $project['status'] contains the status value
                                     $statusText = '';
+                                    $backgroundColor = '';
+
                                     switch ($project['status']) {
                                         case 0:
-                                            $statusText = 'In Progress';
+                                            $statusText = 'Ongoing';
+                                            $backgroundColor = '#F4A836'; // Orange
                                             break;
                                         case 1:
                                             $statusText = 'Finished';
+                                            $backgroundColor = '#28a745'; // Green
                                             break;
                                         case 2:
                                             $statusText = 'TBD';
+                                            $backgroundColor = '#ffc107'; // Yellow
                                             break;
                                         case 3:
                                             $statusText = 'Cancelled';
+                                            $backgroundColor = '#dc3545'; // Red
                                             break;
                                         default:
                                             $statusText = 'Unknown Status';
+                                            $backgroundColor = '#6c757d'; // Gray
                                             break;
                                     }
                                     ?>
 
-                                    <p class="card-status"> Status: <?= $statusText; ?></p>
+                                    <p class="card-status" style="background: <?= $backgroundColor; ?>;">
+                                        <strong>Status:</strong> <?= $statusText; ?>
+                                    </p>
+
 
                                     <p class="text-description"><?= htmlspecialchars($project['description']); ?></p>
                                 </div>
@@ -202,7 +235,7 @@ if (isset($_GET['id'])) {
                                     $college = mysqli_fetch_assoc($query_run_college);
                                 ?>
                                     <div class="col-md-12">
-                                        <h5>College Details</h5>
+                                        <h5 class="detail-title">COLLEGE DETAILS</h5>
                                         <p><strong>ID:</strong> <?= htmlspecialchars($college['id']); ?></p>
                                         <p><strong>Name:</strong> <?= htmlspecialchars($college['name']); ?></p>
                                         <p><strong>Logo:</strong> <img src="uploads/college_logos/<?= htmlspecialchars($college['logo_image']); ?>" alt="College Logo" style="max-width: 100px;"></p>
@@ -285,24 +318,25 @@ if (isset($_GET['id'])) {
 
                                         // Associative array mapping SDG names to their corresponding sdg_# format
                                         $sdgs = array(
-                                            'No Poverty' => 'sdg_1',
-                                            'Zero Hunger' => 'sdg_2',
-                                            'Good Health and Well-being' => 'sdg_3',
-                                            'Quality Education' => 'sdg_4',
-                                            'Gender Equality' => 'sdg_5',
-                                            'Clean Water and Sanitation' => 'sdg_6',
-                                            'Affordable and Clean Energy' => 'sdg_7',
-                                            'Decent Work and Economic Growth' => 'sdg_8',
-                                            'Industry, Innovation, and Infrastructure' => 'sdg_9',
-                                            'Reduced Inequality' => 'sdg_10',
-                                            'Sustainable Cities and Communities' => 'sdg_11',
-                                            'Responsible Consumption and Production' => 'sdg_12',
-                                            'Climate Action' => 'sdg_13',
-                                            'Life Below Water' => 'sdg_14',
-                                            'Life on Land' => 'sdg_15',
-                                            'Peace, Justice, and Strong Institutions' => 'sdg_16',
-                                            'Partnerships for the Goals' => 'sdg_17'
+                                            'No Poverty',
+                                            'Zero Hunger',
+                                            'Good Health and Well-being',
+                                            'Quality Education',
+                                            'Gender Equality',
+                                            'Clean Water and Sanitation',
+                                            'Affordable and Clean Energy',
+                                            'Decent Work and Economic Growth',
+                                            'Industry, Innovation, and Infrastructure',
+                                            'Reduced Inequality',
+                                            'Sustainable Cities and Communities',
+                                            'Responsible Consumption and Production',
+                                            'Climate Action',
+                                            'Life Below Water',
+                                            'Life on Land',
+                                            'Peace, Justice, and Strong Institutions',
+                                            'Partnerships for the Goals'
                                         );
+
 
                                         // Loop through the checked SDGs and render their details
                                         foreach ($project_sdgs as $sdg_value) {
@@ -311,7 +345,7 @@ if (isset($_GET['id'])) {
                                             echo '<div class="col-md-3 mb-2">';
                                             echo '<div class="form-check">';
                                             if (file_exists($icon_path)) {
-                                                echo '<img src="' . $icon_path . '" alt="' . htmlspecialchars($sdg_name) . '" class="sdg-icon img-fluid mb-2" style="height:100px; width:100px">';
+                                                echo '<img src="' . $icon_path . '" alt="' . htmlspecialchars($sdg_name) . '" class="sdg-icon img-fluid mb-2" style="height:200px; width:200px">';
                                             }
                                             // echo '<input class="form-check-input" type="checkbox" name="sdgs[]" id="' . htmlspecialchars($sdg_value) . '" value="'.htmlspecialchars($sdg_value).'" checked>';
                                             echo '<label class="form-check-label" for="' . htmlspecialchars($sdg_value) . '">' . htmlspecialchars($sdg_name) . '</label>';
