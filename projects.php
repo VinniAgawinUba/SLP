@@ -358,6 +358,7 @@ include('config/dbcon.php');
 
         overflow: hidden;
         text-overflow: ellipsis;
+
     }
 
     .card-subtitle-projects {
