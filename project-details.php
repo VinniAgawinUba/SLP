@@ -237,7 +237,7 @@ if (isset($_GET['id'])) {
                                     ?>
 
                                     <p class="card-status" style="background: <?= $backgroundColor; ?>;">
-                                        <strong>Status:</strong> <?= $statusText; ?>
+                                        Status: <?= $statusText; ?>
                                     </p>
 
 
