@@ -22,16 +22,16 @@ if (isset($_GET['id'])) {
     .project-image {
         width: 500px;
         margin-top: 50px;
+        display: block; /* Ensures the image aligns correctly within its container */
     }
 
     .text-description {
-        text-align: justify;
+        text-align: left; /* Changed from justify to left */
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 22px;
-
         color: #283971;
     }
 
@@ -43,27 +43,27 @@ if (isset($_GET['id'])) {
         font-size: 25px;
         line-height: 102.02%;
         letter-spacing: 0.2em;
-
         color: #283971;
+        text-align: left; /* Ensure titles are left-aligned */
     }
 
     .card {
         border-radius: 10px;
+        text-align: left; /* Align text inside the card to the left */
     }
 
     .card-status {
         width: 269px;
         height: 44px;
         border-radius: 0px 30px 30px 0px;
-
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size: 15px;
         line-height: 102.02%;
-
         color: #FFFFFF;
         padding: 14px 50px;
+        text-align: left; /* Align status text to the left */
     }
 
     .card-text {
@@ -74,6 +74,7 @@ if (isset($_GET['id'])) {
         line-height: 20px;
         margin-top: 5px;
         color: #283971;
+        text-align: left; /* Align card text to the left */
     }
 
     .card-text strong {
@@ -85,6 +86,7 @@ if (isset($_GET['id'])) {
         border-radius: 8px;
         padding: 20px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: left; /* Align content inside cards to the left */
     }
 
     .card-header {
@@ -94,10 +96,12 @@ if (isset($_GET['id'])) {
         border-radius: 8px 8px 0 0;
         font-weight: bold;
         font-size: 18px;
+        text-align: left; /* Align header text to the left */
     }
 
     .container {
         margin-top: 20px;
+        text-align: left; /* Ensure overall container aligns everything to the left */
     }
 
     .row {
@@ -109,16 +113,13 @@ if (isset($_GET['id'])) {
     }
 
     .detail-title {
-        /* STUDENT DEVELOPMENT GOALS PRESENT */
-
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 24px;
         line-height: 29px;
-        text-align: center;
+        text-align: left; /* Align detailed titles to the left */
         letter-spacing: 0.2em;
-
         color: #283971;
     }
 
@@ -129,7 +130,6 @@ if (isset($_GET['id'])) {
         font-size: 23px;
         line-height: 28px;
         letter-spacing: 0.2em;
-
         color: #6E6E6E;
         width: 300px;
     }
@@ -140,10 +140,7 @@ if (isset($_GET['id'])) {
         font-weight: 600;
         font-size: 24px;
         line-height: 29px;
-
         color: #283971;
-
-
     }
 </style>
 
@@ -180,23 +177,91 @@ if (isset($_GET['id'])) {
                                                 <p class="card-text"><strong>Subject Hosted:</strong> <?= htmlspecialchars($project['subject_hosted']); ?></p>
                                             </div>
                                             <div class="col-md-6">
-                                                <p class="card-text"><strong>College ID:</strong> <?= htmlspecialchars($project['college_id']); ?></p>
+                                                <?php
+                                                // Fetch the college name based on the college_id
+                                                $college_id = htmlspecialchars($project['college_id']);
+                                                $stmt = $con->prepare("SELECT name FROM college WHERE id = ?");
+                                                $stmt->bind_param("i", $college_id);
+                                                $stmt->execute();
+                                                $result = $stmt->get_result();
+                                                $college_name = $result->num_rows > 0 ? $result->fetch_assoc()['name'] : 'Not Found';
+                                                ?>
+                                                <p class="card-text"><strong>College Name:</strong> <?= htmlspecialchars($college_name); ?></p>
                                             </div>
+
                                             <div class="col-md-6">
-                                                <p class="card-text"><strong>Department ID:</strong> <?= htmlspecialchars($project['department_id']); ?></p>
+                                                <?php
+                                                // Fetch the department name based on the department_id
+                                                $department_id = htmlspecialchars($project['department_id']);
+                                                $stmt = $con->prepare("SELECT name FROM department WHERE id = ?");
+                                                $stmt->bind_param("i", $department_id);
+                                                $stmt->execute();
+                                                $result = $stmt->get_result();
+                                                $department_name = $result->num_rows > 0 ? $result->fetch_assoc()['name'] : 'Not Found';
+                                                ?>
+                                                <p class="card-text"><strong>Department Name:</strong> <?= htmlspecialchars($department_name); ?></p>
                                             </div>
+
                                             <div class="col-md-6">
-                                                <p class="card-text"><strong>SD Coordinator ID:</strong> <?= htmlspecialchars($project['sd_coordinator_id']); ?></p>
+                                                <?php
+                                                // Fetch the partner's name based on the partner_id
+                                                $partner_id = htmlspecialchars($project['partner_id']);
+                                                $stmt = $con->prepare("SELECT name FROM partners WHERE id = ?");
+                                                $stmt->bind_param("i", $partner_id);
+                                                $stmt->execute();
+                                                $result = $stmt->get_result();
+                                                if ($result->num_rows > 0) {
+                                                    $partner = $result->fetch_assoc();
+                                                    $partner_name = $partner['name'];
+                                                } else {
+                                                    $partner_name = 'Not Found';
+                                                }
+                                                ?>
+                                                <p class="card-text"><strong>Partner Name:</strong> <?= htmlspecialchars($partner_name); ?></p>
                                             </div>
+
                                             <div class="col-md-6">
-                                                <p class="card-text"><strong>Partner ID:</strong> <?= htmlspecialchars($project['partner_id']); ?></p>
+                                                <?php
+                                                // Fetch the school year based on the school_year_id
+                                                $school_year_id = htmlspecialchars($project['school_year_id']);
+                                                $stmt = $con->prepare("SELECT school_year FROM school_year WHERE id = ?");
+                                                $stmt->bind_param("i", $school_year_id);
+                                                $stmt->execute();
+                                                $result = $stmt->get_result();
+                                                if ($result->num_rows > 0) {
+                                                    $school_year = $result->fetch_assoc();
+                                                    $school_year_label = $school_year['school_year'];
+                                                } else {
+                                                    $school_year_label = 'Not Found';
+                                                }
+                                                ?>
+                                                <p class="card-text"><strong>School Year:</strong> <?= htmlspecialchars($school_year_label); ?></p>
                                             </div>
+
                                             <div class="col-md-6">
-                                                <p class="card-text"><strong>School Year ID:</strong> <?= htmlspecialchars($project['school_year_id']); ?></p>
+                                                <?php
+                                                // Assuming $project['semester'] contains numerical codes
+                                                $semester = htmlspecialchars($project['semester']);
+                                                $semester_name = ''; // Initialize as empty string
+
+                                                // Map numerical codes to semester names
+                                                switch ($semester) {
+                                                    case 1:
+                                                        $semester_name = 'First Semester';
+                                                        break;
+                                                    case 2:
+                                                        $semester_name = 'Second Semester';
+                                                        break;
+                                                    case 3:
+                                                        $semester_name = 'Interssession';
+                                                        break;
+                                                    default:
+                                                        $semester_name = 'Unknown Semester'; // Default case for unknown values
+                                                }
+                                                ?>
+                                                <p class="card-text"><strong>Semester:</strong> <?= $semester_name; ?></p>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p class="card-text"><strong>Semester:</strong> <?= htmlspecialchars($project['semester']); ?></p>
-                                            </div>
+
                                             <div class="col-md-12">
                                                 <p class="card-text"><strong>Number of Students:</strong> <?= htmlspecialchars($project['number_of_students']); ?></p>
                                             </div>
