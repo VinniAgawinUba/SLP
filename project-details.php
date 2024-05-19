@@ -22,11 +22,13 @@ if (isset($_GET['id'])) {
     .project-image {
         width: 500px;
         margin-top: 50px;
-        display: block; /* Ensures the image aligns correctly within its container */
+        display: block;
+        /* Ensures the image aligns correctly within its container */
     }
 
     .text-description {
-        text-align: left; /* Changed from justify to left */
+        text-align: left;
+        /* Changed from justify to left */
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
@@ -44,12 +46,14 @@ if (isset($_GET['id'])) {
         line-height: 102.02%;
         letter-spacing: 0.2em;
         color: #283971;
-        text-align: left; /* Ensure titles are left-aligned */
+        text-align: left;
+        /* Ensure titles are left-aligned */
     }
 
     .card {
         border-radius: 10px;
-        text-align: left; /* Align text inside the card to the left */
+        text-align: left;
+        /* Align text inside the card to the left */
     }
 
     .card-status {
@@ -63,7 +67,8 @@ if (isset($_GET['id'])) {
         line-height: 102.02%;
         color: #FFFFFF;
         padding: 14px 50px;
-        text-align: left; /* Align status text to the left */
+        text-align: left;
+        /* Align status text to the left */
     }
 
     .card-text {
@@ -74,7 +79,8 @@ if (isset($_GET['id'])) {
         line-height: 20px;
         margin-top: 5px;
         color: #283971;
-        text-align: left; /* Align card text to the left */
+        text-align: left;
+        /* Align card text to the left */
     }
 
     .card-text strong {
@@ -86,7 +92,8 @@ if (isset($_GET['id'])) {
         border-radius: 8px;
         padding: 20px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        text-align: left; /* Align content inside cards to the left */
+        text-align: left;
+        /* Align content inside cards to the left */
     }
 
     .card-header {
@@ -96,12 +103,14 @@ if (isset($_GET['id'])) {
         border-radius: 8px 8px 0 0;
         font-weight: bold;
         font-size: 18px;
-        text-align: left; /* Align header text to the left */
+        text-align: left;
+        /* Align header text to the left */
     }
 
     .container {
         margin-top: 20px;
-        text-align: left; /* Ensure overall container aligns everything to the left */
+        text-align: left;
+        /* Ensure overall container aligns everything to the left */
     }
 
     .row {
@@ -118,7 +127,8 @@ if (isset($_GET['id'])) {
         font-weight: 700;
         font-size: 24px;
         line-height: 29px;
-        text-align: left; /* Align detailed titles to the left */
+        text-align: left;
+        /* Align detailed titles to the left */
         letter-spacing: 0.2em;
         color: #283971;
     }
@@ -131,7 +141,7 @@ if (isset($_GET['id'])) {
         line-height: 28px;
         letter-spacing: 0.2em;
         color: #6E6E6E;
-        width: 300px;
+        width: 500px;
     }
 
     .dean-name {
@@ -151,7 +161,7 @@ if (isset($_GET['id'])) {
             while ($project = mysqli_fetch_assoc($query_run)) {
         ?>
                 <div class="col-md-12 mb-4">
-                    <div class="cards shadow-sm">
+                    <div class="cards shadow-sm" style="padding: 20px 60px;">
                         <div class="card-body">
                             <div class="row">
                                 <!-- Column 1 of Card -->
@@ -305,6 +315,7 @@ if (isset($_GET['id'])) {
                                     <p class="text-description"><?= htmlspecialchars($project['description']); ?></p>
                                 </div>
                             </div>
+                            <hr>
                             <!-- Row 2: College Details -->
                             <div class="row mt-4">
                                 <?php
@@ -317,32 +328,68 @@ if (isset($_GET['id'])) {
                                 if ($query_run_college && mysqli_num_rows($query_run_college) > 0) {
                                     $college = mysqli_fetch_assoc($query_run_college);
                                 ?>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <h5 class="detail-title">COLLEGE DETAILS</h5>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p><img src="uploads/college_logos/<?= htmlspecialchars($college['logo_image']); ?>" alt="College Logo" style="max-width: 200px;"></p>
-                                            </div>
-                                            <div class="col-md-12">
                                                 <p class="logo-name"><?= htmlspecialchars($college['name']); ?></p>
-                                                <p class="dean-name"><strong>Dean:</strong>
-                                                    <?php
-                                                    // Fetch dean details
-                                                    $stmt_faculty = $con->prepare("SELECT fname, lname FROM faculty WHERE id = ?");
-                                                    $stmt_faculty->bind_param("i", $college['dean_id']);
-                                                    $stmt_faculty->execute();
-                                                    $query_run_faculty = $stmt_faculty->get_result();
-
-                                                    if ($query_run_faculty && mysqli_num_rows($query_run_faculty) > 0) {
-                                                        $faculty = mysqli_fetch_assoc($query_run_faculty);
-                                                        echo htmlspecialchars($faculty['fname'] . ' ' . $faculty['lname']);
-                                                    } else {
-                                                        echo "Dean not found!";
-                                                    }
-                                                    ?>
-                                                </p>
                                             </div>
                                         </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                       
+                                        <p class="dean-name"><strong>Dean:</strong>
+                                            <?php
+                                            // Fetch dean details
+                                            $stmt_faculty = $con->prepare("SELECT fname, lname FROM faculty WHERE id = ?");
+                                            $stmt_faculty->bind_param("i", $college['dean_id']);
+                                            $stmt_faculty->execute();
+                                            $query_run_faculty = $stmt_faculty->get_result();
+
+                                            if ($query_run_faculty && mysqli_num_rows($query_run_faculty) > 0) {
+                                                $faculty = mysqli_fetch_assoc($query_run_faculty);
+                                                echo htmlspecialchars($faculty['fname'] . ' ' . $faculty['lname']);
+                                            } else {
+                                                echo "Dean not found!";
+                                            }
+                                            ?>
+                                        </p>
+
+                                        <?php
+                                        // Fetch involved faculty
+                                        $stmt_project_faculty = $con->prepare("SELECT * FROM project_faculty WHERE project_id = ?");
+                                        $stmt_project_faculty->bind_param("i", $project_id);
+                                        $stmt_project_faculty->execute();
+                                        $query_run_faculty = $stmt_project_faculty->get_result();
+
+                                        if ($query_run_faculty && mysqli_num_rows($query_run_faculty) > 0) {
+                                            echo '<div class="col-md-12"><h5>Involved Faculty</h5></div>';
+                                            while ($faculty_row = mysqli_fetch_assoc($query_run_faculty)) {
+                                                $stmt_faculty_info = $con->prepare("SELECT * FROM faculty WHERE id = ?");
+                                                $stmt_faculty_info->bind_param("i", $faculty_row['faculty_id']);
+                                                $stmt_faculty_info->execute();
+                                                $query_run_faculty_info = $stmt_faculty_info->get_result();
+
+                                                if ($query_run_faculty_info && mysqli_num_rows($query_run_faculty_info) > 0) {
+                                                    $faculty_info = mysqli_fetch_assoc($query_run_faculty_info);
+                                        ?>
+                                                    <div class="col-md-12 mb-4">
+                                                        <p><strong>Name:</strong> <?= htmlspecialchars($faculty_info['fname'] . ' ' . $faculty_info['lname']); ?></p>
+                                                        <!-- Assuming image is a file path -->
+                                                        <p><strong>Profile Pic:</strong> <img src="uploads/faculty/<?= htmlspecialchars($faculty_info['image']); ?>" alt="Faculty Image" class="img-fluid rounded-circle" style="max-width: 100px;"></p>
+                                                    </div>
+                                        <?php
+                                                } else {
+                                                    echo "Faculty details not found!";
+                                                }
+                                            }
+                                        } else {
+                                            echo "No involved faculty found!";
+                                        }
+                                        ?>
 
                                     </div>
                                 <?php
@@ -351,41 +398,9 @@ if (isset($_GET['id'])) {
                                 }
                                 ?>
                             </div>
+                            <hr>
                             <!-- Row 3: Involved Faculty -->
-                            <div class="row mt-4">
-                                <?php
-                                // Fetch involved faculty
-                                $stmt_project_faculty = $con->prepare("SELECT * FROM project_faculty WHERE project_id = ?");
-                                $stmt_project_faculty->bind_param("i", $project_id);
-                                $stmt_project_faculty->execute();
-                                $query_run_faculty = $stmt_project_faculty->get_result();
-
-                                if ($query_run_faculty && mysqli_num_rows($query_run_faculty) > 0) {
-                                    echo '<div class="col-md-12"><h5>Involved Faculty</h5></div>';
-                                    while ($faculty_row = mysqli_fetch_assoc($query_run_faculty)) {
-                                        $stmt_faculty_info = $con->prepare("SELECT * FROM faculty WHERE id = ?");
-                                        $stmt_faculty_info->bind_param("i", $faculty_row['faculty_id']);
-                                        $stmt_faculty_info->execute();
-                                        $query_run_faculty_info = $stmt_faculty_info->get_result();
-
-                                        if ($query_run_faculty_info && mysqli_num_rows($query_run_faculty_info) > 0) {
-                                            $faculty_info = mysqli_fetch_assoc($query_run_faculty_info);
-                                ?>
-                                            <div class="col-md-12 mb-4">
-                                                <p><strong>Name:</strong> <?= htmlspecialchars($faculty_info['fname'] . ' ' . $faculty_info['lname']); ?></p>
-                                                <!-- Assuming image is a file path -->
-                                                <p><strong>Profile Pic:</strong> <img src="uploads/faculty/<?= htmlspecialchars($faculty_info['image']); ?>" alt="Faculty Image" class="img-fluid rounded-circle" style="max-width: 100px;"></p>
-                                            </div>
-                                <?php
-                                        } else {
-                                            echo "Faculty details not found!";
-                                        }
-                                    }
-                                } else {
-                                    echo "No involved faculty found!";
-                                }
-                                ?>
-                            </div>
+                       
                             <!-- Row 4: SDGs Covered -->
                             <div class="row mt-4">
                                 <div class="col-md-12">
