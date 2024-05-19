@@ -293,11 +293,7 @@ include('config/dbcon.php');
             </aside>
             <article class="home-article">
                 <h4 id="home-header">SERVICE LEARNING PROGRAM</h4>
-                <p class="" style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="" style="color: white;">Service learning provides relevant and meaningful service in the community, enhances academic learning, translates theory into practice, and ideas into action and creates an opportunity for purposeful civic learning through a lived experience of the Jesuit mission – solidarity with those in need (preferential option for the poor), and in the light and provision of the Jesuit Province Roadmap and of the United Nations’ Sustainable Development Goals.
                 </p>
                 <a href="about-us.php" style="text-decoration: none; color: inherit;">
                     <button id="find-out-more-button">Find out more</button>
