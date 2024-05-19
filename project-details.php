@@ -238,7 +238,7 @@ if (isset($_GET['id'])) {
                                                 <p class="card-text"><strong>School Year:</strong> <?= htmlspecialchars($school_year_label); ?></p>
                                             </div>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <?php
                                                 // Assuming $project['semester'] contains numerical codes
                                                 $semester = htmlspecialchars($project['semester']);
@@ -260,10 +260,6 @@ if (isset($_GET['id'])) {
                                                 }
                                                 ?>
                                                 <p class="card-text"><strong>Semester:</strong> <?= $semester_name; ?></p>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <p class="card-text"><strong>Number of Students:</strong> <?= htmlspecialchars($project['number_of_students']); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -324,10 +320,10 @@ if (isset($_GET['id'])) {
                                     <div class="col-md-12">
                                         <h5 class="detail-title">COLLEGE DETAILS</h5>
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-12">
                                                 <p><img src="uploads/college_logos/<?= htmlspecialchars($college['logo_image']); ?>" alt="College Logo" style="max-width: 200px;"></p>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-12">
                                                 <p class="logo-name"><?= htmlspecialchars($college['name']); ?></p>
                                                 <p class="dean-name"><strong>Dean:</strong>
                                                     <?php
@@ -375,7 +371,7 @@ if (isset($_GET['id'])) {
                                         if ($query_run_faculty_info && mysqli_num_rows($query_run_faculty_info) > 0) {
                                             $faculty_info = mysqli_fetch_assoc($query_run_faculty_info);
                                 ?>
-                                            <div class="col-md-4 mb-4">
+                                            <div class="col-md-12 mb-4">
                                                 <p><strong>Name:</strong> <?= htmlspecialchars($faculty_info['fname'] . ' ' . $faculty_info['lname']); ?></p>
                                                 <!-- Assuming image is a file path -->
                                                 <p><strong>Profile Pic:</strong> <img src="uploads/faculty/<?= htmlspecialchars($faculty_info['image']); ?>" alt="Faculty Image" class="img-fluid rounded-circle" style="max-width: 100px;"></p>
