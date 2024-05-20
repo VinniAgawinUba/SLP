@@ -77,6 +77,11 @@
         a {
             text-decoration: none;
         }
+
+        .cards-body {
+            margin-top: 10px;
+            padding: 10px 15px;
+        }
     </style>
 </head>
 
@@ -87,8 +92,8 @@
             <!-- Page Features-->
             <div class="row gx-lg-5">
                 <div class="col-lg-4 col-xxl-4 ">
-                    <div class="card bg-light border-0">
-                        <div class="card-body ">
+                    <div class="cards bg-light border-0">
+                        <div class="cards-body ">
                             <h2 class="fs-4 fw-bold" id="headers">CONTACT US</h2>
                             <a href="">
                                 <p class="mb-0" id="contact-details">
@@ -108,12 +113,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-xxl-4">
-                    <div class="card bg-light border-0">
+                    <div class="cards bg-light border-0">
                     </div>
                 </div>
                 <div class="col-lg-4 col-xxl-4">
-                    <div class="card bg-light border-0 ">
-                        <div class="card-body">
+                    <div class="cards bg-light border-0 ">
+                        <div class="cards-body">
 
                             <h2 class="fs-4 fw-bold" id="headers">REQUEST ACCESS</h2>
                             <p class="mb-2" id="contact-details">Want more access to information?</p>
@@ -127,8 +132,8 @@
 
             <div class="row gx-lg-5">
                 <div class="col-lg-7 col-xxl-4">
-                    <div class="card bg-light border-0 h-100">
-                        <div class="card-body">
+                    <div class="cards bg-light border-0 h-100">
+                        <div class="cards-body">
 
                             <h2 class="fs-4 fw-bold" id="headers">FIND US HERE</h2>
                             <p class="mb-0" id="contact-details">Ground Floor, Agriculture Building, Room 103, Xavier </p>
@@ -138,11 +143,11 @@
                     </div>
                 </div>
                 <div class="col-lg-5 col-xxl-4 h-50">
-                    <div class="card bg-light border-0">
+                    <div class="cards bg-light border-0">
                     </div>
                 </div>
                 <div class="col-lg-5 col-xxl-4 h-50">
-                    <div class="card bg-light border-0">
+                    <div class="cards bg-light border-0">
                     </div>
                 </div>
             </div>
