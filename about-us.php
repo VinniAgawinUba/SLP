@@ -63,6 +63,7 @@ include('config/dbcon.php');
         flex-wrap: wrap;
         width: 50em;
         margin-top: 30px;
+        
     }
 
     .box {
@@ -70,6 +71,7 @@ include('config/dbcon.php');
         margin: 10px;
         padding: 20px;
         border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         text-align: center;
     }
 
@@ -110,6 +112,27 @@ include('config/dbcon.php');
         border-radius: 14px;
         margin-top: 36px;
         margin-bottom: -60px;
+    }
+
+    .bgslp-image {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
     }
 </style>
 <link rel="stylesheet" href="assets/css/custom.css">
@@ -196,7 +219,7 @@ include('config/dbcon.php');
                                     </p>
                                 </div>
                                 <div class="approach-section">
-                                    <h2>Service Learning as Approach to Teaching (Competence)</h2>
+                                    <h2>Approach to Teaching (Competence)</h2>
                                     <p id="home-text">As an approach to teaching, actual student community engagement is integrated in the syllabus and forms part
                                         of the teaching methodology to achieve the learning objectives of a course or subject. The students’ engagements
                                         are based on needs expressed by partner communities by which they can possibly offer solutions and new perspectives
@@ -221,8 +244,75 @@ include('config/dbcon.php');
                                         <li>Implementation: Integration of service learning components into curriculum.</li>
                                         <li>Post-Implementation: Evaluation and reflection on student engagements.</li>
                                     </ul>
-                                    <img src="assets\images\bgslp.png" alt="">
+                                    <img class="bgslp-image" src="assets\images\bgslp.png" alt="">
                                 </div>
+
+                                <div>
+                                    <h2>Social Formation of students (Compassion)</h2>
+                                    <p id="home-text">Service Learning as a tool for social formation, integral to Jesuit education, aims to develop leaders dedicated to a
+                                        just and humane society. This approach aligns with Jesuit traditions, fostering qualities of mind and heart essential
+                                        for collaborative work for the common good. It combines academic instruction with meaningful community service,
+                                        consistent with Ignatian spirituality and the Jesuit mission of educating for justice. Through regular reflection,
+                                        end-of-semester processing sessions, and mentoring, students deeply engage with their communities, gaining insights
+                                        that challenge their preconceived notions and inspire active participation in societal change. As articulated by J.
+                                        Kavanaugh in "Jesuit Higher Education," the essence of education is justice, grounded in human dignity and aimed at
+                                        human freedom.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h2>Achieve Sustainable Development (Contact)</h2>
+                                    <p id="home-text">
+                                        Since its institutionalization in 2016, XU-SLP has engaged more students and faculty in various communities and sectors
+                                        in Cagayan de Oro City, in municipalities of Misamis Oriental and Bukidnon, and many of their barangays for discipline-based
+                                        solutions and projects. The program also continues to explore other modes of SL implementation to evolve into more
+                                        interdisciplinary engagements for community development.
+                                    </p>
+                                </div>
+
+                                <table>
+                                    <tr>
+                                        <th>Academic Year</th>
+                                        <th>Students Engaged</th>
+                                        <th>Faculty</th>
+                                        <th>Subjects</th>
+                                        <th>Projects</th>
+                                        <th>Partners</th>
+                                    </tr>
+                                    <tr>
+                                        <td>2016-2017</td>
+                                        <td>1,168</td>
+                                        <td>24</td>
+                                        <td>17</td>
+                                        <td>36</td>
+                                        <td>27</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2017-2018</td>
+                                        <td>2,229</td>
+                                        <td>53</td>
+                                        <td>48</td>
+                                        <td>48</td>
+                                        <td>46</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2018-2019</td>
+                                        <td>937*</td>
+                                        <td>49</td>
+                                        <td>39</td>
+                                        <td>42</td>
+                                        <td>28</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2022-2023</td>
+                                        <td>1,057</td>
+                                        <td>33</td>
+                                        <td>31</td>
+                                        <td>47</td>
+                                        <td>31</td>
+                                    </tr>
+                                </table>
+
                             </div>
                         </div>
                     </div>
@@ -232,5 +322,3 @@ include('config/dbcon.php');
     </div>
 
 </body>
-<!-- Footer -->
-<?php include('includes/footer.php'); ?>
