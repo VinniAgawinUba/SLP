@@ -647,11 +647,15 @@ if (!isset($_GET['school_year'])) {
                     $query = "SELECT * FROM projects WHERE school_year_id = '$school_year' AND semester = '$semester' AND college_id = '$college' AND department_id = '$department' LIMIT $projectOffset, $projectsPerPage";
                     $query_run = mysqli_query($con, $query);
                     if (mysqli_num_rows($query_run) > 0) {
+                       
                         foreach ($query_run as $item) {
+                            $photo_query = "SELECT * FROM gallery_photos WHERE {$item['id']} = project_id LIMIT 1";
+                            $photo_query_run = mysqli_query($con, $photo_query);
+                            $photo = mysqli_fetch_assoc($photo_query_run);
                         ?>
                             <div class="col-md-3 mb-3 gy-3" style="display: flex; justify-content: center; ">
                                 <div class="card">
-                                    <a href="project-details.php?id=<?= $item['id']; ?>"><img src="" class="customPic"></a> <!-- Placeholder for image-->
+                                    <a href="project-details.php?id=<?= $item['id']; ?>"><img src="uploads/gallery_photos/<?= $photo['file_name']; ?>" alt="project photo" class="customPic"></a> <!-- Placeholder for image-->
                                     <div class="card-body">
                                         <h5 class="card-title-projects"><?= $item['name']; ?></h5>
                                         <p class="card-text-projects"><?= $item['description']; ?></p>
